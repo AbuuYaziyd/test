@@ -1,3 +1,3 @@
 <?php
-echo 'Hello aBy';
+echo 'Hello aBy SMS';
 ?>
