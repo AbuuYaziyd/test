@@ -12,7 +12,7 @@
 	<title><?= APP_NAME ?> | <?= $title ?></title>
 	<link rel="apple-touch-icon" href="<?= base_url('app-assets/images/ico/apple-icon-120.png') ?>">
 	<link rel="shortcut icon" type="image/x-icon" href="<?= base_url('app-assets/images/ico/favicon.ico') ?>">
-	<link href="https://fonts.googleapis.com/css2?family=Tajawal&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
 
 	<!-- BEGIN: Vendor CSS-->
 	<link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/vendors/css/vendors-rtl.min.css') ?>">
@@ -50,12 +50,12 @@
 <body class="vertical-layout vertical-menu-modern 2-columns   fixed-navbar" data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
 
 	<!-- BEGIN: Header-->
-	<?= $this->include($_SESSION['role'].'/header') ?>
+	<?= $this->include($_SESSION['role'] . '/header') ?>
 	<!-- END: Header-->
 
 
 	<!-- BEGIN: Main Menu-->
-	<?= $this->include($_SESSION['role'].'/sidebar') ?>
+	<?= $this->include($_SESSION['role'] . '/sidebar') ?>
 
 	<!-- END: Main Menu-->
 	<!-- BEGIN: Content-->
@@ -66,7 +66,7 @@
 	<div class="drag-target"></div>
 
 	<!-- BEGIN: Footer-->
-	<?= $this->include($_SESSION['role'].'/footer') ?>
+	<?= $this->include($_SESSION['role'] . '/footer') ?>
 	<!-- END: Footer-->
 
 	<!-- BEGIN: Vendor JS-->
