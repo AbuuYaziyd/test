@@ -8,7 +8,7 @@
                 <div class="card border-grey border-lighten-3 m-0">
                     <div class="card-header border-1">
                         <div class="card-title text-center">
-                            <div class="p-1"><img src="<?= base_url('app-assets/images/logo/logo.png') ?>" alt="branding logo" width="120" height="120"></div>
+                            <div class="p-1"><a href="<?= base_url() ?>"><img src="<?= base_url('app-assets/images/logo/logo.png') ?>" alt="branding logo" width="120" height="120"></a></div>
                         </div>
                         <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2"><span><?= lang('app.register') ?></span>
                         </h6>
