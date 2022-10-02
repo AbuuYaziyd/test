@@ -46,8 +46,8 @@ $ct = new Category();
                                                             <span class="danger"><?=  '('. $data['author_dod'] .') ' . lang('app.rahimahullah') ?></span>
                                                         <?php endif ?>
                                                     </td>
-                                                    <td><?= lang('app.' . $data['author_madhhab']) ?></td>
-                                                    <td><?= lang('app.' . $data['author_aqida']) ?></td>
+                                                    <td><?= ($data['author_madhhab']== null?'-':lang('app.' . $data['author_madhhab'])) ?></td>
+                                                    <td><?= ($data['author_aqida'] == null ? '-' : lang('app.' . $data['author_aqida'])) ?></td>
                                                     <td><a href="<?= base_url('author/edit/' . $data['author_id']) ?>" class="btn btn-sm btn-outline-warning round"><?= lang('app.edit') ?></a></td>
                                                 </tr>
                                             <?php endforeach ?>
