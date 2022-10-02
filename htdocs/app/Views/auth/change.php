@@ -9,7 +9,7 @@
                 <div class="card border-grey border-lighten-3 m-0">
                     <div class="card-header border-0">
                         <div class="card-title text-center">
-                            <div class="p-1"><a href="<?= base_url() ?>"><img src="<?= base_url('app-assets/images/logo/logo.png') ?>" alt="branding logo" width="120" height="120"></a></div>
+                            <div class="p-1"><img src="<?= base_url('app-assets/images/logo/logo.png') ?>" alt="branding logo" width="120" height="120"></div>
                         </div>
                         <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2"><span><?= lang('app.changepassword') ?></span>
                         </h6>
@@ -17,7 +17,7 @@
                     <div class="card-content">
                         <div class="card-body">
                             <?php $validation = \Config\Services::validation(); ?>
-                            <?= form_open('change/password/' . $_SESSION['id']) ?>
+                            <?= form_open('change/password/' . session('user_id')) ?>
                             <label class="text-bold-600"><?= lang('app.oldpassword') ?></label>
                             <?php if ($validation->getError('old')) : ?>
                                 <span class="badge badge-danger"> <?= $errors = $validation->getError('old') ?></span>

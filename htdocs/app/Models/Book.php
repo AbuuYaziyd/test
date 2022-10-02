@@ -8,22 +8,26 @@ class Book extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'books';
-    protected $primaryKey       = 'id';
+    protected $primaryKey       = 'book_id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'bookName',
-        'no',
-        'catId',
-        'author',
-        'distributor',
-        'price',
-        'cover',
-        'count',
-        'img',
+        'book_name',
+        'author_id',
+        'book_volume',
+        'cat_id',
+        'sub_id',
+        'book_price',
+        'muhaqqiq',
+        'book_info',
+        'book_no',
+        'book_cover',
+        'book_picture',
+        'link_archive',
+        'link_waqefeya',
     ];
 
     // Dates

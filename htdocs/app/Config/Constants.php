@@ -99,4 +99,4 @@ define('EVENT_PRIORITY_HIGH', 10);
  * Put my Custom Variables!
  * --------------------------------------------------------------------------
  */
-define('APP_NAME', "مكتبة أبي يزيد");
+define('APP_NAME', "مكاتب الفوائد");

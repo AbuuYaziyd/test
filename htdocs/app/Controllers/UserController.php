@@ -2,8 +2,13 @@
 
 namespace App\Controllers;
 
+use App\Models\Author;
+use App\Models\Book;
+use App\Models\Category;
 use App\Models\Hits;
 use App\Models\Info;
+use App\Models\Sharh;
+use App\Models\SubCategory;
 use App\Models\User;
 use CodeIgniter\RESTful\ResourceController;
 
@@ -17,9 +22,20 @@ class UserController extends ResourceController
     public function index()
     {
         $hits = new Hits();
+        $books = new Book();
+        $cat = new Category();
+        $sub = new SubCategory();
+        $author = new Author();
+        $sharh = new Sharh();
 
         $data['title'] = lang('app.dashboard');
         $data['hits'] = $hits->countAll();
+        $data['books'] = $books->countAll();
+        $data['cat'] = $cat->countAll();
+        $data['sub'] = $sub->countAll();
+        $data['author'] = $author->countAll();
+        $data['sharh'] = $sharh->countAll();
+        // dd($data);
 
         return view('user/index', $data);
     }
@@ -31,48 +47,27 @@ class UserController extends ResourceController
      */
     public function show($id = null)
     {
-        $info = new Info();
         $user = new User();
 
-        $find = $info->where('userId', $id)->first();
-        if ($find == null) {
+        $find = $user->where('user_id', $id)->first();
+        if (!$find) {
             $data = [
                 'userId' => $id,
             ];
-            // dd($data); exit;
-            $ok = $info->save($data);
+            dd($data);
+            // $ok = $info->save($data);
 
-            if ($ok) {
-                return redirect()->to('user/profile/'.$id);
-            }
+            // if ($ok) {
+            //     return redirect()->to('user/profile/'.$id);
+            // }
         }else {
             $data['title'] = lang('app.profile');
             $data['profile'] = $user->find($id);
-            $data['info'] = $info->where('userId', $id)->first();
-            // dd($data);exit;
+            // $data['info'] = $info->where('userId', $id)->first();
+            // dd($data);
 
             return view('user/profile', $data);
         }
-    }
-
-    /**
-     * Return a new resource object, with default properties
-     *
-     * @return mixed
-     */
-    public function new()
-    {
-        //
-    }
-
-    /**
-     * Create a new resource object, from "posted" parameters
-     *
-     * @return mixed
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -84,14 +79,14 @@ class UserController extends ResourceController
     {
         helper('form');
 
-        $info = new Info();
+        // $info = new Info();
         $user = new User();
 
         // dd($id);
         $data['title'] = lang('app.profile');
         $data['user'] = $user->find($id);
-        $data['info'] = $info->where('userId', $id)->first();
-        // dd($data);exit;
+        // $data['info'] = $info->where('userId', $id)->first();
+        // dd($data);
 
         return view('user/edit', $data);
     }
@@ -103,24 +98,27 @@ class UserController extends ResourceController
      */
     public function update($id = null)
     { 
-        // dd($this->request->getVar());exit;
+        // dd($this->request->getVar());
 
         $data = [
-            'name' => strtoupper($this->request->getVar('name')),
-            'lname' => strtoupper($this->request->getVar('lname')),
-            'arName' => $this->request->getVar('arName'),
-            'kun_yah' => $this->request->getVar('kun_yah'),
+            'fname' => $this->request->getVar('fname'),
+            'email' => $this->request->getVar('email'),
+            'phone' => $this->request->getVar('phone'),
+            'address' => $this->request->getVar('address'),
+            'user_info' => $this->request->getVar('user_info'),
+            'dob' => $this->request->getVar('dob'),
+            'sex' => $this->request->getVar('sex'),
             'level' => $this->request->getVar('level'),
         ];
-        // dd($data);exit;
+        // dd($id);
 
-        $info = new info();
-        $find = $info->where('userId', $id)->first();
-        $ok = $info->update($find['id'], $data);
+        $user = new User();
+        // $user->find($id);
+        $ok = $user->update($id, $data);
 
         if ($ok) {
             return redirect()->to('user/profile/'. $id)->with('type', 'success')->with('text', lang('app.successful'))->with('title', lang('app.done'));
-            return redirect()->to('user/profile/'. $id)->with('type', 'success')->with('text', lang('app.successful'))->with('title', lang('app.done'));
+            // return redirect()->to('user/profile/'. $id)->with('type', 'success')->with('text', lang('app.successful'))->with('title', lang('app.done'));
         } else {
             return redirect()->to('user/profile/' . $id)->with('type', 'error')->with('text', lang('app.unsuccessful'))->with('title', lang('app.sorry'));
         }

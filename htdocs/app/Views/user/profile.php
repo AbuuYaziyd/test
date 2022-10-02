@@ -1,4 +1,4 @@
-<?= $this->extend('user/main') ?>
+<?= $this->extend('layouts/main') ?>
 <?= $this->section('content') ?>
 <div class="app-content content">
     <div class="content-overlay"></div>
@@ -14,17 +14,17 @@
                         <div class="col-12 col-sm-7">
                             <div class="media mb-2">
                                 <a class="mr-1" href="#">
-                                    <img src="https://ui-avatars.com/api/?length=1&&name=<?= $profile['username'] ?>&&background=random&&bold=true" alt="users view avatar" class="users-avatar-shadow rounded-circle" height="64" width="64">
+                                    <img src="https://ui-avatars.com/api/?length=1&&name=<?= $profile['fname'] ?>&&background=random&&bold=true" alt="users view avatar" class="users-avatar-shadow rounded-circle" height="64" width="64">
                                 </a>
                                 <div class="media-body pt-25">
-                                    <h4 class="media-heading"><span class="users-view-name"><?= $info['arName'] ?></span><span class="text-muted font-medium-1"> @</span><span class="users-view-username text-muted font-medium-1 "><?= $profile['username'] ?></span></h4>
-                                    <span><?= lang('app.malaf') ?>:</span>
-                                    <span class="users-view-id"><?= $profile['malaf'] ?></span>
+                                    <h4 class="media-heading"><span class="users-view-name"><?= $profile['fname'] ?></span><span class="text-muted font-medium-1"> @</span><span class="users-view-username text-muted font-medium-1 "><?= APP_NAME ?></span></h4>
+                                    <span><?= lang('app.username') ?>:</span>
+                                    <span class="users-view-id"><?= $profile['username'] ?></span>
                                 </div>
                             </div>
                         </div>
                         <div class="col-12 col-sm-5 px-0 d-flex justify-content-end align-items-center px-1 mb-2">
-                            <a href="<?= base_url('user/info/' . $profile['id']) ?>" class="btn btn-outline-warning round"><i class="ft-edit font-small-3"></i> <?= lang('app.edit') ?></a>
+                            <a href="<?= base_url('user/info/' . $profile['user_id']) ?>" class="btn btn-outline-warning round"><i class="ft-edit font-small-3"></i> <?= lang('app.edit') ?></a>
                         </div>
                     </div>
                     <!-- users view media object ends -->
@@ -77,16 +77,8 @@
                                                         <td class="users-view-username"><?= $profile['username'] ?></td>
                                                     </tr>
                                                     <tr>
-                                                        <td><?= lang('app.malaf') ?> :</td>
-                                                        <td class="users-view-name"><?= $profile['malaf'] ?></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><?= lang('app.name') ?> :</td>
-                                                        <td class="users-view-name"><?= $info['arName'] ?></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><?= lang('app.name') ?> :</td>
-                                                        <td class="users-view-name"><?= $info['name'] ?> <?= $info['lname'] ?></td>
+                                                        <td><?= lang('app.fname') ?> :</td>
+                                                        <td class="users-view-name"><?= $profile['fname'] ?></td>
                                                     </tr>
                                                     <tr>
                                                         <td><?= lang('app.email') ?> :</td>
@@ -94,11 +86,41 @@
                                                     </tr>
                                                     <tr>
                                                         <td><?= lang('app.dob') ?> :</td>
-                                                        <td><?= $profile['dob'] ?></td>
+                                                        <td><?= date('d/m/Y', strtotime($profile['dob'])) ?></td>
                                                     </tr>
                                                     <tr>
                                                         <td><?= lang('app.phone') ?> :</td>
-                                                        <td><a href="tel:+<?= '255' . $profile['phone'] ?>" class="badge badge-secondary"><?= '255' . $profile['phone'] ?></a></td>
+                                                        <td><a href="tel:+<?= $profile['phone'] ?>" class="badge badge-secondary"><?= $profile['phone'] ?></a></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><?= lang('app.level') ?> :</td>
+                                                        <td><?php
+                                                            switch ($profile['level']) {
+                                                                case '4':
+                                                                    echo lang('app.dukturi');
+                                                                    break;
+                                                                case '3':
+                                                                    echo lang('app.master');
+                                                                    break;
+                                                                case '2':
+                                                                    echo lang('app.degree');
+                                                                    break;
+                                                                default:
+                                                                    echo lang('app.thanawi');
+                                                                    break;
+                                                            } ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><?= lang('app.sex') ?> :</td>
+                                                        <td><?= lang('app.' . $profile['sex']) ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><?= lang('app.profile') ?> :</td>
+                                                        <td><?= $profile['user_info'] ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><?= lang('app.maktabaName') ?> :</td>
+                                                        <td><?= $profile['maktaba_name'] ?></td>
                                                     </tr>
                                                 </tbody>
                                             </table>

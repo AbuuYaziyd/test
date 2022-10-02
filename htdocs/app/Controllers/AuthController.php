@@ -170,11 +170,13 @@ class AuthController extends BaseController
 
             if ($verify) {
                 $sessData = [
-                    'id' => $data['id'],
+                    'user_id' => $data['user_id'],
                     'username' => $data['username'],
+                    'fname' => $data['fname'],
                     'email' => $data['email'],
                     'fn' => $data['fn'],
                     'role' => $data['role'],
+                    'maktaba_name' => $data['maktaba_name'],
                     'locale' => $session->locale ?? 'ar',
                     'isLoggedIn' => TRUE
                 ];

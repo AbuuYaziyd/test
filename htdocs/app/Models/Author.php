@@ -4,31 +4,26 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class User extends Model
+class Author extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'users';
-    protected $primaryKey       = 'user_id';
+    protected $table            = 'authors';
+    protected $primaryKey       = 'author_id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'email',
-        'username',
-        'role',
-        'fname',
-        'phone',
-        'status',
-        'fn',
-        'sex',
-        'level',
-        'user_info',
-        'dob',
-        'address',
-        'fn',
-        'password',
+        'author_name',
+        'author_dob',
+        'author_dod',
+        'author_info',
+        'author_pob',
+        'author_teachers',
+        'author_students',
+        'author_madhhab',
+        'author_aqida',
     ];
 
     // Dates

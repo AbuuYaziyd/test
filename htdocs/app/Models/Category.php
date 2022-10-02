@@ -8,14 +8,14 @@ class Category extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'categories';
-    protected $primaryKey       = 'id';
+    protected $primaryKey       = 'cat_id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'name',
+        'cat_name',
     ];
 
     // Dates
@@ -41,4 +41,16 @@ class Category extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    function subCount($id)
+    {
+        $cat = new Category();
+       $count = $cat->join('subcategories s', 's.cat_id=categories.cat_id')->where('s.cat_id', $id)->countAllResults();
+       return $count;
+    }
+
+    function getCat()
+    {
+        # code...
+    }
 }

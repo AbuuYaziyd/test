@@ -4,31 +4,19 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class User extends Model
+class SubCategory extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'users';
-    protected $primaryKey       = 'user_id';
+    protected $table            = 'subcategories';
+    protected $primaryKey       = 'sub_id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'email',
-        'username',
-        'role',
-        'fname',
-        'phone',
-        'status',
-        'fn',
-        'sex',
-        'level',
-        'user_info',
-        'dob',
-        'address',
-        'fn',
-        'password',
+        'cat_id',
+        'sub_name',
     ];
 
     // Dates

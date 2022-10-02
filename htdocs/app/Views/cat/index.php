@@ -1,4 +1,10 @@
-<?= $this->extend('cat/main') ?>
+<?php
+
+use App\Models\Category;
+
+$ct = new Category();
+?>
+<?= $this->extend('layouts/main') ?>
 <?= $this->section('content') ?>
 <div class="app-content content">
     <div class="content-overlay"></div>
@@ -24,26 +30,17 @@
                                             <tr>
                                                 <th class="border-top-0">#</th>
                                                 <th class="border-top-0"><?= lang('app.name') ?></th>
-                                                <th class="border-top-0"><?= lang('app.count') ?></th>
+                                                <th class="border-top-0"><?= lang('app.count') . ' ' . lang('app.subcats') ?></th>
                                                 <th class="border-top-0"><?= lang('app.choose') ?></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php foreach ($cat as $key => $data) : ?>
                                                 <tr>
-                                                    <td class="text-truncate"><?= $key + 1 ?></td>
-                                                    <td class="text-truncate">
-                                                        <?= $data['name'] ?> 
-                                                        <span class="badge badge-info">10</span>
-                                                    </td>
-                                                    <td>
-                                                        <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
-                                                            <div class="progress-bar bg-gradient-x-success" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <a href="<?= base_url('category/edit/'.$data['id']) ?>" class="btn btn-sm btn-outline-warning round"><?= lang('app.edit') ?></a>
-                                                    </td>
+                                                    <td><?= $key + 1 ?></td>
+                                                    <td><?= $data['cat_name'] ?></td>
+                                                    <td><span class="badge badge-info"><?= $ct->subCount($data['cat_id']) ?></span></td>
+                                                    <td><a href="<?= base_url('category/edit/' . $data['cat_id']) ?>" class="btn btn-sm btn-outline-warning round"><?= lang('app.edit') ?></a></td>
                                                 </tr>
                                             <?php endforeach ?>
                                         </tbody>

@@ -2,7 +2,12 @@
 
 namespace App\Controllers;
 
+use App\Models\Author;
+use App\Models\Book;
+use App\Models\Category;
 use App\Models\Hits;
+use App\Models\Sharh;
+use App\Models\SubCategory;
 
 class Home extends BaseController
 {
@@ -10,6 +15,11 @@ class Home extends BaseController
     {
         $ip = $_SERVER['REMOTE_ADDR'];
         $hits = new Hits();
+        $books = new Book();
+        $cat = new Category();
+        $sub = new SubCategory();
+        $author = new Author();
+        $sharh = new Sharh();
         // Check for previous visits
         $query = $hits->where('ip', $ip, 1, 0)->get();
         $check = count($query->getResult());
@@ -22,24 +32,32 @@ class Home extends BaseController
             // Never visited - add
             $hits->insert($data);
         }
+        $data['hits'] = $hits->countAll();
+        $data['hits'] = $hits->countAll();
+        $data['books'] = $books->countAll();
+        $data['cat'] = $cat->countAll();
+        $data['sub'] = $sub->countAll();
+        $data['author'] = $author->countAll();
+        $data['sharh'] = $sharh->countAll();
         $data['title'] = lang('app.welcome');
 
-        return view('front/index', $data);
+        // dd($data);
+        return view('frontend/index', $data);
     }
 
-    public function locale($any)
-    {
-        $session = session();
+    // public function locale($any)
+    // {
+    //     $session = session();
 
-        $session->remove('locale');
-        $session->set('locale', $any);
-        $this->request->setLocale($any);
+    //     $session->remove('locale');
+    //     $session->set('locale', $any);
+    //     $this->request->setLocale($any);
 
-        $url = base_url();
-        if ($session->isLoggedIn) {
-            return redirect()->to($_SESSION['locale'] . '/user');
-        } else {
-            return redirect()->to($url);
-        }
-    }
+    //     $url = base_url();
+    //     if ($session->isLoggedIn) {
+    //         return redirect()->to($_SESSION['locale'] . '/user');
+    //     } else {
+    //         return redirect()->to($url);
+    //     }
+    // }
 }

@@ -13,8 +13,8 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3>
-                                    <b><?= lang('app.books') ?></b>
-                                    <a class="btn btn-outline-success box-shadow-2 round pull-right" href="<?= base_url('book/add') ?>"><?= lang('app.add') ?></a>
+                                    <b><?= lang('app.subcats') ?></b>
+                                    <a class="btn btn-outline-success box-shadow-2 round pull-right" href="<?= base_url('subcat/add') ?>"><?= lang('app.add') ?></a>
                                 </h3>
                             </div>
                             <div class="card-content mt-1">
@@ -23,28 +23,21 @@
                                         <thead>
                                             <tr>
                                                 <th class="border-top-0">#</th>
-                                                <th class="border-top-0"><?= lang('app.name') ?></th>
-                                                <th class="border-top-0"><?= lang('app.author') ?></th>
+                                                <th class="border-top-0"><?= lang('app.subcat') ?></th>
+                                                <th class="border-top-0"><?= lang('app.category') ?></th>
+                                                <th class="border-top-0"><?= lang('app.books') ?></th>
                                                 <th class="border-top-0"><?= lang('app.choose') ?></th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php foreach ($book as $key => $data) : ?>
+                                            <?php foreach ($sub as $key => $data) : ?>
                                                 <tr>
                                                     <td><?= $key + 1 ?></td>
+                                                    <td><?= $data['sub_name'] ?></td>
+                                                    <td><?= $data['cat_name'] ?></td>
+                                                    <td><span class="badge badge-info">10</span> </td>
                                                     <td>
-                                                        <?= $data['book_name'] ?>
-                                                        <span class="badge badge-<?= ($data['book_cover'] == 0 ? 'info' : 'success') ?> "><?= $data['book_volume'] ?></span>
-                                                    </td>
-                                                    <td><?= $data['author_name'] ?>
-                                                        <?php if ($data['author_dod'] == null) : ?>
-                                                            <span class="success"><?= lang('app.hafidhahullah') ?></span>
-                                                        <?php else : ?>
-                                                            <span class="danger"><?= '(' . $data['author_dod'] . ') ' . lang('app.rahimahullah') ?></span>
-                                                        <?php endif ?>
-                                                    </td>
-                                                    <td>
-                                                        <a href="<?= base_url('book/edit/' . $data['book_id']) ?>" class="btn btn-sm btn-outline-warning round"><?= lang('app.look') ?></a>
+                                                        <a href="<?= base_url('subcat/edit/' . $data['sub_id']) ?>" class="btn btn-sm btn-outline-warning round"><?= lang('app.edit') ?></a>
                                                     </td>
                                                 </tr>
                                             <?php endforeach ?>

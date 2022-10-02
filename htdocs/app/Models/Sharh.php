@@ -4,31 +4,22 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class User extends Model
+class Sharh extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'users';
-    protected $primaryKey       = 'user_id';
+    protected $table            = 'sharhs';
+    protected $primaryKey       = 'sharh_id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'email',
-        'username',
-        'role',
-        'fname',
-        'phone',
-        'status',
-        'fn',
-        'sex',
-        'level',
-        'user_info',
-        'dob',
-        'address',
-        'fn',
-        'password',
+        'sharh_name',
+        'book_id',
+        'author_id',
+        'sharh_cover',
+        'sharh_volume',
     ];
 
     // Dates

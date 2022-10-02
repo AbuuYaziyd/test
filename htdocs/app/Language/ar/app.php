@@ -23,13 +23,14 @@ return [
     'allRightPreserved' => 'جميع الحقوق محفوظة ',
     'username' => 'اسم المستخدم',
     'dob' => 'تاريخ الميلاد',
+    'dod' => 'تاريخ الوفاة',
     'repeatpassword' => 'ارجع كلمة المرور',
-    'sex' => 'جنسية',
+    'sex' => 'الجنس',
     'profile' => 'الوصف',
-    'male' => 'ذكر',
-    'female' => 'أنثى',
+    'M' => 'ذكر',
+    'F' => 'أنثى',
     'phone' => 'الجوال',
-    'email' => 'بريد الإكتروني',
+    'email' => 'البريد الإكتروني',
     'register' => 'سجل نفسك',
     'role' => 'وظيفة',
     'status' => 'حال',
@@ -68,9 +69,7 @@ return [
     'edit' => 'تعديل',
     'delete' => 'حذف',
     'submit' => 'ارســــــال',
-    'author' => 'مصنف',
-    'authors' => 'مصنفون',
-    'fname' => 'اسم الأول',
+    'fname' => 'اسم الكامل',
     'name' => 'اسم',
     'kun_yah' => 'كنية',
     'arName' => 'الاسم الكامل بالعربية',
@@ -83,12 +82,51 @@ return [
 
     //Books
     'book' => 'كتاب',
+    'books' => 'كتب',
     'bookName' => 'اسم الكتاب',
+    'bookInfo' => 'معلومات الكتاب',
     'mutun' => 'متون',
     'ghilaf' => 'غلاف',
     'mujalad' => 'مجلد',
     'cover' => 'مجلدات',
     'price' => 'السعر',
     'distributor' => 'الناشر',
+    'maktabaName' => 'اسم المكتبة',
+    'link_waqefeya' => 'رابط واقفية',
+    'link_archive' => 'رابط الأرشيف',
+    'muhaqqiq' => 'اسم المحقق',
     'bookNo' => 'رقم الكتاب',
+
+    // Levels
+    'thanawi' => 'الثانوية',
+    'degree' => 'بكالوريوس',
+    'master' => 'ماجستير',
+    'dukturi' => 'دكتوره',
+
+    //subcat
+    'subcat' => 'الفرع',
+    'subcats' => 'الفروع',
+
+    // Authors
+    'author' => 'المصنف',
+    'authors' => 'المصنفون',
+    'hambali' => 'حنبلي',
+    'shafi' => 'شافعي',
+    'hanafi' => 'حنفي',
+    'maliki' => 'مالكي',
+    'firaq' => 'فرق الظالة',
+    'aqida' => 'عقيدة',
+    'madhhab' => 'مذهب',
+    'ahluSunna' => 'أهل السنة والجماعة',
+    'rahimahullah' => 'رحمه الله',
+    'hafidhahullah' => 'حفظه الله',
+
+    // Image
+    'imgErr' => 'يلزم الصورة أي تكون <b>JPG/PNG</b> و أن لا تزيد <b>- 200KB</b>',
+    'bookPicture' => 'صورة الكتاب',
+    'chooseFile' => 'اختار الصورة',
+
+    // Sharh
+    'sharh' => 'الشرح',
+    'sharhs' => 'شروحات',
 ];

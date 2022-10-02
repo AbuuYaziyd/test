@@ -82,7 +82,35 @@ $routes->group('category', function ($routes) {
     $routes->post('create', 'CategoryController::create', ['filter' => 'auth']);
     $routes->get('edit/(:num)', 'CategoryController::show/$1', ['filter' => 'auth']);
     $routes->post('edit/(:num)', 'CategoryController::update/$1', ['filter' => 'auth']);
-    $routes->get('delete/(:num)', 'CategoryController::delete/$1', ['filter' => 'auth']);
+    // $routes->get('delete/(:num)', 'CategoryController::delete/$1', ['filter' => 'auth']);
+});
+
+/*
+ * --------------------------------------------------------------------
+ * Routes Groups SubCategories Routings
+ * --------------------------------------------------------------------
+ */
+$routes->group('subcat', function ($routes) {
+    $routes->get('/', 'SubcatController::index', ['filter' => 'auth']);
+    $routes->get('add', 'SubcatController::new', ['filter' => 'auth']);
+    $routes->post('create', 'SubcatController::create', ['filter' => 'auth']);
+    $routes->get('edit/(:num)', 'SubcatController::show/$1', ['filter' => 'auth']);
+    $routes->post('edit/(:num)', 'SubcatController::update/$1', ['filter' => 'auth']);
+    // $routes->get('delete/(:num)', 'SubcatController::delete/$1', ['filter' => 'auth']);
+});
+
+/*
+ * --------------------------------------------------------------------
+ * Routes Groups Authors Routings
+ * --------------------------------------------------------------------
+ */
+$routes->group('author', function ($routes) {
+    $routes->get('/', 'AuthorController::index', ['filter' => 'auth']);
+    $routes->get('add', 'AuthorController::new', ['filter' => 'auth']);
+    $routes->post('create', 'AuthorController::create', ['filter' => 'auth']);
+    $routes->get('edit/(:num)', 'AuthorController::show/$1', ['filter' => 'auth']);
+    $routes->post('edit/(:num)', 'AuthorController::update/$1', ['filter' => 'auth']);
+    $routes->get('delete/(:num)', 'AuthorController::delete/$1', ['filter' => 'auth']);
 });
 
 /*
@@ -95,8 +123,24 @@ $routes->group('book', function ($routes) {
     $routes->get('add', 'BookController::new', ['filter' => 'auth']);
     $routes->post('create', 'BookController::create', ['filter' => 'auth']);
     $routes->get('edit/(:num)', 'BookController::show/$1', ['filter' => 'auth']);
-    // $routes->post('edit/(:num)', 'BookController::update/$1', ['filter' => 'auth']);
-    // $routes->get('delete/(:num)', 'BookController::delete/$1', ['filter' => 'auth']);
+    $routes->post('edit/(:num)', 'BookController::update/$1', ['filter' => 'auth']);
+    $routes->get('delete/(:num)', 'BookController::delete/$1', ['filter' => 'auth']);
+    $routes->post('upload/(:num)', 'BookController::upload/$1', ['filter' => 'auth']);
+    $routes->post('sub', 'BookController::sub', ['filter' => 'auth']);
+});
+
+/*
+ * --------------------------------------------------------------------
+ * Routes Groups Sharh Routings
+ * --------------------------------------------------------------------
+ */
+$routes->group('sharh', function ($routes) {
+    $routes->get('/', 'SharhController::index', ['filter' => 'auth']);
+    $routes->get('add', 'SharhController::new', ['filter' => 'auth']);
+    $routes->post('create', 'SharhController::create', ['filter' => 'auth']);
+    $routes->get('edit/(:num)', 'SharhController::show/$1', ['filter' => 'auth']);
+    $routes->post('edit/(:num)', 'SharhController::update/$1', ['filter' => 'auth']);
+    $routes->get('delete/(:num)', 'SharhController::delete/$1', ['filter' => 'auth']);
 });
 
 /*

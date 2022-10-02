@@ -16,7 +16,7 @@ class CategoryController extends ResourceController
     {
         $cat = new Category();
 
-        // dd('index');exit;
+        // dd('index');
         $data['title'] = lang('app.category');
         $data['cat'] = $cat->findAll();
 
@@ -32,7 +32,7 @@ class CategoryController extends ResourceController
     {
         helper('form');
 
-        // dd($id);exit;
+        // dd($id);
         $cat = new Category();
 
         $data['title'] = lang('app.category');
@@ -50,7 +50,7 @@ class CategoryController extends ResourceController
     {
         helper('form');
 
-        // dd('add');exit;
+        // dd('add');
         $data['title'] = lang('app.category');
 
         return view('cat/add', $data);
@@ -63,16 +63,16 @@ class CategoryController extends ResourceController
      */
     public function create()
     {
-        // dd($this->request->getVar());exit;
+        // dd($this->request->getVar());
 
         helper('form');
 
         $input = $this->validate(
             [   //Rules
-                'name' => 'required|min_length[3]|is_unique[categories.name]',
+                'cat_name' => 'required|min_length[3]|is_unique[categories.cat_name]',
             ],
             [   // Errors
-                'name' =>
+                'cat_name' =>
                 [
                     'required' => lang('error.required'),
                     'is_unique' => lang('error.is_unique'),
@@ -90,10 +90,10 @@ class CategoryController extends ResourceController
             $cat = new Category();
 
             $data = [
-                'name'   => $this->request->getVar('name'),
+                'cat_name'   => $this->request->getVar('cat_name'),
             ];
 
-            // dd($data); exit;
+            // dd($data); 
             $ok = $cat->save($data);
 
             if ($ok) {
@@ -103,29 +103,19 @@ class CategoryController extends ResourceController
     }
 
     /**
-     * Return the editable properties of a resource object
-     *
-     * @return mixed
-     */
-    public function edit($id = null)
-    {
-        //
-    }
-
-    /**
      * Add or update a model resource, from "posted" properties
      *
      * @return mixed
      */
     public function update($id = null)
     {
-        // dd($this->request->getVar());exit;
+        // dd($this->request->getVar());
 
         $data = [
-            'name' => $this->request->getVar('name'),
+            'cat_name' => $this->request->getVar('cat_name'),
         ];
 
-        // dd($data);exit;
+        // dd($data);
         $cat = new Category();
         $ok = $cat->update($id, $data);
 
@@ -143,7 +133,7 @@ class CategoryController extends ResourceController
      */
     public function delete($id = null)
     {
-        // dd($id);exit;
+        // dd($id);
         $cat = new Category();
 
         $ok = $cat->delete($id);
