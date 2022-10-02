@@ -2129,33 +2129,3 @@ ul.nav.nav-inline li.dropdown.nav-item.float-right a.btn.dropdown-toggle:hover, 
 #text-field-icons .form-group select.form-control {
   border : 1px solid rgba(0, 0, 0, 0.3);
 }
-
-/* This is material font variable scss */
-body.material-layout {
-  font-family : 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  /* Quill Editor */
-}
-body.material-layout .navigation {
-  font-family : 'Quicksand', Georgia, 'Times New Roman', Times, serif;
-}
-body.material-layout .navigation .navigation-header {
-  font-family : 'Quicksand', Georgia, 'Times New Roman', Times, serif;
-}
-body.material-layout .breadcrumb {
-  font-family : 'Quicksand', Georgia, 'Times New Roman', Times, serif;
-}
-body.material-layout .navbar-nav .mega-dropdown-menu {
-  font-family : 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-}
-body.material-layout .header-navbar {
-  font-family : 'Quicksand', Georgia, 'Times New Roman', Times, serif;
-}
-body.material-layout .ql-editor {
-  font-family : 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-}
-body.material-layout .ql-editor h1, body.material-layout .ql-editor h2, body.material-layout .ql-editor h3, body.material-layout .ql-editor h4, body.material-layout .ql-editor h5, body.material-layout .ql-editor h6 {
-  font-family : 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-}
-body.material-layout .ql-toolbar {
-  font-family : 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-}
