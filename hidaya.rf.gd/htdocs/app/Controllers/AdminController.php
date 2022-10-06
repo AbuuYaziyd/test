@@ -96,18 +96,18 @@ class AdminController extends ResourceController
         return view('admin/mushrif', $data);
     }
     
-    // public function add()
-    // {
-    //     $user = new User();
+    public function add()
+    {
+        $user = new User();
 
-    //     $role = $user->find($_SESSION['id']);
-    //     $data['users'] = $user->distinct('jamia')->findAll();
-    //     $data['check'] = lang('app.students');
-    //     $data['title'] = lang('app.mandub');
-    //     dd($data);
+        $role = $user->find($_SESSION['id']);
+        $data['jamia'] = $user->select('jamia')->distinct()->findAll();
+        $data['check'] = lang('app.students');
+        $data['title'] = lang('app.mandub');
+        // dd($data);
 
-    //     return view('admin/mushrif', $data);
-    // }
+        return view('admin/addMushrif', $data);
+    }
 
     public function users($usr, $jamia)
     {

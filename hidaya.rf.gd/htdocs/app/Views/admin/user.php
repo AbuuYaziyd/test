@@ -22,12 +22,12 @@
                             <p class="card-subtitle mb-1"><?= $user['email'] ?></p>
                         </div>
                         <div class="text-center">
-                            <a href="<?= base_url('admin/delete/' . $user['id']) ?>" id="delete" class="btn btn-sm btn-danger round mr-1 mb-1"><span class="la la-trash"></span><?= lang('app.delete') ?></a>
+                            <a href="<?= base_url('admin/delete/' . $user['id']) ?>" id="delete" class="btn btn-sm btn-danger round mr-1 mb-1" disabled><i class="la la-trash"></i><?= lang('app.delete') ?></a>
                         </div>
                     </div>
                 </div>
                 <!-- Recent Transactions -->
-                <div id="recent-transactions" class="col-md-8 col-sm-12">
+                <!-- <div id="recent-transactions" class="col-md-8 col-sm-12">
                     <div class="card">
                         <div class="card-header">
                             <h3>Recent Transactions</h3>
@@ -92,7 +92,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
             <!--/ Recent Transactions -->
         </div>

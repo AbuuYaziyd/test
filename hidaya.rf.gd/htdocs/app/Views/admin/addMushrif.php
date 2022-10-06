@@ -27,39 +27,18 @@
                                 <div class="card-header">
                                     <h2>
                                         <?= $title ?>
-                                        <!-- <a class="btn btn-outline-success box-shadow-1 round pull-right" href="<?= base_url('admin/add') ?>"><?= lang('app.new') ?></a> -->
+                                        <a class="btn btn-outline-success box-shadow-1 round pull-right" href="<?= base_url('admin/add') ?>"><?= lang('app.new') ?></a>
                                     </h2>
                                 </div>
                                 <div class="card-content collapse show">
                                     <div class="card-body card-dashboard">
-                                        <table class="table table-striped table-bordered dataex-res-configuration">
-                                            <thead>
-                                                <tr>
-                                                    <th style="width: 5px;">#</th>
-                                                    <th style="width: 5%;"><?= lang('app.malaf') ?></th>
-                                                    <th><?= lang('app.name') ?></th>
-                                                    <th><?= lang('app.iqama') ?></th>
-                                                    <th><?= lang('app.phone') ?></th>
-                                                    <th><?= lang('app.nationality') ?></th>
-                                                    <th><?= lang('app.edit') ?></th>
-                                                    <th><?= lang('app.level') ?></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php foreach ($users as $key => $data) : ?>
-                                                    <tr>
-                                                        <td><?= $key + 1 ?></td>
-                                                        <td><?= $data['malaf'] ?></td>
-                                                        <td><?= $data['name'] ?></td>
-                                                        <td><?= $data['iqama'] ?></td>
-                                                        <td><a href="tel:+966<?= $data['phone'] ?>" class="badge badge-secondary">966<?= $data['phone'] ?></a></td>
-                                                        <td><a href="<?= base_url('admin/users/'. $data['nationality'].'/'. $data['jamia']) ?>" class="btn btn-info btn-sm"><?= $data['nationality'] ?></a></td>
-                                                        <td><a href="<?= base_url('admin/edit/' . $data['id']) ?>" class="btn btn-sm btn-danger"><?= lang('app.edit') ?></a></td>
-                                                        <td><?= $data['level'] ?></td>
-                                                    </tr>
-                                                <?php endforeach ?>
-                                            </tbody>
-                                        </table>
+                                        <label for=""><b>jdfklgnf</b></label>
+                                        <select name="jamia" class="custom-select">
+                                            <option value="dgffg">djksngjngk</option>
+                                                    <?php foreach ($jamia as $key => $data) : ?>
+                                                        <option value="<?= $data['jamia']?>"><?= $data['jamia'] ?></option>
+                                                    <?php endforeach ?>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
