@@ -31,9 +31,9 @@
                                             <select class="form-control" name="select">
                                                 <option selected disabled><?= lang('app.choose') ?></option>
                                                 <option value="imgIqama"><?= lang('app.imgIqama') ?></option>
-                                                <option value="imgIban"><?= lang('app.imgIban') ?></option>
-                                                <option value="imgStu"><?= lang('app.imgStu') ?></option>
                                                 <option value="imgPass"><?= lang('app.imgPass') ?></option>
+                                                <option value="imgStu"><?= lang('app.imgStu') ?></option>
+                                                <option value="imgIban"><?= lang('app.imgIban') ?></option>
                                             </select>
                                         </div>
                                         <?php if ($validation->getError('select')) : ?>

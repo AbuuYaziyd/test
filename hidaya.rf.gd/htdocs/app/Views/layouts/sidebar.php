@@ -8,12 +8,14 @@
                     <!-- <span class="badge badge badge-info badge-pill float-right mr-2">3</span> -->
                 </a>
             </li>
+            <?php if ($_SESSION['role'] == 'mushrif')  : ?>
             <li class="<?= (isset($check) && $check == lang('app.students') ? 'active' : '') ?> nav-item">
                 <a href="<?= base_url('admin/view') ?>">
                     <i class="la la-user"></i>
                     <span class="menu-title"><?= lang('app.students') ?></span>
                 </a>
             </li>
+            <?php endif ?>
             <li class="<?= ($title == lang('app.profile') ? 'active' : '') ?> nav-item">
                 <a href="<?= base_url('user/profile/' . $_SESSION['id']) ?>">
                     <i class="la la-television"></i>

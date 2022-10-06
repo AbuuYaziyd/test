@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Image;
+use App\Models\User;
 use CodeIgniter\RESTful\ResourceController;
 
 class ImageController extends ResourceController
@@ -63,6 +64,8 @@ class ImageController extends ResourceController
     public function update($id = null)
     {    
         $image = new Image();
+        $settingz = new User();
+        $nm = $settingz->find($id)['malaf'];
         $upl = $this->request->getVar('select');
 
         $validationRule = $this->validate(
@@ -92,10 +95,14 @@ class ImageController extends ResourceController
 
         $pic = $image->where('userId', $id)->first();
 
-        // dd($pic[$upl]!=null);
+        // dd($pic['malaf']);
+        // dd($nm);
         // if ($pic[$upl] != null) {
-            if (file_exists('app-assets/images/malaf/' . $pic[$upl])) {
-                $path = 'app-assets/images/malaf/' . $pic[$upl];
+            if (file_exists('app-assets/images/malaf/'.$nm.'/' . $pic[$upl])) {
+                $path = 'app-assets/images/malaf/'.$nm.'/' . $pic[$upl];
+
+                // $name = $this->request->getVar('select');
+                // dd($path);
 
                 unlink($path);
 
@@ -106,20 +113,20 @@ class ImageController extends ResourceController
                 $ppn = [$upl => $name,];
                 // dd($name);
 
-                $img->move('app-assets/images/malaf/', $name);
+                $img->move('app-assets/images/malaf/'.$nm.'/', $name);
                 $image->update($pic['imgId'], $ppn);
 
                 // dd($test);
                 return redirect()->to('image')->with('toast', 'success')->with('message', lang('app.imageEdited'))->with('title', lang('app.success'));
             } else {
-                dd($this->request->getVar());
+                // dd($this->request->getVar());
                 $img = $this->request->getFile('img');
                 $ext = $img->getClientExtension();
                 $name = date('ymdHis') . $id . '.' . $ext;
 
                 $ppn = [$upl => $name,];
 
-                $img->move('app-assets/images/malaf/', $name);
+                $img->move('app-assets/images/malaf/'.$nm.'/', $name);
                 $image->update($pic['imgId'], $ppn);
 
                 return redirect()->to('image')->with('type', 'success')->with('text', lang('app.imageUploaded'))->with('title', lang('app.success'));
