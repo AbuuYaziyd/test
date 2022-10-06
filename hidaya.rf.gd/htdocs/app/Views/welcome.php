@@ -60,7 +60,11 @@
 							</div>
 							<div class="row py-2">
 								<div class="col-12 text-center">
-									<a href="<?= base_url('login') ?>" class="btn btn-outline-secondary btn-lg mb-1 round"> <?= lang('app.login') ?> <i class="ft-log-in"></i></a>
+									<?php if (session('isLoggedIn')==true) : ?>
+									<a href="<?= base_url('login') ?>" class="btn btn-outline-info btn-lg mb-1 round"><i class="ft-home"></i> <?= lang('app.dashboard') ?> </a>
+									<?php else : ?>
+									<a href="<?= base_url('login') ?>" class="btn btn-outline-secondary btn-lg mb-1 round"><i class="ft-log-in"></i> <?= lang('app.login') ?> </a>
+									<?php endif ?>
 								</div>
 							</div>
 						</div>
