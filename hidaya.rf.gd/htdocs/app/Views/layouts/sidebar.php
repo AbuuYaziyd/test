@@ -12,7 +12,7 @@
             <li class="<?= (isset($check) && $check == lang('app.students') ? 'active' : '') ?> nav-item">
                 <a href="<?= base_url('admin/mushrif') ?>">
                     <i class="la la-users"></i>
-                    <span class="menu-title"><?= lang('app.students') ?></span>
+                    <span class="menu-title"><?= lang('app.mandub') ?></span>
                 </a>
             </li>
             <?php endif ?>
