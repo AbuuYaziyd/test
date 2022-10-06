@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\Bank;
 use App\Models\Hits;
 use App\Models\User;
+use App\Models\Country;
 use CodeIgniter\RESTful\ResourceController;
 // use RecursiveIteratorIterator;
 // use DiyRecursiveDecorator;
@@ -83,11 +84,14 @@ class UserController extends ResourceController
 
         $user = new User();
         $bank = new Bank();
-        // dd($id);
+        $nat = new Country();
+
         $data['title'] = lang('app.profile');
         $data['user'] = $user->find($id);
         $data['bank'] = $bank->findAll();
+        $data['nat'] = $nat->findAll();
 
+        // dd($data);
         return view('user/edit', $data);
     }
 

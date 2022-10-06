@@ -86,6 +86,9 @@ $routes->group('image', function ($routes) {
 $routes->group('admin', function ($routes) {
     $routes->get('/', 'AdminController::index', ['filter' => 'auth']);
     $routes->get('view', 'AdminController::new', ['filter' => 'auth']);
+    $routes->get('mushrif', 'AdminController::mushrif', ['filter' => 'auth']);
+    // $routes->get('add', 'AdminController::add', ['filter' => 'auth']);
+    $routes->get('users/(:any)/(:any)', 'AdminController::users/$1/$2', ['filter' => 'auth']);
     $routes->get('edit/(:num)', 'AdminController::show/$1', ['filter' => 'auth']);
     $routes->get('delete/(:num)', 'AdminController::delete/$1', ['filter' => 'auth']);
     // $routes->post('upload/(:num)', 'AdminController::update/$1', ['filter' => 'auth']);

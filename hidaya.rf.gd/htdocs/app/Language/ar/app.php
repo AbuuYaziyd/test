@@ -61,6 +61,7 @@ return [
     'data' => 'ملفات',
     'arabic' => 'عربي',
     'students' => 'طلاب',
+    'new' => 'ضف',
     'student' => 'طالب',
     'mandub' => 'مشرفون',
     'graduated?' => 'أمتخرج هو؟',

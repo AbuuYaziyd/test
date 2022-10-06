@@ -28,7 +28,7 @@ class AdminController extends ResourceController
         $data['all'] = $user->where(['nationality' => $role['nationality'], 'jamia' => $role['jamia']])->countAllResults();
         $data['full'] = $user->countAll();
         $data['title'] = lang('app.dashboard');
-        // dd($data['full']);exit;
+        // dd($data['full']);
 
         return view('admin/index', $data);
     }
@@ -43,7 +43,7 @@ class AdminController extends ResourceController
         $user = new User();
 
         $data['user'] = $user->find($id);
-        // dd($data['user']);exit;
+        // dd($data['user']);
         $data['title'] = lang('app.user');
         return view('admin/user', $data);
     }
@@ -61,7 +61,7 @@ class AdminController extends ResourceController
         $data['users'] = $user->where(['nationality' => $role['nationality'], 'jamia' => $role['jamia'], 'role' => 'user'])->findAll();
         $data['check'] = lang('app.students');
         $data['title'] = lang('app.students') .' '. $role['jamia'].' '. lang('app.from').' '. lang('app.nationality').' '. $role['nationality'];
-        // dd($data);exit;
+        // dd($data);
 
         return view('admin/show', $data);
     }
@@ -73,7 +73,7 @@ class AdminController extends ResourceController
      */
     public function delete($id = null)
     {
-        // dd($id);exit;
+        // dd($id);
         $user = new User();
 
         $ok = $user->delete($id);
@@ -81,5 +81,43 @@ class AdminController extends ResourceController
         if ($ok) {
             return redirect()->to('admin/view')->with('type', 'success')->with('title', lang('app.done'))->with('text', lang('app.delete') . ' ' . lang('app.student') . ' ' . lang('app.success'));
         }
+    }
+
+    public function mushrif()
+    {
+        $user = new User();
+
+        $role = $user->find($_SESSION['id']);
+        $data['users'] = $user->where(['role' => 'mushrif'])->findAll();
+        $data['check'] = lang('app.students');
+        $data['title'] = lang('app.mandub');
+        // dd($data);
+
+        return view('admin/mushrif', $data);
+    }
+    
+    // public function add()
+    // {
+    //     $user = new User();
+
+    //     $role = $user->find($_SESSION['id']);
+    //     $data['users'] = $user->distinct('jamia')->findAll();
+    //     $data['check'] = lang('app.students');
+    //     $data['title'] = lang('app.mandub');
+    //     dd($data);
+
+    //     return view('admin/mushrif', $data);
+    // }
+
+    public function users($usr, $jamia)
+    {
+        $user = new User();
+        
+        $data['users'] = $user->where(['nationality' => $usr, 'jamia' => $jamia])->findAll();
+        $data['check'] = lang('app.students');
+        $data['title'] = lang('app.students').' - '.$usr.' - '.$jamia;
+
+        // dd($data);
+        return view('admin/usersAll', $data);
     }
 }

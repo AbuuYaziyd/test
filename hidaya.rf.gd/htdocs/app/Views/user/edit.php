@@ -70,7 +70,15 @@
                                         </tr>
                                         <tr>
                                             <td><?= lang('app.nationality') ?>:</td>
-                                            <td class="users-view-name"><input type="text" class="form-control" name="nationality" value="<?= $user['nationality'] ?>" readonly></td>
+                                            <td>
+                                            <select name="nationality" class="custom-select">
+                                                    <option selected readonly><?= $user['nationality'] ?></option>
+                                                    <?php foreach ($nat as $key => $data) : ?>
+                                                        <option value="<?= $data['country_arName']?>"><?= $data['country_arName'] ?></option>
+                                                    <?php endforeach ?>
+                                            </select>
+                                            </td>
+                                            <!-- <td class="users-view-name"><input type="text" class="form-control" name="nationality" value="<?= $user['nationality'] ?>"></td> -->
                                         </tr>
                                         <tr>
                                             <td><?= lang('app.phone') ?>:</td>
@@ -86,13 +94,12 @@
                                         <tr>
                                             <td><?= lang('app.bank') ?>:</td>
                                             <td class="users-view-name">
-                                                <select class="form-control" name="bank">
+                                                <select class="custom-select" name="bank">
                                                     <option selected readonly><?= $user['bank'] ?></option>
                                                     <?php foreach ($bank as $key => $data) : ?>
                                                         <option value="<?= $data['bankName'] . '-' . $data['bankShort'] ?>"><?= $data['bankName'] . '-' . $data['bankShort'] ?></option>
                                                     <?php endforeach ?>
                                                 </select>
-                                                <!-- <input type="text" class="form-control" name="bank" value="<?= $user['bank'] ?>"> -->
                                             </td>
                                         </tr>
                                         <tr>

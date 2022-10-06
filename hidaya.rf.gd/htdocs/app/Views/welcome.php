@@ -55,7 +55,7 @@
 						<div class="col-lg-6 col-10">
 							<div class="row">
 								<div class="col-12 text-center">
-									<h3 class="error-code text-center mb-2"><?= lang('app.dashboard') ?></h3>
+									<h3 class="error-code text-center mb-2"><?= lang('app.welcome') ?></h3>
 								</div>
 							</div>
 							<div class="row py-2">
