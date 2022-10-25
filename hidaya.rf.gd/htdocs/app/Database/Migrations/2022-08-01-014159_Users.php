@@ -18,6 +18,7 @@ class Users extends Migration
             'email' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
+                'null' => true,
             ],
             'malaf' => [
                 'type'       => 'VARCHAR',

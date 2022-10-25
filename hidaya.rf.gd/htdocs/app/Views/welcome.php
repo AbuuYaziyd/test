@@ -63,7 +63,7 @@
 									<?php if (session('isLoggedIn')==true) : ?>
 									<a href="<?= base_url('login') ?>" class="btn btn-outline-info btn-lg mb-1 round"><i class="ft-home"></i> <?= lang('app.dashboard') ?> </a>
 									<?php else : ?>
-									<a href="<?= base_url('login') ?>" class="btn btn-outline-secondary btn-lg mb-1 round"><i class="ft-log-in"></i> <?= lang('app.login') ?> </a>
+									<a href="<?= base_url('login') ?>" class="btn btn-outline-success mb-1 round box-shadow-2"><?= lang('app.login') ?> </a>
 									<?php endif ?>
 								</div>
 							</div>
@@ -88,9 +88,9 @@
 
 	<!-- BEGIN: Theme JS-->
 	<script src="<?= base_url('app-assets/js/core/app-menu.js') ?>"></script>
-	<script src="<?= base_url('app-assets/js/core/app.js') ?>"></script>
+	<sript src="<?= base_url('app-assets/js/core/app.js') ?>"></script>
 	<!-- END: Theme JS-->
-
+	
 	<!-- BEGIN: Page JS-->
 	<!-- END: Page JS-->
 
