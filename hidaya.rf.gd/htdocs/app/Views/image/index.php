@@ -21,16 +21,18 @@
                     <div class="media-body pt-25 mb-3">
                         <h4 class="media-heading"><span class="users-view-name"><?= lang('app.data') ?> </span><span class="text-muted font-medium-1"> @</span><span class="users-view-username text-muted font-medium-1 "><?= $_SESSION['malaf'] ?></span></h4>
                     </div>
-                    <div class="col-12 col-sm-5 px-0 d-flex justify-content-end align-items-center px-1 mb-2">
+                    <!-- <div class="col-12 col-sm-5 px-0 d-flex justify-content-end align-items-center px-1 mb-2">
                         <a href="<?= base_url('image/edit/' . $_SESSION['id']) ?>" class="btn btn-lg btn-secondary"><?= lang('app.edit') ?></a>
-                    </div>
+                    </div> -->
                     <!-- Greetings Content Starts -->
                     <div class="row">
                         <div class="col-md-3 col-sm-12">
                             <div class="card">
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <h4 class="card-title"><?= lang('app.imgIqama') ?></h4>
+                                        <h4 class="card-title"><?= lang('app.imgIqama') ?>
+                                        <a class="btn btn-outline-secondary box-shadow-2 round pull-right" href="<?= base_url('image/edit/' . $_SESSION['id']).'/iqama' ?>"><?= lang('app.edit') ?></a>
+                                    </h4>
                                     </div>
                                     <img class="img-fluid" src="<?= base_url('app-assets/images/' . ($img['imgIqama'] == null ? 'demo/iqama.jpg' : 'malaf/'.$_SESSION['malaf'].'/') . $img['imgIqama']) ?>" alt="img">
                                 </div>
@@ -40,7 +42,9 @@
                             <div class="card">
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <h4 class="card-title"><?= lang('app.imgPass') ?></h4>
+                                        <h4 class="card-title"><?= lang('app.imgPass') ?>
+                                        <a class="btn btn-outline-secondary box-shadow-2 round pull-right" href="<?= base_url('image/edit/' . $_SESSION['id']).'/passport' ?>"><?= lang('app.edit') ?></a>
+                                    </h4>
                                     </div>
                                     <img class="img-fluid" src="<?= base_url('app-assets/images/' . ($img['imgPass'] == null ? 'demo/passp.jpg' : 'malaf/'.$_SESSION['malaf'].'/') . $img['imgPass']) ?>" alt="img">
                                 </div>
@@ -50,7 +54,9 @@
                             <div class="card">
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <h4 class="card-title"><?= lang('app.imgStu') ?></h4>
+                                        <h4 class="card-title"><?= lang('app.imgStu') ?>
+                                        <a class="btn btn-outline-secondary box-shadow-2 round pull-right" href="<?= base_url('image/edit/' . $_SESSION['id']).'/bitaqa' ?>"><?= lang('app.edit') ?></a>
+                                    </h4>
                                     </div>
                                     <img class="img-fluid" src="<?= base_url('app-assets/images/' . ($img['imgStu'] == null ? 'demo/stu.jpg' : 'malaf/'.$_SESSION['malaf'].'/') . $img['imgStu']) ?>" alt="img">
                                 </div>
@@ -60,7 +66,9 @@
                             <div class="card">
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <h4 class="card-title"><?= lang('app.imgIban') ?></h4>
+                                        <h4 class="card-title"><?= lang('app.imgIban') ?>
+                                        <a class="btn btn-outline-secondary box-shadow-2 round pull-right" href="<?= base_url('image/edit/' . $_SESSION['id']).'/iban' ?>"><?= lang('app.edit') ?></a>
+                                    </h4>
                                     </div>
                                     <img class="img-fluid" src="<?= base_url('app-assets/images/' . ($img['imgIban'] == null ? 'demo/iban.png' : 'malaf/im'.$_SESSION['malaf'].'gIban/') . $img['imgIban']) ?>" alt="img">
                                 </div>

@@ -37,14 +37,28 @@ class ImageController extends ResourceController
      *
      * @return mixed
      */
-    public function show($id = null)
+    public function imgShow($id, $type)
     {
         helper('form');
         
         $data['title'] = lang('app.data');
         $img = new Image();
-        $data['img'] = $img->where('userId', $_SESSION['id'])->first();
-        // dd($ok);
+        $data['img'] = $img->where('userId', $id)->first();
+        switch ($type) {
+            case 'iqama':
+        $data['type'] = 'imgIqama';
+                break;
+            case 'passport':
+        $data['type'] = 'imgPass';
+                break;
+            case 'biatqa':
+        $data['type'] = 'imgStu';
+                break;
+            case 'iban':
+        $data['type'] = 'imgIban';
+                break;
+        }
+        // dd($data);
 
         if (!$data['img']) {
             $insert = [

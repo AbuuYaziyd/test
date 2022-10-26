@@ -73,7 +73,7 @@ $routes->group('user', function ($routes) {
  */
 $routes->group('image', function ($routes) {
     $routes->get('/', 'ImageController::index', ['filter' => 'auth']);
-    $routes->get('edit/(:num)', 'ImageController::show/$1', ['filter' => 'auth']);
+    $routes->get('edit/(:num)/(:any)', 'ImageController::imgShow/$1/$2', ['filter' => 'auth']);
     $routes->get('create/(:num)', 'ImageController::save/$1', ['filter' => 'auth']);
     $routes->post('upload/(:num)', 'ImageController::update/$1', ['filter' => 'auth']);
 });
