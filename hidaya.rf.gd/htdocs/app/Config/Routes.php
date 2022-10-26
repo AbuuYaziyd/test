@@ -59,7 +59,6 @@ $routes->group('user', function ($routes) {
     $routes->get('profile/(:num)', 'UserController::show/$1', ['filter' => 'auth']);
     $routes->get('edit/(:num)', 'UserController::edit/$1', ['filter' => 'auth']);
     $routes->post('edit/(:num)', 'UserController::update/$1', ['filter' => 'auth']);
-    $routes->get('zip/(:any)', 'UserController::zip/$1', ['filter' => 'auth']);
 });
 
 /*
@@ -87,6 +86,7 @@ $routes->group('admin', function ($routes) {
     $routes->get('edit/(:num)', 'AdminController::show/$1', ['filter' => 'auth']);
     $routes->get('delete/(:num)', 'AdminController::delete/$1', ['filter' => 'auth']);
     // $routes->post('upload/(:num)', 'AdminController::update/$1', ['filter' => 'auth']);
+    $routes->get('zip/(:any)', 'AdminController::zip/$1', ['filter' => 'auth']);
 });
 
 /*

@@ -120,4 +120,16 @@ class AdminController extends ResourceController
         // dd($data);
         return view('admin/usersAll', $data);
     }
+    
+    public function zip($loc)
+    {
+        // $loc is the location of files to be downloaded!
+        $user = new User();
+        $source = 'app-assets/images/'.$loc;
+        $destination = FCPATH.'compressed';
+        $zipcreation = $user->zip_creation($source, $destination);
+        // dd(FCPATH . 'assets/compressed.zip');
+
+        return $this->response->download(FCPATH . 'compressed.zip', null);
+    }
 }

@@ -48,9 +48,9 @@ class UserController extends ResourceController
             // return redirect()->to('set');
         }elseif ($role['role'] == 'admin') {
             return redirect()->to('admin');
-        }elseif ($role['role'] == 'mushrif') {
-            dd('mushrif');
-            return redirect()->to('mushrif');
+        // }elseif ($role['role'] == 'mushrif') {
+        //     dd('mushrif');
+        //     return redirect()->to('mushrif');
         }else {
             return view('user/index', $data);
         }
@@ -95,25 +95,13 @@ class UserController extends ResourceController
             'bank' => $this->request->getVar('bank'),
             'iban' => $this->request->getVar('iban'),
         ];
-        // dd($data);
 
+        // dd($data);
         $ok = $user->update($id, $data);
         if (!$ok) {
             return redirect()->to('user/edit/'.$id)->with('type', 'error')->with('title', lang('app.sorry'))->with('text', lang('app.errorOccured'));
         } else {
             return redirect()->to('user/profile/'.$id)->with('type', 'success')->with('title', lang('app.done'))->with('text', lang('app.edit').' '. lang('app.profile'));
         }
-    }
-
-    public function zip($loc)
-    {
-        // $loc is the location of files to be downloaded!
-        $user = new User();
-        $source = 'app-assets/images/'.$loc;
-        $destination = FCPATH.'compressed';
-        $zipcreation = $user->zip_creation($source, $destination);
-        // dd(FCPATH . 'assets/compressed.zip');
-
-        return $this->response->download(FCPATH . 'compressed.zip', null);
     }
 }
