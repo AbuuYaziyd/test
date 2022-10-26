@@ -8,11 +8,6 @@ use CodeIgniter\RESTful\ResourceController;
 
 class ImageController extends ResourceController
 {
-    /**
-     * Return an array of resource objects, themselves in array format
-     *
-     * @return mixed
-     */
     public function index()
     {
         helper('form');
@@ -32,11 +27,6 @@ class ImageController extends ResourceController
         return view('image/index', $data);
     }
 
-    /**
-     * Return the properties of a resource object
-     *
-     * @return mixed
-     */
     public function imgShow($id, $type)
     {
         helper('form');
@@ -70,11 +60,6 @@ class ImageController extends ResourceController
         return view('image/edit', $data);
     }
 
-    /**
-     * Add or update a model resource, from "posted" properties
-     *
-     * @return mixed
-     */
     public function update($id = null)
     {    
         $image = new Image();

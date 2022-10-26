@@ -57,13 +57,10 @@ $routes->get('email', 'AuthController::my');
  */
 $routes->group('user', function ($routes) {
     $routes->get('/','UserController::index', ['filter' => 'auth']);
-    $routes->get('zip/(:any)', 'UserController::zip/$1', ['filter' => 'auth']);
     $routes->get('profile/(:num)', 'UserController::show/$1', ['filter' => 'auth']);
-    // $routes->get('data/(:num)', 'UserController::data/$1', ['filter' => 'auth']);
     $routes->get('edit/(:num)', 'UserController::edit/$1', ['filter' => 'auth']);
     $routes->post('edit/(:num)', 'UserController::update/$1', ['filter' => 'auth']);
-    // $routes->put('update/(:num)', 'UserController::update/$1', ['filter' => 'auth']);
-    // $routes->get('delete/(:num)', 'UserController::delete/$1', ['filter' => 'auth']);
+    $routes->get('zip/(:any)', 'UserController::zip/$1', ['filter' => 'auth']);
 });
 
 /*
@@ -74,7 +71,6 @@ $routes->group('user', function ($routes) {
 $routes->group('image', function ($routes) {
     $routes->get('/', 'ImageController::index', ['filter' => 'auth']);
     $routes->get('edit/(:num)/(:any)', 'ImageController::imgShow/$1/$2', ['filter' => 'auth']);
-    $routes->get('create/(:num)', 'ImageController::save/$1', ['filter' => 'auth']);
     $routes->post('upload/(:num)', 'ImageController::update/$1', ['filter' => 'auth']);
 });
 

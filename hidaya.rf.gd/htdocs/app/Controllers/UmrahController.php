@@ -141,7 +141,8 @@ class UmrahController extends BaseController
     {
         $data = $this->request->getVar();
 
-        dd($data);
+        $data['title'] = lang('app.umrah');
+        // dd($data);
         return view('umrah/loc',$data);
     }
 
