@@ -87,7 +87,12 @@
                                 <span class="badge badge-danger"> <?= $errors = $validation->getError('bank') ?></span>
                             <?php endif ?>
                             <fieldset class="form-group position-relative has-icon-left mb-1">
-                                <input type="text" class="form-control" name="bank" placeholder="<?= lang('app.bank') ?>">
+                                <select name="bank" class="form-control">
+                                    <option disabled selected><?= lang('app.choose') . ' ' . lang('app.bank') ?></option>
+                                    <?php foreach ($bank as $key => $data) : ?>
+                                        <option value="<?= $data['bankId'] ?>"><?= $data['bankName'].' - '.$data['bankShort'] ?></option>
+                                    <?php endforeach ?>
+                                </select>
                                 <div class="form-control-position">
                                     <i class="la la-money"></i>
                                 </div>
@@ -113,19 +118,20 @@
                                     <option value="<?= lang('app.lvl2') ?>"><?= lang('app.lvl2') ?></option>
                                     <option value="<?= lang('app.lvl3') ?>"><?= lang('app.lvl3') ?></option>
                                     <option value="<?= lang('app.lvl4') ?>"><?= lang('app.lvl4') ?></option>
+                                    <option value="<?= lang('app.lvl5') ?>"><?= lang('app.lvl5') ?></option>
                                 </select>
                                 <div class="form-control-position">
                                     <i class="la la-area-chart"></i>
                                 </div>
                             </fieldset>
-                            <fieldset class="form-group position-relative mb-2">
+                            <fieldset class="form-group position-relative my-2">
                                 <input type="checkbox" name="check" class="chk-remember">
                                 <label><?= lang('app.accept') . lang('app.terms & services') ?></label>
                                 <?php if ($validation->getError('check')) : ?>
                                     <span class="badge badge-danger"> <?= $errors = $validation->getError('check') ?></span>
                                 <?php endif ?>
                             </fieldset>
-                            <button type="submit" class="btn btn-info btn-lg btn-block"><i class="ft-unlock"></i><?= lang('app.send') ?></button>
+                            <button type="submit" class="btn btn-info btn-lg btn-block"><?= lang('app.send') ?></button>
                             </form>
                         </div>
                     </div>

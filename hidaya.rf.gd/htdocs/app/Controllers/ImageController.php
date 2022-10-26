@@ -51,7 +51,7 @@ class ImageController extends ResourceController
             case 'passport':
         $data['type'] = 'imgPass';
                 break;
-            case 'biatqa':
+            case 'bitaqa':
         $data['type'] = 'imgStu';
                 break;
             case 'iban':
@@ -104,6 +104,8 @@ class ImageController extends ResourceController
 
             helper('form');
             $data['title'] = lang('app.data');
+            $data['type'] = $upl;
+            $data['img'] = $image->where('userId', $id)->first();
             return view('image/edit', $data);
         }
 

@@ -75,7 +75,6 @@
                     title: "<?= session()->getFlashdata('title') ?>",
                     text: "<?= session()->getFlashdata('text') ?>",
                     type: "<?= session()->getFlashdata('type') ?>",
-                    timer: 5000,
                     showConfirmButton: true,
                     confirmButtonText: 'تمام',
                 });

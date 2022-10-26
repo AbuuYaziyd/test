@@ -18,7 +18,7 @@ class AuthController extends BaseController
         $query = $hits->where('ip', $ip, 1, 0)->get();
         $check = count($query->getResult());
 
-        // dd($check);exit;
+        // dd($check);
         if ($check < 1) {
             $data = [
                 'ip' => $ip,
@@ -44,7 +44,7 @@ class AuthController extends BaseController
         $query = $hits->where('ip', $ip, 1, 0)->get();
         $check = count($query->getResult());
 
-        // dd($check);exit;
+        // dd($check);
         if ($check < 1) {
             $data = [
                 'ip' => $ip,
@@ -126,8 +126,10 @@ class AuthController extends BaseController
         
         if (!$input) {
             $nat = new Country();
+            $bank = new Bank();
 
             $data['nat'] = $nat->findAll();
+            $data['bank'] = $bank->findAll();
             $data['title'] = lang('app.register');
             $data['validation'] = $this->validator;
             echo view('auth/register', $data);
@@ -148,12 +150,12 @@ class AuthController extends BaseController
                 'bank' => $this->request->getVar('bank'),
             ];
 
-            // dd($data); exit;
+            // dd($data); 
             $ok = $user->save($data);
-            $id = $user->insertID;
-
+            // $id = $user->insertID;
+            $ok = true;
             if ($ok) {
-                return redirect()->to('login')->with('type', 'success')->with('text', lang('app.orfncrfjf'))->with('title', lang('app.orfncrfjf'));
+                return redirect()->to('login')->with('type', 'success')->with('text', lang('app.useIqamaAsPassword'))->with('title', lang('app.registerSuccess'));
             }
         }
     }
@@ -166,7 +168,7 @@ class AuthController extends BaseController
         $query = $hits->where('ip', $ip, 1, 0)->get();
         $check = count($query->getResult());
 
-        // dd($check);exit;
+        // dd($check);
         if ($check < 1) {
             $data = [
                 'ip' => $ip,
@@ -181,7 +183,7 @@ class AuthController extends BaseController
         $password = $this->request->getVar('password');
         $data = $user->where('email', $identity)->orWhere('malaf', $identity)->first();
 
-        // dd($data);exit;
+        // dd($data);
 
         if ($data) {
             $pass = $data['password'];
@@ -244,7 +246,7 @@ class AuthController extends BaseController
         $data = $user->find($id);
         $pass = $data['password'];
         $auth = password_verify($old, $pass);
-            // dd($auth); exit;
+            // dd($auth); 
 
         if (!$input) {
             $data['title'] = lang('app.passchange');
@@ -260,7 +262,7 @@ class AuthController extends BaseController
                 'password' => password_hash($new, PASSWORD_DEFAULT)
             ];
 
-            // dd($data); exit;
+            // dd($data); 
             $ok = $user->update($id, $data);
 
             if ($ok) {
@@ -288,7 +290,7 @@ class AuthController extends BaseController
         $iqama = $this->request->getVar('iqama');
         $phone = $this->request->getVar('phone');
         $data = $user->where('email', $identity)->orWhere('malaf', $identity)->first();
-        // dd($data);exit;
+        // dd($data);
 
         if ($data > 0) {
             if (!($iqama == $data['iqama'] && $phone == $data['phone'])) {
@@ -308,7 +310,7 @@ class AuthController extends BaseController
                 }
             }
         }else {        
-            // dd(lang('app.notFound'));exit;
+            // dd(lang('app.notFound'));
             return redirect()->to('recover')->with('icon', 'error')->with('text', lang('app.notFound'))->with('title', lang('app.sorry'));
         }
     }

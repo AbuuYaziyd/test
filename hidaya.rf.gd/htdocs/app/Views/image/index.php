@@ -70,7 +70,7 @@
                                         <a class="btn btn-outline-secondary box-shadow-2 round pull-right" href="<?= base_url('image/edit/' . $_SESSION['id']).'/iban' ?>"><?= lang('app.edit') ?></a>
                                     </h4>
                                     </div>
-                                    <img class="img-fluid" src="<?= base_url('app-assets/images/' . ($img['imgIban'] == null ? 'demo/iban.png' : 'malaf/im'.$_SESSION['malaf'].'gIban/') . $img['imgIban']) ?>" alt="img">
+                                    <img class="img-fluid" src="<?= base_url('app-assets/images/' . ($img['imgIban'] == null ? 'demo/iban.png' : 'malaf/'.$_SESSION['malaf'].'/') . $img['imgIban']) ?>" alt="img">
                                 </div>
                             </div>
                         </div>

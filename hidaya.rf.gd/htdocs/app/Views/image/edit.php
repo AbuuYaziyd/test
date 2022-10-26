@@ -42,17 +42,17 @@
                                 </div> -->
                                 <div class="col mb-1">
                                     
-                                <img class="img-fluid mb-2" id="show_image" src="<?= base_url('app-assets/images/' . ($img['imgIqama'] == null ? 'demo/no-image.png' : 'malaf/'.$_SESSION['malaf'].'/') . $img['imgIqama']) ?>" alt="Card image cap">
+                                <img class="img-fluid mb-2" id="show_image" src="<?= base_url('app-assets/images/' . ($img[$type] == null ? 'demo/no-image.png' : 'malaf/'.$_SESSION['malaf'].'/') . $img[$type]) ?>" alt="img">
                                         <p><code style="font-family: Cairo;"><?= lang('app.imgErr') ?></code></p>
-                                    <div class="input-group mt-2">
+                                        <?php if ($validation->getError('img')) : ?>
+                                            <span class="badge badge-danger"> <?= $errors = $validation->getError('img') ?></span>
+                                        <?php endif ?>
+                                    <div class="input-group mt-0">
                                         <div class="custom-file">
                                             <input type="file" name="img" id="image" class="custom-file-input" id="inputGroupFile02">
                                             <label class="custom-file-label"><?= lang('app.chooseFile') ?></label>
                                         </div>
                                     </div>
-                                    <?php if ($validation->getError('img')) : ?>
-                                        <span class="badge badge-danger"> <?= $errors = $validation->getError('img') ?></span>
-                                    <?php endif ?>
                                 </div>
                             </div>
                             <input type="hidden" name="select" value="<?= $type ?>">
