@@ -84,4 +84,4 @@ defined('EXIT__AUTO_MAX')      || define('EXIT__AUTO_MAX', 125); // highest auto
  * Put my Custom Variables!
  * --------------------------------------------------------------------------
  */
-define('APP_NAME', 'هداية الحج والعمرة');
+define('APP_NAME', 'هدية الحج والعمرة');
