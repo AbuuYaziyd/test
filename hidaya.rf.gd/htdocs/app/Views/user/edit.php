@@ -16,7 +16,7 @@
                     <div class="col-12 col-sm-7">
                         <div class="media mb-2">
                             <a class="mr-1" href="#">
-                                <img src="https://ui-avatars.com/api/?name=<?= $_SESSION['name'] ?>&background=random" alt="users view avatar" class="users-avatar-shadow rounded-circle" height="64" width="64">
+                                <img src="https://ui-avatars.com/api/?name=<?= $_SESSION['malaf'] ?>&background=random&length=4" alt="users view avatar" class="users-avatar-shadow rounded-circle" height="64" width="64">
                                 <!-- <img src="<?= base_url('app-assets/images/portrait/small/avatar-s-26.jpg') ?>" alt="users view avatar" class="users-avatar-shadow rounded-circle" height="64" width="64"> -->
                             </a>
                             <div class="media-body pt-25">
@@ -66,7 +66,7 @@
                                         </tr>
                                         <tr>
                                             <td><?= lang('app.email') ?>:</td>
-                                            <td class="users-view-name"><input type="email" class="form-control" name="email" value="<?= $user['email'] ?>"></td>
+                                            <td class="users-view-name"><input type="email" class="form-control" name="email" value="<?= $user['email'] ?>" placeholder="<?= lang('app.notFound') ?>"></td>
                                         </tr>
                                         <tr>
                                             <td><?= lang('app.nationality') ?>:</td>

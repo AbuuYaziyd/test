@@ -19,13 +19,12 @@
                         <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                             <span class="mr-1 user-name text-bold-700"><?= $_SESSION['name'] ?></span>
                             <span class="avatar avatar-online">
-                                <img src="https://ui-avatars.com/api/?name=<?= $_SESSION['name'] ?>&background=random&length=1&font-size=0.7" alt=" avatar">
+                                <img src="https://ui-avatars.com/api/?name=<?= $_SESSION['malaf'] ?>&background=random&length=4" alt=" avatar">
                                 <i></i>
                             </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="#"><i class="ft-user"></i> <b class="badge badge-secondary badge-glow"><?= $_SESSION['malaf'] ?></b></a>
-                            <a class="dropdown-item" href="<?= base_url('user/profile/' . $_SESSION['id']) ?>"><i class="ft-clipboard"></i> <?= lang('app.profile') ?></a>
+                            <a class="dropdown-item" href="<?= base_url('user/profile/' . $_SESSION['id']) ?>"><i class="ft-user"></i> <?= lang('app.profile') ?></a>
                             <a class="dropdown-item" href="<?= base_url('change/password') ?>"><i class="ft-check-square"></i> <?= lang('app.passchange') ?></a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="<?= base_url('logout') ?>"><i class="ft-power"></i> <?= lang('app.logout') ?></a>

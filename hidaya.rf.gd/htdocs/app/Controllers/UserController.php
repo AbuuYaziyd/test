@@ -102,11 +102,13 @@ class UserController extends ResourceController
      */
     public function update($id = null)
     {
+        $email = $this->request->getVar('email');
+        // dd(());
         $user = new User();
 
         $data = [
             'name' => $this->request->getVar('name'),
-            'email' => $this->request->getVar('email'),
+            'email' => $email!=null?$email: null,
             'phone' => $this->request->getVar('phone'),
             'bank' => $this->request->getVar('bank'),
             'iban' => $this->request->getVar('iban'),
