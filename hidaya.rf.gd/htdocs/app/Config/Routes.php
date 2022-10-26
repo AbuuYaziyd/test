@@ -32,7 +32,6 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->get('test', 'AuthController::test');
 
 /*
  * --------------------------------------------------------------------
@@ -110,13 +109,13 @@ $routes->group('umrah', function ($routes) {
  * Routes Groups Setting Routings
  * --------------------------------------------------------------------
  */
-$routes->group('set', function ($routes) {
-    $routes->get('/', 'SettingController::index', ['filter' => 'auth']);
+// $routes->group('set', function ($routes) {
+//     $routes->get('/', 'SettingController::index', ['filter' => 'auth']);
     // $routes->get('view', 'SettingController::new', ['filter' => 'auth']);
     // $routes->get('edit/(:num)', 'SettingController::show/$1', ['filter' => 'auth']);
     // $routes->get('delete/(:num)', 'SettingController::delete/$1', ['filter' => 'auth']);
     // $routes->post('upload/(:num)', 'SettingController::update/$1', ['filter' => 'auth']);
-});
+// });
 
 /*
  * --------------------------------------------------------------------

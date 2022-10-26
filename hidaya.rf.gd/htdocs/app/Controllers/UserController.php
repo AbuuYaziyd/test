@@ -15,11 +15,6 @@ use CodeIgniter\RESTful\ResourceController;
 
 class UserController extends ResourceController
 {
-    /**
-     * Return an array of resource objects, themselves in array format
-     *
-     * @return mixed
-     */
     public function index()
     {
         $ip = $_SERVER['REMOTE_ADDR'];
@@ -48,20 +43,19 @@ class UserController extends ResourceController
         $role = $user->select('role')->find($_SESSION['id']);
         // dd($role);
 
-        if ($role['role'] == 'user') {
-            return view('user/index', $data);
+        if ($role['role'] == 'superuser') {
+            dd('others');
+            // return redirect()->to('set');
         }elseif ($role['role'] == 'admin') {
             return redirect()->to('admin');
+        }elseif ($role['role'] == 'mushrif') {
+            dd('mushrif');
+            return redirect()->to('mushrif');
         }else {
-            return redirect()->to('set');
+            return view('user/index', $data);
         }
     }
 
-    /**
-     * Return the properties of a resource object
-     *
-     * @return mixed
-     */
     public function show($id = null)
     {
         $user = new User();
@@ -72,12 +66,6 @@ class UserController extends ResourceController
         return view('user/profile', $data);
     }
 
-
-    /**
-     * Return the editable properties of a resource object
-     *
-     * @return mixed
-     */
     public function edit($id = null)
     {
         helper('form');
@@ -95,15 +83,9 @@ class UserController extends ResourceController
         return view('user/edit', $data);
     }
 
-    /**
-     * Add or update a model resource, from "posted" properties
-     *
-     * @return mixed
-     */
     public function update($id = null)
     {
         $email = $this->request->getVar('email');
-        // dd(());
         $user = new User();
 
         $data = [
@@ -116,14 +98,11 @@ class UserController extends ResourceController
         // dd($data);
 
         $ok = $user->update($id, $data);
-
         if (!$ok) {
-            return redirect()->to('user/edit/'.$id)->with('type', 'error')->with('title', lang('app.done'))->with('text', lang('app.errorOccured'));
+            return redirect()->to('user/edit/'.$id)->with('type', 'error')->with('title', lang('app.sorry'))->with('text', lang('app.errorOccured'));
         } else {
             return redirect()->to('user/profile/'.$id)->with('type', 'success')->with('title', lang('app.done'))->with('text', lang('app.edit').' '. lang('app.profile'));
         }
-        
-
     }
 
     public function zip($loc)
