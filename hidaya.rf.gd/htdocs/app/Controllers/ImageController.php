@@ -11,10 +11,14 @@ class ImageController extends ResourceController
     public function index()
     {
         helper('form');
-        $data['title'] = lang('app.data');
+
         $img = new Image();
+        $user = new User();
+
         $data['img'] = $img->where('userId', $_SESSION['id'])->first();
-        // dd($ok);
+        $data['user'] = $user->find(session('id'));
+        $data['title'] = lang('app.data');
+        // dd($data);
 
         if (!$data['img']) {
             $insert = [
@@ -31,9 +35,12 @@ class ImageController extends ResourceController
     {
         helper('form');
         
-        $data['title'] = lang('app.data');
         $img = new Image();
+        $user = new User();
+
         $data['img'] = $img->where('userId', $id)->first();
+        $data['user'] = $user->find($id);
+        $data['title'] = lang('app.data');
         switch ($type) {
             case 'iqama':
         $data['type'] = 'imgIqama';

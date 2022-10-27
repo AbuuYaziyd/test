@@ -102,8 +102,10 @@ $routes->group('admin', function ($routes) {
 $routes->group('mushrif', function ($routes) {
     $routes->get('/', 'MushrifController::index', ['filter' => 'auth']);
     $routes->get('users', 'MushrifController::users', ['filter' => 'auth']);
-    // $routes->get('mushrif', 'MushrifController::mushrif', ['filter' => 'auth']);
-    // $routes->get('add', 'MushrifController::add', ['filter' => 'auth']);
+    $routes->get('judud', 'MushrifController::judud', ['filter' => 'auth']);
+    $routes->get('user/(:num)', 'MushrifController::user/$1', ['filter' => 'auth']);
+    $routes->get('activate/(:num)', 'MushrifController::activate/$1', ['filter' => 'auth']);
+    $routes->get('active/(:num)', 'MushrifController::active/$1', ['filter' => 'auth']);
     // $routes->get('users/(:any)/(:any)', 'MushrifController::users/$1/$2', ['filter' => 'auth']);
     // $routes->get('edit/(:num)', 'MushrifController::show/$1', ['filter' => 'auth']);
     // $routes->get('delete/(:num)', 'MushrifController::delete/$1', ['filter' => 'auth']);

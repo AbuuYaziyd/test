@@ -28,7 +28,7 @@
                     <div class="card-body">
                         <div class="media d-flex">
                             <div class="media-body text-left">
-                                <h3 class="warning"><?= $notcomplt.'/'.$lead ?></h3>
+                                <h3 class="warning"><?= $status.'/'.$lead ?></h3>
                                 <h6><?= lang('app.tanfidh') ?></h6>
                             </div>
                             <div>
@@ -36,7 +36,7 @@
                             </div>
                         </div>
                         <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
-                            <div class="progress-bar bg-gradient-x-warning" role="progressbar" style="width: <?= ($lead==0?0:$notcomplt/$lead) ?>%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-gradient-x-warning" role="progressbar" style="width: <?= ($lead==0?0:$status/$lead) ?>%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                 </div>
@@ -44,21 +44,22 @@
         </a>
     </div>
     <div class="col-xl-3 col-lg-6 col-12">
-        <a href="#">
+        <a href="<?= base_url('mushrif/judud') ?>">
             <div class="card pull-up">
                 <div class="card-content">
                     <div class="card-body">
                         <div class="media d-flex">
                             <div class="media-body text-left">
-                                <h3 class="success"><?= $judud . '/' . $all ?></h3>
+                                
+                                    <h3 class="success"><?= $judud0 ?>/<?= $all ?></h3>
                                 <h6><?= lang('app.judud') ?></h6>
-                            </div>
+                            </div><?php if ($judud1) : ?><span class="danger">(<?= $judud1 ?>)</span><?php endif ?>
                             <div>
                                 <i class="icon-user-follow success font-large-2 float-right"></i>
                             </div>
                         </div>
                         <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
-                            <div class="progress-bar bg-gradient-x-success" role="progressbar" style="width: <?= $judud/$all ?>%" aria-valuenow="<?= ($judud / $all) * 100 ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-gradient-x-success" role="progressbar" style="width: <?= $judud0/$all ?>%" aria-valuenow="<?= ($judud0 / $all) * 100 ?>" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                 </div>
@@ -72,7 +73,7 @@
                     <div class="card-body">
                         <div class="media d-flex">
                             <div class="media-body text-left">
-                                <h3 class="danger"><?= $status . '/' . $complt ?></h3>
+                                <h3 class="danger"><?= $status . '/' . $lead ?></h3>
                                 <h6><?= lang('app.tanfidh') ?></h6>
                             </div>
                             <div>
@@ -80,7 +81,7 @@
                             </div>
                         </div>
                         <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
-                            <div class="progress-bar bg-gradient-x-danger" role="progressbar" style="width: <?= ($complt == 0?0: $status / $complt) ?>%" aria-valuenow="<?= ($complt == 0 ? 0 : $status / $complt) * 100 ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-gradient-x-danger" role="progressbar" style="width: <?= ($lead == 0?0: $status / $lead) ?>%" aria-valuenow="<?= ($lead == 0 ? 0 : $status / $lead) * 100 ?>" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                 </div>

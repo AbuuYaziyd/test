@@ -24,6 +24,8 @@ class User extends Model
         'password',
         'role',
         'name',
+        'passport',
+        'bitaqa',
         'level',
         'nationality',
         'jamia',

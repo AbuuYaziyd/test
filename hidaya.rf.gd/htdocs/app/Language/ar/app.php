@@ -37,6 +37,12 @@ return [
     'bank' => 'البنك',
     'banks' => 'بنوك',
     'ok' => 'تمام', 
+    'active' => 'نشيط', 
+    'activate' => 'تنشيط', 
+    'warning' => 'تنبيه', 
+    'filesOkSms' => 'هل ملفته ينطبق معلومته؟', 
+    'notactive' => 'غير نشيط', 
+    'underAction' => 'تحت المراجعة', 
     'show' => 'شوف', 
     'count' => 'عدد الطلاب', 
     'iban' => 'رقم الأيبان (IBAN)',
@@ -80,6 +86,7 @@ return [
     'mushrif' => 'مشرف',
     'graduated?' => 'أمتخرج هو؟',
     'judud' => 'طلاب الجدد',
+    'jadid' => 'طلاب جديد',
 
     //Messages->session
     'done' => 'تم',

@@ -29,6 +29,14 @@ class Users extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
             ],
+            'passport' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 255,
+            ],
+            'bitaqa' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 255,
+            ],
             'password' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
