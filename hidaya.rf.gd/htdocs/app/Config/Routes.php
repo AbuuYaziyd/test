@@ -81,6 +81,7 @@ $routes->group('admin', function ($routes) {
     $routes->get('jamiat', 'AdminController::jamiat', ['filter' => 'auth']);
     $routes->get('jamia/(:any)', 'AdminController::jamia/$1', ['filter' => 'auth']);
     $routes->get('nationality', 'AdminController::nationality', ['filter' => 'auth']);
+    $routes->get('nat/(:any)', 'AdminController::nat/$1', ['filter' => 'auth']);
     $routes->get('users', 'AdminController::users', ['filter' => 'auth']);
     // $routes->get('view', 'AdminController::new', ['filter' => 'auth']);
     // $routes->get('mushrif', 'AdminController::mushrif', ['filter' => 'auth']);

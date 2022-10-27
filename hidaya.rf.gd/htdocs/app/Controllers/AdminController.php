@@ -58,10 +58,6 @@ class AdminController extends ResourceController
 
         $data['title'] = $jm;
         $data['users'] = $user->where('jamia', $jm)->findAll();
-        // foreach ($data['jamia'] as $jm) {
-        //     $m[] = $user->where('jamia', $jm['jamia'])->countAllResults();
-        // }
-        // $data['jm'] = $m;
         // dd($data);
 
         return view('admin/jamia', $data);
@@ -83,6 +79,17 @@ class AdminController extends ResourceController
         // dd($data);
 
         return view('admin/nationality', $data);
+    }
+    
+    public function nat($nt)
+    {
+        $user = new User();
+
+        $data['title'] = $nt;
+        $data['users'] = $user->where('nationality', $nt)->findAll();
+        // dd($data);
+
+        return view('admin/jamia', $data);
     }
 
     public function users()
