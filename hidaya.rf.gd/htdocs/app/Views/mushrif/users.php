@@ -1,7 +1,6 @@
 <?= $this->extend('layouts/main') ?>
 <?= $this->section('scripts') ?>
 
-<!-- BEGIN: DT CSS-->
 <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/vendors/css/vendors-rtl.min.css') ?>">
 <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/vendors/css/tables/datatable/datatables.min.css') ?>">
 <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/vendors/css/tables/extensions/responsive.dataTables.min.css') ?>">
@@ -9,7 +8,6 @@
 <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/vendors/css/tables/extensions/buttons.dataTables.min.css') ?>">
 <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/vendors/css/tables/datatable/buttons.bootstrap4.min.css') ?>">
 <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/vendors/css/tables/extensions/fixedHeader.dataTables.min.css') ?>">
-<!-- END: DT CSS-->
 
 <?= $this->endsection() ?>
 
@@ -19,7 +17,6 @@
     <div class="content-wrapper">
         <div class="content-body">
             <div class="content-body">
-                <!-- Configuration option table -->
                 <section id="configuration">
                     <div class="row">
                         <div class="col-12">
@@ -31,30 +28,26 @@
                                 </div>
                                 <div class="card-content collapse show">
                                     <div class="card-body card-dashboard">
-                                        <table class="table table-striped table-bordered dataex-res-configuration">
+                                        <table class="table table-striped table-bordered dataex-res-constructor">
                                             <thead>
                                                 <tr>
-                                                    <th style="width: 5px;">#</th>
-                                                    <th style="width: 5%;"><?= lang('app.malaf') ?></th>
+                                                    <th><?= lang('app.malaf') ?></th>
                                                     <th><?= lang('app.name') ?></th>
                                                     <th><?= lang('app.iqama') ?></th>
                                                     <th><?= lang('app.phone') ?></th>
-                                                    <!-- <th><?= lang('app.nationality') ?></th> -->
-                                                    <!-- <th><?= lang('app.edit') ?></th> -->
                                                     <th><?= lang('app.level') ?></th>
+                                                    <th><?= lang('app.edit') ?></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php foreach ($users as $key => $data) : ?>
                                                     <tr>
-                                                        <td><?= $key + 1 ?></td>
                                                         <td><span class="badge badge-<?= ( $data['role']=='mushrif'?'success':'') ?>"><?= $data['malaf'] ?></span></td>
                                                         <td><?= $data['name'] ?></td>
                                                         <td><?= $data['iqama'] ?></td>
                                                         <td><a href="tel:+966<?= $data['phone'] ?>" class="badge badge-secondary">966<?= $data['phone'] ?></a></td>
-                                                        <!-- <td><a href="<?= base_url('admin/users/'. $data['nationality'].'/'. $data['jamia']) ?>" class="btn btn-info btn-sm"><?= $data['nationality'] ?></a></td> -->
-                                                        <!-- <td><a href="<?= base_url('admin/edit/' . $data['id']) ?>" class="btn btn-sm btn-danger"><?= lang('app.edit') ?></a></td> -->
                                                         <td><?= $data['level'] ?></td>
+                                                        <td><a href="<?= base_url('admin/show/' . $data['id']) ?>" class="btn btn-sm round btn-outline-warning"><?= lang('app.edit') ?></a></td>
                                                     </tr>
                                                 <?php endforeach ?>
                                             </tbody>
@@ -65,7 +58,6 @@
                         </div>
                     </div>
                 </section>
-                <!--/ Configuration option table -->
             </div>
         </div>
     </div>
@@ -74,7 +66,6 @@
 <?= $this->endsection() ?>
 <?= $this->section('scripts') ?>
 
-<!-- BEGIN: Page Vendor JS-->
 <script src="<?= base_url('app-assets/vendors/js/vendors.min.js') ?>"></script>
 <script src="<?= base_url('app-assets/vendors/js/tables/datatable/datatables.min.js') ?>"></script>
 <script src="<?= base_url('app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js') ?>"></script>
@@ -89,27 +80,20 @@
 <script src="<?= base_url('app-assets/vendors/js/tables/buttons.html5.min.js') ?>"></script>
 <script src="<?= base_url('app-assets/vendors/js/tables/buttons.print.min.js') ?>"></script>
 
-<!-- END: Page Vendor JS-->
 <script>
-    $(document).ready(function() {
-        $('.dataex-res-configuration').DataTable({
-            dom: 'Bfrtip',
-            buttons: [{
-                    extend: 'print',
-                    exportOptions: {
-                        columns: ':visible'
-                    }
-                },
-                {
-                    extend: 'excelHtml5',
-                    exportOptions: {
-                        columns: ':visible'
-                    }
-                },
-                'colvis'
-            ],
-            responsive: true
-        });
+    var tableConstructor = $('.dataex-res-constructor').DataTable({
+        "language": {
+        "url": "//cdn.datatables.net/plug-ins/1.12.1/i18n/ar.json"
+        },
+        dom: 'Bfrtip',
+        buttons: [{
+                extend: 'print',
+            },
+            {
+                extend: 'excelHtml5',
+            },
+        ],
+        responsive: false
     });
 </script>
 

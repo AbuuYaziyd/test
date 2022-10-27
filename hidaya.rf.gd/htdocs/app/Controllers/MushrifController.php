@@ -14,29 +14,30 @@ class MushrifController extends BaseController
         $tanfidh = new Tanfidh();
 
         $role = $user->find($_SESSION['id']);
-        $data['lead'] = $tanfidh->where('mushrif', $_SESSION['id'])->countAllResults();
-        $data['complt'] = $tanfidh->where(['tnfdhStatus' => 'completed','mushrif', $_SESSION['id']])->countAllResults();
-        $data['status'] = $tanfidh->where(['tnfdhStatus' => 'incomplete', 'mushrif', $_SESSION['id']])->countAllResults();
-        $data['status'] = $tanfidh->where(['tnfdhStatus' => 'completed','mushrif', $_SESSION['id']])->countAllResults();
-        $data['judud'] = $user->where(['malaf' => null, 'jamia' => $role['jamia']])->countAllResults();
+        $data['lead'] = $tanfidh->where('mushrif', session('id'))->countAllResults();
+        $data['complt'] = $tanfidh->where(['tnfdhStatus' => 'completed','mushrif', session('id')])->countAllResults();
+        $data['notcomplt'] = $tanfidh->where(['tnfdhStatus' => 'incomplete', 'mushrif', session('id')])->countAllResults();
+        $data['status'] = $tanfidh->where(['tnfdhStatus' => 'completed','mushrif', session('id')])->countAllResults();
+        $data['judud'] = $user->where(['malaf' => null, 'status' => 0, 'jamia' => $role['jamia']])->countAllResults();
         $data['users'] = $user->where(['nationality' => $role['nationality'], 'jamia' => $role['jamia']])->findAll();
         $data['all'] = $user->where(['nationality' => $role['nationality'], 'jamia' => $role['jamia']])->countAllResults();
         $data['full'] = $user->countAll();
         $data['title'] = lang('app.dashboard');
-        // dd($data['full']);
+        // dd($data);
 
-        return view('admin/index', $data);
+        return view('mushrif/index', $data);
     }
     
-    public function users($usr, $jamia)
+    public function users()
     {
         $user = new User();
+        $dt = $user->find(session('id'));
         
-        $data['users'] = $user->where(['nationality' => $usr, 'jamia' => $jamia])->findAll();
+        $data['users'] = $user->where(['nationality' => $dt['nationality'], 'jamia' => $dt['jamia']])->findAll();
         $data['check'] = lang('app.students');
-        $data['title'] = lang('app.students').' - '.$usr.' - '.$jamia;
-
+        $data['title'] = lang('app.students').' - '.$dt['nationality'].' - '.$dt['jamia'];
         // dd($data);
-        return view('admin/usersAll', $data);
+
+        return view('mushrif/users', $data);
     }
 }

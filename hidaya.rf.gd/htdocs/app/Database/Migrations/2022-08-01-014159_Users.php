@@ -23,6 +23,7 @@ class Users extends Migration
             'malaf' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
+                'null' => true,
             ],
             'iqama' => [
                 'type'       => 'VARCHAR',

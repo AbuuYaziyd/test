@@ -100,15 +100,15 @@ $routes->group('admin', function ($routes) {
  * --------------------------------------------------------------------
  */
 $routes->group('mushrif', function ($routes) {
-    // $routes->get('/', 'AdminController::index', ['filter' => 'auth']);
-    // $routes->get('view', 'AdminController::new', ['filter' => 'auth']);
-    // $routes->get('mushrif', 'AdminController::mushrif', ['filter' => 'auth']);
-    // $routes->get('add', 'AdminController::add', ['filter' => 'auth']);
-    // $routes->get('users/(:any)/(:any)', 'AdminController::users/$1/$2', ['filter' => 'auth']);
-    // $routes->get('edit/(:num)', 'AdminController::show/$1', ['filter' => 'auth']);
-    // $routes->get('delete/(:num)', 'AdminController::delete/$1', ['filter' => 'auth']);
-    // $routes->post('upload/(:num)', 'AdminController::update/$1', ['filter' => 'auth']);
-    // $routes->get('zip/(:any)', 'AdminController::zip/$1', ['filter' => 'auth']);
+    $routes->get('/', 'MushrifController::index', ['filter' => 'auth']);
+    $routes->get('users', 'MushrifController::users', ['filter' => 'auth']);
+    // $routes->get('mushrif', 'MushrifController::mushrif', ['filter' => 'auth']);
+    // $routes->get('add', 'MushrifController::add', ['filter' => 'auth']);
+    // $routes->get('users/(:any)/(:any)', 'MushrifController::users/$1/$2', ['filter' => 'auth']);
+    // $routes->get('edit/(:num)', 'MushrifController::show/$1', ['filter' => 'auth']);
+    // $routes->get('delete/(:num)', 'MushrifController::delete/$1', ['filter' => 'auth']);
+    // $routes->post('upload/(:num)', 'MushrifController::update/$1', ['filter' => 'auth']);
+    // $routes->get('zip/(:any)', 'MushrifController::zip/$1', ['filter' => 'auth']);
 });
 
 /*

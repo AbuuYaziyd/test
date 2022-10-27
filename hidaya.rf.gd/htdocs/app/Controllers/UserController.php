@@ -7,11 +7,6 @@ use App\Models\Hits;
 use App\Models\User;
 use App\Models\Country;
 use CodeIgniter\RESTful\ResourceController;
-// use RecursiveIteratorIterator;
-// use DiyRecursiveDecorator;
-// use RecursiveDirectoryIterator;
-// use RecursiveTreeIterator;
-// use ZipArchive;
 
 class UserController extends ResourceController
 {
@@ -48,9 +43,8 @@ class UserController extends ResourceController
             // return redirect()->to('set');
         }elseif ($role['role'] == 'admin') {
             return redirect()->to('admin');
-        // }elseif ($role['role'] == 'mushrif') {
-        //     dd('mushrif');
-        //     return redirect()->to('mushrif');
+        }elseif ($role['role'] == 'mushrif') {
+            return redirect()->to('mushrif');
         }else {
             return view('user/index', $data);
         }
