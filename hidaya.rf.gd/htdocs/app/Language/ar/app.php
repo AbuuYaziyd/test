@@ -37,6 +37,8 @@ return [
     'bank' => 'البنك',
     'banks' => 'بنوك',
     'ok' => 'تمام', 
+    'show' => 'شوف', 
+    'count' => 'عدد الطلاب', 
     'iban' => 'رقم الأيبان (IBAN)',
     'accept' => 'أوافق على ',
     'terms & services' => 'الشروط والأحكام',
@@ -57,6 +59,9 @@ return [
     'incorrect' => 'المعلومات غير صحيح',
     'errorOccured' => 'حدث خطأ',
 
+    // Admin Pages
+    'admin' => 'مدير',
+
     // User Pages
     'umraCount' => 'عدد العمرة',
     'name' => 'الاسم',
@@ -69,12 +74,13 @@ return [
     'students' => 'طلاب',
     'new' => 'ضف',
     'student' => 'طالب',
-    'mandub' => 'مشرفون',
+    'mushrifuna' => 'مشرفون',
+    'mushrif' => 'مشرف',
     'graduated?' => 'أمتخرج هو؟',
-    'judud' => 'طلاب جدد',
+    'judud' => 'طلاب الجدد',
 
     //Messages->session
-    'done' => 'تمام',
+    'done' => 'تم',
     'sorry' => 'آسف',
     'imageUploaded' => 'تم رفع الملف بنجاح',
     'imageEdited' => 'تم تعديل الصورة  بنحاح',

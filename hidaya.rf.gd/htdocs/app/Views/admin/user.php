@@ -11,7 +11,7 @@
                         <div class="card-body">
                             <!-- <img src="<?= base_url('app-assets/images/portrait/small/avatar-s-4.png') ?>" class="rounded-circle  height-150" alt="Card image"> -->
 
-                            <img src="https://ui-avatars.com/api/?name=<?= $user['name'] ?>&background=random&length=1&font-size=0.7" class="rounded-circle  height-150" alt=" avatar">
+                            <img src="https://ui-avatars.com/api/?name=<?= $_SESSION['name'] ?>&background=random&length=1&font-size=0.7" class="rounded-circle  height-150" alt=" avatar">
                         </div>
                         <div class="card-body">
                             <h1 class="card-subtitle mb-1"><?= $user['malaf'] ?></h1>

@@ -78,14 +78,34 @@ $routes->group('image', function ($routes) {
  */
 $routes->group('admin', function ($routes) {
     $routes->get('/', 'AdminController::index', ['filter' => 'auth']);
-    $routes->get('view', 'AdminController::new', ['filter' => 'auth']);
-    $routes->get('mushrif', 'AdminController::mushrif', ['filter' => 'auth']);
-    $routes->get('add', 'AdminController::add', ['filter' => 'auth']);
-    $routes->get('users/(:any)/(:any)', 'AdminController::users/$1/$2', ['filter' => 'auth']);
-    $routes->get('edit/(:num)', 'AdminController::show/$1', ['filter' => 'auth']);
-    $routes->get('delete/(:num)', 'AdminController::delete/$1', ['filter' => 'auth']);
+    $routes->get('jamiat', 'AdminController::jamiat', ['filter' => 'auth']);
+    $routes->get('jamia/(:any)', 'AdminController::jamia/$1', ['filter' => 'auth']);
+    $routes->get('nationality', 'AdminController::nationality', ['filter' => 'auth']);
+    $routes->get('users', 'AdminController::users', ['filter' => 'auth']);
+    // $routes->get('view', 'AdminController::new', ['filter' => 'auth']);
+    // $routes->get('mushrif', 'AdminController::mushrif', ['filter' => 'auth']);
+    // $routes->get('add', 'AdminController::add', ['filter' => 'auth']);
+    // $routes->get('edit/(:num)', 'AdminController::show/$1', ['filter' => 'auth']);
+    // $routes->get('delete/(:num)', 'AdminController::delete/$1', ['filter' => 'auth']);
     // $routes->post('upload/(:num)', 'AdminController::update/$1', ['filter' => 'auth']);
-    $routes->get('zip/(:any)', 'AdminController::zip/$1', ['filter' => 'auth']);
+    // $routes->get('zip/(:any)', 'AdminController::zip/$1', ['filter' => 'auth']);
+});
+
+/*
+ * --------------------------------------------------------------------
+ * Routes Groups Mushrif Routings
+ * --------------------------------------------------------------------
+ */
+$routes->group('mushrif', function ($routes) {
+    // $routes->get('/', 'AdminController::index', ['filter' => 'auth']);
+    // $routes->get('view', 'AdminController::new', ['filter' => 'auth']);
+    // $routes->get('mushrif', 'AdminController::mushrif', ['filter' => 'auth']);
+    // $routes->get('add', 'AdminController::add', ['filter' => 'auth']);
+    // $routes->get('users/(:any)/(:any)', 'AdminController::users/$1/$2', ['filter' => 'auth']);
+    // $routes->get('edit/(:num)', 'AdminController::show/$1', ['filter' => 'auth']);
+    // $routes->get('delete/(:num)', 'AdminController::delete/$1', ['filter' => 'auth']);
+    // $routes->post('upload/(:num)', 'AdminController::update/$1', ['filter' => 'auth']);
+    // $routes->get('zip/(:any)', 'AdminController::zip/$1', ['filter' => 'auth']);
 });
 
 /*

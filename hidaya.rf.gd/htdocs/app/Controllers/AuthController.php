@@ -251,7 +251,7 @@ class AuthController extends BaseController
                 $ok = $user->update($id, $data);
 
                 if ($ok) {
-                    return redirect()->to('login')->with('type', 'success')->with('text', lang('app.passchanged'))->with('title', lang('app.done'));
+                    return redirect()->to('login')->with('type', 'success')->with('text', lang('app.passchanged'))->with('title', lang('app.ok'));
                 }
             }
         }else {        
@@ -307,7 +307,7 @@ class AuthController extends BaseController
             $ok = $user->update($id, $data);
 
             if ($ok) {
-                return redirect()->to('login')->with('type', 'success')->with('title', lang('app.done'))->with('text', lang('app.passchanged'));
+                return redirect()->to('login')->with('type', 'success')->with('title', lang('app.ok'))->with('text', lang('app.passchanged'));
             } else {
                 return redirect()->to('password/change')->with('toast', 'danger')->with('message', lang('app.errorOccured'));
             }
