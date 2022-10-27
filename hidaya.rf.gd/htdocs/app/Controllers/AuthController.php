@@ -198,7 +198,8 @@ class AuthController extends BaseController
                     'name' => $data['name'],
                     'email' => $data['email'],
                     'malaf' => $data['malaf'],
-                    // 'img' => $data['img'],
+                    'bitaqa' => $data['bitaqa'],
+                    'passport' => $data['passport'],
                     'role' => $data['role'],
                     'isLoggedIn' => TRUE
                 ];

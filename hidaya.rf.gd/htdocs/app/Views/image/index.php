@@ -52,7 +52,7 @@
                                     <img class="img-fluid" src="<?= base_url('app-assets/images/' . ($img['imgPass'] == null ? 'demo/passp.jpg' : 'malaf/'.$_SESSION['malaf'].'/') . $img['imgPass']) ?>" alt="img">
                                 </div>
                                 <div style="text-align: center;" class="my-1">
-                                    <span><b></b></span>
+                                    <span><b><?= $user['passport'] ?></b></span>
                                 </div>
                             </div>
                         </div>
@@ -67,7 +67,7 @@
                                     <img class="img-fluid" src="<?= base_url('app-assets/images/' . ($img['imgStu'] == null ? 'demo/stu.jpg' : 'malaf/'.$_SESSION['malaf'].'/') . $img['imgStu']) ?>" alt="img">
                                 </div>
                                 <div style="text-align: center;" class="my-1">
-                                    <span><b></b></span>
+                                    <span><b><?= $user['bitaqa'] ?></b></span>
                                 </div>
                             </div>
                         </div>

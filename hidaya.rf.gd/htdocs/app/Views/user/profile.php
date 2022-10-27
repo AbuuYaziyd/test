@@ -47,19 +47,27 @@
                                     <tbody>
                                         <tr>
                                             <td><?= lang('app.name') ?>:</td>
-                                            <td class="users-view-name"><b><?= $user['name'] ?></b></td>
+                                            <td><b><?= $user['name'] ?></b></td>
                                         </tr>
                                         <tr>
                                             <td><?= lang('app.jamia') ?>:</td>
-                                            <td class="users-view-name"><b><?= $user['jamia'] ?></b></td>
+                                            <td><b><?= $user['jamia'] ?></b></td>
                                         </tr>
                                         <tr>
                                             <td><?= lang('app.malaf') ?>:</td>
-                                            <td class="users-view-name"><b><?= $user['malaf'] ?></b></td>
+                                            <td><b><?= $user['malaf'] ?></b></td>
+                                        </tr>
+                                        <tr>
+                                            <td><?= lang('app.passport') ?>:</td>
+                                            <td><b class="<?= $user['passport']?? 'danger' ?>"><?= $user['passport']??lang('app.notFound') ?></b></td>
+                                        </tr>
+                                        <tr>
+                                            <td><?= lang('app.bitaqa') ?>:</td>
+                                            <td><b class="<?= $user['bitaqa']?? 'danger' ?>"><?= $user['bitaqa']??lang('app.notFound') ?></b></td>
                                         </tr>
                                         <tr>
                                             <td><?= lang('app.email') ?>:</td>
-                                            <td class="users-view-email"><b class="<?= $user['email']?? 'danger' ?>"><?= $user['email']??lang('app.notFound') ?></b></td>
+                                            <td><b class="<?= $user['email']?? 'danger' ?>"><?= $user['email']??lang('app.notFound') ?></b></td>
                                         </tr>
                                         <tr>
                                             <td><?= lang('app.nationality') ?>:</td>

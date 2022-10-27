@@ -86,6 +86,8 @@ class UserController extends ResourceController
             'name' => $this->request->getVar('name'),
             'email' => $email!=null?$email: null,
             'phone' => $this->request->getVar('phone'),
+            'bitaqa' => $this->request->getVar('bitaqa'),
+            'passport' => $this->request->getVar('passport'),
             'bank' => $this->request->getVar('bank'),
             'iban' => $this->request->getVar('iban'),
         ];

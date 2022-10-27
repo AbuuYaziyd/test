@@ -65,6 +65,14 @@
                                             <td class="users-view-name"><input type="text" class="form-control" name="malaf" value="<?= $user['malaf'] ?>" readonly></td>
                                         </tr>
                                         <tr>
+                                            <td><?= lang('app.bitaqa') ?>:</td>
+                                            <td class="users-view-name"><input type="text" class="form-control" name="bitaqa" value="<?= $user['bitaqa']??'' ?>"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><?= lang('app.passport') ?>:</td>
+                                            <td class="users-view-name"><input type="text" class="form-control" name="passport" value="<?= $user['passport']??'' ?>"></td>
+                                        </tr>
+                                        <tr>
                                             <td><?= lang('app.email') ?>:</td>
                                             <td class="users-view-name"><input type="email" class="form-control" name="email" value="<?= $user['email'] ?>" placeholder="<?= lang('app.notFound') ?>"></td>
                                         </tr>
@@ -78,7 +86,6 @@
                                                     <?php endforeach ?>
                                             </select>
                                             </td>
-                                            <!-- <td class="users-view-name"><input type="text" class="form-control" name="nationality" value="<?= $user['nationality'] ?>"></td> -->
                                         </tr>
                                         <tr>
                                             <td><?= lang('app.phone') ?>:</td>
