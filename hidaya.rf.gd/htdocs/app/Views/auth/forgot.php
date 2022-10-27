@@ -46,8 +46,6 @@
                                     <div class="input-group-append">
                                         <span class="input-group-text" id="basic-addon1">966+</span>
                                     </div>
-                                    <!-- <input type="text" class="form-control" name="phone" placeholder="<?= lang('app.phone') ?>"> -->
-                                    <!-- <input type="text" class="form-control" name="phone" placeholder="<?= lang('app.phone') ?>"> -->
                                 </div>
                                 <div class="form-control-position">
                                     <i class="la la-mobile"></i>
@@ -64,6 +62,5 @@
             </div>
         </div>
     </section>
-
 </div>
 <?= $this->endSection() ?>

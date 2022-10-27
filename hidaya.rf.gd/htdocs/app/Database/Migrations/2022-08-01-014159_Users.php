@@ -59,6 +59,8 @@ class Users extends Migration
             'status' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
+                'default' => 1,
+                'comment' => 'active=1, inactive=0'
             ],
             'phone' => [
                 'type'       => 'VARCHAR',

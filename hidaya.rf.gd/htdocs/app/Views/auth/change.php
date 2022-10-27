@@ -42,17 +42,10 @@
                                     <i class="la la-lock"></i>
                                 </div>
                             </fieldset>
-                            <!-- <button type="submit" class="btn btn-info btn-lg btn-block"><i class="ft-unlock"></i> <?= lang('app.login') ?></button> -->
                             <button type="submit" id="submit" class="btn btn-primary btn-lg glow position-relative w-100" disabled><?= lang('app.passchange') ?></button>
                             </form>
                         </div>
                     </div>
-                    <!-- <div class="card-footer">
-                        <div class="">
-                            <p class="float-xl-left text-center m-0"><a href="<?= base_url('recover') ?>" class="card-link"><?= lang('app.recoverpassword') ?></a></p>
-                            <p class="float-xl-right text-center m-0"><?= lang('app.newUser') ?> <a href="<?= base_url('register') ?>" class="card-link"><?= lang('app.signup') ?></a></p>
-                        </div>
-                    </div> -->
                 </div>
             </div>
         </div>

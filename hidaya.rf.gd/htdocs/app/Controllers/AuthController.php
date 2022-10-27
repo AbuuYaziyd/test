@@ -45,13 +45,13 @@ class AuthController extends BaseController
         $input = $this->validate(
             [   //Rules
                 'name' => 'required|min_length[3]|max_length[50]|is_unique[users.name]',
-                'email' => 'required|valid_email|is_unique[users.email]',
+                'email' => 'valid_email|is_unique[users.email]',
                 'iban' => 'required|exact_length[24]',
-                'iqama' => 'required|exact_length[10]',
-                'phone' => 'required|exact_length[9]',
-                'nationality' => 'required',
+                'iqama' => 'required|exact_length[10]|integer',
+                'phone' => 'required|exact_length[9]|integer',
+                'nationality' => 'required|integer',
                 'jamia' => 'required',
-                'bank' => 'required',
+                'bank' => 'required|integer',
                 'check' => 'required',
                 'level' => 'required',
             ],
@@ -64,12 +64,12 @@ class AuthController extends BaseController
                     'is_unique' => lang('error.is_unique'),
                 ],
                 'email' => [
-                    'required' => lang('error.required'),
                     'valid_email' => lang('error.valid_email'),
                     'is_unique' => lang('error.is_unique'),
                 ],
                 'iqama' => [
                     'required' => lang('error.required'),
+                    'integer' => lang('error.integer'),
                     'exact_length' => lang('error.min_length'),
                 ],
                 'iban' => [
@@ -78,6 +78,7 @@ class AuthController extends BaseController
                 ],
                 'phone' => [
                     'required' => lang('error.required'),
+                    'integer' => lang('error.integer'),
                     'exact_length' => lang('error.min_length'),
                 ],
                 'check' => [
@@ -85,15 +86,18 @@ class AuthController extends BaseController
                 ],
                 'bank' => [
                     'required' => lang('error.required'),
+                    'integer' => lang('error.integer'),
                 ],
                 'jamia' => [
                     'required' => lang('error.required'),
+                    // 'integer' => lang('error.integer'),
                 ],
                 'level' => [
                     'required' => lang('error.required'),
                 ],
                 'nationality' => [
                     'required' => lang('error.required'),
+                    'integer' => lang('error.integer'),
                 ],
             ]
         );
@@ -117,7 +121,6 @@ class AuthController extends BaseController
                 'password' => password_hash($this->request->getVar('iqama'), PASSWORD_DEFAULT),
                 'iban' => $this->request->getVar('iban'),
                 'iqama' => $this->request->getVar('iqama'),
-                // 'malaf' => $this->request->getVar('malaf'),//4mula
                 'phone' => $this->request->getVar('phone'),
                 'nationality' => $this->request->getVar('nationality'),
                 'jamia' => $this->request->getVar('jamia'),
@@ -126,7 +129,6 @@ class AuthController extends BaseController
 
             // dd($data); 
             $ok = $user->save($data);
-            // $id = $user->insertID;
             $ok = true;
             if ($ok) {
                 return redirect()->to('login')->with('type', 'success')->with('text', lang('app.useIqamaAsPassword'))->with('title', lang('app.registerSuccess'));
@@ -253,11 +255,10 @@ class AuthController extends BaseController
                 }
             }
         }else {        
-            // dd(lang('app.notFound'));
             return redirect()->to('recover')->with('icon', 'error')->with('text', lang('app.notFound'))->with('title', lang('app.sorry'));
         }
     }
-    
+
     public function pass()
     {
         helper('form');
@@ -298,8 +299,6 @@ class AuthController extends BaseController
             $data['title'] = 'settings';
             return redirect()->to('change/password')->with('title', lang('app.notokoldpass'))->with('type', 'error');
         } else {
-
-
             $data = [
                 'password' => password_hash($new, PASSWORD_DEFAULT)
             ];
