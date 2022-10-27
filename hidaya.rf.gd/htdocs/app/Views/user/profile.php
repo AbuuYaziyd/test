@@ -15,10 +15,10 @@
                 <div class="row">
                     <div class="col-12 col-sm-7">
                         <div class="media mb-2">
-                            <a class="mr-1" href="#">
-                                <img src="https://ui-avatars.com/api/?name=<?= $_SESSION['malaf'] ?>&background=random&length=4" alt="users view avatar" class="users-avatar-shadow rounded-circle" height="64" width="64">
-                                <!-- <img src="<?= base_url('app-assets/images/portrait/small/avatar-s-26.jpg') ?>" alt="users view avatar" class="users-avatar-shadow rounded-circle" height="64" width="64"> -->
-                            </a>
+                            <div class="mr-1">
+                                <img src="https://ui-avatars.com/api/?name=<?= $_SESSION['malaf'] ?>&background=random&length=4" alt="users view avatar" class="users-avatar-shadow rounded-circle " height="64" width="64">
+                            </div>
+                                
                             <div class="media-body pt-25">
                                 <h4 class="media-heading"><span class="users-view-name"><?= $_SESSION['name'] ?> </span><span class="text-muted font-medium-1"> @</span><span class="users-view-username text-muted font-medium-1 "><?= $user['jamia'] ?></span></h4>
                                 <span><?= lang('app.malaf') ?>:</span>
@@ -41,12 +41,6 @@
                                 <div class="col-12 col-sm-4 p-2">
                                     <!-- <h2 class="text-primary mb-0"><?= lang('app.umraCount') ?>: <span class="font-large-1 align-middle"> <?= ' 70' ?></span></h2> -->
                                 </div>
-                                <!-- <div class="col-12 col-sm-4 p-2">
-                                    <h6 class="text-primary mb-0">Followers: <span class="font-large-1 align-middle">534</span></h6>
-                                </div>
-                                <div class="col-12 col-sm-4 p-2">
-                                    <h6 class="text-primary mb-0">Following: <span class="font-large-1 align-middle">256</span></h6>
-                                </div> -->
                             </div>
                             <div class="col-12">
                                 <table class="table table-borderless">
@@ -77,7 +71,7 @@
                                         </tr>
                                         <tr>
                                             <td><?= lang('app.bank') ?>:</td>
-                                            <td><b><?= $user['bank'] ?></b></td>
+                                            <td><b><?= $user['bankName'] ?> - <?= $user['bankShort'] ?></b></td>
                                         </tr>
                                         <tr>
                                             <td><?= lang('app.iban') ?>:</td>

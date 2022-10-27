@@ -95,9 +95,8 @@
                                             <td><?= lang('app.bank') ?>:</td>
                                             <td class="users-view-name">
                                                 <select class="custom-select" name="bank">
-                                                    <option selected readonly><?= $user['bank'] ?></option>
                                                     <?php foreach ($bank as $key => $data) : ?>
-                                                        <option value="<?= $data['bankName'] . '-' . $data['bankShort'] ?>"><?= $data['bankName'] . '-' . $data['bankShort'] ?></option>
+                                                        <option value="<?= $data['bankId'] ?>" <?= $data['bankId']==$user['bank']?'selected':'' ?>><?= $data['bankName'] . '-' . $data['bankShort'] ?></option>
                                                     <?php endforeach ?>
                                                 </select>
                                             </td>
