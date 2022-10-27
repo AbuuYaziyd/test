@@ -39,8 +39,7 @@ class UserController extends ResourceController
         // dd($role);
 
         if ($role['role'] == 'superuser') {
-            dd('others');
-            // return redirect()->to('set');
+            return redirect()->to('admin');
         }elseif ($role['role'] == 'admin') {
             return redirect()->to('admin');
         }elseif ($role['role'] == 'mushrif') {

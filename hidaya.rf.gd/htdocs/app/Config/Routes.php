@@ -140,6 +140,7 @@ $routes->group('set', function ($routes) {
     $routes->post('create', 'SettingController::create', ['filter' => 'auth']);
     $routes->get('show/(:num)', 'SettingController::show/$1', ['filter' => 'auth']);
     $routes->post('edit/(:num)', 'SettingController::edit/$1', ['filter' => 'auth']);
+    $routes->get('delete/(:num)', 'SettingController::delete/$1', ['filter' => 'auth']);
 });
 
 /*

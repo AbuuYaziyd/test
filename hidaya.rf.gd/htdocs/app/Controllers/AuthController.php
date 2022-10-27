@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\Bank;
 use App\Models\Country;
 use App\Models\Hits;
+use App\Models\Setting;
 use App\Models\User;
 
 class AuthController extends BaseController
@@ -31,11 +32,18 @@ class AuthController extends BaseController
         $nat = new Country();
         $bank = new Bank();
         $user = new User();
+        $set = new Setting();
         
         $data['title'] = lang('app.signup');
         $data['nat'] = $nat->findAll();
-        // $data['user'] = $user->selectMax('malaf')->first();
         $data['bank'] = $bank->findAll();
+        $user = $user->countAllResults();
+        $set = $set->where('name', 'count')->first();
+        if ($user <= $set) {
+            $data['reg'] = 'set';
+        } else {
+            $data['reg'] = null;
+        }
         // dd($data);
 
         return view('auth/register',$data);

@@ -1,3 +1,10 @@
+<?php 
+if (session('role') == 'superuser') {
+    $super = 1;
+} else {
+    $super = null;
+}
+?>
 <?= $this->extend('layouts/main') ?>
 
 <?= $this->section('content') ?>
@@ -9,7 +16,11 @@
                 <div id="recent-transactions" class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3><b><?= $title ?></b></h3>
+                            <h3><b><?= $title ?></b>
+                            <?php if ($super) : ?>
+                            <a class="btn btn-danger box-shadow-2 round pull-right" href="<?= base_url('set/delete') ?>"><?= lang('app.delete') ?></a>
+                            <?php endif ?>
+                            </h3>
                         </div>
                         <div class="card-content">
                             <div class="card-content">
@@ -23,7 +34,7 @@
                                             <span class="badge badge-danger"> <?= $errors = $validation->getError('name') ?></span>
                                         <?php endif ?>
                                         <fieldset class="form-group position-relative has-icon-left mb-1">
-                                            <input type="text" class="form-control" name="name" value="<?= $set['name'] ?>">
+                                            <input type="text" class="form-control" name="name" value="<?= $set['name'] ?>" <?= ($super==1?'':'readonly') ?>>
                                             <div class="form-control-position">
                                                 <i class="la la-cog spinner"></i>
                                             </div>
@@ -35,7 +46,7 @@
                                             <span class="badge badge-danger"> <?= $errors = $validation->getError('value') ?></span>
                                         <?php endif ?>
                                         <fieldset class="form-group position-relative has-icon-left mb-1">
-                                            <input type="<?= $set['name']=='tanfdh'?'text':'date' ?>" class="form-control" name="value" value="<?= $set['value'] ?>">
+                                            <input type="<?= $set['name']!='tanfdh'?'text':'date' ?>" class="form-control" name="value" value="<?= $set['value'] ?>">
                                             <div class="form-control-position">
                                                 <i class="la la-cog spinner"></i>
                                             </div>

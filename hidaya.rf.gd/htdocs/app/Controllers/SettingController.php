@@ -112,4 +112,9 @@ class SettingController extends ResourceController
             return redirect()->to('set')->with('type', 'success')->with('text', lang('app.doneSuccess'))->with('title', lang('app.ok'));
         }
     }
+
+    public function delete($id = null)
+    {
+        dd($id);
+    }
 }

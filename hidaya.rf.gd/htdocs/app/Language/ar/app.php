@@ -90,6 +90,7 @@ return [
     'new' => 'ضف',
     'student' => 'طالب',
     'user' => 'طالب',
+    'superuser' => 'مصمم ',
     'mushrifuna' => 'مشرفون',
     'mushrif' => 'مشرف',
     'graduated?' => 'أمتخرج هو؟',

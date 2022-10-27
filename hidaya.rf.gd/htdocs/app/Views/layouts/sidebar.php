@@ -8,7 +8,7 @@
                     <span class="badge badge badge-info badge-pill float-right mr-2"><?= lang('app.'.session('role')) ?></span>
                 </a>
             </li>
-            <?php if ($_SESSION['role'] == 'admin')  : ?>
+            <?php if ($_SESSION['role'] != 'user')  : ?>
             <li class="<?= (isset($check) && $check == lang('app.students') ? 'active' : '') ?> nav-item">
                 <a href="<?= base_url('set') ?>">
                     <i class="la la-cog spinner"></i>
