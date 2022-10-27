@@ -9,17 +9,15 @@
                 <div class="card col-md-4 col-sm-12">
                     <div class="text-center">
                         <div class="card-body">
-                            <!-- <img src="<?= base_url('app-assets/images/portrait/small/avatar-s-4.png') ?>" class="rounded-circle  height-150" alt="Card image"> -->
-
                             <img src="https://ui-avatars.com/api/?name=<?= $_SESSION['name'] ?>&background=random&length=1&font-size=0.7" class="rounded-circle  height-150" alt=" avatar">
                         </div>
                         <div class="card-body">
-                            <h1 class="card-subtitle mb-1"><?= $user['malaf'] ?></h1>
-                            <p class="card-subtitle mb-1"><?= $user['name'] ?></p>
-                            <p class="card-subtitle mb-1"><?= $user['iqama'] ?></p>
-                            <p class="card-subtitle mb-1"><?= $user['phone'] ?></p>
-                            <p class="card-subtitle mb-1"><?= $user['jamia'] ?></p>
-                            <p class="card-subtitle mb-1"><?= $user['email'] ?></p>
+                            <h1><?= $user['malaf'] ?></h1>
+                            <h4><b><?= $user['name'] ?></b></h4>
+                            <p><?= $user['iqama'] ?></p>
+                            <p><a href="tel:+966<?= $user['phone'] ?>" class="btn btn-sm round btn-secondary">966<?= $user['phone'] ?></a> | <a href="https://wa.me/966<?= $user['phone'] ?>" target="_blank" class="btn btn-success btn-sm round"><i class="la la-whatsapp"></i></a></p>
+                            <p><?= $user['jamia'] ?></p>
+                            <p><?= $user['email'] ?></p>
                         </div>
                         <div class="text-center">
                             <a href="<?= base_url('admin/delete/' . $user['id']) ?>" id="delete" class="btn btn-sm btn-danger round mr-1 mb-1" disabled><i class="la la-trash"></i><?= lang('app.delete') ?></a>
@@ -27,10 +25,14 @@
                     </div>
                 </div>
                 <!-- Recent Transactions -->
-                <!-- <div id="recent-transactions" class="col-md-8 col-sm-12">
+                <div id="recent-transactions" class="col-md-8 col-sm-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3>Recent Transactions</h3>
+                            <h3><b><?= lang('app.tanfidh') ?> - <?= $user['name'] ?></b>
+                                <?php if ($_SESSION['role'] == 'admin' && $user['role'] == 'user') : ?>
+                                    <a class="btn btn-outline-success box-shadow-2 round pull-right" href="<?= base_url('admin/add-mushrif/'.$user['id']) ?>"><?= lang('app.addMushrif') ?></a>
+                                <?php endif ?>
+                            </h3>
                         </div>
                         <div class="card-content">
                             <div class="table-responsive">
@@ -43,56 +45,17 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <td class="text-truncate"><a href="#">INV-001001</a></td>
-                                        <td class="text-truncate">
-                                            <span>Elizabeth W.</span>
-                                        </td>
-                                        <td>
-                                            <button type="button" class="btn btn-sm btn-outline-success round"><?= lang('app.done') ?></button>
-                                        </td>
-                                        </tr>
                                         <tr>
-                                            <td class="text-truncate"><a href="#">INV-001002</a></td>
-                                            <td class="text-truncate">
-                                                <span>Doris R.</span>
-                                            </td>
-                                            <td>
-                                                <button type="button" class="btn btn-sm btn-outline-success round"><?= lang('app.done') ?></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-truncate"><a href="#">INV-001003</a></td>
-                                            <td class="text-truncate">
-                                                <span>Megan S.</span>
-                                            </td>
-                                            <td>
-                                                <button type="button" class="btn btn-sm btn-outline-success round"><?= lang('app.done') ?></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-truncate"><a href="#">INV-001004</a></td>
-                                            <td class="text-truncate">
-                                                <span>Andrew D.</span>
-                                            </td>
-                                            <td>
-                                                <button type="button" class="btn btn-sm btn-outline-danger round"><?= lang('app.notdone') ?></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-truncate"><a href="#">INV-001005</a></td>
-                                            <td class="text-truncate">
-                                                <span>Walter R.</span>
-                                            </td>
-                                            <td>
-                                                <button type="button" class="btn btn-sm btn-outline-danger round"><?= lang('app.notdone') ?></button>
-                                            </td>
+                                            <td><a href="#">INV-001001</a></td>
+                                            <td><span>Elizabeth W.</span></td>
+                                            <td><button type="button" class="btn btn-sm btn-outline-success round"><?= lang('app.done') ?></button></td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
-                </div> -->
+                </div>
             </div>
             <!--/ Recent Transactions -->
         </div>

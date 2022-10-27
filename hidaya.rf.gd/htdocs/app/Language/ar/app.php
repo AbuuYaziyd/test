@@ -61,6 +61,7 @@ return [
 
     // Admin Pages
     'admin' => 'مدير',
+    'addMushrif' => 'اجعله مشرفا',
 
     // User Pages
     'umraCount' => 'عدد العمرة',
@@ -74,6 +75,7 @@ return [
     'students' => 'طلاب',
     'new' => 'ضف',
     'student' => 'طالب',
+    'user' => 'طالب',
     'mushrifuna' => 'مشرفون',
     'mushrif' => 'مشرف',
     'graduated?' => 'أمتخرج هو؟',

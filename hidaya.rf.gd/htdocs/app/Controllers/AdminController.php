@@ -57,6 +57,7 @@ class AdminController extends ResourceController
         $user = new User();
 
         $data['title'] = $jm;
+        $data['type'] = 'jamia';
         $data['users'] = $user->where('jamia', $jm)->findAll();
         // dd($data);
 
@@ -86,6 +87,7 @@ class AdminController extends ResourceController
         $user = new User();
 
         $data['title'] = $nt;
+        $data['type'] = 'nat';
         $data['users'] = $user->where('nationality', $nt)->findAll();
         // dd($data);
 
@@ -97,21 +99,48 @@ class AdminController extends ResourceController
         $user = new User();
 
         $data['title'] = lang('app.students');
+        $data['type'] = '';
         $data['users'] = $user->where('role', 'user')->findAll();
         // dd($data);
 
         return view('admin/users', $data);
     }
 
-    // public function show($id = null)
-    // {
-    //     $user = new User();
+    public function mushrifuna()
+    {
+        $user = new User();
 
-    //     $data['user'] = $user->find($id);
-    //     // dd($data['user']);
-    //     $data['title'] = lang('app.user');
-    //     return view('admin/user', $data);
-    // }
+        $data['title'] = lang('app.mushrifuna');
+        $data['users'] = $user->where('role', 'mushrif')->findAll();
+        // dd($data);
+
+        return view('admin/users', $data);
+    }
+
+    public function addMushrif($id)
+    {
+        $user = new User();
+        $data = [
+            'role' => 'mushrif',
+        ];
+        $ok = $user->update($id, $data);
+        // dd($data);
+
+        if ($ok) {
+            return redirect()->to('admin/show/'.$id)->with('type', 'success')->with('title', lang('app.done'))->with('text', lang('app.edit').' '. lang('app.profile').' '. lang('app.success'));
+        }
+    }
+
+    public function show($id = null)
+    {
+        $user = new User();
+
+        $data['user'] = $user->find($id);
+        $data['title'] = lang('app.user');
+        // dd($data);
+
+        return view('admin/user', $data);
+    }
 
     // public function new()
     // {
@@ -126,17 +155,16 @@ class AdminController extends ResourceController
     //     return view('admin/show', $data);
     // }
 
-    // public function delete($id = null)
-    // {
-    //     // dd($id);
-    //     $user = new User();
+    public function delete($id = null)
+    {
+        $user = new User();
 
-    //     $ok = $user->delete($id);
+        $ok = $user->delete($id);
 
-    //     if ($ok) {
-    //         return redirect()->to('admin/view')->with('type', 'success')->with('title', lang('app.done'))->with('text', lang('app.delete') . ' ' . lang('app.student') . ' ' . lang('app.success'));
-    //     }
-    // }
+        if ($ok) {
+            return redirect()->to('admin/view')->with('type', 'success')->with('title', lang('app.done'))->with('text', lang('app.delete') . ' ' . lang('app.student') . ' ' . lang('app.success'));
+        }
+    }
 
     // public function mushrif()
     // {

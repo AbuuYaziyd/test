@@ -66,7 +66,7 @@
         </a>
     </div>
     <div class="col-xl-3 col-lg-6 col-12">
-        <a href="#">
+        <a href="<?= base_url('admin/mushrifuna') ?>">
             <div class="card pull-up">
                 <div class="card-content">
                     <div class="card-body">

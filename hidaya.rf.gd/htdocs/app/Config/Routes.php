@@ -83,11 +83,13 @@ $routes->group('admin', function ($routes) {
     $routes->get('nationality', 'AdminController::nationality', ['filter' => 'auth']);
     $routes->get('nat/(:any)', 'AdminController::nat/$1', ['filter' => 'auth']);
     $routes->get('users', 'AdminController::users', ['filter' => 'auth']);
+    $routes->get('mushrifuna', 'AdminController::mushrifuna', ['filter' => 'auth']);
+    $routes->get('add-mushrif/(:num)', 'AdminController::addMushrif/$1', ['filter' => 'auth']);
     // $routes->get('view', 'AdminController::new', ['filter' => 'auth']);
     // $routes->get('mushrif', 'AdminController::mushrif', ['filter' => 'auth']);
     // $routes->get('add', 'AdminController::add', ['filter' => 'auth']);
-    // $routes->get('edit/(:num)', 'AdminController::show/$1', ['filter' => 'auth']);
-    // $routes->get('delete/(:num)', 'AdminController::delete/$1', ['filter' => 'auth']);
+    $routes->get('show/(:num)', 'AdminController::show/$1', ['filter' => 'auth']);
+    $routes->get('delete/(:num)', 'AdminController::delete/$1', ['filter' => 'auth']);
     // $routes->post('upload/(:num)', 'AdminController::update/$1', ['filter' => 'auth']);
     // $routes->get('zip/(:any)', 'AdminController::zip/$1', ['filter' => 'auth']);
 });
