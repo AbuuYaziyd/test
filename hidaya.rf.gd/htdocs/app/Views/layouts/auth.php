@@ -28,6 +28,7 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/css-rtl/custom-rtl.css') ?>">
     <!-- END: Theme CSS-->
     <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/vendors/css/extensions/sweetalert2.min.css') ?>">
+    <?= $this->renderSection('styles') ?>
 
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/css-rtl/core/menu/menu-types/horizontal-menu.css') ?>">
@@ -81,6 +82,8 @@
             <?php endif ?>
         });
     </script>
+    
+    <?= $this->renderSection('scripts') ?>
 
     <!-- BEGIN: Theme JS-->
     <script src="<?= base_url('app-assets/js/core/app-menu.js') ?>"></script>

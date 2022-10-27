@@ -74,7 +74,7 @@ return [
     'judud' => 'طلاب جدد',
 
     //Messages->session
-    'done' => 'تم',
+    'done' => 'تمام',
     'sorry' => 'آسف',
     'imageUploaded' => 'تم رفع الملف بنجاح',
     'imageEdited' => 'تم تعديل الصورة  بنحاح',

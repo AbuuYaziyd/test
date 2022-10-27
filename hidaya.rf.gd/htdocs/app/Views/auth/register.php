@@ -143,4 +143,33 @@
         </div>
     </section>
 </div>
+
+<?= $this->endsection() ?>
+<?= $this->section('scripts') ?>
+<script>
+    <?php if (!session('isLoggedIn')) :  ?>
+    $(document).ready(function () {
+        //   e.preventDefault();
+        url = "<?= base_url() ?>";
+        Swal.fire({
+            title: '<?= lang('app.sorry') ?>',
+            text: "الحين ليس وقة للتسجيل بارك الله فيك!",
+            type: 'info',
+            showCancelButton: false,
+            allowOutsideClick: false,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'نعم!',
+            cancelButtonText: 'لا!',
+            confirmButtonClass: 'btn btn-warning',
+            cancelButtonClass: 'btn btn-danger ml-1',
+            buttonsStyling: false,
+        }).then(function(result) {
+            if (result.value) {
+                window.location.href = url;
+            }
+        })
+    });
+    <?php endif ?>
+</script>
 <?= $this->endSection() ?>

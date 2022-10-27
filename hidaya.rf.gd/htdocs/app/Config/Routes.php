@@ -42,12 +42,11 @@ $routes->get('register', 'AuthController::register');
 $routes->post('register', 'AuthController::secure');
 $routes->get('login', 'AuthController::login');
 $routes->post('login', 'AuthController::auth');
+$routes->get('logout', 'AuthController::logout');
 $routes->get('recover', 'AuthController::recover');
 $routes->post('recover', 'AuthController::password');
 $routes->get('change/password', 'AuthController::pass', ['filter' => 'auth']);
 $routes->post('change/password/(:num)', 'AuthController::change/$1', ['filter' => 'auth']);
-$routes->get('logout', 'AuthController::logout');
-$routes->get('email', 'AuthController::my');
 
 /*
  * --------------------------------------------------------------------

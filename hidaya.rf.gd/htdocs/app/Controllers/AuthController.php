@@ -10,32 +10,6 @@ use App\Models\User;
 
 class AuthController extends BaseController
 {
-    public function login()
-    {
-        $ip = $_SERVER['REMOTE_ADDR'];
-        $hits = new Hits();
-        // Check for previous visits
-        $query = $hits->where('ip', $ip, 1, 0)->get();
-        $check = count($query->getResult());
-
-        // dd($check);
-        if ($check < 1) {
-            $data = [
-                'ip' => $ip,
-            ];
-            // Never visited - add
-            $hits->insert($data);
-        }
-        $data['title'] = lang('app.login');
-
-        if (session('isLoggedIn') == true) {
-            return redirect()->to('user');
-        } else {
-            helper('form');
-            return view('auth/login', $data);
-        }
-    }
-
     public function register()
     {
         $ip = $_SERVER['REMOTE_ADDR'];
@@ -160,6 +134,32 @@ class AuthController extends BaseController
         }
     }
 
+    public function login()
+    {
+        $ip = $_SERVER['REMOTE_ADDR'];
+        $hits = new Hits();
+        // Check for previous visits
+        $query = $hits->where('ip', $ip, 1, 0)->get();
+        $check = count($query->getResult());
+
+        // dd($check);
+        if ($check < 1) {
+            $data = [
+                'ip' => $ip,
+            ];
+            // Never visited - add
+            $hits->insert($data);
+        }
+        $data['title'] = lang('app.login');
+
+        if (session('isLoggedIn') == true) {
+            return redirect()->to('user');
+        } else {
+            helper('form');
+            return view('auth/login', $data);
+        }
+    }
+
     public function auth()
     {
         $ip = $_SERVER['REMOTE_ADDR'];
@@ -216,6 +216,48 @@ class AuthController extends BaseController
         return redirect()->to('/');
     }
 
+    public function recover()
+    {
+        helper('form');
+        $data['title'] = lang('app.recoverpassword');
+
+        return view('auth/forgot', $data);
+    }
+
+    public function password()
+    {
+        helper('form');
+        $user = new User();
+
+        $identity = $this->request->getVar('identity');
+        $iqama = $this->request->getVar('iqama');
+        $phone = $this->request->getVar('phone');
+        $data = $user->where('email', $identity)->orWhere('malaf', $identity)->first();
+        // dd($data);
+
+        if ($data > 0) {
+            if (!($iqama == $data['iqama'] && $phone == $data['phone'])) {
+                return redirect()->to('recover')->with('type', 'error')->with('title', lang('app.incorrect'))->with('text', lang('app.iqama').'/'. lang('app.phone'));
+            } else {
+                $user = new User();
+                $id = $data['id'];
+
+                $data = [
+                    'password' => password_hash($iqama, PASSWORD_DEFAULT),
+                ];
+
+                $ok = $user->update($id, $data);
+
+                if ($ok) {
+                    return redirect()->to('login')->with('type', 'success')->with('text', lang('app.passchanged'))->with('title', lang('app.done'));
+                }
+            }
+        }else {        
+            // dd(lang('app.notFound'));
+            return redirect()->to('recover')->with('icon', 'error')->with('text', lang('app.notFound'))->with('title', lang('app.sorry'));
+        }
+    }
+    
     public function pass()
     {
         helper('form');
@@ -271,53 +313,5 @@ class AuthController extends BaseController
                 return redirect()->to('password/change')->with('toast', 'danger')->with('message', lang('app.errorOccured'));
             }
         }
-    }
-
-    public function recover()
-    {
-        helper('form');
-        $data['title'] = lang('app.recoverpassword');
-
-        return view('auth/forgot', $data);
-    }
-
-    public function password()
-    {
-        helper('form');
-        $user = new User();
-
-        $identity = $this->request->getVar('identity');
-        $iqama = $this->request->getVar('iqama');
-        $phone = $this->request->getVar('phone');
-        $data = $user->where('email', $identity)->orWhere('malaf', $identity)->first();
-        // dd($data);
-
-        if ($data > 0) {
-            if (!($iqama == $data['iqama'] && $phone == $data['phone'])) {
-                return redirect()->to('recover')->with('type', 'error')->with('title', lang('app.incorrect'))->with('text', lang('app.iqama').'/'. lang('app.phone'));
-            } else {
-                $user = new User();
-                $id = $data['id'];
-
-                $data = [
-                    'password' => password_hash($iqama, PASSWORD_DEFAULT),
-                ];
-
-                $ok = $user->update($id, $data);
-
-                if ($ok) {
-                    return redirect()->to('login')->with('type', 'success')->with('text', lang('app.passchanged'))->with('title', lang('app.done'));
-                }
-            }
-        }else {        
-            // dd(lang('app.notFound'));
-            return redirect()->to('recover')->with('icon', 'error')->with('text', lang('app.notFound'))->with('title', lang('app.sorry'));
-        }
-    }
-
-    public function test()
-    {
-        $test = password_hash('1234', PASSWORD_DEFAULT);
-        dd($test);
     }
 }
