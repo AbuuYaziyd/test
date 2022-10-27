@@ -124,6 +124,7 @@ class AuthController extends BaseController
                 'phone' => $this->request->getVar('phone'),
                 'nationality' => $this->request->getVar('nationality'),
                 'jamia' => $this->request->getVar('jamia'),
+                'status' => 0,
                 'bank' => $this->request->getVar('bank'),
             ];
 

@@ -5,7 +5,7 @@
                 <a href="<?= base_url('user') ?>">
                     <i class="la la-home"></i>
                     <span class="menu-title"><?= lang('app.dashboard') ?></span>
-                    <!-- <span class="badge badge badge-info badge-pill float-right mr-2">3</span> -->
+                    <span class="badge badge badge-info badge-pill float-right mr-2"><?= lang('app.'.session('role')) ?></span>
                 </a>
             </li>
             <?php if ($_SESSION['role'] == 'superadmin')  : ?>

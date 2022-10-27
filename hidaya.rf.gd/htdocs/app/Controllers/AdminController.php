@@ -23,7 +23,7 @@ class AdminController extends ResourceController
         $data['mushrif'] = $user->where('role', 'mushrif')->countAllResults();
         $data['complt'] = $tanfidh->where(['tnfdhStatus' => 1])->countAllResults();
         $data['status'] = $tanfidh->where(['tnfdhStatus' => 0])->countAllResults();
-        $data['judud'] = $user->where(['malaf' => null])->countAllResults();
+        $data['judud'] = $user->where(['malaf' => null, 'status' => 0])->countAllResults();
         $data['users'] = $user->where(['nationality' => $role['nationality']])->findAll();
         $data['full'] = count($user->where('role!=', 'admin')->findAll());
         $data['jamia'] = count($user->groupBy('jamia')->findAll());
@@ -111,6 +111,7 @@ class AdminController extends ResourceController
         $user = new User();
 
         $data['title'] = lang('app.mushrifuna');
+        $data['type'] = '';
         $data['users'] = $user->where('role', 'mushrif')->findAll();
         // dd($data);
 
