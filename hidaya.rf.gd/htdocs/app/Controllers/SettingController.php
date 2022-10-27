@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\Setting;
 use App\Models\Tanfidh;
 use App\Models\User;
+use CodeIgniter\Commands\Database\Seed;
 use CodeIgniter\RESTful\ResourceController;
 
 class SettingController extends ResourceController
@@ -115,6 +116,13 @@ class SettingController extends ResourceController
 
     public function delete($id = null)
     {
-        dd($id);
+        $set = new Setting();
+        $ok = $set->find($id);
+        // dd($ok);
+        $ok = $set->delete($id);
+
+        if ($ok) {
+            return redirect()->to('set')->with('type', 'success')->with('text', lang('app.doneSuccess'))->with('title', lang('app.ok'));
+        }
     }
 }
