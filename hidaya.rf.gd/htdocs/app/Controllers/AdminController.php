@@ -60,7 +60,7 @@ class AdminController extends ResourceController
         $data['users'] = $user->where('jamia', $jm)->findAll();
         // dd($data);
 
-        return view('admin/jamia', $data);
+        return view('admin/users', $data);
     }
 
     public function nationality()
@@ -89,16 +89,18 @@ class AdminController extends ResourceController
         $data['users'] = $user->where('nationality', $nt)->findAll();
         // dd($data);
 
-        return view('admin/jamia', $data);
+        return view('admin/users', $data);
     }
 
     public function users()
     {
         $user = new User();
 
-        $data['title'] = lang('app.admin');
-        $data['user'] = $user->where('role', 'user')->findAll();
-        dd($data);
+        $data['title'] = lang('app.students');
+        $data['users'] = $user->where('role', 'user')->findAll();
+        // dd($data);
+
+        return view('admin/users', $data);
     }
 
     // public function show($id = null)
