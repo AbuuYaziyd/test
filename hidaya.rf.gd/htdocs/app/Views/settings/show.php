@@ -46,7 +46,7 @@ if (session('role') == 'superuser') {
                                             <span class="badge badge-danger"> <?= $errors = $validation->getError('value') ?></span>
                                         <?php endif ?>
                                         <fieldset class="form-group position-relative has-icon-left mb-1">
-                                            <input type="<?= $set['name']!='tanfdh'?'text':'date' ?>" class="form-control" name="value" value="<?= $set['value'] ?>">
+                                            <input type="<?= $set['name']!='tanfidh'?'text':'date' ?>" class="form-control" name="value" value="<?= $set['value'] ?>">
                                             <div class="form-control-position">
                                                 <i class="la la-cog spinner"></i>
                                             </div>

@@ -22,14 +22,17 @@ class Settings extends Migration
             'value' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
+                'null' => true,
             ],
             'info' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
+                'null' => true,
             ],
             'extra' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
+                'null' => true,
             ],
             'updated_at' => [
                 'type' => 'datetime',
