@@ -21,21 +21,24 @@ class Users extends Migration
                 'null' => true,
             ],
             'malaf' => [
-                'type'       => 'VARCHAR',
+                'type'       => 'INTEGER',
                 'constraint' => 255,
                 'null' => true,
             ],
             'iqama' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
+                'null' => true,
             ],
             'passport' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
+                'null' => true,
             ],
             'bitaqa' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
+                'null' => true,
             ],
             'password' => [
                 'type'       => 'VARCHAR',
@@ -68,7 +71,7 @@ class Users extends Migration
             'status' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
-                'default' => 1,
+                'default' => 0,
                 'comment' => 'active=1, inactive=0'
             ],
             'phone' => [

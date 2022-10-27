@@ -17,9 +17,9 @@ class MushrifController extends BaseController
         $role = $user->find($_SESSION['id']);
         $data['lead'] = $tanfidh->where('mushrif', session('id'))->countAllResults();
         $data['status'] = $tanfidh->where(['tnfdhStatus' => 'incomplete','mushrif', session('id')])->countAllResults();
-        $data['judud0'] = $user->where(['malaf' => null, 'status' => 0, 'jamia' => $role['jamia']])->countAllResults();
-        $data['judud1'] = $user->where(['malaf' => null, 'status' => 0, 'jamia' => $role['jamia']])->countAllResults();
-        $data['users'] = $user->where(['nationality' => $role['nationality'], 'jamia' => $role['jamia']])->findAll();
+        $data['judud0'] = $user->where(['malaf' => null, 'status' => null, 'jamia' => $role['jamia'], 'nationality' => $role['nationality']])->countAllResults();
+        $data['judud1'] = $user->where(['malaf' => null, 'status' => 0, 'jamia' => $role['jamia'], 'nationality' => $role['nationality']])->countAllResults();
+        // $data['users'] = $user->where(['nationality' => $role['nationality'], 'jamia' => $role['jamia'], 'nationality' => $role['nationality']])->findAll();
         $data['all'] = $user->where(['nationality' => $role['nationality'], 'jamia' => $role['jamia']])->countAllResults();
         $data['full'] = $user->countAll();
         $data['title'] = lang('app.dashboard');
@@ -46,7 +46,7 @@ class MushrifController extends BaseController
         $user = new User();
         $dt = $user->find(session('id'));
         
-        $data['users'] = $user->where(['nationality' => $dt['nationality'], 'jamia' => $dt['jamia'], 'status' => 0, 'malaf' => null])->findAll();
+        $data['users'] = $user->where(['nationality' => $dt['nationality'], 'jamia' => $dt['jamia'], 'malaf' => null])->findAll();
         $data['check'] = lang('app.students');
         $data['title'] = lang('app.judud').' - '.$dt['nationality'].' - '.$dt['jamia'];
         // dd($data);
@@ -83,33 +83,30 @@ class MushrifController extends BaseController
                 'userId' => $id
             ];
             $img->save($insert);
+        $data['img'] = $img->where('userId', $id)->first();
         }
-
         // dd($data);
+
         return view('mushrif/image', $data);
     }
 
     public function activate($id)
     {
-        dd($id);
         helper('form');
 
-        $img = new Image();
         $user = new User();
 
-        $data['img'] = $img->where('userId', $id)->first();
         $data['user'] = $user->find($id);
         $data['title'] = lang('app.data');
         // dd($data);
 
-        if (!$data['img']) {
-            $insert = [
-                'status' => 1
-            ];
-            $img->update($id, $insert);
-        }
-
+        $insert = [
+            'status' => 0
+        ];
+        $ok = $user->update($id, $insert);
         // dd($data);
-        return view('mushrif/image', $data);
+        if ($ok) {
+            return redirect()->to('mushrif/judud')->with('type', 'success')->with('title', lang('app.done'))->with('text', lang('app.activate') . ' ' . lang('app.student') . ' ' . lang('app.success'));
+        }
     }
 }

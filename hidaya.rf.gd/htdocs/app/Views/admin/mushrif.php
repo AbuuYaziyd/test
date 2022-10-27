@@ -76,7 +76,6 @@
 <?= $this->section('scripts') ?>
 
 <!-- BEGIN: Page Vendor JS-->
-<script src="<?= base_url('app-assets/vendors/js/vendors.min.js') ?>"></script>
 <script src="<?= base_url('app-assets/vendors/js/tables/datatable/datatables.min.js') ?>"></script>
 <script src="<?= base_url('app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js') ?>"></script>
 <script src="<?= base_url('app-assets/vendors/js/tables/buttons.colVis.min.js') ?>"></script>

@@ -42,12 +42,12 @@
                                             <tbody>
                                                 <?php foreach ($users as $key => $data) : ?>
                                                     <tr>
-                                                        <td><span class="badge badge-<?= ( $data['status']==1?'danger':'success') ?>"><?= ( $data['malaf']??lang('app.underAction')) ?></span></td>
+                                                        <td><span class="badge badge-<?= ( $data['status']==null?'danger':'success') ?>"><?= ( $data['malaf']!=null?lang('app.notactive'):lang('app.underAction')) ?></span></td>
                                                         <td><?= $data['name'] ?></td>
                                                         <td><?= $data['iqama'] ?></td>
                                                         <td><a href="tel:+966<?= $data['phone'] ?>" class="badge badge-secondary">966<?= $data['phone'] ?></a></td>
                                                         <td><?= $data['level'] ?></td>
-                                                        <td><a href="<?= base_url('mushrif/active/' . $data['id']) ?>" class="btn btn-sm round btn-outline-warning <?= ( $data['status']==1?'':'disabled') ?>" ><?= lang('app.show') ?></a></td>
+                                                        <td><a href="<?= base_url('mushrif/active/' . $data['id']) ?>" class="btn btn-sm round btn-outline-warning <?= ( $data['status']==null?'':'disabled') ?>" ><?= lang('app.show') ?></a></td>
                                                     </tr>
                                                 <?php endforeach ?>
                                             </tbody>
@@ -66,7 +66,6 @@
 <?= $this->endsection() ?>
 <?= $this->section('scripts') ?>
 
-<script src="<?= base_url('app-assets/vendors/js/vendors.min.js') ?>"></script>
 <script src="<?= base_url('app-assets/vendors/js/tables/datatable/datatables.min.js') ?>"></script>
 <script src="<?= base_url('app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js') ?>"></script>
 <script src="<?= base_url('app-assets/vendors/js/tables/buttons.colVis.min.js') ?>"></script>

@@ -30,10 +30,13 @@ class AuthController extends BaseController
 
         $nat = new Country();
         $bank = new Bank();
+        $user = new User();
         
         $data['title'] = lang('app.signup');
         $data['nat'] = $nat->findAll();
+        $data['user'] = $user->orderBy('malaf', 'DECS')->first();
         $data['bank'] = $bank->findAll();
+        dd($data);
 
         return view('auth/register',$data);
     }
@@ -48,6 +51,8 @@ class AuthController extends BaseController
                 'email' => 'valid_email|is_unique[users.email]',
                 'iban' => 'required|exact_length[24]',
                 'iqama' => 'required|exact_length[10]|integer',
+                'bitaqa' => 'required',
+                'passport' => 'required',
                 'phone' => 'required|exact_length[9]|integer',
                 'nationality' => 'required|integer',
                 'jamia' => 'required',
@@ -71,6 +76,12 @@ class AuthController extends BaseController
                     'required' => lang('error.required'),
                     'integer' => lang('error.integer'),
                     'exact_length' => lang('error.min_length'),
+                ],
+                'bitaqa' => [
+                    'required' => lang('error.required'),
+                ],
+                'passport' => [
+                    'required' => lang('error.required'),
                 ],
                 'iban' => [
                     'required' => lang('error.required'),
@@ -121,6 +132,8 @@ class AuthController extends BaseController
                 'password' => password_hash($this->request->getVar('iqama'), PASSWORD_DEFAULT),
                 'iban' => $this->request->getVar('iban'),
                 'iqama' => $this->request->getVar('iqama'),
+                'bitaqa' => $this->request->getVar('bitaqa'),
+                'passport' => $this->request->getVar('passport'),
                 'phone' => $this->request->getVar('phone'),
                 'nationality' => $this->request->getVar('nationality'),
                 'jamia' => $this->request->getVar('jamia'),

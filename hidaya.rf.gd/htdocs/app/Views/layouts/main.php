@@ -19,6 +19,7 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/vendors/css/vendors-rtl.min.css') ?> ">
     <!-- END: Vendor CSS-->
 
+    <?= $this->renderSection('styles') ?>
     <!-- BEGIN: Theme CSS-->
     <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/css-rtl/bootstrap.css') ?> ">
     <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/css-rtl/bootstrap-extended.css') ?> ">
@@ -35,7 +36,6 @@
     <!-- END: Page CSS-->
 
     <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/vendors/css/extensions/sweetalert2.min.css') ?>">
-    <?= $this->renderSection('styles') ?>
 
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/style-rtl.css') ?> ">

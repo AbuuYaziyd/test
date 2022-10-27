@@ -47,6 +47,26 @@
                                     <i class="la la-user"></i>
                                 </div>
                             </fieldset>
+                            <label class="text-bold-600"><?= lang('app.bitaqa') ?></label>
+                            <?php if ($validation->getError('bitaqa')) : ?>
+                                <span class="badge badge-danger"> <?= $errors = $validation->getError('bitaqa') ?></span>
+                            <?php endif ?>
+                            <fieldset class="form-group position-relative has-icon-left mb-1">
+                                <input type="text" class="form-control" name="bitaqa" placeholder="<?= lang('app.bitaqa') ?>">
+                                <div class="form-control-position">
+                                    <i class="la la-credit-card"></i>
+                                </div>
+                            </fieldset>
+                            <label class="text-bold-600"><?= lang('app.passport') ?></label>
+                            <?php if ($validation->getError('passport')) : ?>
+                                <span class="badge badge-danger"> <?= $errors = $validation->getError('passport') ?></span>
+                            <?php endif ?>
+                            <fieldset class="form-group position-relative has-icon-left mb-1">
+                                <input type="text" class="form-control" name="passport" placeholder="<?= lang('app.passport') ?>">
+                                <div class="form-control-position">
+                                    <i class="la la-credit-card"></i>
+                                </div>
+                            </fieldset>
                             <label class="text-bold-600"><?= lang('app.phone') ?></label>
                             <?php if ($validation->getError('phone')) : ?>
                                 <span class="badge badge-danger"> <?= $errors = $validation->getError('phone') ?></span>

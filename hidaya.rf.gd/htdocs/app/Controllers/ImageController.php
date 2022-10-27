@@ -25,6 +25,7 @@ class ImageController extends ResourceController
                 'userId' => $_SESSION['id']
             ];
             $img->save($insert);
+            $data['img'] = $img->where('userId', $_SESSION['id'])->first();
         }
 
         // dd($data);

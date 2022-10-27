@@ -23,7 +23,7 @@
                         <li class="dropdown dropdown-user nav-item">
                             <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                                 <span class="mr-1 user-name text-bold-700"><?= session('name') ?></span><span class="avatar avatar-online">
-                                    <img src="https://ui-avatars.com/api/?name=<?= session('malaf') ?>&background=random&length=4" alt="avatar"><i></i>
+                                    <img src="https://ui-avatars.com/api/?name=<?= sprintf('%04s', session('malaf')) ?>&background=random&length=4" alt="avatar"><i></i>
                                 </span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">

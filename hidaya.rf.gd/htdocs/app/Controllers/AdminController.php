@@ -167,18 +167,122 @@ class AdminController extends ResourceController
         }
     }
 
-    // public function mushrif()
-    // {
-    //     $user = new User();
+    public function judud()
+    {
+        // dd('ok');
+        $user = new User();
 
-    //     $role = $user->find($_SESSION['id']);
-    //     $data['users'] = $user->where(['role' => 'mushrif'])->findAll();
-    //     $data['check'] = lang('app.students');
-    //     $data['title'] = lang('app.mandub');
-    //     // dd($data);
+        $data['users'] = $user->where(['malaf' => null, 'status' => 0])->findAll();
+        $data['title'] = lang('app.judud');
+        
+        $ok = $user->select('malaf')->findAll();
+        foreach ($ok as $value) {
+            $ok1[] = sprintf('%04s', ($value['malaf']));
+        }
+        for ($i=0; $i < 9999; $i++) { 
+            if (!in_array( $i, $ok1 )) {
+                $dt[] = sprintf('%04s', $i);
+            }
+        }
+        // dd(($dt));
 
-    //     return view('admin/mushrif', $data);
-    // }
+        return view('admin/judud', $data);
+    }
+
+    public function activate($id)
+    {
+        // dd('ok');
+        $user = new User();
+
+        $data['users'] = $user->find($id);
+        $data['title'] = lang('app.judud');
+        
+        $ok = $user->select('malaf')->findAll();
+        foreach ($ok as $value) {
+            $arr1[] = sprintf('%04s', ($value['malaf']));
+        }
+        for ($i=100; $i < 9999; $i++) { 
+            if (!in_array( $i, $arr1)) {
+                $arr2[] = sprintf('%04s', $i);
+            }
+        }
+        $d = [
+            'malaf' => array_diff($arr1, $arr2)[1],
+            'status' => 1
+        ];
+        
+        // dd($d);
+        $updt = $user->update($id, $d);
+
+        if ($updt) {
+            return redirect()->to('admin')->with('type', 'success')->with('title', lang('app.done'))->with('text', lang('app.register') . ' ' . lang('app.student') . ' ' . lang('app.success'));
+        }
+    }
+
+    public function activateAll()
+    {
+        $user = new User();
+        
+            $ok = $user->select('malaf')->findAll();
+            foreach ($ok as $data) {
+                $arr1[] = sprintf('%04s', ($data['malaf']));
+            }
+            // for ($i=0; $i < 9999; $i++) { 
+            //     $arr2[] = sprintf('%04s', $i);
+            // }
+            for ($i=1000; $i < 9999; $i++) { 
+                if (in_array($i, $arr1)) {
+                    $no[] = $i;
+                }
+            }
+        foreach ($this->request->getVar('id') as $key => $value) {
+            $id = $value;
+            // $ar = [array_diff($arr2, $arr1)];
+            // foreach (array_diff($arr2, $arr1) as  $value) {
+            //     $ar[] = $value;
+            // }
+            $d = [
+                'malaf' => sprintf('%04s', $no[$key]),
+                'status' => 1,
+                'id' => $id
+            ];
+            // dd($d);
+            // dd(array_rand(array_diff($arr2, $arr1)));
+            $updt = $user->update($id, $d);
+        }
+            // dd($d);
+
+        // foreach ($this->request->getVar('id') as $value) {
+        //     $id = $value;
+        //     $ok = $user->select('malaf')->findAll();
+        //     foreach ($ok as $data) {
+        //         $arr1[] = sprintf('%04s', ($data['malaf']));
+        //     }
+            
+        //     $flipped = array_flip($arr1);
+        //     for ($i = 1; $i < 9999; $i++)
+        //     { 
+        //         if (!isset($flipped[$i]))
+        //         {
+        //             $out_array[] = sprintf('%04s', $i);
+        //             // $count = ;
+        //         }
+        //     }
+        //     $d[] = [
+        //         'malaf' => array_rand($out_array),
+        //         'status' => 1,
+        //         'id' => $id,
+        //         // 'count' => $count
+        //     ];
+        //     // dd($d);
+        //     // dd(array_diff($arr2, $arr1));
+        //     // $updt = $user->update($id, $d);
+        // }
+        //     dd($d);
+        if ($updt) {
+            return redirect()->to('admin')->with('type', 'success')->with('title', lang('app.done'))->with('text', lang('app.register') . ' ' . lang('app.student') . ' ' . lang('app.success'));
+        }
+    }
     
     // public function add()
     // {
