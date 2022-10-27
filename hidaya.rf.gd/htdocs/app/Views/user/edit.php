@@ -62,7 +62,7 @@
                                         </tr>
                                         <tr>
                                             <td><?= lang('app.malaf') ?>:</td>
-                                            <td class="users-view-name"><input type="text" class="form-control" name="malaf" value="<?= $user['malaf'] ?>" readonly></td>
+                                            <td class="users-view-name"><input type="text" class="form-control" name="malaf" value="<?= sprintf('%04s', $user['malaf']) ?>" readonly></td>
                                         </tr>
                                         <tr>
                                             <td><?= lang('app.bitaqa') ?>:</td>

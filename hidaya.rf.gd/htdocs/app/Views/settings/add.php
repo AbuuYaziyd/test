@@ -15,7 +15,7 @@
                             <div class="card-content">
                                 <div class="col-12">
                                     <?php $validation = \Config\Services::validation(); ?>
-                                    <?= form_open('set/edit/'. $set['id'] ) ?>
+                                    <?= form_open('set/create') ?>
                                     <div class="row">
                                     <div class="col-md-6">
                                         <label class="text-bold-600"><?= lang('app.name') ?></label>
@@ -23,7 +23,7 @@
                                             <span class="badge badge-danger"> <?= $errors = $validation->getError('name') ?></span>
                                         <?php endif ?>
                                         <fieldset class="form-group position-relative has-icon-left mb-1">
-                                            <input type="text" class="form-control" name="name" value="<?= $set['name'] ?>">
+                                            <input type="text" class="form-control" name="name" placeholder="<?= lang('app.name') ?>">
                                             <div class="form-control-position">
                                                 <i class="la la-cog spinner"></i>
                                             </div>
@@ -35,7 +35,7 @@
                                             <span class="badge badge-danger"> <?= $errors = $validation->getError('value') ?></span>
                                         <?php endif ?>
                                         <fieldset class="form-group position-relative has-icon-left mb-1">
-                                            <input type="<?= $set['name']=='tanfdh'?'text':'date' ?>" class="form-control" name="value" value="<?= $set['value'] ?>">
+                                            <input type="text" class="form-control" name="value" placeholder="<?= lang('app.value') ?>">
                                             <div class="form-control-position">
                                                 <i class="la la-cog spinner"></i>
                                             </div>
@@ -44,7 +44,7 @@
                                         <div class="col-md-6">
                                         <label class="text-bold-600"><?= lang('app.info') ?></label>
                                         <fieldset class="form-group position-relative has-icon-left mb-1">
-                                            <input type="text" class="form-control" name="info" value="<?= $set['info'] ?>">
+                                            <input type="text" class="form-control" name="info" placeholder="<?= lang('app.info') ?>">
                                             <div class="form-control-position">
                                                 <i class="la la-chrome spinner"></i>
                                             </div>
@@ -53,7 +53,7 @@
                                         <div class="col-md-6">
                                         <label class="text-bold-600"><?= lang('app.extra') ?></label>
                                         <fieldset class="form-group position-relative has-icon-left mb-1">
-                                            <input type="text" class="form-control" name="extra" value="<?= $set['extra'] ?>">
+                                            <input type="text" class="form-control" name="extra" placeholder="<?= lang('app.extra') ?>">
                                             <div class="form-control-position">
                                                 <i class="la la-chrome spinner"></i>
                                             </div>

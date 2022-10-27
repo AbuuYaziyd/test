@@ -134,13 +134,13 @@ $routes->group('umrah', function ($routes) {
  * Routes Groups Setting Routings
  * --------------------------------------------------------------------
  */
-// $routes->group('set', function ($routes) {
-//     $routes->get('/', 'SettingController::index', ['filter' => 'auth']);
-    // $routes->get('view', 'SettingController::new', ['filter' => 'auth']);
-    // $routes->get('edit/(:num)', 'SettingController::show/$1', ['filter' => 'auth']);
-    // $routes->get('delete/(:num)', 'SettingController::delete/$1', ['filter' => 'auth']);
-    // $routes->post('upload/(:num)', 'SettingController::update/$1', ['filter' => 'auth']);
-// });
+$routes->group('set', function ($routes) {
+    $routes->get('/', 'SettingController::index', ['filter' => 'auth']);
+    $routes->get('add', 'SettingController::add', ['filter' => 'auth']);
+    $routes->post('create', 'SettingController::create', ['filter' => 'auth']);
+    $routes->get('show/(:num)', 'SettingController::show/$1', ['filter' => 'auth']);
+    $routes->post('edit/(:num)', 'SettingController::edit/$1', ['filter' => 'auth']);
+});
 
 /*
  * --------------------------------------------------------------------

@@ -12,6 +12,9 @@ return [
     'passchange' => 'تغيير كلمة المرور',
     'signup' => 'سجل نفسك',
     'register' => 'سجل',
+    'value' => 'تقدير',
+    'extra' => 'إضافي',
+    'info' => 'معلومات زيادة',
     'email' => 'البريد الإكتروني',
     'password' => 'كلمة المرور',
     'oldpassword' => 'كلمة المرور القديم',
@@ -39,6 +42,9 @@ return [
     'passport' => 'جواز السفر',
     'bitaqa' => 'بطاقة الطالب',
     'ok' => 'تمام', 
+    'add' => 'إضافة', 
+    'settings' => 'إعدادات', 
+    'setting' => 'إعداد', 
     'active' => 'نشيط', 
     'activate' => 'تنشيط', 
     'warning' => 'تنبيه', 
@@ -88,6 +94,7 @@ return [
     'mushrif' => 'مشرف',
     'graduated?' => 'أمتخرج هو؟',
     'judud' => 'طلاب الجدد',
+    'doneSuccess' => 'تم العملية  بنحاح',
     'jadid' => 'طلاب جديد',
 
     //Messages->session

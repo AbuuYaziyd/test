@@ -34,9 +34,9 @@ class AuthController extends BaseController
         
         $data['title'] = lang('app.signup');
         $data['nat'] = $nat->findAll();
-        $data['user'] = $user->orderBy('malaf', 'DECS')->first();
+        // $data['user'] = $user->selectMax('malaf')->first();
         $data['bank'] = $bank->findAll();
-        dd($data);
+        // dd($data);
 
         return view('auth/register',$data);
     }
@@ -143,7 +143,7 @@ class AuthController extends BaseController
 
             // dd($data); 
             $ok = $user->save($data);
-            $ok = true;
+            // $ok = true;
             if ($ok) {
                 return redirect()->to('login')->with('type', 'success')->with('text', lang('app.useIqamaAsPassword'))->with('title', lang('app.registerSuccess'));
             }
@@ -210,7 +210,7 @@ class AuthController extends BaseController
                     'id' => $data['id'],
                     'name' => $data['name'],
                     'email' => $data['email'],
-                    'malaf' => $data['malaf'],
+                    'malaf' =>sprintf('%04s', $data['malaf']),
                     'bitaqa' => $data['bitaqa'],
                     'passport' => $data['passport'],
                     'role' => $data['role'],

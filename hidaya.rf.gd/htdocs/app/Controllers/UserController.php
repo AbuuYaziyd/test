@@ -55,7 +55,8 @@ class UserController extends ResourceController
         $user = new User();
 
         $data['title'] = lang('app.profile');
-        $data['user'] = $user->join('banks', 'banks.bankId=users.bank')->find($id);
+        $data['user'] = $user->join('banks', 'banks.bankId=users.bank', 'left')->find($id);
+        // dd($data);
 
         return view('user/profile', $data);
     }
@@ -69,7 +70,7 @@ class UserController extends ResourceController
         $nat = new Country();
 
         $data['title'] = lang('app.profile');
-        $data['user'] = $user->join('banks', 'banks.bankId=users.bank')->find($id);
+        $data['user'] = $user->join('banks', 'banks.bankId=users.bank', 'left')->find($id);
         $data['bank'] = $bank->findAll();
         $data['nat'] = $nat->findAll();
         // dd($data);

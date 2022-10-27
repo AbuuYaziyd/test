@@ -8,11 +8,11 @@
                     <span class="badge badge badge-info badge-pill float-right mr-2"><?= lang('app.'.session('role')) ?></span>
                 </a>
             </li>
-            <?php if ($_SESSION['role'] == 'superadmin')  : ?>
+            <?php if ($_SESSION['role'] == 'admin')  : ?>
             <li class="<?= (isset($check) && $check == lang('app.students') ? 'active' : '') ?> nav-item">
-                <a href="<?= base_url('admin/mushrif') ?>">
-                    <i class="la la-users"></i>
-                    <span class="menu-title"><?= lang('app.mandub') ?></span>
+                <a href="<?= base_url('set') ?>">
+                    <i class="la la-cog spinner"></i>
+                    <span class="menu-title"><?= lang('app.settings') ?></span>
                 </a>
             </li>
             <?php endif ?>

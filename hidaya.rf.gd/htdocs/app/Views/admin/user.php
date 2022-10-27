@@ -16,7 +16,7 @@
                             <h4><b><?= $user['name'] ?></b></h4>
                             <p><?= $user['iqama'] ?></p>
                             <p><a href="tel:+966<?= $user['phone'] ?>" class="btn btn-sm round btn-secondary">966<?= $user['phone'] ?></a> | <a href="https://wa.me/966<?= $user['phone'] ?>" target="_blank" class="btn btn-success btn-sm round"><i class="la la-whatsapp"></i></a></p>
-                            <p><?= $user['jamia'] ?></p>
+                            <p><?= $user['jamia'] ?> - <?= $user['nationality'] ?></p>
                             <p><?= $user['email'] ?></p>
                         </div>
                         <div class="text-center">
@@ -24,7 +24,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Recent Transactions -->
                 <div id="recent-transactions" class="col-md-8 col-sm-12">
                     <div class="card">
                         <div class="card-header">
@@ -57,7 +56,6 @@
                     </div>
                 </div>
             </div>
-            <!--/ Recent Transactions -->
         </div>
     </div>
 </div>
