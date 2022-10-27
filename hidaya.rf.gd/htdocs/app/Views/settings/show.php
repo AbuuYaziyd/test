@@ -17,7 +17,7 @@ if (session('role') == 'superuser') {
                     <div class="card">
                         <div class="card-header">
                             <h3><b><?= $title ?></b>
-                            <?php if ($super) : ?>
+                            <?php if (session('role') == 'superuser') : ?>
                             <a class="btn btn-danger box-shadow-2 round pull-right" href="<?= base_url('set/delete') ?>"><?= lang('app.delete') ?></a>
                             <?php endif ?>
                             </h3>

@@ -167,7 +167,7 @@
 <?= $this->endsection() ?>
 <?= $this->section('scripts') ?>
 <script>
-    <?php if ($reg) :  ?>
+    <?php if ($reg == 1) :  ?>
     $(document).ready(function () {
         url = "<?= base_url() ?>";
         Swal.fire({

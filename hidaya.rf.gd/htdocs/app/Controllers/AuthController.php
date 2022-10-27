@@ -39,12 +39,12 @@ class AuthController extends BaseController
         $data['bank'] = $bank->findAll();
         $user = $user->countAllResults();
         $set = $set->where('name', 'count')->first();
-        if ($user <= $set) {
-            $data['reg'] = 'set';
+        if ($user >= $set['value']) {
+            $data['reg'] = 1;
         } else {
             $data['reg'] = null;
         }
-        // dd($data);
+        // dd($set['value']);
 
         return view('auth/register',$data);
     }
