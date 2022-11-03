@@ -121,12 +121,12 @@ $routes->group('mushrif', function ($routes) {
  */
 $routes->group('umrah', function ($routes) {
     $routes->get('/', 'UmrahController::index', ['filter' => 'auth']);
-    $routes->post('new', 'UmrahController::create', ['filter' => 'auth']);
-    $routes->get('edited/(:num)', 'UmrahController::show/$1', ['filter' => 'auth']);
-    $routes->get('edit/(:num)', 'UmrahController::edit/$1', ['filter' => 'auth']);
-    $routes->post('upload/(:num)', 'UmrahController::update/$1', ['filter' => 'auth']);
-    $routes->post('done', 'UmrahController::done', ['filter' => 'auth']);
-    $routes->get('link', 'UmrahController::link', ['filter' => 'auth']);
+    $routes->get('create', 'UmrahController::create', ['filter' => 'auth']);
+    $routes->get('show/(:num)', 'UmrahController::show/$1', ['filter' => 'auth']);
+    // $routes->get('edit/(:num)', 'UmrahController::edit/$1', ['filter' => 'auth']);
+    // $routes->post('upload/(:num)', 'UmrahController::update/$1', ['filter' => 'auth']);
+    // $routes->post('done', 'UmrahController::done', ['filter' => 'auth']);
+    // $routes->get('link', 'UmrahController::link', ['filter' => 'auth']);
 });
 
 /*

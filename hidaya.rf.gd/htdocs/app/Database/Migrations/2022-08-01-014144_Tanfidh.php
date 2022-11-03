@@ -22,6 +22,7 @@ class Tanfidh extends Migration
             'tasrih' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
+                'null' => true,
             ],
             'tnfdhDate' => [
                 'type'       => 'VARCHAR',

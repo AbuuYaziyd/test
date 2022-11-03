@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\Setting;
 use App\Models\Umrah;
 
 class UmrahController extends BaseController
@@ -11,67 +12,63 @@ class UmrahController extends BaseController
     {
         helper('form');
         $umrah = new Umrah();
+        $set = new Setting();
 
         $data['title'] = lang('app.umrah');
-        $data['next'] = '30/04/2022';
-        $data['umrah'] = $umrah->where(['userId' => $_SESSION['id'], 'tnfdhDate' => $data['next']])->countAllResults();
-        $data['green'] = $umrah->where(['userId' => $_SESSION['id'], 'tnfdhDate' => $data['next'], 'tnfdhStatus' => 'completed'])->first();
-        // dd($data);
+        $data['next'] = $set->where('name', 'tanfidh')->first()['value'];
+        $data['umrah'] = $umrah->where(['userId' => session('id'), 'tnfdhDate' => $data['next']])->orderBy('tnfdhId', 'DESC')->first();
+        $data['green'] = $umrah->where(['userId' => session('id'), 'tnfdhDate' => $data['next'], 'tnfdhStatus' => 'completed'])->first();
+        // dd(!($data['umrah']));
 
         return view('umrah/index', $data);
     }
+
     public function create()
     {
         $umrah = new Umrah();
+        $set = new Setting();
 
-        // $data['title'] = lang('app.umrah');
-        $next = '30/04/2022';
-        $check = $umrah->where(['userId' => $_SESSION['id'], 'tnfdhDate' => $next])->countAllResults();
-        // $id = $umrah->where(['userId' => $_SESSION['id'], 'tnfdhDate' => $next])->first();
-        // dd($id['tnfdhId']);
+        $data['title'] = lang('app.umrah');
+        $next = $set->where('name', 'tanfidh')->first()['value'];
+        $check = $umrah->where(['userId' => session('id'), 'tnfdhDate' => $next])->countAllResults();
+        // dd($data);
 
-        if ($check <= 0) {
+        if (!$check) {
             $reg = [
-                'userId' => $_SESSION['id'],
+                'userId' => session('id'),
                 'tnfdhDate' => $next,
-                'tasrih' => session('malaf'),
             ];
             
             $umrah->save($reg);
-            // $ok = $umrah->where(['userId' => $_SESSION['id'], 'tnfdhDate' => $next])->first();
 
             return redirect()->to('umrah')->with('type', 'success')->with('text', lang('app.regOk'))->with('title', lang('app.done'));
         }else {
-            // return redirect()->to('umrah/edited/'. $id['tnfdhId']);
-            return redirect()->to('umrah')->with('type', 'error')->with('text', lang('app.regNotOk'))->with('title', lang('app.sorry'));
+            return redirect()->to('umrah/show/'.session('id'));
         }
-        // dd($_SESSION['role']);
     }
 
     public function show($id)
     {
-        $umrah = new Umrah();
-
         helper('form');
 
-        $next = '30/04/2022';
-        $ok = $umrah->where(['userId' => session('id'), 'tnfdhDate' => $next])->orderBy('tnfdhId', 'DESC')->first();
-        // dd($ok);
-        
-        $data['title'] = lang('app.umrah');
-        $data['next'] = '30/04/2022';
-        $data['umrah'] = $umrah->where(['userId' => $_SESSION['id'], 'tnfdhDate' => $data['next']])
-        ->find($ok['tnfdhId']);
-        // dd($data);
+        $umrah = new Umrah();
+        $set = new Setting();
+        dd($id);
 
-        return view('umrah/edit', $data);
+        $data['next'] =  $set->where('name', 'tanfidh')->first()['value'];
+        $ok = $umrah->where(['userId' => $id, 'tnfdhDate' => $data['next']])->orderBy('tnfdhId', 'DESC')->first();
+
+        if (!$ok) {
+            return redirect()->to('umrah/create');
+        } else {
+            $data['title'] = lang('app.umrah');
+            $data['umrah'] = $umrah->where(['userId' => $id, 'tnfdhDate' => $data['next']])->find($ok['tnfdhId']);
+            dd($ok);
+
+            return view('umrah/edit', $data);
+        }
     }
 
-    /**
-     * Add or update a model resource, from "posted" properties
-     *
-     * @return mixed
-     */
     public function update($id = null)
     {
         $umrah = new Umrah();
@@ -102,7 +99,7 @@ class UmrahController extends BaseController
             'app.errorOccured'))->with('text', $data['errors']['img']);
         }
 
-        $pic = $umrah->where(['userId' => $_SESSION['id'], 'tnfdhDate' => $next ])->first();
+        $pic = $umrah->where(['userId' => session('id'), 'tnfdhDate' => $next ])->first();
 
         // dd(file_exists('app-assets/images/tasrih/' . $pic[$upl]));
         if (file_exists('app-assets/images/tasrih/' . $pic[$upl])) {
@@ -152,7 +149,7 @@ class UmrahController extends BaseController
 
         $data['title'] = lang('app.umrah');
         $data['next'] = '30/04/2022';
-        $data['umrah'] = $umrah->where(['userId' => $_SESSION['id'], 'tnfdhDate' => $data['next']])->countAllResults();
+        $data['umrah'] = $umrah->where(['userId' => session('id'), 'tnfdhDate' => $data['next']])->countAllResults();
 
         // dd($data);
         return view('umrah/loc', $data);
