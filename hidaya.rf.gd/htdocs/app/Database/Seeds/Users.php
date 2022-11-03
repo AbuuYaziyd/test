@@ -4363,7 +4363,7 @@ class Users extends Seeder
             ['malaf' => '7637', 'iqama' => '2475944886', 'password' => password_hash('1234567890', PASSWORD_DEFAULT), 'role' => 'user', 'name' => 'موسي درامي', 'city' => 'المدينة المنورة', 'level' => 'البكالوريوس', 'nationality' => 'الكونغو', 'jamia' => 'الجامعة الإسلامية', 'status' => 'active', 'phone' => '966559407565', 'bank' => 'الانماء', 'iban' => 'SA0905000068202779766000'],
         ];
 
-        for ($i=0; $i < 100; $i++) { 
+        for ($i=0; $i < count($data); $i++) { 
             $this->db->table('users')->insert($data[$i]);
         }
         // foreach ($data as $dt) {
