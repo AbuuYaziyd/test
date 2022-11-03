@@ -34,5 +34,14 @@
                     <span class="menu-title"><?= lang('app.umrah') ?></span>
                 </a>
             </li>
+            <?php if (session('role') == 'admin')  : ?>
+            <li class="<?= ($title == lang('app.tanfidh') ? 'active' : '') ?> nav-item">
+                <a href="<?= base_url('tanfidh') ?>">
+                    <i class="la la-balance-scale"></i>
+                    <span class="menu-title"><?= lang('app.tanfidh') ?></span>
+                </a>
+            </li>
+            <?php endif ?>
+        </ul>
     </div>
 </div>

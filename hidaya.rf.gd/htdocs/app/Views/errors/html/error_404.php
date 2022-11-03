@@ -60,9 +60,9 @@
 								<fieldset class="row py-2">
 									<div class="input-group col-12">
 										<p>
-											<?php if (!empty($message) && $message !== '(null)') : ?>
-												<?= nl2br(esc($message)) ?>
-											<?php else : ?>
+                                            <?php if (ENVIRONMENT !== 'production') : ?>
+                                                <?= nl2br(esc($message)) ?>
+                                            <?php else : ?>
 												Sorry! Cannot seem to find the page you were looking for.
 											<?php endif ?>
 										</p>
