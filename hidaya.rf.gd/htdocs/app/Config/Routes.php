@@ -88,6 +88,7 @@ $routes->group('admin', function ($routes) {
     $routes->get('jamia/(:any)', 'AdminController::jamia/$1', ['filter' => 'auth']);
     $routes->get('nationality', 'AdminController::nationality', ['filter' => 'auth']);
     $routes->get('nat/(:any)', 'AdminController::nat/$1', ['filter' => 'auth']);
+    $routes->get('search/(:any)/(:any)', 'AdminController::search/$1/$2', ['filter' => 'auth']);
     $routes->get('users', 'AdminController::users', ['filter' => 'auth']);
     $routes->get('mushrifuna', 'AdminController::mushrifuna', ['filter' => 'auth']);
     $routes->get('add-mushrif/(:num)', 'AdminController::addMushrif/$1', ['filter' => 'auth']);
@@ -147,6 +148,20 @@ $routes->group('set', function ($routes) {
     $routes->get('show/(:num)', 'SettingController::show/$1', ['filter' => 'auth']);
     $routes->post('edit/(:num)', 'SettingController::edit/$1', ['filter' => 'auth']);
     $routes->get('delete/(:num)', 'SettingController::delete/$1', ['filter' => 'auth']);
+});
+
+/*
+ * --------------------------------------------------------------------
+ * Routes Groups Tanfidh Routings
+ * --------------------------------------------------------------------
+ */
+$routes->group('tanfidh', function ($routes) {
+    // $routes->get('/', 'TanfidhController::index', ['filter' => 'auth']);
+    // $routes->get('add', 'TanfidhController::add', ['filter' => 'auth']);
+    // $routes->post('create', 'TanfidhController::create', ['filter' => 'auth']);
+    // $routes->get('show/(:num)', 'TanfidhController::show/$1', ['filter' => 'auth']);
+    // $routes->post('edit/(:num)', 'TanfidhController::edit/$1', ['filter' => 'auth']);
+    // $routes->get('delete/(:num)', 'TanfidhController::delete/$1', ['filter' => 'auth']);
 });
 
 /*

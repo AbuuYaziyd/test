@@ -51,6 +51,29 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <?php foreach ($nationality as $data) : ?>
+                            <div class="col-md-3">
+                                <a href="<?= base_url('admin/nat/' . $data['nationality']) ?>">
+                                    <div class="card pull-up">
+                                        <div class="card-content">
+                                            <div class="card-body">
+                                                <div class="media d-flex">
+                                                    <div class="media-body text-left">
+                                                        <h6 class="text-muted"><?= $data['nationality'] ?></h6>
+                                                        <h3><?= $data['jm'] ?></h3>
+                                                    </div>
+                                                    <div class="align-self-center">
+                                                        <i class="la la-flag black font-large-2 float-right"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        <?php endforeach ?>
+                        </div>
                 </section>
             </div>
         </div>

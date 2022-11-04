@@ -10,7 +10,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3><b><?= $title ?></b>
-                            <?php if (session('role') == 'superuser') : ?>
+                            <?php if (session('role') == 'superuser' || session('role') == 'admin') : ?>
                             <a class="btn btn-outline-success box-shadow-2 round pull-right" href="<?= base_url('set/add') ?>"><?= lang('app.add') ?></a>
                             <?php endif ?>
                             </h3>

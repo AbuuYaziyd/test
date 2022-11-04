@@ -37,8 +37,7 @@
                                                     <th><?= lang('app.phone') ?></th>
                                                     <th><?= lang('app.level') ?></th>
                                                     <?php if (!$type) : ?>
-                                                        <th><?= lang('app.jamia') ?></th>
-                                                        <th><?= lang('app.nationality') ?></th>
+                                                        <th><?= lang('app.jamia') ?> - <?= lang('app.nationality') ?></th>
                                                     <?php elseif ($type == 'nat') : ?>
                                                        <th><?= lang('app.jamia') ?></th>
                                                     <?php elseif ($type == 'jamia') : ?>
@@ -56,12 +55,11 @@
                                                         <td><a href="tel:+966<?= $data['phone'] ?>" class="badge badge-secondary">966<?= $data['phone'] ?></a></td>
                                                         <td><?= $data['level'] ?></td>
                                                         <?php if (!$type) : ?>
-                                                            <td><a href="<?= base_url('admin/jamia/'. $data['jamia']) ?>" class="btn btn-outline-primary round btn-sm"><?= $data['jamia'] ?></a></td>
-                                                            <td><a href="<?= base_url('admin/nat/'. $data['nationality']) ?>" class="btn btn-outline-info round btn-sm"><?= $data['nationality'] ?></a></td>
+                                                            <td><a href="<?= base_url('admin/search/'. $data['nationality'].'/'. $data['jamia']) ?>" class="btn btn-outline-primary round btn-sm"><?= $data['jamia'] ?> - <?= $data['nationality'] ?></a></td>
                                                         <?php elseif ($type == 'nat') : ?>
                                                             <td><a href="<?= base_url('admin/jamia/'. $data['jamia']) ?>" class="btn btn-outline-primary round btn-sm"><?= $data['jamia'] ?></a></td>
                                                         <?php elseif ($type == 'jamia') : ?>
-                                                            <td><a href="<?= base_url('admin/nat/'. $data['nationality']) ?>" class="btn btn-outline-info round btn-sm"><?= $data['nationality'] ?></a></td>
+                                                            <td><a href="<?= base_url('admin/nat') ?>" class="btn btn-outline-info round btn-sm"><?= $data['nationality'] ?></a></td>
                                                         <?php endif ?>
                                                         <td><a href="<?= base_url('admin/show/' . $data['id']) ?>" class="btn btn-sm round btn-outline-warning"><?= lang('app.edit') ?></a></td>
                                                     </tr>

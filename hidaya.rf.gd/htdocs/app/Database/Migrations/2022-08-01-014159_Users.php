@@ -18,18 +18,16 @@ class Users extends Migration
             'email' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
-                'null' => true,
+                'unique' => true,
             ],
             'malaf' => [
                 'type'       => 'INTEGER',
                 'constraint' => 255,
-                'null' => true,
                 'unique' => true,
             ],
             'iqama' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
-                'null' => true,
                 'unique' => true,
             ],
             'passport' => [
@@ -58,18 +56,23 @@ class Users extends Migration
             'city' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
+                'null' => true,
             ],
             'level' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
+                'null' => true,
             ],
             'nationality' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
+                'null' => true,
+
             ],
             'jamia' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
+                'null' => true,
             ],
             'status' => [
                 'type'       => 'VARCHAR',

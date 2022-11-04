@@ -24,14 +24,18 @@ class AdminController extends BaseController
         $data['complt'] = $tanfidh->where(['tnfdhStatus' => 1])->countAllResults();
         $data['status'] = $tanfidh->where(['tnfdhStatus' => 0])->countAllResults();
         $data['judud'] = $user->where(['malaf' => null, 'status' => 0])->countAllResults();
-        $data['users'] = $user->where(['nationality' => $role['nationality']])->findAll();
+        // $data['users'] = $user->where(['role' => 'user', 'role' => 'user'])->findAll();
         $data['full'] = count($user->where('role!=', 'admin')->findAll());
         $data['jamia'] = count($user->groupBy('jamia')->findAll());
         $data['nationality'] = count($user->groupBy('nationality')->findAll());
         $data['title'] = lang('app.dashboard');
         // dd($data['full']);
 
-        return view('admin/index', $data);
+        if ($role['role'] == 'admin') {
+            return view('admin/index', $data);
+        } else {
+            return redirect()->to('user');
+        }   
     }
 
     public function jamiat()
@@ -91,6 +95,18 @@ class AdminController extends BaseController
         $data['users'] = $user->where('nationality', $nt)->findAll();
         // dd($data);
 
+        return view('admin/users', $data);
+    }
+
+    public function search($nat, $jam)
+    {
+        
+        $data['title'] = lang('app.users').' - '.$nat .' - '.$jam;
+        $user = new User();
+        $data['users'] = $user->where(['nationality' => $nat, 'jamia' => $jam])->findAll();
+        $data['type'] = 'all';
+        // dd($data);
+        
         return view('admin/users', $data);
     }
 
