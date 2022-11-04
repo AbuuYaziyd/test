@@ -19,7 +19,6 @@ class Users extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
                 'null' => true,
-                'unique' => true,
             ],
             'malaf' => [
                 'type'       => 'INTEGER',
@@ -81,7 +80,6 @@ class Users extends Migration
             'phone' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
-                'unique' => true,
             ],
             'bank' => [
                 'type'       => 'VARCHAR',

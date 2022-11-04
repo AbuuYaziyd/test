@@ -2,11 +2,11 @@
 
 namespace App\Controllers;
 
+use App\Controllers\BaseController;
 use App\Models\Tanfidh;
 use App\Models\User;
-use CodeIgniter\RESTful\ResourceController;
 
-class AdminController extends ResourceController
+class AdminController extends BaseController
 {
     /**
      * Return an array of resource objects, themselves in array format
@@ -156,7 +156,7 @@ class AdminController extends ResourceController
     //     return view('admin/show', $data);
     // }
 
-    public function delete($id = null)
+    public function delete($id)
     {
         $user = new User();
 

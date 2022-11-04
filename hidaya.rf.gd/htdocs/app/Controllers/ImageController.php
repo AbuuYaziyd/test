@@ -2,11 +2,11 @@
 
 namespace App\Controllers;
 
+use App\Controllers\BaseController;
 use App\Models\Image;
 use App\Models\User;
-use CodeIgniter\RESTful\ResourceController;
 
-class ImageController extends ResourceController
+class ImageController extends BaseController
 {
     public function index()
     {
@@ -68,7 +68,7 @@ class ImageController extends ResourceController
         return view('image/edit', $data);
     }
 
-    public function update($id = null)
+    public function update($id)
     {    
         $image = new Image();
         $settingz = new User();

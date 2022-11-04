@@ -348,9 +348,9 @@ class AuthController extends BaseController
 
             // dd($data); 
             $ok = $user->update($id, $data);
-            // $ok = session()->destroy();
 
             if ($ok) {
+                session()->destroy();
                 return redirect()->to('login')->with('type', 'success')->with('title', lang('app.ok'))->with('text', lang('app.passchanged'));
             } else {
                 return redirect()->to('password/change')->with('toast', 'danger')->with('message', lang('app.errorOccured'));

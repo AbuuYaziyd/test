@@ -66,11 +66,11 @@
                                         </tr>
                                         <tr>
                                             <td><?= lang('app.bitaqa') ?>:</td>
-                                            <td class="users-view-name"><input type="text" class="form-control" name="bitaqa" value="<?= $user['bitaqa']??'' ?>"></td>
+                                            <td class="users-view-name"><input type="text" class="form-control" name="bitaqa" value="<?= $user['bitaqa']??'' ?>" placeholder="<?= lang('app.notFound') ?>"></td>
                                         </tr>
                                         <tr>
                                             <td><?= lang('app.passport') ?>:</td>
-                                            <td class="users-view-name"><input type="text" class="form-control" name="passport" value="<?= $user['passport']??'' ?>"></td>
+                                            <td class="users-view-name"><input type="text" class="form-control" name="passport" value="<?= $user['passport']??'' ?>" placeholder="<?= lang('app.notFound') ?>"></td>
                                         </tr>
                                         <tr>
                                             <td><?= lang('app.email') ?>:</td>
@@ -78,13 +78,7 @@
                                         </tr>
                                         <tr>
                                             <td><?= lang('app.nationality') ?>:</td>
-                                            <td>
-                                            <select name="nationality" class="custom-select">
-                                                    <option selected readonly><?= $user['nationality'] ?></option>
-                                                    <?php foreach ($nat as $key => $data) : ?>
-                                                        <option value="<?= $data['country_arName']?>"><?= $data['country_arName'] ?></option>
-                                                    <?php endforeach ?>
-                                            </select>
+                                            <td><input type="text" class="form-control" name="nationality" value="<?= $user['nationality'] ?>" placeholder="<?= lang('app.notFound') ?>" readonly>
                                             </td>
                                         </tr>
                                         <tr>

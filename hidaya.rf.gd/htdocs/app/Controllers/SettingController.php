@@ -2,13 +2,10 @@
 
 namespace App\Controllers;
 
+use App\Controllers\BaseController;
 use App\Models\Setting;
-use App\Models\Tanfidh;
-use App\Models\User;
-use CodeIgniter\Commands\Database\Seed;
-use CodeIgniter\RESTful\ResourceController;
 
-class SettingController extends ResourceController
+class SettingController extends BaseController
 {
     /**
      * Return an array of resource objects, themselves in array format
@@ -80,7 +77,7 @@ class SettingController extends ResourceController
         }
     }
 
-    public function show($id = null)
+    public function show($id)
     {
         helper('form');
 
@@ -93,7 +90,7 @@ class SettingController extends ResourceController
         return view('settings/show', $data);
     }
 
-    public function edit($id = null)
+    public function edit($id)
     {
         $set = new Setting();
         
@@ -114,7 +111,7 @@ class SettingController extends ResourceController
         }
     }
 
-    public function delete($id = null)
+    public function delete($id)
     {
         $set = new Setting();
         $ok = $set->find($id);

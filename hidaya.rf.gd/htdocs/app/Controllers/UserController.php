@@ -2,13 +2,13 @@
 
 namespace App\Controllers;
 
+use App\Controllers\BaseController;
 use App\Models\Bank;
+use App\Models\Country;
 use App\Models\Hits;
 use App\Models\User;
-use App\Models\Country;
-use CodeIgniter\RESTful\ResourceController;
 
-class UserController extends ResourceController
+class UserController extends BaseController
 {
     public function index()
     {
@@ -56,7 +56,7 @@ class UserController extends ResourceController
         
     }
 
-    public function show($id = null)
+    public function show($id)
     {
         $user = new User();
 
@@ -67,7 +67,7 @@ class UserController extends ResourceController
         return view('user/profile', $data);
     }
 
-    public function edit($id = null)
+    public function edit($id)
     {
         helper('form');
 
@@ -84,7 +84,7 @@ class UserController extends ResourceController
         return view('user/edit', $data);
     }
 
-    public function update($id = null)
+    public function update($id)
     {
         $email = $this->request->getVar('email');
         $user = new User();
@@ -94,12 +94,12 @@ class UserController extends ResourceController
             'email' => $email!=null?$email: null,
             'phone' => $this->request->getVar('phone'),
             'bitaqa' => $this->request->getVar('bitaqa'),
-            'passport' => $this->request->getVar('passport'),
+            'passport' => strtoupper($this->request->getVar('passport')),
             'bank' => $this->request->getVar('bank'),
             'iban' => $this->request->getVar('iban'),
         ];
 
-        // dd($data);
+        dd($data);
         $ok = $user->update($id, $data);
         if (!$ok) {
             return redirect()->to('user/edit/'.$id)->with('type', 'error')->with('title', lang('app.sorry'))->with('text', lang('app.errorOccured'));
