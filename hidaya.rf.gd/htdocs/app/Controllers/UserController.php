@@ -35,18 +35,25 @@ class UserController extends ResourceController
         $data['bank'] = $user->groupBy('bank')->countAllResults();
         $data['title'] = lang('app.dashboard');
 
-        $role = $user->select('role')->find($_SESSION['id']);
-        // dd($role);
+        $role = $user->find(session('id'));
+        $auth = password_verify('1234567890', $role['password']);
+        // dd($auth);
 
-        if ($role['role'] == 'superuser') {
-            return redirect()->to('admin');
-        }elseif ($role['role'] == 'admin') {
-            return redirect()->to('admin');
-        }elseif ($role['role'] == 'mushrif') {
-            return redirect()->to('mushrif');
-        }else {
-            return view('user/index', $data);
+        if (!$auth) {
+            if ($role['role'] == 'superuser') {
+                return redirect()->to('admin');
+            }elseif ($role['role'] == 'admin') {
+                return redirect()->to('admin');
+            }elseif ($role['role'] == 'mushrif') {
+                return redirect()->to('mushrif');
+            }else {
+                return view('user/index', $data);
+            }
+        } else {
+            return redirect()->to('change/password');
+            dd($auth);
         }
+        
     }
 
     public function show($id = null)

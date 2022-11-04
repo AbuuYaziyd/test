@@ -285,9 +285,22 @@ class AuthController extends BaseController
     public function pass()
     {
         helper('form');
-        $data['title'] = lang('app.recoverpassword');
+        $user = new User();
 
-        return view('auth/change', $data);
+        $data['title'] = lang('app.recoverpassword');
+        
+        $role = $user->find(session('id'));
+        $auth = password_verify('1234567890', $role['password']);
+        ($auth?$data['old'] = '1234567890':$data['old'] = null);
+
+        if (!$auth) {
+            return view('auth/change', $data);
+        } else {
+            // dd($auth);
+            return view('auth/change', $data);
+        }
+        
+
     }
 
     public function change($id)
@@ -296,9 +309,13 @@ class AuthController extends BaseController
         $input = $this->validate(
             [   //Rules
                 'old' => 'required',
+                'new' => 'required',
             ],
             [   // Errors
                 'old' => [
+                    'required' => lang('error.required'),
+                ],
+                'new' => [
                     'required' => lang('error.required'),
                 ],
             ]
@@ -309,17 +326,20 @@ class AuthController extends BaseController
         $old = $this->request->getVar('old');
         $new = $this->request->getVar('new');
 
-        $data = $user->find($id);
-        $pass = $data['password'];
+        $role = $user->find($id);
+        $pass = $role['password'];
         $auth = password_verify($old, $pass);
-            // dd($auth); 
+        // dd($auth); 
 
         if (!$input) {
             $data['title'] = lang('app.passchange');
+            // $data['old'] = null;
+            $auth = password_verify('1234567890', $role['password']);
+            (!$auth?$data['old'] = null:$data['old'] = '1234567890');
             $data['validation'] = $this->validator;
             echo view('auth/change', $data);
         } elseif (!$auth) {
-            $data['title'] = 'settings';
+            $data['title'] = lang('app.recoverpassword');
             return redirect()->to('change/password')->with('title', lang('app.notokoldpass'))->with('type', 'error');
         } else {
             $data = [
@@ -328,6 +348,7 @@ class AuthController extends BaseController
 
             // dd($data); 
             $ok = $user->update($id, $data);
+            // $ok = session()->destroy();
 
             if ($ok) {
                 return redirect()->to('login')->with('type', 'success')->with('title', lang('app.ok'))->with('text', lang('app.passchanged'));

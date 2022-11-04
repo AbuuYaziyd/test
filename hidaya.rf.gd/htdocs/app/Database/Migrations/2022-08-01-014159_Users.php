@@ -19,16 +19,19 @@ class Users extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
                 'null' => true,
+                'unique' => true,
             ],
             'malaf' => [
                 'type'       => 'INTEGER',
                 'constraint' => 255,
                 'null' => true,
+                'unique' => true,
             ],
             'iqama' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
                 'null' => true,
+                'unique' => true,
             ],
             'passport' => [
                 'type'       => 'VARCHAR',
@@ -78,6 +81,7 @@ class Users extends Migration
             'phone' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
+                'unique' => true,
             ],
             'bank' => [
                 'type'       => 'VARCHAR',
@@ -86,6 +90,7 @@ class Users extends Migration
             'iban' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
+                'unique' => true,
             ],
             'updated_at' => [
                 'type' => 'datetime',

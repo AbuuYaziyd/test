@@ -5,6 +5,7 @@ return [
     'required' => 'ملزم',
     'is_unique' => 'مسجل من قبل',
     'uploaded' => 'لازم تحمل الصورة!',
+    'differ_pass' => 'لا يسمح هذه الأرقام - 1234567890',
     'integer' => 'لازم أن يكون الحقل رقما!',
     'min_length' => 'لا ينقص  من {param} رموز',
     'max_length' => 'لا يزيد من {param} رموز',

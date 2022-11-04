@@ -25,12 +25,18 @@
                                 <span class="badge badge-danger"> <?= $errors = $validation->getError('old') ?></span>
                             <?php endif ?>
                             <fieldset class="form-group position-relative has-icon-left mb-1">
-                                <input type="password" class="form-control" name="old" placeholder="<?= lang('app.oldpassword') ?>">
+                                <input type="password" class="form-control" name="old"  <?= (!$old?'placeholder="'. lang('app.oldpassword') .'"':'value="'.$old.'"') ?>>
                                 <div class="form-control-position">
                                     <i class="la la-key"></i>
                                 </div>
                             </fieldset>
                             <label class="text-bold-600"><?= lang('app.newpassword') ?></label>
+                            <?php if ($validation->getError('new')) : ?>
+                                <span class="badge badge-danger"> <?= $errors = $validation->getError('new') ?></span>
+                            <?php endif ?>
+                            <?php if ($old) : ?>
+                                <span class="badge badge-danger">لا يسمح هذه الأرقام - 1234567890</span>
+                            <?php endif ?>
                             <fieldset class="form-group position-relative has-icon-left">
                                 <input type="password" class="form-control" name="new" id="password" placeholder="<?= lang('app.newpassword') ?>" onkeyup="check();">
                                 <div class="form-control-position">

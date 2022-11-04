@@ -178,7 +178,7 @@ class Users extends Seeder
             ['malaf' => '2154', 'iqama' => '2235033095', 'password' => password_hash('1234567890', PASSWORD_DEFAULT), 'role' => 'user', 'name' => 'مصطفى جامح', 'city' => 'مكة المكرمة', 'level' => 'الدكتوراه', 'nationality' => 'غامبيا', 'jamia' => 'جامعة أم القرى', 'status' => 'active', 'phone' => '966537234976', 'bank' => 'الراجحي', 'iban' => 'SA5780000336608010568108'],
             ['malaf' => '2155', 'iqama' => '2374380224', 'password' => password_hash('1234567890', PASSWORD_DEFAULT), 'role' => 'user', 'name' => 'محمد ابو حنيف غازي هاشم', 'city' => 'مكة المكرمة', 'level' => 'البكالوريوس', 'nationality' => 'بنجلاديش', 'jamia' => 'جامعة أم القرى', 'status' => 'active', 'phone' => '966550448206', 'bank' => 'العربي', 'iban' => 'SA5030400108067179240027'],
             ['malaf' => '2157', 'iqama' => '2373413521', 'password' => password_hash('1234567890', PASSWORD_DEFAULT), 'role' => 'user', 'name' => 'عيسى الشين', 'city' => 'مكة المكرمة', 'level' => 'دبلوم', 'nationality' => 'أفريقيا الوسطى', 'jamia' => 'جامعة أم القرى', 'status' => 'active', 'phone' => '966569908193', 'bank' => 'الاهلي', 'iban' => 'sa9610000000447177009110'],
-            ['malaf' => '2158', 'iqama' => '2331134318', 'password' => password_hash('1234567890', PASSWORD_DEFAULT), 'role' => 'user', 'name' => 'محمد صالح القوني المنديل', 'city' => 'مكة المكرمة', 'level' => 'البكالوريوس', 'nationality' => 'أفريقيا الوسطى', 'jamia' => 'جامعة أم القرى', 'status' => 'active', 'phone' => '966568352491', 'bank' => 'الاهلي', 'iban' => 'SA1010000000447177006002'],
+            ['malaf' => '2158', 'iqama' => '2331134318', 'password' => password_hash('1234567890', PASSWORD_DEFAULT), 'role' => 'user', 'name' => 'محمد صالح القوني المنديل', 'city' => 'مكة المكرمة', 'level' => 'البكالوريوس', 'nationality' => 'أفريقيا الوسطى', 'jamia' => 'جامعة أم القرى', 'status' => 'active', 'phone' => '966568352490', 'bank' => 'الاهلي', 'iban' => 'SA1010000000447177006002'],
             ['malaf' => '2159', 'iqama' => '2373227434', 'password' => password_hash('1234567890', PASSWORD_DEFAULT), 'role' => 'user', 'name' => 'احمد محمود', 'city' => 'مكة المكرمة', 'level' => 'البكالوريوس', 'nationality' => 'أفريقيا الوسطى', 'jamia' => 'جامعة أم القرى', 'status' => 'active', 'phone' => '966568352491', 'bank' => 'الاهلي', 'iban' => 'SA2310000000447177007902'],
             ['malaf' => '2160', 'iqama' => '2373423504', 'password' => password_hash('1234567890', PASSWORD_DEFAULT), 'role' => 'user', 'name' => 'يوسف صوصل غاماكو', 'city' => 'مكة المكرمة', 'level' => 'دبلوم', 'nationality' => 'أفريقيا الوسطى', 'jamia' => 'جامعة أم القرى', 'status' => 'active', 'phone' => '966542529483', 'bank' => 'السعودي الفرنسي', 'iban' => 'sa82550000000E3140700137'],
             ['malaf' => '2161', 'iqama' => '2374145940', 'password' => password_hash('1234567890', PASSWORD_DEFAULT), 'role' => 'user', 'name' => 'تيجاني ماني', 'city' => 'مكة المكرمة', 'level' => 'دبلوم', 'nationality' => 'غينيابيساو', 'jamia' => 'جامعة أم القرى', 'status' => 'active', 'phone' => '966505572162', 'bank' => 'الراجحي', 'iban' => 'SA8280000103608016078335'],
@@ -4366,9 +4366,6 @@ class Users extends Seeder
         for ($i=0; $i < count($data); $i++) { 
             $this->db->table('users')->insert($data[$i]);
         }
-        // foreach ($data as $dt) {
-        //     $this->db->table('users')->insert($dt);
-        // }
     }
 
 }
