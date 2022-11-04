@@ -12,15 +12,22 @@
                             <img src="https://ui-avatars.com/api/?name=<?= $_SESSION['name'] ?>&background=random&length=1&font-size=0.7" class="rounded-circle  height-150" alt=" avatar">
                         </div>
                         <div class="card-body">
-                            <h1><?= $user['malaf'] ?></h1>
+                            <h1><?= sprintf('%04s', $user['malaf']) ?></h1>
                             <h4><b><?= $user['name'] ?></b></h4>
                             <p><?= $user['iqama'] ?></p>
-                            <p><a href="tel:+966<?= $user['phone'] ?>" class="btn btn-sm round btn-secondary">966<?= $user['phone'] ?></a> | <a href="https://wa.me/966<?= $user['phone'] ?>" target="_blank" class="btn btn-success btn-sm round"><i class="la la-whatsapp"></i></a></p>
                             <p><?= $user['jamia'] ?> - <?= $user['nationality'] ?></p>
-                            <p><?= $user['email'] ?></p>
+                            <p><a href="mailto:<?= $user['email'] ?>" class="badge badge-glow badge-info badge-pill"><?= $user['email'] ?></a></p>
+                            <p>
+                                <div class="btn-group">
+                                    <a href="tel:+966<?= $user['phone'] ?>" class="btn btn-sm round btn-secondary"><i class="la la-mobile"></i></a><a href="https://wa.me/966<?= $user['phone'] ?>" target="_blank" class="btn btn-success btn-sm round"><i class="la la-whatsapp"></i></a>
+                                </div>
+                            </p>
                         </div>
                         <div class="text-center">
-                            <a href="<?= base_url('admin/delete/' . $user['id']) ?>" id="delete" class="btn btn-sm btn-danger round mr-1 mb-1" disabled><i class="la la-trash"></i><?= lang('app.delete') ?></a>
+                            <div class="btn-group mb-1" role="group" aria-label="Basic example">
+                                <a href="#" class="btn round btn-warning"><i class="la la-edit"></i></a>
+                                <a href="<?= base_url('admin/delete/' . $user['id']) ?>" id="delete" class="btn round btn-danger"> <i class="la la-trash"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>

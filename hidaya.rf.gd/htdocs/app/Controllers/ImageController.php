@@ -29,6 +29,7 @@ class ImageController extends BaseController
         }
 
         // dd($data);
+        // return view('welcome', $data);
         return view('image/index', $data);
     }
 

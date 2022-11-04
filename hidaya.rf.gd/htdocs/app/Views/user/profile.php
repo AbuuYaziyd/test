@@ -20,7 +20,11 @@
                             </div>
                                 
                             <div class="media-body pt-25">
-                                <h4 class="media-heading"><span class="users-view-name"><?= session('name') ?> </span><span class="text-muted font-medium-1"> @</span><span class="users-view-username text-muted font-medium-1 "><?= $user['jamia'] ?></span></h4>
+                                <h4 class="media-heading">
+                                    <span class="users-view-name"><?= session('name') ?> </span>
+                                    <span class="text-muted font-medium-1"> @</span>
+                                    <span class="users-view-username text-muted font-medium-1 "><?= $user['jamia'] ?></span>
+                                </h4>
                                 <span><?= lang('app.malaf') ?>:</span>
                                 <span class="users-view-id"><?= sprintf('%04s',session('malaf')) ?></span>
                             </div>
