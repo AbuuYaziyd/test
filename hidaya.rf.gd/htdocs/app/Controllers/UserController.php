@@ -95,11 +95,11 @@ class UserController extends BaseController
             'phone' => $this->request->getVar('phone'),
             'bitaqa' => $this->request->getVar('bitaqa'),
             'passport' => strtoupper($this->request->getVar('passport')),
-            'bank' => $this->request->getVar('bank'),
+            'bank' => strtoupper($this->request->getVar('bank')),
             'iban' => $this->request->getVar('iban'),
         ];
 
-        dd($data);
+        // dd($data);
         $ok = $user->update($id, $data);
         if (!$ok) {
             return redirect()->to('user/edit/'.$id)->with('type', 'error')->with('title', lang('app.sorry'))->with('text', lang('app.errorOccured'));
