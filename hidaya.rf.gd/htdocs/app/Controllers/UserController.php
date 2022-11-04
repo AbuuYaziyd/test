@@ -96,7 +96,7 @@ class UserController extends BaseController
             'bitaqa' => $this->request->getVar('bitaqa'),
             'passport' => strtoupper($this->request->getVar('passport')),
             'bank' => strtoupper($this->request->getVar('bank')),
-            'iban' => $this->request->getVar('iban'),
+            'iban' => strtoupper($this->request->getVar('iban')),
         ];
 
         // dd($data);

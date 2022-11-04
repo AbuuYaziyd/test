@@ -106,7 +106,7 @@
                                             <td><?= lang('app.iban') ?>:</td>
                                             <td class="users-view-name">
                                                 <div class="input-group">
-                                                    <input type="text"  class="form-control" name="iban" value="<?= $user['iban'] ?>">
+                                                    <input type="text" pattern="[0-9]{24}" title="لازم 24 رقما" class="form-control" name="iban" value="<?= $user['iban'] ?>">
                                                     <div class="input-group-append">
                                                         <span class="input-group-text" id="basic-addon1"><i class="la la-cc-visa"></i></span>
                                                     </div>

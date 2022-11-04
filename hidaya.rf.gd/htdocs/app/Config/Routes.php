@@ -156,11 +156,11 @@ $routes->group('set', function ($routes) {
  * --------------------------------------------------------------------
  */
 $routes->group('tanfidh', function ($routes) {
-    // $routes->get('/', 'TanfidhController::index', ['filter' => 'auth']);
-    // $routes->get('add', 'TanfidhController::add', ['filter' => 'auth']);
-    // $routes->post('create', 'TanfidhController::create', ['filter' => 'auth']);
-    // $routes->get('show/(:num)', 'TanfidhController::show/$1', ['filter' => 'auth']);
-    // $routes->post('edit/(:num)', 'TanfidhController::edit/$1', ['filter' => 'auth']);
+    $routes->get('/', 'TanfidhController::index', ['filter' => 'auth']);
+    $routes->get('add', 'TanfidhController::add', ['filter' => 'auth']);
+    $routes->post('create', 'TanfidhController::create', ['filter' => 'auth']);
+    $routes->get('show', 'TanfidhController::show', ['filter' => 'auth']);
+    $routes->post('edit', 'TanfidhController::edit', ['filter' => 'auth']);
     // $routes->get('delete/(:num)', 'TanfidhController::delete/$1', ['filter' => 'auth']);
 });
 
