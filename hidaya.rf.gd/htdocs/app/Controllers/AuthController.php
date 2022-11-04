@@ -7,6 +7,7 @@ use App\Models\Bank;
 use App\Models\Country;
 use App\Models\Hits;
 use App\Models\Setting;
+use App\Models\University;
 use App\Models\User;
 
 class AuthController extends BaseController
@@ -33,10 +34,12 @@ class AuthController extends BaseController
         $bank = new Bank();
         $user = new User();
         $set = new Setting();
+        $uni = new University();
         
         $data['title'] = lang('app.signup');
         $data['nat'] = $nat->findAll();
         $data['bank'] = $bank->findAll();
+        $data['uni'] = $uni->findAll();
         $user = $user->countAllResults();
         $set = $set->where('name', 'count')->first();
         if ($user >= $set['value']) {
@@ -44,7 +47,7 @@ class AuthController extends BaseController
         } else {
             $data['reg'] = null;
         }
-        // dd($set['value']);
+        // dd($data);
 
         return view('auth/register',$data);
     }

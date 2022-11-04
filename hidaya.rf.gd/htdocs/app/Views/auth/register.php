@@ -99,7 +99,12 @@
                                 <span class="badge badge-danger"> <?= $errors = $validation->getError('jamia') ?></span>
                             <?php endif ?>
                             <fieldset class="form-group position-relative has-icon-left mb-1">
-                                <input type="text" class="form-control" name="jamia" placeholder="<?= lang('app.jamia') ?>">
+                                <select class="form-control" name="jamia">
+                                    <option selected disabled><?= lang('app.choose') . ' ' . lang('app.jamia') ?></option>
+                                    <?php foreach ($uni as $key => $data) : ?>
+                                        <option value="<?= $data['uni_id'] ?>"><?= $data['uni_name'] ?> - (<?= $data['uni_reg'] ?>)</option>
+                                    <?php endforeach ?>
+                                </select>
                                 <div class="form-control-position">
                                     <i class="la la-university"></i>
                                 </div>
