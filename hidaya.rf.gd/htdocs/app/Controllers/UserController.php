@@ -6,6 +6,8 @@ use App\Controllers\BaseController;
 use App\Models\Bank;
 use App\Models\Country;
 use App\Models\Hits;
+use App\Models\Setting;
+use App\Models\Tanfidh;
 use App\Models\User;
 
 class UserController extends BaseController
@@ -28,16 +30,19 @@ class UserController extends BaseController
         }
 
         $user = new User();
+        $set = new Setting();
+
         $data['user'] = $user->where('status', 'active')->countAllResults();
         $data['mandub'] = $user->where('role', 'mandub')->countAllResults();
         $data['jamia'] = $user->groupBy('jamia')->countAllResults();
         $data['nation'] = $user->groupBy('nationality')->countAllResults();
         $data['bank'] = $user->groupBy('bank')->countAllResults();
+        $data['set'] = $set->where(['name' => 'tanfidhDate', 'value>=' => date('Y-m-d')])->findAll();
         $data['title'] = lang('app.dashboard');
 
         $role = $user->find(session('id'));
         $auth = password_verify('1234567890', $role['password']);
-        // dd($auth);
+        // dd($data);
 
         if (!$auth) {
             if ($role['role'] == 'superuser') {
@@ -51,7 +56,7 @@ class UserController extends BaseController
             }
         } else {
             return redirect()->to('change/password');
-            dd($auth);
+            // dd($auth);
         }
         
     }

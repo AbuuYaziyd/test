@@ -20,16 +20,20 @@
                         <div class="card-body">
                             <?php $validation = \Config\Services::validation(); ?>
                             <?= form_open('change/password/' . $_SESSION['id']) ?>
-                            <label class="text-bold-600"><?= lang('app.oldpassword') ?></label>
-                            <?php if ($validation->getError('old')) : ?>
-                                <span class="badge badge-danger"> <?= $errors = $validation->getError('old') ?></span>
+                            <?php if (!$old) : ?>
+                                <label class="text-bold-600"><?= lang('app.oldpassword') ?></label>
+                                <?php if ($validation->getError('old')) : ?>
+                                    <span class="badge badge-danger"> <?= $errors = $validation->getError('old') ?></span>
+                                <?php endif ?>
+                                <fieldset class="form-group position-relative has-icon-left mb-1">
+                                    <input type="password" class="form-control" name="old" placeholder="<?= lang('app.oldpassword')?>">
+                                    <div class="form-control-position">
+                                        <i class="la la-key"></i>
+                                    </div>
+                                </fieldset>
+                            <?php else : ?>
+                                <input type="hidden" name="old" value="<?= $old ?>">
                             <?php endif ?>
-                            <fieldset class="form-group position-relative has-icon-left mb-1">
-                                <input type="password" class="form-control" name="old"  <?= (!$old?'placeholder="'. lang('app.oldpassword') .'"':'value="'.$old.'"') ?>>
-                                <div class="form-control-position">
-                                    <i class="la la-key"></i>
-                                </div>
-                            </fieldset>
                             <label class="text-bold-600"><?= lang('app.newpassword') ?></label>
                             <?php if ($validation->getError('new')) : ?>
                                 <span class="badge badge-danger"> <?= $errors = $validation->getError('new') ?></span>

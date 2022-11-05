@@ -28,12 +28,14 @@
                     <span class="menu-title"><?= lang('app.data') ?></span>
                 </a>
             </li>
-            <li class="<?= ($title == lang('app.umrah') ? 'active' : '') ?> nav-item">
-                <a href="<?= base_url('umrah') ?>">
+            <?php if (session('role') != 'user') : ?>
+            <li class="<?= ($title == lang('app.tasrih') ? 'active' : '') ?> nav-item">
+                <a href="<?= base_url('tasrih') ?>">
                     <i class="la la-share-alt"></i>
-                    <span class="menu-title"><?= lang('app.umrah') ?></span>
+                    <span class="menu-title"><?= lang('app.tasrih') ?></span>
                 </a>
             </li>
+            <?php endif ?>
             <?php if (session('role') == 'admin')  : ?>
             <li class="<?= ($title == lang('app.tanfidh') ? 'active' : '') ?> nav-item">
                 <a href="<?= base_url('tanfidh') ?>">
