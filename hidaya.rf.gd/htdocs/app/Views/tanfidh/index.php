@@ -35,7 +35,7 @@
                                         <?php foreach ($set as $dt) : ?>
                                         <tr>
                                             <td><span><?= $dt['extra'] ?></span></td>
-                                            <td><a href="#"><?= $dt['value'] ?></a></td>
+                                            <td><a href="<?= base_url('tanfidh/show') ?>"><?= $dt['value'] ?></a></td>
                                             <!-- <td><button type="button" class="btn btn-sm btn-outline-warning round"><?= lang('app.show') ?></button></td> -->
                                         </tr>
                                         <?php endforeach ?>
