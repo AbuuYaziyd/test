@@ -19,6 +19,8 @@ class Umrah extends Model
         'tasrih',
         'tnfdhName',
         'tnfdhDate',
+        'miqat',
+        'makkah',
         'tnfdhAmount',
         'mushrif',
         'tnfdhStatus',

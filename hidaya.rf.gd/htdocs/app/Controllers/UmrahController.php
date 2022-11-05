@@ -3,47 +3,48 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\Setting;
 use App\Models\Umrah;
 
 class UmrahController extends BaseController
 {
-    public function index()
+    public function index($date)
     {
         helper('form');
-        $umrah = new Umrah();
-        $set = new Setting();
 
-        $data['title'] = lang('app.umrah');
-        $data['next'] = $set->where('name', 'tanfidh')->first()['value'];
+        $umrah = new Umrah();
+
+        $data['title'] = lang('app.tanfidh').' - '.date('d/m/Y', strtotime($date));
+        $data['next'] = $date;
         $data['umrah'] = $umrah->where(['userId' => session('id'), 'tnfdhDate' => $data['next']])->orderBy('tnfdhId', 'DESC')->first();
         $data['green'] = $umrah->where(['userId' => session('id'), 'tnfdhDate' => $data['next'], 'tnfdhStatus' => 'completed'])->first();
-        // dd(!($data['umrah']));
+        // dd(($data));
 
         return view('umrah/index', $data);
     }
 
     public function create()
     {
+        // dd($this->request->getVar());
         $umrah = new Umrah();
-        $set = new Setting();
+
+        $id = $this->request->getVar('id');
+        $tanfidh = $this->request->getVar('tanfidh');
 
         $data['title'] = lang('app.umrah');
-        $next = $set->where('name', 'tanfidh')->first()['value'];
-        $check = $umrah->where(['userId' => session('id'), 'tnfdhDate' => $next])->countAllResults();
-        // dd($data);
+        $check = $umrah->where(['userId' => $id, 'tnfdhDate' => $tanfidh])->countAllResults();
+        // dd(!$check);
 
         if (!$check) {
             $reg = [
                 'userId' => session('id'),
-                'tnfdhDate' => $next,
+                'tnfdhDate' => $tanfidh,
             ];
             
             $umrah->save($reg);
 
-            return redirect()->to('umrah')->with('type', 'success')->with('text', lang('app.regOk'))->with('title', lang('app.done'));
+            return redirect()->to('umrah/check/'.$tanfidh)->with('type', 'success')->with('text', lang('app.regOk'))->with('title', lang('app.done'));
         }else {
-            return redirect()->to('umrah/show/'.session('id'));
+            return redirect()->to(previous_url());
         }
     }
 
@@ -52,29 +53,29 @@ class UmrahController extends BaseController
         helper('form');
 
         $umrah = new Umrah();
-        $set = new Setting();
-        dd($id);
 
-        $data['next'] =  $set->where('name', 'tanfidh')->first()['value'];
-        $ok = $umrah->where(['userId' => $id, 'tnfdhDate' => $data['next']])->orderBy('tnfdhId', 'DESC')->first();
+        $ok = $umrah->find($id);
 
+        // dd($ok);
         if (!$ok) {
             return redirect()->to('umrah/create');
         } else {
             $data['title'] = lang('app.umrah');
-            $data['umrah'] = $umrah->where(['userId' => $id, 'tnfdhDate' => $data['next']])->find($ok['tnfdhId']);
-            dd($ok);
+            $data['umrah'] = $ok;
+            // dd($data);
 
             return view('umrah/edit', $data);
         }
     }
 
-    public function update($id = null)
+    public function update($id)
     {
         $umrah = new Umrah();
-        $next = '30/04/2022';
+
+        $user = $umrah->find($id);
+        $next = $user['tnfdhDate'];
         $upl = 'tasrih';
-        // dd($this->request->getVar());
+        // dd($user);
 
         $validationRule = $this->validate(
             [
@@ -95,63 +96,89 @@ class UmrahController extends BaseController
             helper('form');
             $data['title'] = lang('app.data');
             // dd($data['errors']['img']);
-            return redirect()->to('umrah/edited/'.$id)->with('type', 'error')->with('title', lang(
+            return redirect()->to('umrah/show/'.$id)->with('type', 'error')->with('title', lang(
             'app.errorOccured'))->with('text', $data['errors']['img']);
         }
 
-        $pic = $umrah->where(['userId' => session('id'), 'tnfdhDate' => $next ])->first();
+        $pic = $user['tasrih']??sprintf('%04s',session('malaf'));
 
-        // dd(file_exists('app-assets/images/tasrih/' . $pic[$upl]));
-        if (file_exists('app-assets/images/tasrih/' . $pic[$upl])) {
-            $path = 'app-assets/images/tasrih/' . $pic[$upl];
+        // dd(file_exists('app-assets/images/tasrih/' . $pic));
+        if (file_exists('app-assets/images/tasrih/' . $pic)) {
+            $path = 'app-assets/images/tasrih/' . $pic;
 
             unlink($path);
 
             $img = $this->request->getFile('img');
             $ext = $img->getClientExtension();
-            $name = $_SESSION['malaf'] . '.' . $ext;
+            $name = sprintf('%04s',session('malaf')) . '.' . $ext;
 
             $ppn = [$upl => $name,];
-            // dd($name);
+            // dd($ppn);
 
             $img->move('app-assets/images/tasrih/', $name);
             $umrah->update($id, $ppn);
 
-            // dd($test);
-            return redirect()->to('umrah/edited/' . $id)->with('type', 'success')->with('text', lang('app.imageUploaded'))->with('title', lang('app.success'));
+            return redirect()->to('umrah/check/' . $next)->with('type', 'success')->with('text', lang('app.imageUploaded'))->with('title', lang('app.success'));
         } else {
             $img = $this->request->getFile('img');
             $ext = $img->getClientExtension();
-            $name = $_SESSION['malaf'] . '.' . $ext;
+            $name = sprintf('%04s',session('malaf')) . '.' . $ext;
 
             $ppn = [$upl => $name,];
-            // dd($pic);
+            // dd($ppn);
 
             $img->move('app-assets/images/tasrih/', $name);
             $umrah->update($id, $ppn);
 
-            return redirect()->to('umrah/edited/' . $id)->with('type', 'success')->with('text', lang('app.imageUploaded'))->with('title', lang('app.success'));
+            return redirect()->to('umrah/check/' . $next)->with('type', 'success')->with('text', lang('app.imageUploaded'))->with('title', lang('app.success'));
         }
     }
 
-    public function done()
+    public function loc($id)
     {
-        $data = $this->request->getVar();
+        $umrah = new Umrah();
 
-        $data['title'] = lang('app.umrah');
+        $data['umrah'] = $umrah->find($id);
+        $data['title'] = lang('app.'.$this->request->getVar('locType'));
         // dd($data);
         return view('umrah/loc',$data);
     }
 
-    public function link()
+    public function makkah($id)
     {
         $umrah = new Umrah();
 
-        $data['title'] = lang('app.umrah');
-        $data['next'] = '30/04/2022';
-        $data['umrah'] = $umrah->where(['userId' => session('id'), 'tnfdhDate' => $data['next']])->countAllResults();
+        $dt = $umrah->find($id);
+        $data = [
+            'makkah' => $this->request->getVar('makkah')
+        ];
+        // dd($this->request->getVar());
 
+        $ok = $umrah->update($id, $data);
+
+        if ($ok) {
+            return redirect()->to('umrah/check/' . $dt['tnfdhDate'])->with('type', 'success')->with('text', lang('app.locSentMiqat'))->with('title', lang('app.success'));
+        } else {
+            return redirect()->to('umrah/check/' . $dt['tnfdhDate'])->with('type', 'error')->with('text', lang('app.error'))->with('title', lang('app.sorry'));
+        }
+    }
+
+    public function miqat($id)
+    {
+        $umrah = new Umrah();
+
+        $dt = $umrah->find($id);
+        $data = [
+            'miqat' => $this->request->getVar('miqat')
+        ];
         // dd($data);
-        return view('umrah/loc', $data);
+
+        $ok = $umrah->update($id, $data);
+
+        if ($ok) {
+            return redirect()->to('umrah/check/' . $dt['tnfdhDate'])->with('type', 'success')->with('text', lang('app.locSentMiqat'))->with('title', lang('app.success'));
+        } else {
+            return redirect()->to('umrah/check/' . $dt['tnfdhDate'])->with('type', 'error')->with('text', lang('app.error'))->with('title', lang('app.sorry'));
+        }
     }
 }

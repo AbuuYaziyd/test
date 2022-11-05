@@ -37,12 +37,12 @@ class Tanfidh extends Migration
                 'constraint' => 255,
                 'default' => 0,
             ],
-            'lat' => [
+            'miqat' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
                 'null' => true,
             ],
-            'lng' => [
+            'makkah' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
                 'null' => true,

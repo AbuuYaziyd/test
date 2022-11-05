@@ -124,6 +124,8 @@ return [
     //Umra
     'umrah' => 'العمرة',
     'tasrih' => ' التصريح',
+    'miqat' => ' ميقات',
+    'makkah' => ' مكة المكرمة',
     'umrahcount' => 'عمرة منذ تسجيل',
     'umrahmonth' => 'عمرة في هذا الشهر',
     'tanfidh' => 'تنفيذ',

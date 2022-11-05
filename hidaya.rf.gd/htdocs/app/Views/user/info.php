@@ -83,7 +83,7 @@
                                     <h6 class="text-muted"><?= lang('app.baarik') ?></h6>
                                 </div>
                                 <div class="col-5 text-right">
-                                    <h4 class="danger"><?= (date('d/m/Y') == '12/05/2022' ? date('d/m/Y') : lang('app.near')) ?></h4>
+                                    <h4 class="danger"><?= lang('app.near') ?></h4>
                                 </div>
                             </div>
                         </div>
@@ -107,7 +107,7 @@
         <?php foreach ($set as $dt) : ?>
             <div class="col-xl-4 col-12">
                 <div class="card crypto-card-3 pull-up">
-                    <a href="#">
+                    <a href="<?= base_url('umrah/check/'.$dt['value']) ?>">
                         <div class="card-content">
                             <div class="card-body pb-0">
                                 <div class="row">

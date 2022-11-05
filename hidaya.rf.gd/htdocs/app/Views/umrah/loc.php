@@ -64,9 +64,12 @@
                             <h3><b id="ip"></b></h3>
                             <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                             <div class="heading-elements">
-                                <form action="<?= base_url('umrah/done') ?>" method="post">
-                                    <input type="hidden" name="lat" id="lat">
-                                    <input type="hidden" name="lng" id="lng">
+                                <?php if ($title == lang('app.makkah')) : ?>
+                                <form action="<?= base_url('umrah/makkah/'.$umrah['tnfdhId']) ?>" method="post">
+                                <?php elseif ($title == lang('app.miqat')) : ?>
+                                <form action="<?= base_url('umrah/miqat/'.$umrah['tnfdhId']) ?>" method="post">
+                                <?php endif ?>
+                                    <input type="hidden" name="<?= $title == lang('app.makkah')?'makkah':'miqat' ?>" id="loc">
                                     <button type="submit" class="btn btn-icon btn-secondary">
                                         <i class="ft ft-check-circle white"></i>
                                         <?= lang('app.send') ?>
@@ -128,8 +131,9 @@
                     .bindPopup("أنت موجود " + radius + " مترات من هنا").openPopup();
                 L.circle(e.latlng, radius).addTo(mapsLeafletUserLocation);
                 document.getElementById("ip").innerHTML = ip.lat + ',' + ip.lng;
-                document.getElementById("lat").value = ip.lat;
-                document.getElementById("lng").value = ip.lng;
+                document.getElementById("loc").value = ip.lat + ',' + ip.lng;
+                // document.getElementById("lat").value = ip.lat;
+                // document.getElementById("lng").value = ip.lng;
             }
             mapsLeafletUserLocation.on('locationfound', onLocationFound);
             L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
