@@ -65,7 +65,10 @@ class UserController extends BaseController
         $user = new User();
 
         $data['title'] = lang('app.profile');
-        $data['user'] = $user->join('banks', 'banks.bankId=users.bank', 'left')->find($id);
+        $data['user'] = $user->join('banks', 'banks.bankId=users.bank')
+                            ->join('universities u', 'u.uni_id=users.jamia')
+                            ->join('countries n', 'n.country_code=users.nationality')
+                            ->find($id);
         // dd($data);
 
         return view('user/profile', $data);
@@ -80,7 +83,10 @@ class UserController extends BaseController
         $nat = new Country();
 
         $data['title'] = lang('app.profile');
-        $data['user'] = $user->join('banks', 'banks.bankId=users.bank', 'left')->find($id);
+        $data['user'] = $user->join('banks', 'banks.bankId=users.bank')
+                            ->join('universities u', 'u.uni_id=users.jamia')
+                            ->join('countries n', 'n.country_code=users.nationality')
+                            ->find($id);
         $data['bank'] = $bank->findAll();
         $data['nat'] = $nat->findAll();
         // dd($data);

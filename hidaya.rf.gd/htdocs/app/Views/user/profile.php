@@ -31,13 +31,8 @@
                         </div>
                     </div>
                     <div class="col-12 col-sm-5 px-0 d-flex justify-content-end align-items-center px-1 mb-2">
-                        <!-- <a href="#" class="btn btn-sm mr-25 border"><i class="bx bx-envelope font-small-3"></i></a> -->
-                        <!-- <a href="#" class="btn btn-sm mr-25 border">Profile</a> -->
-                        <!-- <a href="#" class="btn btn-sm btn-primary"><b><?= lang('app.edit') ?></b></a> -->
                     </div>
                 </div>
-                <!-- users view media object ends -->
-                <!-- users view card details start -->
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
@@ -55,7 +50,7 @@
                                         </tr>
                                         <tr>
                                             <td><?= lang('app.jamia') ?>:</td>
-                                            <td><b><?= $user['jamia'] ?></b></td>
+                                            <td><b><?= $user['uni_name'] ?></b></td>
                                         </tr>
                                         <tr>
                                             <td><?= lang('app.malaf') ?>:</td>
@@ -70,16 +65,16 @@
                                             <td><b class="<?= $user['bitaqa']?? 'danger' ?>"><?= $user['bitaqa']??lang('app.notFound') ?></b></td>
                                         </tr>
                                         <tr>
-                                            <td><?= lang('app.email') ?>:</td>
-                                            <td><b class="<?= $user['email']?? 'danger' ?>"><?= $user['email']??lang('app.notFound') ?></b></td>
+                                            <td><?= lang('app.nationality') ?>:</td>
+                                            <td><b><?= $user['country_arName'] ?></b></td>
                                         </tr>
                                         <tr>
-                                            <td><?= lang('app.nationality') ?>:</td>
-                                            <td><b><?= $user['nationality'] ?></b></td>
+                                            <td><?= lang('app.email') ?>:</td>
+                                            <td><b class="<?= $user['email']?? 'danger' ?>"><a href="mailto:<?= $user['email'] ?>" class="btn btn-blue btn-sm round"><?= $user['email']??lang('app.notFound') ?></a></b></td>
                                         </tr>
                                         <tr>
                                             <td><?= lang('app.phone') ?>:</td>
-                                            <td><a href="tel:+966<?= $user['phone'] ?>" class="badge badge-secondary badge-glow"><b><?= '966' . $user['phone'] ?></b></a></td>
+                                            <td><a href="tel:+966<?= $user['phone'] ?>" class="btn btn-secondary round btn-sm"><b><?= '966' . $user['phone'] ?></b></a></td>
                                         </tr>
                                         <tr>
                                             <td><?= lang('app.bank') ?>:</td>

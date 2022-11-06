@@ -11,7 +11,7 @@ class Banks extends Seeder
         $this->db->query("INSERT INTO `banks` (`bankId`, `bankName`, `bankShort`) VALUES
 (1, 'الأهلي', 'NCBK'),
 (2, 'البلاد', 'ALBI'),
-(3, 'للإنماء', 'INMA'),
+(3, 'الإنماء', 'INMA'),
 (4, 'الراجحي', 'RJHI'),
 (5, 'العربي الوطني', 'ARNB'),
 (6, 'السعودي الفرنسي', 'BANK'),

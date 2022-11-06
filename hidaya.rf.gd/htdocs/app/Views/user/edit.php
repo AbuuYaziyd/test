@@ -9,15 +9,12 @@
         <div class="content-header row">
         </div>
         <div class="content-body">
-            <!-- users view start -->
             <section class="users-view">
-                <!-- users view media object start -->
                 <div class="row">
                     <div class="col-12 col-sm-7">
                         <div class="media mb-2">
                             <a class="mr-1" href="#">
                                 <img src="https://ui-avatars.com/api/?name=<?= session('malaf') ?>&background=random&length=4" alt="users view avatar" class="users-avatar-shadow rounded-circle" height="64" width="64">
-                                <!-- <img src="<?= base_url('app-assets/images/portrait/small/avatar-s-26.jpg') ?>" alt="users view avatar" class="users-avatar-shadow rounded-circle" height="64" width="64"> -->
                             </a>
                             <div class="media-body pt-25">
                                 <h4 class="media-heading"><span class="users-view-name"><?= session('name') ?> </span><span class="text-muted font-medium-1"> @</span><span class="users-view-username text-muted font-medium-1 "><?= $user['jamia'] ?></span></h4>
@@ -27,13 +24,8 @@
                         </div>
                     </div>
                     <div class="col-12 col-sm-5 px-0 d-flex justify-content-end align-items-center px-1 mb-2">
-                        <!-- <a href="#" class="btn btn-sm mr-25 border"><i class="bx bx-envelope font-small-3"></i></a> -->
-                        <!-- <a href="#" class="btn btn-sm mr-25 border">Profile</a> -->
-                        <!-- <a href="#" class="btn btn-sm btn-primary"><b><?= lang('app.edit') ?></b></a> -->
                     </div>
                 </div>
-                <!-- users view media object ends -->
-                <!-- users view card details start -->
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
@@ -41,12 +33,6 @@
                                 <div class="col-12 col-sm-4 p-2">
                                     <!-- <h2 class="text-primary mb-0"><?= lang('app.umraCount') ?>: <span class="font-large-1 align-middle"> <?= 'idadi' ?></span></h2> -->
                                 </div>
-                                <!-- <div class="col-12 col-sm-4 p-2">
-                                    <h6 class="text-primary mb-0">Followers: <span class="font-large-1 align-middle">534</span></h6>
-                                </div>
-                                <div class="col-12 col-sm-4 p-2">
-                                    <h6 class="text-primary mb-0">Following: <span class="font-large-1 align-middle">256</span></h6>
-                                </div> -->
                             </div>
                             <div class="col-12">
                                 <?= form_open('user/edit/' . $user['id']) ?>
@@ -58,7 +44,7 @@
                                         </tr>
                                         <tr>
                                             <td><?= lang('app.jamia') ?>:</td>
-                                            <td class="users-view-name"><input type="text" class="form-control" name="jamia" value="<?= $user['jamia'] ?>" readonly></td>
+                                            <td class="users-view-name"><input type="text" class="form-control" name="jamia" value="<?= $user['uni_name'] ?>" readonly></td>
                                         </tr>
                                         <tr>
                                             <td><?= lang('app.malaf') ?>:</td>
@@ -78,7 +64,7 @@
                                         </tr>
                                         <tr>
                                             <td><?= lang('app.nationality') ?>:</td>
-                                            <td><input type="text" class="form-control" name="nationality" value="<?= $user['nationality'] ?>" placeholder="<?= lang('app.notFound') ?>" readonly>
+                                            <td><input type="text" class="form-control" name="nationality" value="<?= $user['country_arName'] ?>" placeholder="<?= lang('app.notFound') ?>" readonly>
                                             </td>
                                         </tr>
                                         <tr>
