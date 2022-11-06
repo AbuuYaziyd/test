@@ -1,15 +1,4 @@
 <?= $this->extend('layouts/main') ?>
-<?= $this->section('scripts') ?>
-
-<link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/vendors/css/vendors-rtl.min.css') ?>">
-<link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/vendors/css/tables/datatable/datatables.min.css') ?>">
-<link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/vendors/css/tables/extensions/responsive.dataTables.min.css') ?>">
-<link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/vendors/css/tables/extensions/colReorder.dataTables.min.css') ?>">
-<link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/vendors/css/tables/extensions/buttons.dataTables.min.css') ?>">
-<link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/vendors/css/tables/datatable/buttons.bootstrap4.min.css') ?>">
-<link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/vendors/css/tables/extensions/fixedHeader.dataTables.min.css') ?>">
-
-<?= $this->endsection() ?>
 
 <?= $this->section('content') ?>
 <div class="app-content content">
@@ -28,52 +17,14 @@
                                 </div>
                                 <div class="card-content collapse show">
                                     <div class="card-body card-dashboard">
-                                        <table class="table table-striped table-bordered dataex-res-constructor">
-                                            <thead>
-                                                <tr>
-                                                    <th><?= lang('app.jamia') ?></th>
-                                                    <th><?= lang('app.count') ?></th>
-                                                    <th><?= lang('app.edit') ?></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php foreach ($nationality as $key => $data) : ?>
-                                                    <tr>
-                                                        <td><?= $data['nationality'] ?></td>
-                                                        <td><?= $data['jm'] ?></td>
-                                                        <td><a href="<?= base_url('admin/nat/' . $data['nationality']) ?>" class="btn btn-sm btn-outline-warning round"><?= lang('app.show') ?></a></td>
-                                                    </tr>
-                                                <?php endforeach ?>
-                                            </tbody>
-                                        </table>
+                                        <?php foreach ($nationality as $key => $data) : ?>
+                                            <a href="<?= base_url('admin/nat/' . $data['nat']) ?>" class="btn btn-warning round m-1"><?= $data['nationality'] ?> (<?= $data['jm'] ?>)</a>
+                                        <?php endforeach ?>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <?php foreach ($nationality as $data) : ?>
-                            <div class="col-md-3">
-                                <a href="<?= base_url('admin/nat/' . $data['nationality']) ?>">
-                                    <div class="card pull-up">
-                                        <div class="card-content">
-                                            <div class="card-body">
-                                                <div class="media d-flex">
-                                                    <div class="media-body text-left">
-                                                        <h6 class="text-muted"><?= $data['nationality'] ?></h6>
-                                                        <h3><?= $data['jm'] ?></h3>
-                                                    </div>
-                                                    <div class="align-self-center">
-                                                        <i class="la la-flag black font-large-2 float-right"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        <?php endforeach ?>
-                        </div>
                 </section>
             </div>
         </div>
@@ -81,36 +32,3 @@
 </div>
 
 <?= $this->endsection() ?>
-<?= $this->section('scripts') ?>
-
-<script src="<?= base_url('app-assets/vendors/js/tables/datatable/datatables.min.js') ?>"></script>
-<script src="<?= base_url('app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js') ?>"></script>
-<script src="<?= base_url('app-assets/vendors/js/tables/buttons.colVis.min.js') ?>"></script>
-<script src="<?= base_url('app-assets/vendors/js/tables/pdfmake.min.js') ?>"></script>
-<script src="<?= base_url('app-assets/vendors/js/tables/buttons.print.min.js') ?>"></script>
-<script src="<?= base_url('app-assets/vendors/js/tables/datatable/dataTables.colReorder.min.js') ?>"></script>
-<script src="<?= base_url('app-assets/vendors/js/tables/datatable/dataTables.buttons.min.js') ?>"></script>
-<script src="<?= base_url('app-assets/vendors/js/tables/datatable/buttons.bootstrap4.min.js') ?>"></script>
-<script src="<?= base_url('app-assets/vendors/js/tables/datatable/dataTables.fixedHeader.min.js') ?>"></script>
-<script src="<?= base_url('app-assets/vendors/js/tables/jszip.min.js') ?>"></script>
-<script src="<?= base_url('app-assets/vendors/js/tables/buttons.html5.min.js') ?>"></script>
-<script src="<?= base_url('app-assets/vendors/js/tables/buttons.print.min.js') ?>"></script>
-
-<script>
-    var tableConstructor = $('.dataex-res-constructor').DataTable({
-        "language": {
-        "url": "//cdn.datatables.net/plug-ins/1.12.1/i18n/ar.json"
-        },
-        dom: 'Bfrtip',
-        buttons: [{
-                extend: 'print',
-            },
-            {
-                extend: 'excelHtml5',
-            },
-        ],
-        responsive: false
-    });
-</script>
-
-<?= $this->endSection() ?>

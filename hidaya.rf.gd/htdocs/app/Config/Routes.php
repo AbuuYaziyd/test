@@ -85,14 +85,14 @@ $routes->group('image', function ($routes) {
 $routes->group('admin', function ($routes) {
     $routes->get('/', 'AdminController::index', ['filter' => 'auth']);
     $routes->get('jamiat', 'AdminController::jamiat', ['filter' => 'auth']);
-    $routes->get('jamia/(:any)', 'AdminController::jamia/$1', ['filter' => 'auth']);
+    $routes->get('jamia/(:num)', 'AdminController::jamia/$1', ['filter' => 'auth']);
     $routes->get('nationality', 'AdminController::nationality', ['filter' => 'auth']);
     $routes->get('nat/(:any)', 'AdminController::nat/$1', ['filter' => 'auth']);
-    $routes->get('search/(:any)/(:any)', 'AdminController::search/$1/$2', ['filter' => 'auth']);
-    $routes->get('users', 'AdminController::users', ['filter' => 'auth']);
-    $routes->get('mushrifuna', 'AdminController::mushrifuna', ['filter' => 'auth']);
-    $routes->get('add-mushrif/(:num)', 'AdminController::addMushrif/$1', ['filter' => 'auth']);
-    $routes->get('judud', 'AdminController::judud', ['filter' => 'auth']);
+    $routes->get('all', 'AdminController::all', ['filter' => 'auth']);
+    $routes->get('users/(:any)/(:num)', 'AdminController::users/$1/$2', ['filter' => 'auth']);
+    // $routes->get('mushrifuna', 'AdminController::mushrifuna', ['filter' => 'auth']);
+    // $routes->get('add-mushrif/(:num)', 'AdminController::addMushrif/$1', ['filter' => 'auth']);
+    // $routes->get('judud', 'AdminController::judud', ['filter' => 'auth']);
     $routes->get('activate/(:num)', 'AdminController::activate/$1', ['filter' => 'auth']);
     $routes->post('activate-all', 'AdminController::activateAll', ['filter' => 'auth']);
     // $routes->get('add', 'AdminController::add', ['filter' => 'auth']);
@@ -114,7 +114,7 @@ $routes->group('mushrif', function ($routes) {
     $routes->get('user/(:num)', 'MushrifController::user/$1', ['filter' => 'auth']);
     $routes->get('activate/(:num)', 'MushrifController::activate/$1', ['filter' => 'auth']);
     $routes->get('active/(:num)', 'MushrifController::active/$1', ['filter' => 'auth']);
-    // $routes->get('users/(:any)/(:any)', 'MushrifController::users/$1/$2', ['filter' => 'auth']);
+    $routes->get('tasrih/(:any)', 'MushrifController::tasrih/$1', ['filter' => 'auth']);
     // $routes->get('edit/(:num)', 'MushrifController::show/$1', ['filter' => 'auth']);
     // $routes->get('delete/(:num)', 'MushrifController::delete/$1', ['filter' => 'auth']);
     // $routes->post('upload/(:num)', 'MushrifController::update/$1', ['filter' => 'auth']);

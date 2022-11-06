@@ -15,7 +15,8 @@
                             <h1><?= sprintf('%04s', $user['malaf']) ?></h1>
                             <h4><b><?= $user['name'] ?></b></h4>
                             <p><?= $user['iqama'] ?></p>
-                            <p><?= $user['jamia'] ?> - <?= $user['nationality'] ?></p>
+                            <p><?= $user['country_arName'] ?></p>
+                            <p><?= $user['uni_name'] ?> </p>
                             <p><a href="mailto:<?= $user['email'] ?>" class="badge badge-glow badge-info badge-pill"><?= $user['email'] ?></a></p>
                             <p>
                                 <div class="btn-group">
@@ -31,7 +32,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="recent-transactions" class="col-md-8 col-sm-12">
+                <!-- <div id="recent-transactions" class="col-md-8 col-sm-12">
                     <div class="card">
                         <div class="card-header">
                             <h3><b><?= lang('app.tanfidh') ?> - <?= $user['name'] ?></b>
@@ -61,7 +62,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

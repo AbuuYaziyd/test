@@ -18,6 +18,7 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/vendors/css/vendors-rtl.min.css') ?>">
     <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/vendors/css/forms/icheck/icheck.css') ?>">
     <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/vendors/css/forms/icheck/custom.css') ?>">
+    <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/vendors/css/forms/selects/select2.min.css') ?>">
     <!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->
@@ -88,10 +89,12 @@
     <!-- BEGIN: Theme JS-->
     <script src="<?= base_url('app-assets/js/core/app-menu.js') ?>"></script>
     <script src="<?= base_url('app-assets/js/core/app.js') ?>"></script>
+    <script src="<?= base_url('app-assets/vendors/js/forms/select/select2.full.min.js') ?>"></script>
     <!-- END: Theme JS-->
 
     <!-- BEGIN: Page JS-->
     <script src="<?= base_url('app-assets/js/scripts/forms/form-login-register.js') ?>"></script>
+    <script src="<?= base_url('app-assets/js/scripts/forms/select/form-select2.js') ?>"></script>
     <!-- END: Page JS-->
 
 </body>

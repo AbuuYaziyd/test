@@ -39,12 +39,12 @@
                                     <i class="la la-credit-card"></i>
                                 </div>
                             </fieldset>
-                            <label class="text-bold-600"><?= lang('app.namereg') . ' - ' . lang('app.arabic') ?></label>
+                            <label class="text-bold-600"><?= lang('app.namereg') . ' - (' . lang('app.arabic') ?>)</label>
                             <?php if ($validation->getError('name')) : ?>
                                 <span class="badge badge-danger"> <?= $errors = $validation->getError('name') ?></span>
                             <?php endif ?>
                             <fieldset class="form-group position-relative has-icon-left mb-1">
-                                <input type="text" class="form-control" name="name" placeholder="<?= lang('app.name') . ' - ' . lang('app.arabic') ?>">
+                                <input type="text" class="form-control" name="name" placeholder="<?= lang('app.name') . ' - (' . lang('app.arabic') ?>)">
                                 <div class="form-control-position">
                                     <i class="la la-user"></i>
                                 </div>
@@ -74,9 +74,14 @@
                                 <span class="badge badge-danger"> <?= $errors = $validation->getError('phone') ?></span>
                             <?php endif ?>
                             <fieldset class="form-group position-relative has-icon-left mb-1">
-                                <input type="text" class="form-control" name="phone" placeholder="<?= lang('app.phone') ?>">
-                                <div class="form-control-position">
-                                    <i class="la la-mobile"></i>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="phone" placeholder="<?= lang('app.phone') ?>">
+                                    <div class="form-control-position">
+                                        <i class="la la-mobile"></i>
+                                    </div>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text" id="basic-addon1">966+</span>
+                                    </div>
                                 </div>
                             </fieldset>
                             <label class="text-bold-600"><?= lang('app.nationality') ?></label>
@@ -84,10 +89,10 @@
                                 <span class="badge badge-danger"> <?= $errors = $validation->getError('nationality') ?></span>
                             <?php endif ?>
                             <fieldset class="form-group position-relative has-icon-left mb-1">
-                                <select class="form-control" name="nationality">
+                                <select class="select2 form-control" name="nationality">
                                     <option selected disabled><?= lang('app.choose') . ' ' . lang('app.nationality') ?></option>
                                     <?php foreach ($nat as $key => $data) : ?>
-                                        <option value="<?= $data['country_arName'] ?>"><?= $data['country_arName'] ?></option>
+                                        <option value="<?= $data['country_code'] ?>"><?= $data['country_arName'] ?></option>
                                     <?php endforeach ?>
                                 </select>
                                 <div class="form-control-position">
@@ -99,7 +104,7 @@
                                 <span class="badge badge-danger"> <?= $errors = $validation->getError('jamia') ?></span>
                             <?php endif ?>
                             <fieldset class="form-group position-relative has-icon-left mb-1">
-                                <select class="form-control" name="jamia">
+                                <select class="select2 form-control" name="jamia">
                                     <option selected disabled><?= lang('app.choose') . ' ' . lang('app.jamia') ?></option>
                                     <?php foreach ($uni as $key => $data) : ?>
                                         <option value="<?= $data['uni_id'] ?>"><?= $data['uni_name'] ?> - (<?= $data['uni_reg'] ?>)</option>
@@ -114,7 +119,7 @@
                                 <span class="badge badge-danger"> <?= $errors = $validation->getError('bank') ?></span>
                             <?php endif ?>
                             <fieldset class="form-group position-relative has-icon-left mb-1">
-                                <select name="bank" class="form-control">
+                                <select name="bank" class="select2 form-control">
                                     <option disabled selected><?= lang('app.choose') . ' ' . lang('app.bank') ?></option>
                                     <?php foreach ($bank as $key => $data) : ?>
                                         <option value="<?= $data['bankId'] ?>"><?= $data['bankName'].' - '.$data['bankShort'] ?></option>
@@ -139,7 +144,7 @@
                                 <span class="badge badge-danger"> <?= $errors = $validation->getError('level') ?></span>
                             <?php endif ?>
                             <fieldset class="form-group position-relative has-icon-left mb-1">
-                                <select class="form-control" name="level">
+                                <select class="select2 form-control" name="level">
                                     <option selected disabled><?= lang('app.choose') . ' ' . lang('app.lvl') ?></option>
                                     <option value="<?= lang('app.lvl1') ?>"><?= lang('app.lvl1') ?></option>
                                     <option value="<?= lang('app.lvl2') ?>"><?= lang('app.lvl2') ?></option>

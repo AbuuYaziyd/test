@@ -26,6 +26,7 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/css-rtl/colors.css') ?> ">
     <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/css-rtl/components.css') ?> ">
     <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/css-rtl/custom-rtl.css') ?> ">
+    <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/vendors/css/forms/selects/select2.min.css') ?>">
     <!-- END: Theme CSS-->
 
     <!-- BEGIN: Page CSS-->
@@ -83,10 +84,12 @@
     <!-- BEGIN: Theme JS-->
     <script src="<?= base_url('app-assets/js/core/app-menu.js') ?> "></script>
     <script src="<?= base_url('app-assets/js/core/app.js') ?> "></script>
+    <script src="<?= base_url('app-assets/vendors/js/forms/select/select2.full.min.js') ?>"></script>
     <!-- END: Theme JS-->
 
     <!-- BEGIN: Page JS-->
     <script src="<?= base_url('app-assets/js/scripts/pages/dashboard-crypto.js') ?> "></script>
+    <script src="<?= base_url('app-assets/js/scripts/forms/select/form-select2.js') ?>"></script>
     <!-- END: Page JS-->
 
     <script>

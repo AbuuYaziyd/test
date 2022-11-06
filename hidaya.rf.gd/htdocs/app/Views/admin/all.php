@@ -1,5 +1,5 @@
 <?= $this->extend('layouts/main') ?>
-<?= $this->section('scripts') ?>
+<?= $this->section('styles') ?>
 
 <!-- BEGIN: DT CSS-->
 <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/vendors/css/vendors-rtl.min.css') ?>">
@@ -38,6 +38,7 @@
                                                     <th><?= lang('app.iqama') ?></th>
                                                     <th><?= lang('app.phone') ?></th>
                                                     <th><?= lang('app.level') ?></th>
+                                                    <th><?= lang('app.nationality') ?></th>
                                                     <th><?= lang('app.bank') ?></th>
                                                     <th><?= lang('app.iban') ?></th>
                                                     <th><?= lang('app.edit') ?></th>
@@ -52,9 +53,10 @@
                                                         <td><?= $data['iqama'] ?></td>
                                                         <td><a href="tel:+966<?= $data['phone'] ?>" class="badge badge-secondary">966<?= $data['phone'] ?></a></td>
                                                         <td><?= $data['level'] ?></td>
-                                                        <td><?= $data['bank'] ?></td>
+                                                        <td><?= $data['country_arNationality'] ?></td>
+                                                        <td><?= $data['bankName'] ?></td>
                                                         <td><?= $data['iban'] ?></td>
-                                                        <td><a href="<?= base_url('admin/edit/' . $data['id']) ?>" class="btn btn-sm btn-danger"><?= lang('app.edit') ?></a></td>
+                                                        <td><a href="<?= base_url('admin/show/' . $data['id']) ?>" class="btn btn-sm btn-outline-warning round"><?= lang('app.edit') ?></a></td>
                                                     </tr>
                                                 <?php endforeach ?>
                                             </tbody>
@@ -92,6 +94,9 @@
 <script>
     $(document).ready(function() {
         $('.dataex-res-configuration').DataTable({
+            "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.12.1/i18n/ar.json"
+            },
             dom: 'Bfrtip',
             buttons: [{
                     extend: 'print',

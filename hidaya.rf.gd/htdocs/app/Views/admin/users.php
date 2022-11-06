@@ -1,5 +1,5 @@
 <?= $this->extend('layouts/main') ?>
-<?= $this->section('scripts') ?>
+<?= $this->section('styles') ?>
 
 <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/vendors/css/vendors-rtl.min.css') ?>">
 <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/vendors/css/tables/datatable/datatables.min.css') ?>">
@@ -31,36 +31,24 @@
                                         <table class="table table-striped table-bordered dataex-res-constructor">
                                             <thead>
                                                 <tr>
+                                                    <th>#</th>
                                                     <th><?= lang('app.malaf') ?></th>
                                                     <th><?= lang('app.name') ?></th>
                                                     <th><?= lang('app.iqama') ?></th>
                                                     <th><?= lang('app.phone') ?></th>
                                                     <th><?= lang('app.level') ?></th>
-                                                    <?php if (!$type) : ?>
-                                                        <th><?= lang('app.jamia') ?> - <?= lang('app.nationality') ?></th>
-                                                    <?php elseif ($type == 'nat') : ?>
-                                                       <th><?= lang('app.jamia') ?></th>
-                                                    <?php elseif ($type == 'jamia') : ?>
-                                                        <th><?= lang('app.nationality') ?></th>
-                                                    <?php endif ?>
                                                     <th><?= lang('app.edit') ?></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php foreach ($users as $key => $data) : ?>
                                                     <tr>
-                                                        <td><span class="badge badge-<?= ( $data['role']=='mushrif'?'success':'') ?>"><?= $data['malaf'] ?></span></td>
-                                                        <td><?= $data['name'] ?></td>
+                                                        <td><?= $key+1 ?></td>
+                                                        <td><?= sprintf('%04s', $data['malaf']) ?></td>
+                                                        <td><span <?= ( $data['role']=='mushrif'?'class="badge badge-success"':'') ?>><?= $data['name'] ?></span></td>
                                                         <td><?= $data['iqama'] ?></td>
                                                         <td><a href="tel:+966<?= $data['phone'] ?>" class="badge badge-secondary">966<?= $data['phone'] ?></a></td>
                                                         <td><?= $data['level'] ?></td>
-                                                        <?php if (!$type) : ?>
-                                                            <td><a href="<?= base_url('admin/search/'. $data['nationality'].'/'. $data['jamia']) ?>" class="btn btn-outline-primary round btn-sm"><?= $data['jamia'] ?> - <?= $data['nationality'] ?></a></td>
-                                                        <?php elseif ($type == 'nat') : ?>
-                                                            <td><a href="<?= base_url('admin/jamia/'. $data['jamia']) ?>" class="btn btn-outline-primary round btn-sm"><?= $data['jamia'] ?></a></td>
-                                                        <?php elseif ($type == 'jamia') : ?>
-                                                            <td><a href="<?= base_url('admin/nat') ?>" class="btn btn-outline-info round btn-sm"><?= $data['nationality'] ?></a></td>
-                                                        <?php endif ?>
                                                         <td><a href="<?= base_url('admin/show/' . $data['id']) ?>" class="btn btn-sm round btn-outline-warning"><?= lang('app.edit') ?></a></td>
                                                     </tr>
                                                 <?php endforeach ?>
@@ -106,7 +94,7 @@
                 extend: 'excelHtml5',
             },
         ],
-        responsive: false
+        responsive: true
     });
 </script>
 

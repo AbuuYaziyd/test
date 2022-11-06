@@ -8,7 +8,7 @@ class University extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'universities';
-    protected $primaryKey       = 'id';
+    protected $primaryKey       = 'uni_id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';

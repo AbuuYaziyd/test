@@ -54,6 +54,7 @@ class AuthController extends BaseController
 
     public function secure()
     {
+        // dd($this->request->getVar());
         helper('form');
 
         $input = $this->validate(
@@ -65,8 +66,8 @@ class AuthController extends BaseController
                 'bitaqa' => 'required',
                 'passport' => 'required',
                 'phone' => 'required|exact_length[9]|integer',
-                'nationality' => 'required|integer',
-                'jamia' => 'required',
+                'nationality' => 'required',
+                'jamia' => 'required|integer',
                 'bank' => 'required|integer',
                 'check' => 'required',
                 'level' => 'required',
@@ -112,14 +113,13 @@ class AuthController extends BaseController
                 ],
                 'jamia' => [
                     'required' => lang('error.required'),
-                    // 'integer' => lang('error.integer'),
+                    'integer' => lang('error.integer'),
                 ],
                 'level' => [
                     'required' => lang('error.required'),
                 ],
                 'nationality' => [
                     'required' => lang('error.required'),
-                    'integer' => lang('error.integer'),
                 ],
             ]
         );
@@ -141,10 +141,11 @@ class AuthController extends BaseController
                 'name'     => $this->request->getVar('name'),
                 'email'    => $this->request->getVar('email'),
                 'password' => password_hash($this->request->getVar('iqama'), PASSWORD_DEFAULT),
-                'iban' => $this->request->getVar('iban'),
+                'iban' => strtoupper($this->request->getVar('iban')),
                 'iqama' => $this->request->getVar('iqama'),
+                'malaf' => $this->request->getVar('iqama'),
                 'bitaqa' => $this->request->getVar('bitaqa'),
-                'passport' => $this->request->getVar('passport'),
+                'passport' => strtoupper($this->request->getVar('passport')),
                 'phone' => $this->request->getVar('phone'),
                 'nationality' => $this->request->getVar('nationality'),
                 'jamia' => $this->request->getVar('jamia'),
@@ -154,7 +155,7 @@ class AuthController extends BaseController
 
             // dd($data); 
             $ok = $user->save($data);
-            // $ok = true;
+            
             if ($ok) {
                 return redirect()->to('login')->with('type', 'success')->with('text', lang('app.useIqamaAsPassword'))->with('title', lang('app.registerSuccess'));
             }

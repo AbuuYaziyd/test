@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\Image;
 use App\Models\Setting;
 use App\Models\Tanfidh;
+use App\Models\Umrah;
 use App\Models\User;
 
 class MushrifController extends BaseController
@@ -111,5 +112,12 @@ class MushrifController extends BaseController
         if ($ok) {
             return redirect()->to('mushrif/judud')->with('type', 'success')->with('title', lang('app.done'))->with('text', lang('app.activate') . ' ' . lang('app.student') . ' ' . lang('app.success'));
         }
+    }
+
+    public function tasrih($date)
+    {
+        $tanfidh = new Umrah();
+        $data['tanfidh'] = $tanfidh->where(['tnfdhDate' => $date])->findAll();
+        dd($data);
     }
 }

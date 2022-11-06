@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-xl-3 col-lg-6 col-12">
-        <a href="<?= base_url('admin/users') ?>">
+        <a href="<?= base_url('admin/all') ?>">
             <div class="card pull-up">
                 <div class="card-content">
                     <div class="card-body">
@@ -29,7 +29,7 @@
                         <div class="media d-flex">
                             <div class="media-body text-left">
                                 <h3 class="purple"><?= $jamia ?></h3>
-                                <h6><?= lang('app.jamia') ?></h6>
+                                <h6><?= lang('app.jamiat') ?></h6>
                             </div>
                             <div>
                                 <i class="icon-users purple font-large-2 float-right"></i>
@@ -51,7 +51,7 @@
                         <div class="media d-flex">
                             <div class="media-body text-left">
                                 <h3 class="amber"><?= $nationality ?></h3>
-                                <h6><?= lang('app.nationality') ?></h6>
+                                <h6><?= lang('app.nationalities') ?></h6>
                             </div>
                             <div>
                                 <i class="icon-users amber font-large-2 float-right"></i>

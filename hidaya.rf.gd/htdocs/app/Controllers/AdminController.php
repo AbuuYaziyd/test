@@ -3,7 +3,10 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\Country;
+use App\Models\Setting;
 use App\Models\Tanfidh;
+use App\Models\University;
 use App\Models\User;
 
 class AdminController extends BaseController
@@ -17,17 +20,18 @@ class AdminController extends BaseController
     {
         $user = new User();
         $tanfidh = new Tanfidh();
+        $set = new Setting();
 
         $role = $user->find($_SESSION['id']);
-        $data['tanfdh'] = $tanfidh->where('mushrif', $_SESSION['id'])->countAllResults();
+        // $data['tanfdh'] = $tanfidh->where('mushrif', $_SESSION['id'])->countAllResults();
         $data['mushrif'] = $user->where('role', 'mushrif')->countAllResults();
         $data['complt'] = $tanfidh->where(['tnfdhStatus' => 1])->countAllResults();
         $data['status'] = $tanfidh->where(['tnfdhStatus' => 0])->countAllResults();
         $data['judud'] = $user->where(['malaf' => null, 'status' => 0])->countAllResults();
-        // $data['users'] = $user->where(['role' => 'user', 'role' => 'user'])->findAll();
+        $data['set'] = $set->where(['name' => 'tanfidhDate', 'value>=' => date('Y-m-d')])->findAll();
         $data['full'] = count($user->where('role!=', 'admin')->findAll());
-        $data['jamia'] = count($user->groupBy('jamia')->findAll());
-        $data['nationality'] = count($user->groupBy('nationality')->findAll());
+        $data['jamia'] = count($user->groupBy('jamia')->where('jamia!=', null)->findAll());
+        $data['nationality'] = count($user->groupBy('nationality')->where('nationality!=', null)->findAll());
         $data['title'] = lang('app.dashboard');
         // dd($data['full']);
 
@@ -41,14 +45,18 @@ class AdminController extends BaseController
     public function jamiat()
     {
         $user = new User();
+        $uni = new University();
 
         $data['title'] = lang('app.jamiat');
         $jamia = $user->groupBy('jamia')->findAll();
         foreach ($jamia as $jm) {
-            $m[] = [
-               'jm' => $user->where('jamia', $jm['jamia'])->countAllResults(),
-               'jamia' => $jm['jamia'],
-            ];
+            if ($jm['jamia'] != null) {
+                $m[] = [
+                'jm' => $user->where('jamia', $jm['jamia'])->countAllResults(),
+                'jamia' => $uni->find($jm['jamia'])['uni_name'],
+                'uni' => $uni->find($jm['jamia'])['uni_id'],
+                ];
+            }
         }
         $data['jamia'] = $m;
         // dd($data);
@@ -59,26 +67,34 @@ class AdminController extends BaseController
     public function jamia($jm)
     {
         $user = new User();
+        $uni = new University();
 
-        $data['title'] = $jm;
+        $data['title'] = lang('app.mushrifuna').' - '.$uni->find($jm)['uni_name'];
         $data['type'] = 'jamia';
-        $data['users'] = $user->where('jamia', $jm)->findAll();
+        $data['users'] = $user->where(['jamia' => $jm, 'role' => 'mushrif'])
+                            ->join('countries n', 'n.country_code=users.nationality')
+                            ->join('universities u', 'u.uni_id=users.jamia')
+                            ->findAll();
         // dd($data);
 
-        return view('admin/users', $data);
+        return view('admin/mushrif', $data);
     }
 
     public function nationality()
     {
         $user = new User();
+        $nt = new Country();
 
-        $data['title'] = lang('app.nationality');
-        $nationality = $user->groupBy('nationality')->findAll();
-        foreach ($nationality as $jm) {
-            $m[] = [
-               'jm' => $user->where('nationality', $jm['nationality'])->countAllResults(),
-               'nationality' => $jm['nationality'],
-            ];
+        $data['title'] = lang('app.nationalities');
+        $nat = $user->groupBy('nationality')->findAll();
+        foreach ($nat as $jm) {
+            if ($jm['nationality'] != null) {
+                $m[] = [
+                'jm' => $user->where(['nationality' => $jm['nationality'], 'role!=' => 'admin'])->countAllResults(),
+                'nationality' => $nt->where('country_code', $jm['nationality'])->first()['country_arName'],
+                'nat' => $jm['nationality']
+                ];
+            }
         }
         $data['nationality'] = $m;
         // dd($data);
@@ -92,33 +108,29 @@ class AdminController extends BaseController
 
         $data['title'] = $nt;
         $data['type'] = 'nat';
-        $data['users'] = $user->where('nationality', $nt)->findAll();
-        // dd($data);
+        $data['users'] = $user->where(['nationality' => $nt, 'role' => 'mushrif'])->findAll();
+        dd($data);
 
         return view('admin/users', $data);
     }
 
-    public function search($nat, $jam)
-    {
-        
-        $data['title'] = lang('app.users').' - '.$nat .' - '.$jam;
-        $user = new User();
-        $data['users'] = $user->where(['nationality' => $nat, 'jamia' => $jam])->findAll();
-        $data['type'] = 'all';
-        // dd($data);
-        
-        return view('admin/users', $data);
-    }
-
-    public function users()
+    public function users($nat, $jam)
     {
         $user = new User();
-
-        $data['title'] = lang('app.students');
-        $data['type'] = '';
-        $data['users'] = $user->where('role', 'user')->findAll();
+        $nationality = new Country();
+        $jamia = new University();
+        
+        $nt = $nationality->where('country_code', $nat)->first();
+        $jm = $jamia->where('uni_id', $jam)->first();
+        $data['title'] = lang('app.users').' - '.$nt['country_arName'] .' - '.$jm['uni_name'];
+        $data['users'] = $user->where(['jamia' => $jam, 'nationality' => $nat])
+                            ->join('countries n', 'n.country_code=users.nationality')
+                            ->join('universities u', 'u.uni_id=users.jamia')
+                            ->orderBy('role', 'asc')
+                            ->findAll();
+        // $data['users'] = $user->where(['nationality' => $nat, 'jamia' => $jam])->findAll();
         // dd($data);
-
+        
         return view('admin/users', $data);
     }
 
@@ -152,25 +164,29 @@ class AdminController extends BaseController
     {
         $user = new User();
 
-        $data['user'] = $user->find($id);
+        $data['user'] = $user->join('countries c', 'c.country_code=users.nationality')
+                        ->join('universities u', 'u.uni_id=users.jamia')
+                        ->find($id);
         $data['title'] = lang('app.user');
         // dd($data);
 
         return view('admin/user', $data);
     }
 
-    // public function new()
-    // {
-    //     $user = new User();
+    public function all()
+    {
+        $user = new User();
 
-    //     $role = $user->find($_SESSION['id']);
-    //     $data['users'] = $user->where(['nationality' => $role['nationality'], 'jamia' => $role['jamia'], 'role' => 'user'])->findAll();
-    //     $data['check'] = lang('app.students');
-    //     $data['title'] = lang('app.students') .' '. $role['jamia'].' '. lang('app.from').' '. lang('app.nationality').' '. $role['nationality'];
-    //     // dd($data);
+        $data['users'] = $user->where( 'role!=', 'admin')
+                            ->join('countries c', 'c.country_code=users.nationality')
+                            ->join('banks', 'banks.bankId=users.bank')
+                            ->findAll();
+        $data['check'] = lang('app.students');
+        $data['title'] = lang('app.students');
+        // dd($data);
 
-    //     return view('admin/show', $data);
-    // }
+        return view('admin/all', $data);
+    }
 
     public function delete($id)
     {

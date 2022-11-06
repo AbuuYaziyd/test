@@ -12,8 +12,8 @@
                 <div class="card-header">
                     <h3>
                         <b><?= $title ?></b>
-                        <?php if ($_SESSION['role'] != 'user') : ?>
-                        <a class="btn btn-outline-success box-shadow-2 round pull-right" href="#">
+                        <?php if (session('role') != 'user') : ?>
+                        <a class="btn btn-outline-success box-shadow-2 round pull-right" href="<?= base_url('mushrif/tasrih/'. $umrah['tnfdhDate']) ?>">
                             <?= lang('app.tasrih') ?></a>
                         <?php endif ?>
                     </h3>
