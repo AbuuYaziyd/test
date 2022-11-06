@@ -7,7 +7,6 @@ use App\Models\Bank;
 use App\Models\Country;
 use App\Models\Hits;
 use App\Models\Setting;
-use App\Models\Tanfidh;
 use App\Models\User;
 
 class UserController extends BaseController

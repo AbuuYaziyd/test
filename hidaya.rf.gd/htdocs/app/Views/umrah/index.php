@@ -21,81 +21,62 @@
                 <div class="card-content">
                     <div id="new-orders" class="media-list position-relative">
                         <div class="row m-2">
-                        <div class="col-12">
-                            <?php if ($next >= date('Y-m-d')) : ?>
-                                <?php if (!$umrah) : ?>
+                            <div class="col-12">
+                                <?php if ($next >= date('Y-m-d')) : ?>
+                                    <?php if (!$umrah) : ?>
+                                        <div class="heading-elements">
+                                            <?= form_open('umrah/create') ?>
+                                                <input type="hidden" name="id" value="<?= session('id') ?>">
+                                                <input type="hidden" name="tanfidh" value="<?= $next ?>">
+                                                <button type="submit" class="btn btn-icon btn-info round mb-2 btn-block btn-lg"><?= lang('app.register') ?></button>
+                                            </form>
+                                        </div>
+                                    <?php elseif ($umrah['makkah'] == null) : ?>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="heading-elements">
+                                                    <a href="<?= base_url('umrah/show/'. $umrah['tnfdhId']) ?>" class="btn btn-icon btn-success round mb-2 btn-block btn-lg"><?= lang('app.tasrih') ?></a>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="heading-elements">
+                                                    <form action="<?= base_url('umrah/loc/'. $umrah['tnfdhId']) ?>" method="post">
+                                                        <input type="hidden" name="locType" value="miqat">
+                                                        <button type="submit" class="btn btn-icon btn-warning round mb-2 btn-block btn-lg" <?= (($umrah['tasrih'] == null || $umrah['tnfdhStatus'] == 0)?'disabled':'') ?>>
+                                                            <?= lang('app.miqat') ?>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="heading-elements">
+                                                    <form action="<?= base_url('umrah/loc/'. $umrah['tnfdhId']) ?>" method="post">
+                                                        <input type="hidden" name="locType" value="makkah">
+                                                        <button type="submit" class="btn btn-icon btn-secondary round mb-2 btn-block btn-lg"  <?= ($umrah['miqat'] == null ? 'disabled' : '') ?>>
+                                                            <i class="ft ft-check-circle white"></i> 
+                                                            <?= lang('app.makkah') ?>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php else : ?>
+                                        <div class="heading-elements">
+                                            <button class="btn btn-icon btn-info round mb-2 btn-block btn-lg" disabled><?= lang('app.done') ?> <?= lang('app.tanfidh') ?> <?= lang('app.umrah') ?></button>
+                                        </div>
+                                    <?php endif ?>
+                                <?php  else :?>
                                     <div class="heading-elements">
-                                        <?= form_open('umrah/create') ?>
-                                            <input type="hidden" name="id" value="<?= session('id') ?>">
-                                            <input type="hidden" name="tanfidh" value="<?= $next ?>">
-                                            <button type="submit" class="btn btn-icon btn-info round mb-2 btn-block btn-lg"><?= lang('app.register') ?></button>
-                                        </form>
-                                    </div>
-                                <?php elseif ($umrah['makkah'] == null) : ?>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="heading-elements">
-                                                <a href="<?= base_url('umrah/show/'. $umrah['tnfdhId']) ?>" class="btn btn-icon btn-success round mb-2 btn-block btn-lg"><?= lang('app.tasrih') ?></a>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="heading-elements">
-                                                <form action="<?= base_url('umrah/loc/'. $umrah['tnfdhId']) ?>" method="post">
-                                                    <input type="hidden" name="locType" value="miqat">
-                                                    <button type="submit" class="btn btn-icon btn-warning round mb-2 btn-block btn-lg" <?= (($umrah['tasrih'] == null || $umrah['tnfdhStatus'] == 0)?'disabled':'') ?>>
-                                                        <?= lang('app.miqat') ?>
-                                                    </button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="heading-elements">
-                                                <form action="<?= base_url('umrah/loc/'. $umrah['tnfdhId']) ?>" method="post">
-                                                    <input type="hidden" name="locType" value="makkah">
-                                                    <button type="submit" class="btn btn-icon btn-secondary round mb-2 btn-block btn-lg"  <?= ($umrah['miqat'] == null ? 'disabled' : '') ?>>
-                                                        <i class="ft ft-check-circle white"></i> 
-                                                        <?= lang('app.makkah') ?>
-                                                    </button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                <?php else : ?>
-                                    <div class="heading-elements">
-                                        <button class="btn btn-icon btn-info round mb-2 btn-block btn-lg" disabled><?= lang('app.done') ?> <?= lang('app.tanfidh') ?> <?= lang('app.umrah') ?></button>
+                                        <button type="button" class="btn btn-icon btn-secondary mb-2 btn-block round btn-lg" disabled>
+                                            <?= lang('app.near') ?>
+                                        </button>
                                     </div>
                                 <?php endif ?>
-                            <?php  else :?>
-                                <div class="heading-elements">
-                                    <button type="button" class="btn btn-icon btn-secondary mb-2 btn-block round btn-lg" disabled>
-                                        <?= lang('app.near') ?>
-                                    </button>
-                                </div>
-                            <?php endif ?>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-            </div>
-            <!-- <div class="row">
-                <div class="col">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3><?= lang('app.register') . ' ' . lang('app.to') . ' ' . lang('app.tanfidh') . ' ' . lang('app.next') ?></h3>
-                                <div class="card-body">
-                                    <div class="heading-elements">
-                                        <?= form_open('umrah/new') ?>
-                                        <input type="hidden" name="userId" value="<?= session('id') ?>">
-                                        <button type="submit" class="btn btn-icon btn-primary">
-                                            <i class="ft ft-check-circle round white"></i> <?= lang('app.register') ?>
-                                        </button>
-                                    </form>
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div> -->
+            </div>
         </div>
     </div>
 </div>

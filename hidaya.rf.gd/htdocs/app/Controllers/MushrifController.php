@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\Image;
+use App\Models\Setting;
 use App\Models\Tanfidh;
 use App\Models\User;
 
@@ -13,12 +14,14 @@ class MushrifController extends BaseController
     {
         $user = new User();
         $tanfidh = new Tanfidh();
+        $set = new Setting();
 
         $role = $user->find($_SESSION['id']);
         $data['lead'] = $tanfidh->where('mushrif', session('id'))->countAllResults();
         $data['status'] = $tanfidh->where(['tnfdhStatus' => 'incomplete','mushrif', session('id')])->countAllResults();
         $data['judud0'] = $user->where(['malaf' => null, 'status' => null, 'jamia' => $role['jamia'], 'nationality' => $role['nationality']])->countAllResults();
         $data['judud1'] = $user->where(['malaf' => null, 'status' => 0, 'jamia' => $role['jamia'], 'nationality' => $role['nationality']])->countAllResults();
+        $data['set'] = $set->where(['name' => 'tanfidhDate', 'value>=' => date('Y-m-d')])->findAll();
         // $data['users'] = $user->where(['nationality' => $role['nationality'], 'jamia' => $role['jamia'], 'nationality' => $role['nationality']])->findAll();
         $data['all'] = $user->where(['nationality' => $role['nationality'], 'jamia' => $role['jamia']])->countAllResults();
         $data['full'] = $user->countAll();
