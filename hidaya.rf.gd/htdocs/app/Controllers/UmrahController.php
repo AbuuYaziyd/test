@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\Umrah;
+use App\Models\User;
 
 class UmrahController extends BaseController
 {
@@ -26,19 +27,24 @@ class UmrahController extends BaseController
     {
         // dd($this->request->getVar());
         $umrah = new Umrah();
+        $user = new User();
 
         $id = $this->request->getVar('id');
         $tanfidh = $this->request->getVar('tanfidh');
+        $usr = $user->find(session('id'));
+        $mushrif = $user->where(['nationality' => ($usr['nationality']), 'jamia' => ($usr['jamia']), 'role' => 'mushrif'])->first()['id'];
 
         $data['title'] = lang('app.umrah');
         $check = $umrah->where(['userId' => $id, 'tnfdhDate' => $tanfidh])->countAllResults();
-        // dd(!$check);
+        // dd($mushrif);
 
         if (!$check) {
             $reg = [
                 'userId' => session('id'),
                 'tnfdhDate' => $tanfidh,
+                'mushrif' => $mushrif,
             ];
+            // dd($reg);
             
             $umrah->save($reg);
 

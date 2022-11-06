@@ -12,7 +12,7 @@
                 <div class="card-header">
                     <h3>
                         <b><?= $title ?></b>
-                        <?php if (session('role') != 'user') : ?>
+                        <?php if (session('role') != 'user' && $umrah != null) : ?>
                         <a class="btn btn-outline-success box-shadow-2 round pull-right" href="<?= base_url('mushrif/tasrih/'. $umrah['tnfdhDate']) ?>">
                             <?= lang('app.tasrih') ?></a>
                         <?php endif ?>

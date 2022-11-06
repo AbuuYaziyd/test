@@ -148,7 +148,17 @@ class MushrifController extends BaseController
     public function tasrih($date)
     {
         $tanfidh = new Umrah();
-        $data['tanfidh'] = $tanfidh->where(['tnfdhDate' => $date])->findAll();
-        dd($data);
+
+        $data['tasrih'] = $tanfidh->where(['tnfdhDate' => $date])
+                            ->join('users u', 'u.id=tanfidh.userId')
+                            ->findAll();
+        $data['title'] = lang('app.tasrih');
+        // dd($data);
+        
+        if (session('role') == 'mushrif') {
+            return view('mushrif/tasrih', $data);
+        } else {
+            return redirect()->to('user');
+        }   
     }
 }
