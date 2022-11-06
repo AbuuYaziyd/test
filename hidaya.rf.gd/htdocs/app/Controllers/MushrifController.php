@@ -29,7 +29,11 @@ class MushrifController extends BaseController
         $data['title'] = lang('app.dashboard');
         // dd($data);
 
-        return view('mushrif/index', $data);
+        if (session('role') == 'mushrif') {
+            return view('mushrif/index', $data);
+        } else {
+            return redirect()->to('user');
+        }   
     }
     
     public function users()
@@ -42,7 +46,11 @@ class MushrifController extends BaseController
         $data['title'] = lang('app.students').' - '.$dt['nationality'].' - '.$dt['jamia'];
         // dd($data);
 
-        return view('mushrif/users', $data);
+        if (session('role') == 'mushrif') {
+            return view('mushrif/users', $data);
+        } else {
+            return redirect()->to('user');
+        }   
     }
     
     public function judud()
@@ -55,7 +63,11 @@ class MushrifController extends BaseController
         $data['title'] = lang('app.judud').' - '.$dt['nationality'].' - '.$dt['jamia'];
         // dd($data);
 
-        return view('mushrif/judud', $data);
+        if (session('role') == 'mushrif') {
+            return view('mushrif/judud', $data);
+        } else {
+            return redirect()->to('user');
+        }   
     }
     
     public function user($id)
@@ -67,7 +79,11 @@ class MushrifController extends BaseController
         $data['title'] = lang('app.jadid');
         // dd($data);
 
-        return view('mushrif/user', $data);
+        if (session('role') == 'mushrif') {
+            return view('mushrif/user', $data);
+        } else {
+            return redirect()->to('user');
+        }   
     }
 
     public function active($id)
@@ -91,7 +107,11 @@ class MushrifController extends BaseController
         }
         // dd($data);
 
-        return view('mushrif/image', $data);
+        if (session('role') == 'mushrif') {
+            return view('mushrif/image', $data);
+        } else {
+            return redirect()->to('user');
+        }   
     }
 
     public function activate($id)
