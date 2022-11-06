@@ -1,5 +1,5 @@
 <?= $this->extend('layouts/main') ?>
-<?= $this->section('scripts') ?>
+<?= $this->section('styles') ?>
 
 <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/vendors/css/vendors-rtl.min.css') ?>">
 <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/vendors/css/tables/datatable/datatables.min.css') ?>">
@@ -31,6 +31,7 @@
                                         <table class="table table-striped table-bordered dataex-res-constructor">
                                             <thead>
                                                 <tr>
+                                                    <th>#</th>
                                                     <th><?= lang('app.malaf') ?></th>
                                                     <th><?= lang('app.name') ?></th>
                                                     <th><?= lang('app.iqama') ?></th>
@@ -42,6 +43,7 @@
                                             <tbody>
                                                 <?php foreach ($users as $key => $data) : ?>
                                                     <tr>
+                                                        <td><?= $key+1 ?></td>
                                                         <td><span class="badge badge-<?= ( $data['role']=='mushrif'?'success':'') ?>"><?= $data['malaf'] ?></span></td>
                                                         <td><?= $data['name'] ?></td>
                                                         <td><?= $data['iqama'] ?></td>
@@ -90,9 +92,13 @@
             },
             {
                 extend: 'excelHtml5',
-            },
-        ],
-        responsive: false
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                'colvis'
+            ],
+            responsive: true
     });
 </script>
 

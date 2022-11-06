@@ -3,10 +3,12 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\Country;
 use App\Models\Image;
 use App\Models\Setting;
 use App\Models\Tanfidh;
 use App\Models\Umrah;
+use App\Models\University;
 use App\Models\User;
 
 class MushrifController extends BaseController
@@ -23,9 +25,8 @@ class MushrifController extends BaseController
         $data['judud0'] = $user->where(['malaf' => null, 'status' => null, 'jamia' => $role['jamia'], 'nationality' => $role['nationality']])->countAllResults();
         $data['judud1'] = $user->where(['malaf' => null, 'status' => 0, 'jamia' => $role['jamia'], 'nationality' => $role['nationality']])->countAllResults();
         $data['set'] = $set->where(['name' => 'tanfidhDate', 'value>=' => date('Y-m-d')])->findAll();
-        // $data['users'] = $user->where(['nationality' => $role['nationality'], 'jamia' => $role['jamia'], 'nationality' => $role['nationality']])->findAll();
-        $data['all'] = $user->where(['nationality' => $role['nationality'], 'jamia' => $role['jamia']])->countAllResults();
-        $data['full'] = $user->countAll();
+        $data['all'] = $user->where(['nationality' => $role['nationality'], 'jamia' => $role['jamia'],'role!=' => 'admin'])->countAllResults();
+        $data['full'] = $user->where('role!=', 'admin')->countAllResults();
         $data['title'] = lang('app.dashboard');
         // dd($data);
 
@@ -39,11 +40,17 @@ class MushrifController extends BaseController
     public function users()
     {
         $user = new User();
+        $nat = new Country();
+        $jam = new University();
+
         $dt = $user->find(session('id'));
-        
-        $data['users'] = $user->where(['nationality' => $dt['nationality'], 'jamia' => $dt['jamia']])->findAll();
+        $jm = $jam->find($dt['jamia'])['uni_name'];
+        $nt = $nat->where('country_code', $dt['nationality'])->first()['country_arName'];
+        $data['users'] = $user->where(['nationality' => $dt['nationality'], 'jamia' => $dt['jamia']])
+                            ->orderBy('role', 'asc')
+                            ->findAll();
         $data['check'] = lang('app.students');
-        $data['title'] = lang('app.students').' - '.$dt['nationality'].' - '.$dt['jamia'];
+        $data['title'] = lang('app.students').' - '.$jm.' - '.$nt;
         // dd($data);
 
         if (session('role') == 'mushrif') {
@@ -56,11 +63,15 @@ class MushrifController extends BaseController
     public function judud()
     {
         $user = new User();
+        $nat = new Country();
+        $jam = new University();
+
         $dt = $user->find(session('id'));
-        
         $data['users'] = $user->where(['nationality' => $dt['nationality'], 'jamia' => $dt['jamia'], 'malaf' => null])->findAll();
         $data['check'] = lang('app.students');
-        $data['title'] = lang('app.judud').' - '.$dt['nationality'].' - '.$dt['jamia'];
+        $jm = $jam->find($dt['jamia'])['uni_name'];
+        $nt = $nat->where('country_code', $dt['nationality'])->first()['country_arName'];
+        $data['title'] = lang('app.judud').' - '.$nt.' - '.$jm;
         // dd($data);
 
         if (session('role') == 'mushrif') {
