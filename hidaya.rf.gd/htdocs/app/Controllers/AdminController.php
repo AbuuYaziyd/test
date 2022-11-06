@@ -321,10 +321,6 @@ class AdminController extends BaseController
             }
         foreach ($this->request->getVar('id') as $key => $value) {
             $id = $value;
-            // $ar = [array_diff($arr2, $arr1)];
-            // foreach (array_diff($arr2, $arr1) as  $value) {
-            //     $ar[] = $value;
-            // }
             $d = [
                 'malaf' => sprintf('%04s', $no[$key]),
                 'status' => 1,
@@ -334,62 +330,10 @@ class AdminController extends BaseController
             // dd(array_rand(array_diff($arr2, $arr1)));
             $updt = $user->update($id, $d);
         }
-            // dd($d);
 
-        // foreach ($this->request->getVar('id') as $value) {
-        //     $id = $value;
-        //     $ok = $user->select('malaf')->findAll();
-        //     foreach ($ok as $data) {
-        //         $arr1[] = sprintf('%04s', ($data['malaf']));
-        //     }
-            
-        //     $flipped = array_flip($arr1);
-        //     for ($i = 1; $i < 9999; $i++)
-        //     { 
-        //         if (!isset($flipped[$i]))
-        //         {
-        //             $out_array[] = sprintf('%04s', $i);
-        //             // $count = ;
-        //         }
-        //     }
-        //     $d[] = [
-        //         'malaf' => array_rand($out_array),
-        //         'status' => 1,
-        //         'id' => $id,
-        //         // 'count' => $count
-        //     ];
-        //     // dd($d);
-        //     // dd(array_diff($arr2, $arr1));
-        //     // $updt = $user->update($id, $d);
-        // }
         //     dd($d);
         if ($updt) {
             return redirect()->to('admin')->with('type', 'success')->with('title', lang('app.done'))->with('text', lang('app.register') . ' ' . lang('app.student') . ' ' . lang('app.success'));
         }
     }
-    
-    // public function add()
-    // {
-    //     $user = new User();
-
-    //     $role = $user->find($_SESSION['id']);
-    //     $data['jamia'] = $user->select('jamia')->distinct()->findAll();
-    //     $data['check'] = lang('app.students');
-    //     $data['title'] = lang('app.mandub');
-    //     // dd($data);
-
-    //     return view('admin/addMushrif', $data);
-    // }
-    
-    // public function zip($loc)
-    // {
-    //     // $loc is the location of files to be downloaded!
-    //     $user = new User();
-    //     $source = 'app-assets/images/'.$loc;
-    //     $destination = FCPATH.'compressed';
-    //     $zipcreation = $user->zip_creation($source, $destination);
-    //     // dd(FCPATH . 'assets/compressed.zip');
-
-    //     return $this->response->download(FCPATH . 'compressed.zip', null);
-    // }
 }
