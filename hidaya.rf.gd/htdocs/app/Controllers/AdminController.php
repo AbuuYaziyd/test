@@ -22,7 +22,6 @@ class AdminController extends BaseController
         $tanfidh = new Tanfidh();
         $set = new Setting();
 
-        $role = $user->find($_SESSION['id']);
         // $data['tanfdh'] = $tanfidh->where('mushrif', $_SESSION['id'])->countAllResults();
         $data['mushrif'] = $user->where('role', 'mushrif')->countAllResults();
         $data['complt'] = $tanfidh->where(['tnfdhStatus' => 1])->countAllResults();
@@ -35,7 +34,7 @@ class AdminController extends BaseController
         $data['title'] = lang('app.dashboard');
         // dd($data['full']);
 
-        if ($role['role'] == 'admin') {
+        if (session('role') == 'admin') {
             return view('admin/index', $data);
         } else {
             return redirect()->to('user');
@@ -61,7 +60,11 @@ class AdminController extends BaseController
         $data['jamia'] = $m;
         // dd($data);
 
-        return view('admin/jamiat', $data);
+        if (session('role') == 'admin') {
+            return view('admin/jamiat', $data);
+        } else {
+            return redirect()->to('user');
+        } 
     }
     
     public function jamia($jm)
@@ -71,14 +74,20 @@ class AdminController extends BaseController
 
         $data['title'] = lang('app.mushrifuna').' - '.$uni->find($jm)['uni_name'];
         $data['title2'] = lang('app.students').' - '.$uni->find($jm)['uni_name'];
-        $data['all'] = $user->where('jamia', $jm)->findAll();
+        $data['type'] = 'jamia';
+        $data['all'] = $user->where('jamia', $jm)
+                            ->join('countries n', 'n.country_code=users.nationality')
+                            ->findAll();
         $data['users'] = $user->where(['jamia' => $jm, 'role' => 'mushrif'])
                             ->join('countries n', 'n.country_code=users.nationality')
-                            ->join('universities u', 'u.uni_id=users.jamia')
                             ->findAll();
         // dd($data);
 
-        return view('admin/mushrif', $data);
+        if (session('role') == 'admin') {
+            return view('admin/mushrif', $data);
+        } else {
+            return redirect()->to('user');
+        } 
     }
 
     public function nationality()
@@ -100,7 +109,11 @@ class AdminController extends BaseController
         $data['nationality'] = $m;
         // dd($data);
 
-        return view('admin/nationality', $data);
+        if (session('role') == 'admin') {
+            return view('admin/nationality', $data);
+        } else {
+            return redirect()->to('user');
+        } 
     }
     
     public function nat($nt)
@@ -110,10 +123,20 @@ class AdminController extends BaseController
 
         $data['title'] = lang('app.mushrifuna').' - '.$nat->where('country_code' , $nt)->first()['country_arName'];
         $data['type'] = 'nat';
-        $data['users'] = $user->where(['nationality' => $nt, 'role' => 'mushrif'])->findAll();
+        $data['title2'] = lang('app.students').' - '.$nat->where('country_code', $nt)->first()['country_arName'];
+        $data['all'] = $user->where('nationality', $nt)
+                            ->join('universities u', 'u.uni_id=users.jamia')
+                            ->findAll();
+        $data['users'] = $user->where(['nationality' => $nt, 'role' => 'mushrif'])
+                            ->join('universities u', 'u.uni_id=users.jamia')
+                            ->findAll();
         // dd($data);
 
-        return view('admin/users', $data);
+        if (session('role') == 'admin') {
+            return view('admin/mushrif', $data);
+        } else {
+            return redirect()->to('user');
+        } 
     }
 
     public function users($nat, $jam)
@@ -133,7 +156,11 @@ class AdminController extends BaseController
         // $data['users'] = $user->where(['nationality' => $nat, 'jamia' => $jam])->findAll();
         // dd($data);
         
-        return view('admin/users', $data);
+        if (session('role') == 'admin') {
+            return view('admin/users', $data);
+        } else {
+            return redirect()->to('user');
+        } 
     }
 
     public function mushrifuna()
@@ -145,7 +172,11 @@ class AdminController extends BaseController
         $data['users'] = $user->where('role', 'mushrif')->findAll();
         // dd($data);
 
-        return view('admin/users', $data);
+        if (session('role') == 'admin') {
+            return view('admin/users', $data);
+        } else {
+            return redirect()->to('user');
+        } 
     }
 
     public function addMushrif($id)
@@ -172,7 +203,11 @@ class AdminController extends BaseController
         $data['title'] = lang('app.user');
         // dd($data);
 
-        return view('admin/user', $data);
+        if (session('role') == 'admin') {
+            return view('admin/user', $data);
+        } else {
+            return redirect()->to('user');
+        } 
     }
 
     public function all()
@@ -187,7 +222,11 @@ class AdminController extends BaseController
         $data['title'] = lang('app.students');
         // dd($data);
 
-        return view('admin/all', $data);
+        if (session('role') == 'admin') {
+            return view('admin/all', $data);
+        } else {
+            return redirect()->to('user');
+        } 
     }
 
     public function delete($id)
@@ -220,7 +259,11 @@ class AdminController extends BaseController
         }
         // dd(($dt));
 
-        return view('admin/judud', $data);
+        if (session('role') == 'admin') {
+            return view('admin/judud', $data);
+        } else {
+            return redirect()->to('user');
+        } 
     }
 
     public function activate($id)

@@ -28,7 +28,7 @@
                                 <div class="card-content collapse show">
                                     <div class="card-body card-dashboard" style="text-align: center;">
                                         <?php foreach ($users as $key => $data) : ?>
-                                            <a href="<?= base_url('admin/users/'. $data['nationality'].'/'. $data['jamia']) ?>" class="btn btn-outline-primary round m-1"><i class="flag-icon flag-icon-<?= strtolower($data['nationality']) ?>"></i> - <?= $data['name'] ?></a>
+                                            <a href="<?= base_url('admin/users/'. $data['nationality'].'/'. $data['jamia']) ?>" class="btn btn-outline-primary round m-1"><?= $data['uni_name'] ?> - <?= $data['name'] ?></a>
                                         <?php endforeach ?>
                                     </div>
                                 </div>
@@ -49,6 +49,13 @@
                                                     <th><?= lang('app.name') ?></th>
                                                     <th><?= lang('app.iqama') ?></th>
                                                     <th><?= lang('app.phone') ?></th>
+                                                    <?php if (!$type) : ?>
+                                                        <th><?= lang('app.jamia') ?> - <?= lang('app.nationality') ?></th>
+                                                    <?php elseif ($type == 'nat') : ?>
+                                                        <th><?= lang('app.jamia') ?></th>
+                                                    <?php elseif ($type == 'jamia') : ?>
+                                                        <th><?= lang('app.nationality') ?></th>
+                                                    <?php endif ?>
                                                     <th><?= lang('app.level') ?></th>
                                                     <th><?= lang('app.edit') ?></th>
                                                 </tr>
@@ -61,6 +68,13 @@
                                                         <td><span <?= ( $data['role']=='mushrif'?'class="badge badge-success"':'') ?>><?= $data['name'] ?></span></td>
                                                         <td><?= $data['iqama'] ?></td>
                                                         <td><a href="tel:+966<?= $data['phone'] ?>" class="badge badge-secondary">966<?= $data['phone'] ?></a></td>
+                                                        <?php if (!$type) : ?>
+                                                            <td><a href="<?= base_url('admin/search/' . $data['nationality'] . '/' . $data['jamia']) ?>" class="btn btn-outline-primary round btn-sm"><?= $data['jamia'] ?> - <?= $data['nationality'] ?></a></td>
+                                                        <?php elseif ($type == 'nat') : ?>
+                                                            <td><?= $data['uni_name'] ?></td>
+                                                        <?php elseif ($type == 'jamia') : ?>
+                                                            <td><?= $data['country_arName'] ?></td>
+                                                        <?php endif ?>
                                                         <td><?= $data['level'] ?></td>
                                                         <td><a href="<?= base_url('admin/show/' . $data['id']) ?>" class="btn btn-sm round btn-outline-warning"><?= lang('app.edit') ?></a></td>
                                                     </tr>
