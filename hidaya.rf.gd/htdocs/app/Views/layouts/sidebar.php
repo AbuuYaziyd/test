@@ -8,8 +8,8 @@
                     <span class="badge badge badge-info badge-pill float-right mr-2"><?= lang('app.'.session('role')) ?></span>
                 </a>
             </li>
-            <?php if ($_SESSION['role'] != 'user')  : ?>
-            <li class="<?= (isset($check) && $check == lang('app.students') ? 'active' : '') ?> nav-item">
+            <?php if (session('role') != 'user')  : ?>
+            <li class="<?= (isset($check) && $check == lang('app.settings') ? 'active' : '') ?> nav-item">
                 <a href="<?= base_url('set') ?>">
                     <i class="la la-cog spinner"></i>
                     <span class="menu-title"><?= lang('app.settings') ?></span>
@@ -17,7 +17,7 @@
             </li>
             <?php endif ?>
             <li class="<?= ($title == lang('app.profile') ? 'active' : '') ?> nav-item">
-                <a href="<?= base_url('user/profile/' . $_SESSION['id']) ?>">
+                <a href="<?= base_url('user/profile/' . session('id')) ?>">
                     <i class="la la-television"></i>
                     <span class="menu-title"><?= lang('app.profile') ?></span>
                 </a>
@@ -28,14 +28,6 @@
                     <span class="menu-title"><?= lang('app.data') ?></span>
                 </a>
             </li>
-            <?php if (session('role') != 'user') : ?>
-            <li class="<?= ($title == lang('app.tasrih') ? 'active' : '') ?> nav-item">
-                <a href="<?= base_url('tasrih') ?>">
-                    <i class="la la-share-alt"></i>
-                    <span class="menu-title"><?= lang('app.tasrih') ?></span>
-                </a>
-            </li>
-            <?php endif ?>
             <?php if (session('role') == 'admin')  : ?>
             <li class="<?= ($title == lang('app.tanfidh') ? 'active' : '') ?> nav-item">
                 <a href="<?= base_url('tanfidh') ?>">

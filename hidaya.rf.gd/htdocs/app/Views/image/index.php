@@ -13,7 +13,7 @@
                         <h4 class="media-heading">
                             <span class="users-view-name"><?= lang('app.data') ?> </span>
                             <span class="text-muted font-medium-1"> @</span>
-                            <span class="users-view-username text-muted font-medium-1 "><?= $_SESSION['malaf'] ?></span>
+                            <span class="users-view-username text-muted font-medium-1 "><?= session('malaf') ?></span>
                         </h4>
                     </div>
                 </div>
@@ -23,10 +23,10 @@
                                 <div class="card-content">
                                     <div class="card-body">
                                         <h4 class="card-title"><?= lang('app.imgIqama') ?>
-                                        <a class="btn btn-outline-secondary box-shadow-2 round pull-right" href="<?= base_url('image/edit/' . $_SESSION['id']).'/iqama' ?>"><?= lang('app.edit') ?></a>
+                                        <a class="btn btn-outline-secondary box-shadow-2 round pull-right" href="<?= base_url('image/edit/' . session('id')).'/iqama' ?>"><?= lang('app.edit') ?></a>
                                     </h4>
                                     </div>
-                                    <img class="img-fluid" src="<?= base_url('app-assets/images/' . ($img['imgIqama'] == null ? 'demo/iqama.jpg' : 'malaf/'.$_SESSION['malaf'].'/') . $img['imgIqama']) ?>" alt="img">
+                                    <img class="img-fluid" src="<?= base_url('app-assets/images/' . ($img['imgIqama'] == null ? 'demo/iqama.jpg' : 'malaf/'.session('malaf').'/') . $img['imgIqama']) ?>" alt="img">
                                 </div>
                                 <div style="text-align: center;" class="my-1">
                                     <span><b><?= $user['iqama'] ?></b></span>
@@ -38,10 +38,10 @@
                                 <div class="card-content">
                                     <div class="card-body">
                                         <h4 class="card-title"><?= lang('app.imgPass') ?>
-                                        <a class="btn btn-outline-secondary box-shadow-2 round pull-right" href="<?= base_url('image/edit/' . $_SESSION['id']).'/passport' ?>"><?= lang('app.edit') ?></a>
+                                        <a class="btn btn-outline-secondary box-shadow-2 round pull-right" href="<?= base_url('image/edit/' . session('id')).'/passport' ?>"><?= lang('app.edit') ?></a>
                                     </h4>
                                     </div>
-                                    <img class="img-fluid" src="<?= base_url('app-assets/images/' . ($img['imgPass'] == null ? 'demo/passp.jpg' : 'malaf/'.$_SESSION['malaf'].'/') . $img['imgPass']) ?>" alt="img">
+                                    <img class="img-fluid" src="<?= base_url('app-assets/images/' . ($img['imgPass'] == null ? 'demo/passp.jpg' : 'malaf/'.session('malaf').'/') . $img['imgPass']) ?>" alt="img">
                                 </div>
                                 <div style="text-align: center;" class="my-1">
                                     <span><b><?= $user['passport'] ?></b></span>
@@ -53,10 +53,10 @@
                                 <div class="card-content">
                                     <div class="card-body">
                                         <h4 class="card-title"><?= lang('app.imgStu') ?>
-                                        <a class="btn btn-outline-secondary box-shadow-2 round pull-right" href="<?= base_url('image/edit/' . $_SESSION['id']).'/bitaqa' ?>"><?= lang('app.edit') ?></a>
+                                        <a class="btn btn-outline-secondary box-shadow-2 round pull-right" href="<?= base_url('image/edit/' . session('id')).'/bitaqa' ?>"><?= lang('app.edit') ?></a>
                                     </h4>
                                     </div>
-                                    <img class="img-fluid" src="<?= base_url('app-assets/images/' . ($img['imgStu'] == null ? 'demo/stu.jpg' : 'malaf/'.$_SESSION['malaf'].'/') . $img['imgStu']) ?>" alt="img">
+                                    <img class="img-fluid" src="<?= base_url('app-assets/images/' . ($img['imgStu'] == null ? 'demo/stu.jpg' : 'malaf/'.session('malaf').'/') . $img['imgStu']) ?>" alt="img">
                                 </div>
                                 <div style="text-align: center;" class="my-1">
                                     <span><b><?= $user['bitaqa'] ?></b></span>
@@ -68,10 +68,10 @@
                                 <div class="card-content">
                                     <div class="card-body">
                                         <h4 class="card-title"><?= lang('app.imgIban') ?>
-                                        <a class="btn btn-outline-secondary box-shadow-2 round pull-right" href="<?= base_url('image/edit/' . $_SESSION['id']).'/iban' ?>"><?= lang('app.edit') ?></a>
+                                        <a class="btn btn-outline-secondary box-shadow-2 round pull-right" href="<?= base_url('image/edit/' . session('id')).'/iban' ?>"><?= lang('app.edit') ?></a>
                                     </h4>
                                     </div>
-                                    <img class="img-fluid" src="<?= base_url('app-assets/images/' . ($img['imgIban'] == null ? 'demo/iban.png' : 'malaf/'.$_SESSION['malaf'].'/') . $img['imgIban']) ?>" alt="img">
+                                    <img class="img-fluid" src="<?= base_url('app-assets/images/' . ($img['imgIban'] == null ? 'demo/iban.png' : 'malaf/'.session('malaf').'/') . $img['imgIban']) ?>" alt="img">
                                 </div>
                                 <div style="text-align: center;" class="my-1">
                                     <span><b><?= $user['iban'] ?></b></span>

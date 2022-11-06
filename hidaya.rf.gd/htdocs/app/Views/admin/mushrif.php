@@ -27,9 +27,15 @@
                                 </div>
                                 <div class="card-content collapse show">
                                     <div class="card-body card-dashboard" style="text-align: center;">
-                                        <?php foreach ($users as $key => $data) : ?>
-                                            <a href="<?= base_url('admin/users/'. $data['nationality'].'/'. $data['jamia']) ?>" class="btn btn-outline-primary round m-1"><?= $data['uni_name'] ?> - <?= $data['name'] ?></a>
-                                        <?php endforeach ?>
+                                        <?php if ($type != 'mushrif') : ?>
+                                            <?php foreach ($users as $key => $data) : ?>
+                                                <?php if ($type == 'nat') : ?>
+                                                    <a href="<?= base_url('admin/users/'. $data['nationality'].'/'. $data['jamia']) ?>" class="btn btn-outline-primary round m-1"><?= $data['uni_name'] ?> - <?= $data['name'] ?></a>
+                                                <?php elseif ($type == 'jamia') : ?>
+                                                    <a href="<?= base_url('admin/users/'. $data['nationality'].'/'. $data['jamia']) ?>" class="btn btn-outline-primary round m-1"><i class="flag-icon flag-icon-<?= strtolower($data['nationality']) ?>"></i> - <?= $data['name'] ?></a>
+                                                <?php endif ?>
+                                            <?php endforeach ?>
+                                        <?php endif ?>
                                     </div>
                                 </div>
                             </div>
@@ -49,7 +55,7 @@
                                                     <th><?= lang('app.name') ?></th>
                                                     <th><?= lang('app.iqama') ?></th>
                                                     <th><?= lang('app.phone') ?></th>
-                                                    <?php if (!$type) : ?>
+                                                    <?php if ($type == 'mushrif') : ?>
                                                         <th><?= lang('app.jamia') ?> - <?= lang('app.nationality') ?></th>
                                                     <?php elseif ($type == 'nat') : ?>
                                                         <th><?= lang('app.jamia') ?></th>
@@ -68,8 +74,8 @@
                                                         <td><span <?= ( $data['role']=='mushrif'?'class="badge badge-success"':'') ?>><?= $data['name'] ?></span></td>
                                                         <td><?= $data['iqama'] ?></td>
                                                         <td><a href="tel:+966<?= $data['phone'] ?>" class="badge badge-secondary">966<?= $data['phone'] ?></a></td>
-                                                        <?php if (!$type) : ?>
-                                                            <td><a href="<?= base_url('admin/search/' . $data['nationality'] . '/' . $data['jamia']) ?>" class="btn btn-outline-primary round btn-sm"><?= $data['jamia'] ?> - <?= $data['nationality'] ?></a></td>
+                                                        <?php if ($type == 'mushrif') : ?>
+                                                            <td><a href="<?= base_url('admin/users/'. $data['nationality'].'/'. $data['jamia']) ?>" class="btn btn-sm round btn-outline-info"><?= $data['uni_name'] ?> - <?= $data['country_arName'] ?></a></td>
                                                         <?php elseif ($type == 'nat') : ?>
                                                             <td><?= $data['uni_name'] ?></td>
                                                         <?php elseif ($type == 'jamia') : ?>
@@ -135,7 +141,11 @@
             },
             {
                 extend: 'excelHtml5',
-            },
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                'colvis'
         ],
         responsive: true
     });

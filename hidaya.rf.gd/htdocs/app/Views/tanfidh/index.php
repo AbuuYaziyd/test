@@ -11,7 +11,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3>
-                                <?php if ($_SESSION['role'] == 'superadmin') : ?>
+                                <?php if (session('role') == 'superadmin') : ?>
                                     <div class="btn-group mb-1 pull-right" role="group" aria-label="Basic example">
                                         <a href="<?= base_url('tanfidh/show') ?>" class="btn round btn-outline-warning"><?= lang('app.edit') ?></a>
                                         <a href="<?= base_url('tanfidh/add') ?>" class="btn round btn-outline-success"> <?= lang('app.add') ?></a>
@@ -26,7 +26,7 @@
                                 <table id="recent-orders" class="table table-hover table-xl mb-0">
                                     <thead>
                                         <tr>
-                                            <th class="border-top-0"><?= lang('app.tanfidhDate') ?></th>
+                                            <th class="border-top-0"><?= lang('app.tasrihDate') ?></th>
                                             <th class="border-top-0"><?= lang('app.tanfidhEndDate') ?></th>
                                             <!-- <th class="border-top-0"><?= lang('app.status') ?></th> -->
                                         </tr>

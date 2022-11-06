@@ -16,7 +16,7 @@
                     <div class="col-12 col-sm-7">
                         <div class="media mb-2">
                             <div class="mr-1">
-                                <img src="https://ui-avatars.com/api/?name=<?= $_SESSION['malaf'] ?>&background=random&length=4" alt="users view avatar" class="users-avatar-shadow rounded-circle " height="64" width="64">
+                                <img src="https://ui-avatars.com/api/?name=<?= session('malaf') ?>&background=random&length=4" alt="users view avatar" class="users-avatar-shadow rounded-circle " height="64" width="64">
                             </div>
                                 
                             <div class="media-body pt-25">

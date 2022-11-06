@@ -16,13 +16,13 @@
                     <div class="col-12 col-sm-7">
                         <div class="media mb-2">
                             <a class="mr-1" href="#">
-                                <img src="https://ui-avatars.com/api/?name=<?= $_SESSION['malaf'] ?>&background=random&length=4" alt="users view avatar" class="users-avatar-shadow rounded-circle" height="64" width="64">
+                                <img src="https://ui-avatars.com/api/?name=<?= session('malaf') ?>&background=random&length=4" alt="users view avatar" class="users-avatar-shadow rounded-circle" height="64" width="64">
                                 <!-- <img src="<?= base_url('app-assets/images/portrait/small/avatar-s-26.jpg') ?>" alt="users view avatar" class="users-avatar-shadow rounded-circle" height="64" width="64"> -->
                             </a>
                             <div class="media-body pt-25">
-                                <h4 class="media-heading"><span class="users-view-name"><?= $_SESSION['name'] ?> </span><span class="text-muted font-medium-1"> @</span><span class="users-view-username text-muted font-medium-1 "><?= $user['jamia'] ?></span></h4>
+                                <h4 class="media-heading"><span class="users-view-name"><?= session('name') ?> </span><span class="text-muted font-medium-1"> @</span><span class="users-view-username text-muted font-medium-1 "><?= $user['jamia'] ?></span></h4>
                                 <span><?= lang('app.malaf') ?>:</span>
-                                <span class="users-view-id"><?= $_SESSION['malaf'] ?></span>
+                                <span class="users-view-id"><?= session('malaf') ?></span>
                             </div>
                         </div>
                     </div>

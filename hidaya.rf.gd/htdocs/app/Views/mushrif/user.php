@@ -9,7 +9,7 @@
                 <div class="card col-md-4 col-sm-12">
                     <div class="text-center">
                         <div class="card-body">
-                            <img src="https://ui-avatars.com/api/?name=<?= $_SESSION['name'] ?>&background=random&length=1&font-size=0.7" class="rounded-circle  height-150" alt=" avatar">
+                            <img src="https://ui-avatars.com/api/?name=<?= session('name') ?>&background=random&length=1&font-size=0.7" class="rounded-circle  height-150" alt=" avatar">
                         </div>
                         <div class="card-body">
                             <h1><?= $user['malaf'] ?></h1>

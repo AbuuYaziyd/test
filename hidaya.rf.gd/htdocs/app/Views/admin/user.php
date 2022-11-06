@@ -9,7 +9,7 @@
                 <div class="card col-md-4 col-sm-12">
                     <div class="text-center">
                         <div class="card-body">
-                            <img src="https://ui-avatars.com/api/?name=<?= $_SESSION['name'] ?>&background=random&length=1&font-size=0.7" class="rounded-circle  height-150" alt=" avatar">
+                            <img src="https://ui-avatars.com/api/?name=<?= session('name') ?>&background=random&length=1&font-size=0.7" class="rounded-circle  height-150" alt=" avatar">
                         </div>
                         <div class="card-body">
                             <h1><?= sprintf('%04s', $user['malaf']) ?></h1>
@@ -36,7 +36,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3><b><?= lang('app.tanfidh') ?> - <?= $user['name'] ?></b>
-                                <?php if ($_SESSION['role'] == 'admin' && $user['role'] == 'user') : ?>
+                                <?php if (session('role') == 'admin' && $user['role'] == 'user') : ?>
                                     <a class="btn btn-outline-success box-shadow-2 round pull-right" href="<?= base_url('admin/add-mushrif/'.$user['id']) ?>"><?= lang('app.addMushrif') ?></a>
                                 <?php endif ?>
                             </h3>

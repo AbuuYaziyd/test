@@ -12,11 +12,11 @@
             <!-- users view start -->
             <section class="users-view">
                 <?php $validation = \Config\Services::validation(); ?>
-                <?= form_open_multipart('image/upload/' . $_SESSION['id']) ?>
+                <?= form_open_multipart('image/upload/' . session('id')) ?>
                 <!-- users view card details start -->
                 <div class="card col-md-6">
                     <div class="card-header">
-                        <h4 class="media-heading"><span class="users-view-name"><?= lang('app.edit') . ' ' . lang('app.'.$type) ?> </span><span class="text-muted font-medium-1"> @</span><span class="users-view-username text-muted font-medium-1 "><?= $_SESSION['malaf'] ?></span></h4>
+                        <h4 class="media-heading"><span class="users-view-name"><?= lang('app.edit') . ' ' . lang('app.'.$type) ?> </span><span class="text-muted font-medium-1"> @</span><span class="users-view-username text-muted font-medium-1 "><?= session('malaf') ?></span></h4>
                     </div>
                     <div class="card-content">
                         <div class="card-body">
@@ -42,7 +42,7 @@
                                 </div> -->
                                 <div class="col mb-1">
                                     
-                                <img class="img-fluid mb-2" id="show_image" src="<?= base_url('app-assets/images/' . ($img[$type] == null ? 'demo/no-image.png' : 'malaf/'.$_SESSION['malaf'].'/') . $img[$type]) ?>" alt="img">
+                                <img class="img-fluid mb-2" id="show_image" src="<?= base_url('app-assets/images/' . ($img[$type] == null ? 'demo/no-image.png' : 'malaf/'.session('malaf').'/') . $img[$type]) ?>" alt="img">
                                         <p><code style="font-family: Cairo;"><?= lang('app.imgErr') ?></code></p>
                                         <?php if ($validation->getError('img')) : ?>
                                             <span class="badge badge-danger"> <?= $errors = $validation->getError('img') ?></span>
@@ -75,7 +75,7 @@
         <div class="row">
            <div class="col-2">
                 <div class="avatar mr-1 avatar-lg">
-                    <img id="show_image" src="<?='https://ui-avatars.com/api/?name='.$_SESSION['name'].'&background=random' ?>" height="150px" width="150px" alt="avtar">
+                    <img id="show_image" src="<?='https://ui-avatars.com/api/?name='.session('name').'&background=random' ?>" height="150px" width="150px" alt="avtar">
                 </div>
             </div>
             <div class="col-10 mt-1">

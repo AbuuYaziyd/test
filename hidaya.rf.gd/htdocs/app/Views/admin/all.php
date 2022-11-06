@@ -19,7 +19,6 @@
     <div class="content-wrapper">
         <div class="content-body">
             <div class="content-body">
-                <!-- Configuration option table -->
                 <section id="configuration">
                     <div class="row">
                         <div class="col-12">
@@ -38,6 +37,7 @@
                                                     <th><?= lang('app.iqama') ?></th>
                                                     <th><?= lang('app.phone') ?></th>
                                                     <th><?= lang('app.level') ?></th>
+                                                    <th><?= lang('app.jamia') ?></th>
                                                     <th><?= lang('app.nationality') ?></th>
                                                     <th><?= lang('app.bank') ?></th>
                                                     <th><?= lang('app.iban') ?></th>
@@ -53,6 +53,7 @@
                                                         <td><?= $data['iqama'] ?></td>
                                                         <td><a href="tel:+966<?= $data['phone'] ?>" class="badge badge-secondary">966<?= $data['phone'] ?></a></td>
                                                         <td><?= $data['level'] ?></td>
+                                                        <td><?= $data['uni_name'] ?></td>
                                                         <td><?= $data['country_arNationality'] ?></td>
                                                         <td><?= $data['bankName'] ?></td>
                                                         <td><?= $data['iban'] ?></td>
@@ -67,7 +68,6 @@
                         </div>
                     </div>
                 </section>
-                <!--/ Configuration option table -->
             </div>
         </div>
     </div>

@@ -76,10 +76,12 @@ class AdminController extends BaseController
         $data['title2'] = lang('app.students').' - '.$uni->find($jm)['uni_name'];
         $data['type'] = 'jamia';
         $data['all'] = $user->where('jamia', $jm)
+                            ->join('universities u', 'u.uni_id=users.jamia')
                             ->join('countries n', 'n.country_code=users.nationality')
                             ->findAll();
         $data['users'] = $user->where(['jamia' => $jm, 'role' => 'mushrif'])
                             ->join('countries n', 'n.country_code=users.nationality')
+                            ->join('universities u', 'u.uni_id=users.jamia')
                             ->findAll();
         // dd($data);
 
@@ -125,9 +127,11 @@ class AdminController extends BaseController
         $data['type'] = 'nat';
         $data['title2'] = lang('app.students').' - '.$nat->where('country_code', $nt)->first()['country_arName'];
         $data['all'] = $user->where('nationality', $nt)
+                            ->join('countries n', 'n.country_code=users.nationality')
                             ->join('universities u', 'u.uni_id=users.jamia')
                             ->findAll();
         $data['users'] = $user->where(['nationality' => $nt, 'role' => 'mushrif'])
+                            ->join('countries n', 'n.country_code=users.nationality')
                             ->join('universities u', 'u.uni_id=users.jamia')
                             ->findAll();
         // dd($data);
@@ -153,7 +157,7 @@ class AdminController extends BaseController
                             ->join('universities u', 'u.uni_id=users.jamia')
                             ->orderBy('role', 'asc')
                             ->findAll();
-        // $data['users'] = $user->where(['nationality' => $nat, 'jamia' => $jam])->findAll();
+        $data['type'] = 'all';
         // dd($data);
         
         if (session('role') == 'admin') {
@@ -168,8 +172,11 @@ class AdminController extends BaseController
         $user = new User();
 
         $data['title'] = lang('app.mushrifuna');
-        $data['type'] = '';
-        $data['users'] = $user->where('role', 'mushrif')->findAll();
+        $data['type'] = 'mushrif';
+        $data['users'] = $user->where('role', 'mushrif')
+                            ->join('countries n', 'n.country_code=users.nationality')
+                            ->join('universities u', 'u.uni_id=users.jamia')
+                            ->findAll();
         // dd($data);
 
         if (session('role') == 'admin') {
@@ -216,9 +223,9 @@ class AdminController extends BaseController
 
         $data['users'] = $user->where( 'role!=', 'admin')
                             ->join('countries c', 'c.country_code=users.nationality')
+                            ->join('universities u', 'u.uni_id=users.jamia')
                             ->join('banks', 'banks.bankId=users.bank')
                             ->findAll();
-        $data['check'] = lang('app.students');
         $data['title'] = lang('app.students');
         // dd($data);
 

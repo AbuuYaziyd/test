@@ -19,7 +19,7 @@
                     <div class="card-content">
                         <div class="card-body">
                             <?php $validation = \Config\Services::validation(); ?>
-                            <?= form_open('change/password/' . $_SESSION['id']) ?>
+                            <?= form_open('change/password/' . session('id')) ?>
                             <?php if (!$old) : ?>
                                 <label class="text-bold-600"><?= lang('app.oldpassword') ?></label>
                                 <?php if ($validation->getError('old')) : ?>
