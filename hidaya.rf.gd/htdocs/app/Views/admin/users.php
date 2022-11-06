@@ -41,7 +41,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php foreach ($users as $key => $data) : ?>
+                                                <?php foreach ($users as $key => $data) : ?>~
                                                     <tr>
                                                         <td><?= $key+1 ?></td>
                                                         <td><?= sprintf('%04s', $data['malaf']) ?></td>

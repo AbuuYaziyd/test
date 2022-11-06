@@ -70,7 +70,8 @@ class AdminController extends BaseController
         $uni = new University();
 
         $data['title'] = lang('app.mushrifuna').' - '.$uni->find($jm)['uni_name'];
-        $data['type'] = 'jamia';
+        $data['title2'] = lang('app.students').' - '.$uni->find($jm)['uni_name'];
+        $data['all'] = $user->where('jamia', $jm)->findAll();
         $data['users'] = $user->where(['jamia' => $jm, 'role' => 'mushrif'])
                             ->join('countries n', 'n.country_code=users.nationality')
                             ->join('universities u', 'u.uni_id=users.jamia')
@@ -105,11 +106,12 @@ class AdminController extends BaseController
     public function nat($nt)
     {
         $user = new User();
+        $nat = new Country();
 
-        $data['title'] = $nt;
+        $data['title'] = lang('app.mushrifuna').' - '.$nat->where('country_code' , $nt)->first()['country_arName'];
         $data['type'] = 'nat';
         $data['users'] = $user->where(['nationality' => $nt, 'role' => 'mushrif'])->findAll();
-        dd($data);
+        // dd($data);
 
         return view('admin/users', $data);
     }
