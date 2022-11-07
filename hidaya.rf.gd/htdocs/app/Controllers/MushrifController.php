@@ -173,12 +173,45 @@ class MushrifController extends BaseController
     {
         $tanfidh = new Umrah();
 
-        // $umrah = $tanfidh->find($id);
         $data = [
             'tnfdhStatus' => 1,
         ];
         // dd($data);
 
+        $ok = $tanfidh->update($id, $data);
+        if ($ok) {
+            return redirect()->to('mushrif/tasrih')->with('type', 'success')->with('title', lang('app.done'))->with('text', lang('app.activate') . ' ' . lang('app.tanfidh') . ' ' . lang('app.success'));
+        }
+    }
+
+    public function tasrihDelete($id)
+    {
+        $tanfidh = new Umrah();
+        $usr = new User();
+        $nat = new Country();
+        $jam = new University();
+        
+        $user = $tanfidh->find($id);
+        $next = $user['tnfdhDate'];
+        $us = $usr->find($user['mushrif']);
+        $nt = $nat->where('country_code', $us['nationality'])->first()['country_arName'];
+        $jm = $jam->where('uni_id', $us['jamia'])->first()['uni_name'];
+        $mushrif = $nt.' - '. $jm;
+        $pic = $user['tasrih']??sprintf('%04s',session('malaf'));
+
+        // dd(file_exists('app-assets/images/tasrih/'.$mushrif.'/'. $pic));
+        if (file_exists('app-assets/images/tasrih/'.$mushrif.'/' . $pic)) {
+            $path = 'app-assets/images/tasrih/'.$mushrif.'/' . $pic;
+
+            unlink($path);
+        }
+
+        $data = [
+            'tasrih' => null,
+            'tnfdhStatus' => 0,
+        ];
+        // dd($data);
+        
         $ok = $tanfidh->update($id, $data);
         if ($ok) {
             return redirect()->to('mushrif/tasrih')->with('type', 'success')->with('title', lang('app.done'))->with('text', lang('app.activate') . ' ' . lang('app.tanfidh') . ' ' . lang('app.success'));
