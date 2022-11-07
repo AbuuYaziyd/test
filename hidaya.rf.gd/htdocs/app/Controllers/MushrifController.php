@@ -145,11 +145,13 @@ class MushrifController extends BaseController
         }
     }
 
-    public function tasrih($date)
+    public function tasrih()
     {
         $tanfidh = new Umrah();
+        $user = new User();
 
-        $data['tasrih'] = $tanfidh->where(['tnfdhDate' => $date])
+        $mushrif = $user->find(session('id'))['id'];
+        $data['tasrih'] = $tanfidh->where(['mushrif' => $mushrif, 'tnfdhStatus' => 0])
                             ->join('users u', 'u.id=tanfidh.userId')
                             ->findAll();
         $data['title'] = lang('app.tasrih');
@@ -160,5 +162,21 @@ class MushrifController extends BaseController
         } else {
             return redirect()->to('user');
         }   
+    }
+
+    public function sendTasrih($id)
+    {
+        $tanfidh = new Umrah();
+
+        // $umrah = $tanfidh->find($id);
+        $data = [
+            'tnfdhStatus' => 1,
+        ];
+        // dd($data);
+
+        $ok = $tanfidh->update($id, $data);
+        if ($ok) {
+            return redirect()->to('mushrif/tasrih')->with('type', 'success')->with('title', lang('app.done'))->with('text', lang('app.activate') . ' ' . lang('app.tanfidh') . ' ' . lang('app.success'));
+        }
     }
 }

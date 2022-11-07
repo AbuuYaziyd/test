@@ -3,7 +3,9 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\Country;
 use App\Models\Umrah;
+use App\Models\University;
 use App\Models\User;
 
 class UmrahController extends BaseController
@@ -77,11 +79,18 @@ class UmrahController extends BaseController
     public function update($id)
     {
         $umrah = new Umrah();
+        $usr = new User();
+        $nat = new Country();
+        $jam = new University();
 
         $user = $umrah->find($id);
         $next = $user['tnfdhDate'];
+        $us = $usr->find($user['mushrif']);
+        $nt = $nat->where('country_code', $us['nationality'])->first()['country_arName'];
+        $jm = $jam->where('uni_id', $us['jamia'])->first()['uni_name'];
+        $mushrif = $nt.' - '. $jm;
         $upl = 'tasrih';
-        // dd($user);
+        // dd($mushrif);
 
         $validationRule = $this->validate(
             [
@@ -108,9 +117,9 @@ class UmrahController extends BaseController
 
         $pic = $user['tasrih']??sprintf('%04s',session('malaf'));
 
-        // dd(file_exists('app-assets/images/tasrih/' . $pic));
-        if (file_exists('app-assets/images/tasrih/' . $pic)) {
-            $path = 'app-assets/images/tasrih/' . $pic;
+        // dd(file_exists('app-assets/images/tasrih/'.$mushrif.'/'. $pic));
+        if (file_exists('app-assets/images/tasrih/'.$mushrif.'/' . $pic)) {
+            $path = 'app-assets/images/tasrih/'.$mushrif.'/' . $pic;
 
             unlink($path);
 
@@ -121,7 +130,7 @@ class UmrahController extends BaseController
             $ppn = [$upl => $name,];
             // dd($ppn);
 
-            $img->move('app-assets/images/tasrih/', $name);
+            $img->move('app-assets/images/tasrih/'.$mushrif.'/' , $name);
             $umrah->update($id, $ppn);
 
             return redirect()->to('umrah/check/' . $next)->with('type', 'success')->with('text', lang('app.imageUploaded'))->with('title', lang('app.success'));
@@ -133,7 +142,7 @@ class UmrahController extends BaseController
             $ppn = [$upl => $name,];
             // dd($ppn);
 
-            $img->move('app-assets/images/tasrih/', $name);
+            $img->move('app-assets/images/tasrih/'.$mushrif.'/' , $name);
             $umrah->update($id, $ppn);
 
             return redirect()->to('umrah/check/' . $next)->with('type', 'success')->with('text', lang('app.imageUploaded'))->with('title', lang('app.success'));

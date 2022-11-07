@@ -11,9 +11,22 @@
             <div class="card">
                 <div class="card-header">
                     <h3>
-                        <b><?= $title ?></b>
+                        <b>
+                            <?= $title ?>
+                            <?php if ($umrah) : ?>
+                                <?php if ($umrah['tasrih'] == null) : ?>
+                                    <span class="badge badge badge-danger badge-pill mr-2"><?= lang('app.tasrih') ?></span>
+                                <?php elseif ($umrah['tnfdhStatus'] == 0) : ?>
+                                    <span class="badge badge badge-warning badge-pill mr-2"><?= lang('app.mushrif') ?></span>
+                                <?php elseif ($umrah['tnfdhName'] == null) : ?>
+                                    <span class="badge badge badge-secondary badge-pill mr-2"><?= lang('app.admin') ?></span>
+                                <?php elseif ($umrah['tnfdhName'] != null) : ?>
+                                    <span class="badge badge badge-success badge-pill mr-2"><?= lang('app.active') ?></span>
+                                <?php endif ?>
+                            <?php endif ?>
+                        </b>
                         <?php if (session('role') != 'user' && $umrah != null) : ?>
-                        <a class="btn btn-outline-success box-shadow-2 round pull-right" href="<?= base_url('mushrif/tasrih/'. $umrah['tnfdhDate']) ?>">
+                        <a class="btn btn-outline-success box-shadow-2 round pull-right" href="<?= base_url('mushrif/tasrih') ?>">
                             <?= lang('app.tasrih') ?></a>
                         <?php endif ?>
                     </h3>
@@ -35,14 +48,14 @@
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div class="heading-elements">
-                                                    <a href="<?= base_url('umrah/show/'. $umrah['tnfdhId']) ?>" class="btn btn-icon btn-success round mb-2 btn-block btn-lg"><?= lang('app.tasrih') ?></a>
+                                                    <a href="<?= base_url('umrah/show/'. $umrah['tnfdhId']) ?>" class="btn btn-icon btn-success round mb-2 btn-block btn-lg <?= (($umrah['tnfdhStatus'] == 1)?'disabled':'') ?>"><?= lang('app.tasrih') ?></a>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="heading-elements">
                                                     <form action="<?= base_url('umrah/loc/'. $umrah['tnfdhId']) ?>" method="post">
                                                         <input type="hidden" name="locType" value="miqat">
-                                                        <button type="submit" class="btn btn-icon btn-warning round mb-2 btn-block btn-lg" <?= (($umrah['tasrih'] == null || $umrah['tnfdhStatus'] == 0)?'disabled':'') ?>>
+                                                        <button type="submit" class="btn btn-icon btn-warning round mb-2 btn-block btn-lg" <?= (($umrah['tasrih'] == null || $umrah['tnfdhStatus'] == 0 || $umrah['miqat'] != null|| $umrah['tnfdhName'] == null)?'disabled':'') ?>>
                                                             <?= lang('app.miqat') ?>
                                                         </button>
                                                     </form>

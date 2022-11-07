@@ -30,6 +30,8 @@
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/css-rtl/core/menu/menu-types/vertical-menu.css') ?>">
     <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/css-rtl/core/colors/palette-gradient.css') ?>">
+    <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/vendors/css/extensions/sweetalert2.min.css') ?>">
+    <script src="<?= base_url('app-assets/vendors/js/extensions/sweetalert2.all.min.js') ?>"></script>
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
@@ -70,7 +72,7 @@
                                 <form action="<?= base_url('umrah/miqat/'.$umrah['tnfdhId']) ?>" method="post">
                                 <?php endif ?>
                                     <input type="hidden" name="<?= $title == lang('app.makkah')?'makkah':'miqat' ?>" id="loc">
-                                    <button type="submit" class="btn btn-icon btn-secondary">
+                                    <button type="submit" id="send" class="btn btn-icon btn-secondary">
                                         <i class="ft ft-check-circle white"></i>
                                         <?= lang('app.send') ?>
                                     </button>
@@ -144,6 +146,36 @@
     </script>
     <!-- END: Page JS-->
 
+<script>
+    $('#send').on('click', function(e) {
+        e.preventDefault();
+        url = $(this).attr('href');
+        Swal.fire({
+            title: 'أتحقق أنك في <?= $title?>؟',
+            text: "بعد الإرسال خلاص فهو مرسل!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'نعم!',
+            cancelButtonText: 'لا!',
+            confirmButtonClass: 'btn btn-warning',
+            cancelButtonClass: 'btn btn-danger ml-1',
+            buttonsStyling: false,
+        }).then(function(result) {
+            if (result.value) {
+                window.location.href = url;
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                Swal.fire({
+                    title: 'تمام',
+                    text: 'لا ترسل النموقع إلا وأنت في <?= $title ?> :)',
+                    type: 'error',
+                    showConfirmButton: false,
+                })
+            }
+        })
+    });
+</script>
 </body>
 <!-- END: Body-->
 

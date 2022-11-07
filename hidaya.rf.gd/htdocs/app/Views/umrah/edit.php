@@ -9,21 +9,13 @@
         <div class="content-header row">
         </div>
         <div class="content-body">
-            <!-- users view start -->
             <div class="row">
-                <section class="users-view col-6">
+                <section class="users-view col-md-6">
                     <?php $validation = \Config\Services::validation(); ?>
                     <?= form_open_multipart('umrah/upload/' . $umrah['tnfdhId']) ?>
-                    <!-- users view card details start -->
                     <div class="card col-md-12">
                         <div class="card-header">
                             <h3><?= lang('app.signup') ?> <?= lang('app.donefor') ?> - <?= date('d/m/Y', strtotime($umrah['tnfdhDate'])) ?></h3>
-                            <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
-                            <!-- <div class="heading-elements">
-                                <button type="button" class="btn btn-icon btn-secondary">
-                                    <i class="ft ft-check-circle white"></i> <?= lang('app.presshere') ?>
-                                </button>
-                            </div> -->
                         </div>
                         <div class="card-content">
                             <div class="card-body">
@@ -31,7 +23,7 @@
                                 <p><code style="font-family: Cairo;"><?= lang('app.imgErr') ?></code></p>
                                 <div class="row">
                                     <div class="col-12 mb-1">
-                                        <img class="img-fluid mb-2" id="show_image" src="<?= base_url('app-assets/images/' . ($umrah['tasrih'] == null ? 'demo/no-image.png' : 'tasrih/'.$umrah['tasrih'].'/')) ?>" alt="img">
+                                        <img class="img-fluid mb-2" id="show_image" src="<?= base_url('app-assets/images/' . ($umrah['tasrih'] == null ? 'demo/no-image.png' : 'tasrih/'.$umrah['mushrif'].'/'.$umrah['tasrih'])) ?>" alt="img">
                                         <fieldset class="form-group">
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
@@ -43,8 +35,6 @@
                                                 <span class="badge badge-danger"> <?= $errors = $validation->getError('select') ?></span>
                                             <?php endif ?>
                                         </fieldset>
-                                    <!-- </div>
-                                    <div class="col-sm-6 mb-1"> -->
                                         <div class="input-group">
                                             <div class="custom-file">
                                                 <input type="file" name="img" id="image" class="custom-file-input">
@@ -60,11 +50,9 @@
                             </div>
                         </div>
                     </div>
-                    <!-- users view card details ends -->
                     </form>
                 </section>
             </div>
-            <!-- users view ends -->
         </div>
     </div>
 </div>

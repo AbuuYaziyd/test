@@ -12,10 +12,13 @@
                         <div class="col-md-4">
                             <div class="card">
                                 <div class="card-content">
-                                    <img class="card-img-top img-fluid" src="<?= base_url('app-assets/images/'.($dt['tasrih']==null?'demo/no-image.png':'tasrih/'.$dt['tasrih'])) ?>" alt="img">
+                                    <div style="text-align: center;">
+                                        <h3 class="m-1"><?= $dt['name'] ?></h3>
+                                    </div>
+                                    <img class="card-img-top img-fluid" src="<?= base_url('app-assets/images/'.($dt['tasrih']==null?'demo/no-image.png':'tasrih/'.$dt['mushrif'].'/'.$dt['tasrih'])) ?>" alt="img">
                                     <div class="card-body" style="text-align: center;">
                                         <h3 class="mb-1"><b><?= date('d/m/Y', strtotime($dt['tnfdhDate'])) ?></b></h3>
-                                        <a href="#" class="btn btn-outline-purple btn-glow round btn-block"><?= lang('app.send') ?></a>
+                                        <a href="<?= base_url('mushrif/send-tasrih/'.$dt['tnfdhId']) ?>" class="btn btn-outline-purple btn-glow round btn-block <?= ($dt['tasrih']==null?'disabled':'') ?>" ><?= lang('app.send') ?></a>
                                     </div>
                                 </div>
                             </div>

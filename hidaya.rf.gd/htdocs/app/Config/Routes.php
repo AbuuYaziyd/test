@@ -114,8 +114,8 @@ $routes->group('mushrif', function ($routes) {
     $routes->get('user/(:num)', 'MushrifController::user/$1', ['filter' => 'auth']);
     $routes->get('activate/(:num)', 'MushrifController::activate/$1', ['filter' => 'auth']);
     $routes->get('active/(:num)', 'MushrifController::active/$1', ['filter' => 'auth']);
-    $routes->get('tasrih/(:any)', 'MushrifController::tasrih/$1', ['filter' => 'auth']);
-    // $routes->get('edit/(:num)', 'MushrifController::show/$1', ['filter' => 'auth']);
+    $routes->get('tasrih', 'MushrifController::tasrih', ['filter' => 'auth']);
+    $routes->get('send-tasrih/(:num)', 'MushrifController::sendTasrih/$1', ['filter' => 'auth']);
     // $routes->get('delete/(:num)', 'MushrifController::delete/$1', ['filter' => 'auth']);
     // $routes->post('upload/(:num)', 'MushrifController::update/$1', ['filter' => 'auth']);
     // $routes->get('zip/(:any)', 'MushrifController::zip/$1', ['filter' => 'auth']);
