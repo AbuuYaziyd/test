@@ -16,7 +16,11 @@ class UmrahController extends BaseController
 
         $umrah = new Umrah();
 
-        $data['title'] = lang('app.tanfidh').' - '.date('d/m/Y', strtotime($date));
+        if (session('role') != 'admin') {
+            $data['title'] = lang('app.tanfidh').' - '.date('d/m/Y', strtotime($date));
+        } else {
+            $data['title'] = lang('app.tanfidh');
+        }
         $data['next'] = $date;
         $data['umrah'] = $umrah->where(['userId' => session('id'), 'tnfdhDate' => $data['next']])->orderBy('tnfdhId', 'DESC')->first();
         $data['green'] = $umrah->where(['userId' => session('id'), 'tnfdhDate' => $data['next'], 'tnfdhStatus' => 'completed'])->first();
@@ -61,6 +65,7 @@ class UmrahController extends BaseController
         helper('form');
 
         $umrah = new Umrah();
+        $user = new User();
 
         $ok = $umrah->find($id);
 
@@ -70,6 +75,11 @@ class UmrahController extends BaseController
         } else {
             $data['title'] = lang('app.umrah');
             $data['umrah'] = $ok;
+            $usr = $user
+                     ->join('countries c', 'c.country_code=users.nationality')
+                     ->join('universities u', 'u.uni_id=users.jamia')
+                    ->find($ok['userId']);
+            $data['loc'] = $usr['country_arName'].' - '.$usr['uni_name'];
             // dd($data);
 
             return view('umrah/edit', $data);

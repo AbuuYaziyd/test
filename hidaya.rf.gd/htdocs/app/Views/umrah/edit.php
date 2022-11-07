@@ -23,7 +23,7 @@
                                 <p><code style="font-family: Cairo;"><?= lang('app.imgErr') ?></code></p>
                                 <div class="row">
                                     <div class="col-12 mb-1">
-                                        <img class="img-fluid mb-2" id="show_image" src="<?= base_url('app-assets/images/' . ($umrah['tasrih'] == null ? 'demo/no-image.png' : 'tasrih/'.$umrah['mushrif'].'/'.$umrah['tasrih'])) ?>" alt="img">
+                                        <img class="img-fluid mb-2" id="show_image" src="<?= base_url('app-assets/images/' . ($umrah['tasrih'] == null ? 'demo/no-image.png' : 'tasrih/'.$loc.'/'.$umrah['tasrih'])) ?>" alt="img">
                                         <fieldset class="form-group">
                                             <div class="input-group">
                                                 <div class="input-group-prepend">

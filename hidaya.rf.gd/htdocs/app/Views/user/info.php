@@ -107,7 +107,11 @@
         <?php foreach ($set as $dt) : ?>
             <div class="col-xl-4 col-12">
                 <div class="card crypto-card-3 pull-up">
-                    <a href="<?= base_url('umrah/check/'.$dt['value']) ?>">
+                    <?php if (session('role') != 'admin') : ?>
+                        <a href="<?= base_url('umrah/check/'.$dt['value']) ?>">
+                    <?php else : ?>
+                        <a href="<?= base_url('admin/tasrih') ?>">
+                    <?php endif ?>
                         <div class="card-content">
                             <div class="card-body pb-0">
                                 <div class="row">

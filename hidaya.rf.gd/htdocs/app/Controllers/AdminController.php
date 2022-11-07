@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\Country;
 use App\Models\Setting;
 use App\Models\Tanfidh;
+use App\Models\Umrah;
 use App\Models\University;
 use App\Models\User;
 
@@ -335,5 +336,13 @@ class AdminController extends BaseController
         if ($updt) {
             return redirect()->to('admin')->with('type', 'success')->with('title', lang('app.done'))->with('text', lang('app.register') . ' ' . lang('app.student') . ' ' . lang('app.success'));
         }
+    }
+
+    public function tasrih()
+    {
+        $tanfidh = new Umrah();
+
+        $umrah = $tanfidh->where(['tnfdhStatus' => 1])->findAll();
+        dd($umrah);
     }
 }

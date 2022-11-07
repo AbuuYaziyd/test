@@ -150,11 +150,16 @@ class MushrifController extends BaseController
         $tanfidh = new Umrah();
         $user = new User();
 
-        $mushrif = $user->find(session('id'))['id'];
+        $mr = $user
+                ->join('countries c', 'c.country_code=users.nationality')
+                ->join('universities u', 'u.uni_id=users.jamia')
+                ->find(session('id'));
+        $mushrif = $mr['id'];
         $data['tasrih'] = $tanfidh->where(['mushrif' => $mushrif, 'tnfdhStatus' => 0])
                             ->join('users u', 'u.id=tanfidh.userId')
                             ->findAll();
         $data['title'] = lang('app.tasrih');
+        $data['loc'] = $mr['country_arName'].' - '.$mr['uni_name'];
         // dd($data);
         
         if (session('role') == 'mushrif') {
