@@ -349,14 +349,18 @@ class AdminController extends BaseController
                         // ->join('banks', 'banks.bankId=users.bank')
                         ->findAll();
         $umrah = $tanfidh->where(['tnfdhStatus' => 1])->findAll();
-        foreach ($umrah as $key => $dt) {
-            $ok[] = [
-                'tanfidh' => $tanfidh->find($dt['tnfdhId']),
-                'user' => $user->join('countries c', 'c.country_code=users.nationality')
-                        ->join('universities u', 'u.uni_id=users.jamia')
-                        ->join('banks', 'banks.bankId=users.bank')
-                        ->find($dt['userId']),
-            ];
+        if (count($umrah) > 0) {
+            foreach ($umrah as $key => $dt) {
+                $ok[] = [
+                    'tanfidh' => $tanfidh->find($dt['tnfdhId']),
+                    'user' => $user->join('countries c', 'c.country_code=users.nationality')
+                            ->join('universities u', 'u.uni_id=users.jamia')
+                            ->join('banks', 'banks.bankId=users.bank')
+                            ->find($dt['userId']),
+                ];
+            }
+        } else {
+            $ok = [];
         }
 
         $data['title'] = lang('app.tanfidh');

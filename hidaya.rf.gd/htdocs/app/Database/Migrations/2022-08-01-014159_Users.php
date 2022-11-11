@@ -93,6 +93,11 @@ class Users extends Migration
                 'constraint' => 255,
                 'unique' => true,
             ],
+            'mushrif' => [
+                'type'       => 'INT',
+                'constraint' => 255,
+                'null' => true,
+            ],
             'updated_at' => [
                 'type' => 'datetime',
                 'null' => true,

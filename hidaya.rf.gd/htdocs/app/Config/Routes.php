@@ -79,6 +79,17 @@ $routes->group('image', function ($routes) {
 
 /*
  * --------------------------------------------------------------------
+ * Routes Groups Mashruu Routings
+ * --------------------------------------------------------------------
+ */
+$routes->group('mashruu', function ($routes) {
+    $routes->get('add', 'MashruuController::index', ['filter' => 'auth']);
+    $routes->post('create', 'MashruuController::create', ['filter' => 'auth']);
+    $routes->get('connect', 'MashruuController::connect', ['filter' => 'auth']);
+});
+
+/*
+ * --------------------------------------------------------------------
  * Routes Groups Admin Routings
  * --------------------------------------------------------------------
  */

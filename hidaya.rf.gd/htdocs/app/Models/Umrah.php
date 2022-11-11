@@ -18,10 +18,11 @@ class Umrah extends Model
         'userId',
         'tasrih',
         'tnfdhName',
+        'tnfdhSabab',
         'tnfdhDate',
         'miqat',
         'makkah',
-        'tnfdhAmount',
+        'tanfdhAmount',
         'mushrif',
         'tnfdhStatus',
     ];

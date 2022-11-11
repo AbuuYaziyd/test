@@ -16,74 +16,73 @@ class Mashruu extends Migration
                 'auto_increment' => true,
             ],
             'ism' => [
-                'type'           => 'INT',
-                'constraint'     => 11,
+                'type'       => 'VARCHAR',
+                'constraint' => 255,
             ],
             'sabab' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
-                'null' => true
+                'null' => true,
             ],
             'date' => [
                 'type'       => 'DATE',
-                'constraint' => 255,
-                'null' => true
+                'null' => true,
             ],
             'status' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
-                'null' => true
-            ],
-            'miqat' => [
-                'type'       => 'VARCHAR',
-                'constraint' => 255,
-                'null' => true
-            ],
-            'makkah' => [
-                'type'       => 'VARCHAR',
-                'constraint' => 255,
-                'null' => true
+                'default' => 0,
             ],
             'amount' => [
-                'type'       => 'VARCHAR',
+                'type'       => 'INT',
                 'constraint' => 255,
-                'null' => true
+                'null' => true,
+            ],
+            'bank' => [
+                'type'       => 'INT',
+                'constraint' => 255,
+                'null' => true,
             ],
             'mushrif' => [
-                'type'       => 'VARCHAR',
+                'type'       => 'INT',
                 'constraint' => 255,
-                'null' => true
+                'null' => true,
             ],
             'nation' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
-                'null' => true
+                'null' => true,
             ],
-            'name' => [
-                'type'       => 'VARCHAR',
+            'userId' => [
+                'type'       => 'INT',
                 'constraint' => 255,
-                'null' => true
+                'null' => true,
             ],
             'malaf' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
-                'null' => true
+                'null' => true,
             ],
             'phone' => [
-                'type'       => 'VARCHAR',
+                'type'       => 'INT',
                 'constraint' => 255,
-                'null' => true
+                'null' => true,
             ],
             'jamia' => [
-                'type'       => 'VARCHAR',
+                'type'       => 'INT',
                 'constraint' => 255,
-                'null' => true
+                'null' => true,
             ],
             'iban' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
-                'null' => true
+                'null' => true,
             ],
+            'updated_at' => [
+                'type' => 'datetime',
+                'null' => true,
+            ],
+            'created_at datetime default current_timestamp',
         ]);
         $this->forge->addKey('id', true);
         $this->forge->createTable('mashruu');

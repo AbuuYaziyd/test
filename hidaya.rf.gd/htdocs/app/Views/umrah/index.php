@@ -8,6 +8,18 @@
         <div class="content-header row">
         </div>
         <div class="content-body">
+            <?php if ($umrah['tnfdhStatus'] == 'sent') : ?>
+            <div class="card">
+                <div class="card-header">
+                    <h3>
+                        <b>
+                            <?= lang('app.name') ?> <?= lang('app.ism') ?>: <?= $umrah['tnfdhName'] ?>
+                            <span class="btn btn-success box-shadow-2 round pull-right"><?= lang('app.sabab') ?>: <?= $umrah['tnfdhSabab'] ?></span>
+                        </b>
+                    </h3>
+                </div>
+            </div>
+            <?php  endif ?>
             <div class="card">
                 <div class="card-header">
                     <h3>
@@ -15,13 +27,13 @@
                             <?= $title ?>
                             <?php if ($umrah) : ?>
                                 <?php if ($umrah['tasrih'] == null) : ?>
-                                    <span class="badge badge badge-danger badge-pill mr-2"><?= lang('app.tasrih') ?></span>
+                                    <span class="badge badge-danger badge-pill mr-2"><?= lang('app.tasrih') ?></span>
                                 <?php elseif ($umrah['tnfdhStatus'] == 0) : ?>
-                                    <span class="badge badge badge-warning badge-pill mr-2"><?= lang('app.mushrif') ?></span>
+                                    <span class="badge badge-warning badge-pill mr-2"><?= lang('app.mushrif') ?></span>
                                 <?php elseif ($umrah['tnfdhName'] == null) : ?>
-                                    <span class="badge badge badge-secondary badge-pill mr-2"><?= lang('app.admin') ?></span>
+                                    <span class="badge badge-secondary badge-pill mr-2"><?= lang('app.admin') ?></span>
                                 <?php elseif ($umrah['tnfdhName'] != null) : ?>
-                                    <span class="badge badge badge-success badge-pill mr-2"><?= lang('app.active') ?></span>
+                                    <span type="button" class="btn btn-success round mr-2"><?= lang('app.active') ?></span>
                                 <?php endif ?>
                             <?php endif ?>
                         </b>
@@ -48,7 +60,7 @@
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div class="heading-elements">
-                                                    <a href="<?= base_url('umrah/show/'. $umrah['tnfdhId']) ?>" class="btn btn-icon btn-success round mb-2 btn-block btn-lg <?= (($umrah['tnfdhStatus'] == 1)?'disabled':'') ?>"><?= lang('app.tasrih') ?></a>
+                                                    <a href="<?= base_url('umrah/show/'. $umrah['tnfdhId']) ?>" class="btn btn-icon btn-success round mb-2 btn-block btn-lg <?= (($umrah['tnfdhStatus'] != 0)?'disabled':'') ?>"><?= lang('app.tasrih') ?></a>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
@@ -117,4 +129,20 @@
         });
     <?php endif ?>
 </script>
+<!-- 
+<script>
+        $('#active').on('click', function () {
+            Swal.fire({
+                title: '<strong><u>معلومات التنفيذ</u></strong>',
+                icon: 'info',
+                html:
+                    'ّّ<i class="la la-arrow-circle-left"></i><?= lang('app.ism') ?>: <?= $umrah['tnfdhName'] ?><br> ' +
+                    'ّّ<i class="la la-arrow-circle-left"></i><?= lang('app.sabab') ?>: <?= $umrah['tnfdhSabab'] ?>',
+                focusConfirm: true,
+                showCloseButton: false,
+                confirmButtonText: '<?= lang('app.ok') ?>',
+                confirmButtonAriaLabel: 'Thumbs up, great!',
+            })
+        });
+</script> -->
 <?= $this->endSection() ?>
