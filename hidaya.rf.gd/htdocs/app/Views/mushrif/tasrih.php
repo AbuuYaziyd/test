@@ -9,7 +9,7 @@
                 <section id="configuration">
                     <div class="row">
                         <?php foreach ($tasrih as $dt) : ?>
-                            <?php if ($dt['tasrih']!=null) : ?>
+                            <?php if ($dt['tasrih']!=null || $dt['tnfdhDate']>=date('Y-m-d')) : ?>
                                 <div class="col-md-4">
                                     <div class="card">
                                         <div class="card-content">
@@ -18,11 +18,12 @@
                                             </div>
                                             <img class="card-img-top img-fluid px-1" src="<?= base_url('app-assets/images/'.($dt['tasrih']==null?'demo/no-image.png':'tasrih/'.$loc.'/'.$dt['tasrih'])) ?>" alt="img">
                                             <div class="card-body" style="text-align: center;">
+                                                <h3 class="mb-1"><b><?= $dt['malaf'] ?></b></h3>
                                                 <h3 class="mb-1"><b><?= date('d/m/Y', strtotime($dt['tnfdhDate'])) ?></b></h3>
                                                 <div class="text-center">
                                                     <div class="btn-group mb-1 btn-block" role="group" aria-label="Basic example">
-                                                        <a href="<?= base_url('mushrif/send-tasrih/'.$dt['tnfdhId']) ?>" class="btn btn-outline-success btn-glow round"><?= lang('app.send') ?></a>
-                                                        <a href="<?= base_url('mushrif/tasrih-delete/'.$dt['tnfdhId']) ?>" id="delete" class="btn btn-outline-danger btn-glow round "><?= lang('app.delete') ?></i></a>
+                                                        <a href="<?= base_url('mushrif/send-tasrih/'.$dt['tnfdhId']) ?>" class="btn btn-outline-success btn-glow round <?= ($dt['tasrih']==null?'disabled':'') ?>"><?= lang('app.send') ?></a>
+                                                        <a href="<?= base_url('mushrif/tasrih-delete/'.$dt['tnfdhId']) ?>" id="delete" class="btn btn-outline-danger btn-glow round"><?= lang('app.delete') ?></i></a>
                                                     </div>
                                                 </div>
                                             </div>

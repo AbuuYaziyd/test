@@ -23,17 +23,16 @@ class AdminController extends BaseController
         $tanfidh = new Tanfidh();
         $set = new Setting();
 
-        // $data['tanfdh'] = $tanfidh->where('mushrif', $_SESSION['id'])->countAllResults();
         $data['mushrif'] = $user->where('role', 'mushrif')->countAllResults();
-        $data['complt'] = $tanfidh->where(['tnfdhStatus' => 1])->countAllResults();
-        $data['status'] = $tanfidh->where(['tnfdhStatus' => 0])->countAllResults();
+        $data['complt'] = $tanfidh->where(['tnfdhStatus' => 2])->countAllResults();
+        $data['tanfidh'] = $tanfidh->where(['tnfdhStatus' => 1])->countAllResults();
         $data['judud'] = $user->where(['malaf' => null, 'status' => 0])->countAllResults();
         $data['set'] = $set->where(['name' => 'tanfidhDate', 'value>=' => date('Y-m-d')])->findAll();
         $data['full'] = count($user->where('role!=', 'admin')->findAll());
         $data['jamia'] = count($user->groupBy('jamia')->where('jamia!=', null)->findAll());
         $data['nationality'] = count($user->groupBy('nationality')->where('nationality!=', null)->findAll());
         $data['title'] = lang('app.dashboard');
-        // dd($data['full']);
+        // dd($data);
 
         if (session('role') == 'admin') {
             return view('admin/index', $data);
@@ -341,8 +340,33 @@ class AdminController extends BaseController
     public function tasrih()
     {
         $tanfidh = new Umrah();
+        $user = new User();
 
+        $umrah = $tanfidh->where(['tnfdhStatus' => 1])
+                        ->join('users us', 'us.id=tanfidh.userid')
+                        // ->join('countries c', 'c.country_code=users.nationality')
+                        // ->join('universities u', 'u.uni_id=users.jamia')
+                        // ->join('banks', 'banks.bankId=users.bank')
+                        ->findAll();
         $umrah = $tanfidh->where(['tnfdhStatus' => 1])->findAll();
-        dd($umrah);
+        foreach ($umrah as $key => $dt) {
+            $ok[] = [
+                'tanfidh' => $tanfidh->find($dt['tnfdhId']),
+                'user' => $user->join('countries c', 'c.country_code=users.nationality')
+                        ->join('universities u', 'u.uni_id=users.jamia')
+                        ->join('banks', 'banks.bankId=users.bank')
+                        ->find($dt['userId']),
+            ];
+        }
+
+        $data['title'] = lang('app.tanfidh');
+        $data['umrah'] = $ok;
+        // dd($ok);
+
+        if (session('role') == 'admin') {
+            return view('admin/tanfidh', $data);
+        } else {
+            return redirect()->to('user');
+        } 
     }
 }
