@@ -19,6 +19,7 @@ class AdminController extends BaseController
      */
     public function index()
     {
+        helper('form');
         $user = new User();
         $tanfidh = new Tanfidh();
         $set = new Setting();

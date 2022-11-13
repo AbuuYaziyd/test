@@ -104,13 +104,12 @@
             </div>
         </div>
     <?php else : ?>
-        <?php foreach ($set as $dt) : ?>
             <div class="col-xl-4 col-12">
                 <div class="card crypto-card-3 pull-up">
                     <?php if (session('role') != 'admin') : ?>
-                        <a href="<?= base_url('umrah/check/'.$dt['value']) ?>">
+                        <?= form_open('umrah') ?>
                     <?php else : ?>
-                        <a href="<?= base_url('admin/tasrih') ?>">
+                        <?= form_open('admin/tasrih') ?>
                     <?php endif ?>
                         <div class="card-content">
                             <div class="card-body pb-0">
@@ -123,20 +122,20 @@
                                         <h6 class="text-muted"><?= lang('app.baarik') ?></h6>
                                     </div>
                                     <div class="col-5 text-right">
-                                        <h4 class="danger"><?= date('d/m/Y', strtotime($dt['value'])) ?></h4>
+                                        <h4 class="warning"><b><?= lang('app.doorOpen') ?></b></h4>
+                                        <button type="submit" class="btn btn-outline-success round btn-sm"><?= lang('app.registerNow') ?></button>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-12 height-75" style="text-align: center;">
-                                    <span class="mt-3 btn btn-info btn-pill"><?= lang('app.tasrihDate') ?> - <?= date('d/m/Y', strtotime($dt['extra'])) ?></span>
+                                    <span class="mt-3 btn btn-info btn-pill"><?= lang('app.tasrihDate') ?> - <?= date('d/m/Y', strtotime($set['extra'])) ?></span>
                                 </div>
                             </div>
                         </div>
-                    </a>
+                    </form>
                 </div>
             </div>
-        <?php endforeach ?>
     <?php endif ?>
 </div>
 <!-- !DASH -->

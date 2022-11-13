@@ -13,6 +13,8 @@ class UserController extends BaseController
 {
     public function index()
     {
+        helper('form');
+        
         $ip = $_SERVER['REMOTE_ADDR'];
         $hits = new Hits();
         // Check for previous visits
@@ -36,7 +38,7 @@ class UserController extends BaseController
         $data['jamia'] = $user->groupBy('jamia')->countAllResults();
         $data['nation'] = $user->groupBy('nationality')->countAllResults();
         $data['bank'] = $user->groupBy('bank')->countAllResults();
-        $data['set'] = $set->where(['name' => 'tanfidhDate', 'value>=' => date('Y-m-d')])->findAll();
+        $data['set'] = $set->where(['info' => 'tasrihDate', 'extra>=' => date('Y-m-d')])->first();
         $data['title'] = lang('app.dashboard');
 
         $role = $user->find(session('id'));

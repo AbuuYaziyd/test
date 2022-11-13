@@ -67,9 +67,11 @@
                             <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                             <div class="heading-elements">
                                 <?php if ($title == lang('app.makkah')) : ?>
-                                <form action="<?= base_url('umrah/makkah/'.$umrah['tnfdhId']) ?>" method="post">
+                                    <?= form_open('umrah/makkah/'.$umrah['tnfdhId'], ['id'=>'form']) ?>
+                                <!-- <form action="<?= base_url('umrah/makkah/'.$umrah['tnfdhId']) ?>" method="post"> -->
                                 <?php elseif ($title == lang('app.miqat')) : ?>
-                                <form action="<?= base_url('umrah/miqat/'.$umrah['tnfdhId']) ?>" method="post">
+                                    <?= form_open('umrah/miqat/'.$umrah['tnfdhId'], ['id'=>'form']) ?>
+                                <!-- <form action="<?= base_url('umrah/miqat/'.$umrah['tnfdhId']) ?>" method="post"> -->
                                 <?php endif ?>
                                     <input type="hidden" name="<?= $title == lang('app.makkah')?'makkah':'miqat' ?>" id="loc">
                                     <button type="submit" id="send" class="btn btn-icon btn-secondary">
@@ -80,7 +82,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <div class="card-title"><?= lang('app.sureSendLocation') ?></div>
+                            <div class="card-title"><b><?= $title ?></b> - <?= lang('app.sureSendLocation') ?></div>
                             <div id="maps-leaflet-user-location" class="maps-leaflet-container"></div>
                         </div>
                     </div>
@@ -149,7 +151,6 @@
 <script>
     $('#send').on('click', function(e) {
         e.preventDefault();
-        url = $(this).attr('href');
         Swal.fire({
             title: 'أتحقق أنك في <?= $title?>؟',
             text: "بعد الإرسال خلاص فهو مرسل!",
@@ -164,7 +165,7 @@
             buttonsStyling: false,
         }).then(function(result) {
             if (result.value) {
-                window.location.href = url;
+                document.getElementById('form').submit();
             } else if (result.dismiss === Swal.DismissReason.cancel) {
                 Swal.fire({
                     title: 'تمام',

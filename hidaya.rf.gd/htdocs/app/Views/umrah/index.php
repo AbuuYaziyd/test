@@ -8,6 +8,7 @@
         <div class="content-header row">
         </div>
         <div class="content-body">
+            <?php if ($umrah != null) : ?>
             <?php if ($umrah['tnfdhStatus'] == 'sent') : ?>
             <div class="card">
                 <div class="card-header">
@@ -19,6 +20,7 @@
                     </h3>
                 </div>
             </div>
+            <?php  endif ?>
             <?php  endif ?>
             <div class="card">
                 <div class="card-header">
@@ -32,8 +34,10 @@
                                     <span class="badge badge-warning badge-pill mr-2"><?= lang('app.mushrif') ?></span>
                                 <?php elseif ($umrah['tnfdhName'] == null) : ?>
                                     <span class="badge badge-secondary badge-pill mr-2"><?= lang('app.admin') ?></span>
-                                <?php elseif ($umrah['tnfdhName'] != null) : ?>
+                                <?php elseif ($umrah['tnfdhName'] != null && $umrah['makkah'] == null) : ?>
                                     <span type="button" class="btn btn-success round mr-2"><?= lang('app.active') ?></span>
+                                <?php elseif ($umrah['makkah'] != null) : ?>
+                                    <span type="button" class="btn btn-amber round mr-2"><?= lang('app.ok') ?></span>
                                 <?php endif ?>
                             <?php endif ?>
                         </b>
@@ -49,11 +53,16 @@
                             <div class="col-12">
                                 <?php if ($next >= date('Y-m-d')) : ?>
                                     <?php if (!$umrah) : ?>
-                                        <div class="heading-elements">
+                                        <div class="heading-elements p-1">
                                             <?= form_open('umrah/create') ?>
                                                 <input type="hidden" name="id" value="<?= session('id') ?>">
-                                                <input type="hidden" name="tanfidh" value="<?= $next ?>">
-                                                <button type="submit" class="btn btn-icon btn-info round mb-2 btn-block btn-lg"><?= lang('app.register') ?></button>
+                                                <select name="tanfidh" class="custom-select mb-1">
+                                                    <option disabled selected><?= lang('app.choose') ?> <?= lang('app.date') ?></option>
+                                                    <?php foreach ($next as $dt) : ?>
+                                                        <option value="<?= $dt['value'] ?>"><?= $dt['value'] ?></option>
+                                                    <?php endforeach ?>
+                                                </select>
+                                                <button type="submit" class="btn btn-icon btn-info round my-2 btn-block btn-lg"><?= lang('app.register') ?></button>
                                             </form>
                                         </div>
                                     <?php elseif ($umrah['makkah'] == null) : ?>
@@ -129,20 +138,4 @@
         });
     <?php endif ?>
 </script>
-<!-- 
-<script>
-        $('#active').on('click', function () {
-            Swal.fire({
-                title: '<strong><u>معلومات التنفيذ</u></strong>',
-                icon: 'info',
-                html:
-                    'ّّ<i class="la la-arrow-circle-left"></i><?= lang('app.ism') ?>: <?= $umrah['tnfdhName'] ?><br> ' +
-                    'ّّ<i class="la la-arrow-circle-left"></i><?= lang('app.sabab') ?>: <?= $umrah['tnfdhSabab'] ?>',
-                focusConfirm: true,
-                showCloseButton: false,
-                confirmButtonText: '<?= lang('app.ok') ?>',
-                confirmButtonAriaLabel: 'Thumbs up, great!',
-            })
-        });
-</script> -->
 <?= $this->endSection() ?>

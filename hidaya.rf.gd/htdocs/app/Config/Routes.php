@@ -102,7 +102,7 @@ $routes->group('admin', function ($routes) {
     $routes->get('all', 'AdminController::all', ['filter' => 'auth']);
     $routes->get('users/(:any)/(:num)', 'AdminController::users/$1/$2', ['filter' => 'auth']);
     $routes->get('mushrifuna', 'AdminController::mushrifuna', ['filter' => 'auth']);
-    $routes->get('tasrih', 'AdminController::tasrih', ['filter' => 'auth']);
+    $routes->post('tasrih', 'AdminController::tasrih', ['filter' => 'auth']);
     // $routes->get('judud', 'AdminController::judud', ['filter' => 'auth']);
     $routes->get('activate/(:num)', 'AdminController::activate/$1', ['filter' => 'auth']);
     $routes->post('activate-all', 'AdminController::activateAll', ['filter' => 'auth']);
@@ -138,8 +138,8 @@ $routes->group('mushrif', function ($routes) {
  * --------------------------------------------------------------------
  */
 $routes->group('umrah', function ($routes) {
-    // $routes->get('/', 'UmrahController::index', ['filter' => 'auth']);
-    $routes->get('check/(:any)', 'UmrahController::index/$1', ['filter' => 'auth']);
+    $routes->get('/', 'UmrahController::index', ['filter' => 'auth']);
+    $routes->post('/', 'UmrahController::index', ['filter' => 'auth']);
     $routes->post('create', 'UmrahController::create', ['filter' => 'auth']);
     $routes->get('show/(:num)', 'UmrahController::show/$1', ['filter' => 'auth']);
     $routes->get('edit/(:num)', 'UmrahController::edit/$1', ['filter' => 'auth']);
