@@ -23,7 +23,7 @@
                                 <h4 class="media-heading">
                                     <span class="users-view-name"><?= session('name') ?> </span>
                                     <span class="text-muted font-medium-1"> @</span>
-                                    <span class="users-view-username text-muted font-medium-1 "><?= $user['jamia'] ?></span>
+                                    <span class="users-view-username text-muted font-medium-1 "><?= $user['uni_name'] ?></span>
                                 </h4>
                                 <span><?= lang('app.malaf') ?>:</span>
                                 <span class="users-view-id"><?= sprintf('%04s',session('malaf')) ?></span>
@@ -54,7 +54,7 @@
                                         </tr>
                                         <tr>
                                             <td><?= lang('app.malaf') ?>:</td>
-                                            <td><b><?= sprintf('%04s', $user['malaf']) ?></b></td>
+                                            <td><b><?= sprintf('%04s', ($user['malaf']??'----')) ?></b></td>
                                         </tr>
                                         <tr>
                                             <td><?= lang('app.passport') ?>:</td>

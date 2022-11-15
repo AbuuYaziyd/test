@@ -62,7 +62,7 @@ class AuthController extends BaseController
                 'name' => 'required|min_length[3]|max_length[50]|is_unique[users.name]',
                 'email' => 'valid_email|is_unique[users.email]',
                 'iban' => 'required|exact_length[24]',
-                'iqama' => 'required|exact_length[10]|integer',
+                'iqama' => 'required|exact_length[10]|integer|is_unique[users.iqama]',
                 'bitaqa' => 'required',
                 'passport' => 'required',
                 'phone' => 'required|exact_length[9]|integer',
@@ -88,6 +88,7 @@ class AuthController extends BaseController
                     'required' => lang('error.required'),
                     'integer' => lang('error.integer'),
                     'exact_length' => lang('error.min_length'),
+                    'is_unique' => lang('error.is_unique'),
                 ],
                 'bitaqa' => [
                     'required' => lang('error.required'),
@@ -127,9 +128,20 @@ class AuthController extends BaseController
         if (!$input) {
             $nat = new Country();
             $bank = new Bank();
+            $uni = new University();
+            $set = new Setting();
+            $user = new User();
 
             $data['nat'] = $nat->findAll();
             $data['bank'] = $bank->findAll();
+            $data['uni'] = $uni->findAll();
+            $set = $set->where('name', 'count')->first();
+            if ($user->countAllResults() >= intval($set['value'])) {
+                $data['reg'] = 1;
+            } else {
+                $data['reg'] = null;
+            }
+            // dd($user->countAllResults() >= intval($set['value']));
             $data['title'] = lang('app.register');
             $data['validation'] = $this->validator;
             echo view('auth/register', $data);
@@ -140,10 +152,9 @@ class AuthController extends BaseController
             $data = [
                 'name'     => $this->request->getVar('name'),
                 'email'    => $this->request->getVar('email'),
-                'password' => password_hash($this->request->getVar('iqama'), PASSWORD_DEFAULT),
+                'password' => password_hash(intval($this->request->getVar('iqama')), PASSWORD_DEFAULT),
                 'iban' => strtoupper($this->request->getVar('iban')),
                 'iqama' => $this->request->getVar('iqama'),
-                'malaf' => $this->request->getVar('iqama'),
                 'bitaqa' => $this->request->getVar('bitaqa'),
                 'passport' => strtoupper($this->request->getVar('passport')),
                 'phone' => $this->request->getVar('phone'),
@@ -207,22 +218,24 @@ class AuthController extends BaseController
         $session = session();
         $user = new User();
 
+        // dd($this->request->getVar());
         $identity = $this->request->getVar('identity');
         $password = $this->request->getVar('password');
-        $data = $user->where('email', $identity)->orWhere('malaf', $identity)->first();
+        $wh = "email = '".$identity."' OR email='".$identity."'";
+        $data = $user->where($wh)->first();
 
         // dd($data);
-
         if ($data) {
             $pass = $data['password'];
             $auth = password_verify($password, $pass);
 
+            // dd($auth);
             if ($auth) {
                 $sessData = [
                     'id' => $data['id'],
                     'name' => $data['name'],
                     'email' => $data['email'],
-                    'malaf' =>sprintf('%04s', $data['malaf']),
+                    'malaf' =>sprintf('%04s', ($data['malaf']??'----')),
                     'bitaqa' => $data['bitaqa'],
                     'passport' => $data['passport'],
                     'role' => $data['role'],
@@ -258,10 +271,12 @@ class AuthController extends BaseController
         helper('form');
         $user = new User();
 
+        // dd($this->request->getVar());
         $identity = $this->request->getVar('identity');
         $iqama = $this->request->getVar('iqama');
         $phone = $this->request->getVar('phone');
-        $data = $user->where('email', $identity)->orWhere('malaf', $identity)->first();
+        $wh = "email = '".$identity."' OR email='".$identity."'";
+        $data = $user->where($wh)->first();
         // dd($data);
 
         if ($data > 0) {
@@ -282,7 +297,7 @@ class AuthController extends BaseController
                 }
             }
         }else {        
-            return redirect()->to('recover')->with('icon', 'error')->with('text', lang('app.notFound'))->with('title', lang('app.sorry'));
+            return redirect()->to('recover')->with('type', 'error')->with('text', lang('app.notFoundIdentity'))->with('title', lang('app.sorry'));
         }
     }
 
@@ -313,7 +328,7 @@ class AuthController extends BaseController
         $input = $this->validate(
             [   //Rules
                 'old' => 'required',
-                'new' => 'required',
+                'new' => 'required|min_length[8]',
             ],
             [   // Errors
                 'old' => [
@@ -321,6 +336,7 @@ class AuthController extends BaseController
                 ],
                 'new' => [
                     'required' => lang('error.required'),
+                    'min_length' => lang('error.min_length'),
                 ],
             ]
         );

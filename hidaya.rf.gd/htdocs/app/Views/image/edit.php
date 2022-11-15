@@ -42,7 +42,7 @@
                                 </div> -->
                                 <div class="col mb-1">
                                     
-                                <img class="img-fluid mb-2" id="show_image" src="<?= base_url('app-assets/images/' . ($img[$type] == null ? 'demo/no-image.png' : 'malaf/'.session('malaf').'/') . $img[$type]) ?>" alt="img">
+                                <img class="img-fluid mb-2" id="show_image" src="<?= base_url('app-assets/images/' . ($img[$type] == null ? 'demo/no-image.png' : 'malaf/'.(session('malaf')=='----'?'new':session('malaf')).'/') . $img[$type]) ?>" alt="img">
                                         <p><code style="font-family: Cairo;"><?= lang('app.imgErr') ?></code></p>
                                         <?php if ($validation->getError('img')) : ?>
                                             <span class="badge badge-danger"> <?= $errors = $validation->getError('img') ?></span>

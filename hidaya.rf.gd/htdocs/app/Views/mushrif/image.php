@@ -31,7 +31,7 @@
                                         <h4 class="card-title"><?= lang('app.imgIqama') ?>
                                     </h4>
                                     </div>
-                                    <img class="img-fluid" src="<?= base_url('app-assets/images/' . ($img['imgIqama'] == null ? 'demo/iqama.jpg' : 'malaf/'.session('malaf').'/') . $img['imgIqama']) ?>" alt="img">
+                                    <img class="img-fluid" src="<?= base_url('app-assets/images/' . ($img['imgIqama'] == null ? 'demo/iqama.jpg' : 'malaf/'.($user['malaf']??'new').'/') . $img['imgIqama']) ?>" alt="img">
                                 </div>
                                 <div style="text-align: center;" class="my-1">
                                     <span><b><?= $user['iqama'] ?></b></span>
@@ -45,7 +45,7 @@
                                         <h4 class="card-title"><?= lang('app.imgPass') ?>
                                     </h4>
                                     </div>
-                                    <img class="img-fluid" src="<?= base_url('app-assets/images/' . ($img['imgPass'] == null ? 'demo/passp.jpg' : 'malaf/'.session('malaf').'/') . $img['imgPass']) ?>" alt="img">
+                                    <img class="img-fluid" src="<?= base_url('app-assets/images/' . ($img['imgPass'] == null ? 'demo/passp.jpg' : 'malaf/'.($user['malaf']??'new').'/') . $img['imgPass']) ?>" alt="img">
                                 </div>
                                 <div style="text-align: center;" class="my-1">
                                     <span><b><?= $user['passport'] ?></b></span>
@@ -59,7 +59,7 @@
                                         <h4 class="card-title"><?= lang('app.imgStu') ?>
                                     </h4>
                                     </div>
-                                    <img class="img-fluid" src="<?= base_url('app-assets/images/' . ($img['imgStu'] == null ? 'demo/stu.jpg' : 'malaf/'.session('malaf').'/') . $img['imgStu']) ?>" alt="img">
+                                    <img class="img-fluid" src="<?= base_url('app-assets/images/' . ($img['imgStu'] == null ? 'demo/stu.jpg' : 'malaf/'.($user['malaf']??'new').'/') . $img['imgStu']) ?>" alt="img">
                                 </div>
                                 <div style="text-align: center;" class="my-1">
                                     <span><b><?= $user['bitaqa'] ?></b></span>
@@ -73,7 +73,7 @@
                                         <h4 class="card-title"><?= lang('app.imgIban') ?>
                                     </h4>
                                     </div>
-                                    <img class="img-fluid" src="<?= base_url('app-assets/images/' . ($img['imgIban'] == null ? 'demo/iban.png' : 'malaf/'.session('malaf').'/') . $img['imgIban']) ?>" alt="img">
+                                    <img class="img-fluid" src="<?= base_url('app-assets/images/' . ($img['imgIban'] == null ? 'demo/iban.png' : 'malaf/'.($user['malaf']??'new').'/') . $img['imgIban']) ?>" alt="img">
                                 </div>
                                 <div style="text-align: center;" class="my-1">
                                     <span><b><?= $user['iban'] ?></b></span>

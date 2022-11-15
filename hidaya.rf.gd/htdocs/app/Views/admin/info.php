@@ -132,7 +132,3 @@
         </a>
     </div>
 </div>
-
-<!-- DASH -->
-<?= $this->include('user/info') ?>
-<!-- !DASH -->

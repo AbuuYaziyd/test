@@ -21,12 +21,12 @@ class MushrifController extends BaseController
         $tanfidh = new Tanfidh();
         $set = new Setting();
 
-        $role = $user->find($_SESSION['id']);
+        $role = $user->find(session('id'));
         $data['lead'] = $tanfidh->where('mushrif', session('id'))->countAllResults();
         $data['status'] = $tanfidh->where(['tnfdhStatus' => 'incomplete','mushrif', session('id')])->countAllResults();
         $data['judud0'] = $user->where(['malaf' => null, 'status' => null, 'jamia' => $role['jamia'], 'nationality' => $role['nationality']])->countAllResults();
         $data['judud1'] = $user->where(['malaf' => null, 'status' => 0, 'jamia' => $role['jamia'], 'nationality' => $role['nationality']])->countAllResults();
-        $data['set'] = $set->where(['name' => 'tanfidhDate', 'value>=' => date('Y-m-d')])->findAll();
+        $data['set'] = $set->where(['info' => 'tasrihDate', 'extra>=' => date('Y-m-d')])->first();
         $data['all'] = $user->where(['nationality' => $role['nationality'], 'jamia' => $role['jamia'],'role!=' => 'admin'])->countAllResults();
         $data['full'] = $user->where('role!=', 'admin')->countAllResults();
         $data['title'] = lang('app.dashboard');

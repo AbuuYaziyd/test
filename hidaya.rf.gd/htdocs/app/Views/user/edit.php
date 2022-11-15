@@ -39,8 +39,9 @@
                                 <table class="table table-borderless">
                                     <tbody>
                                         <tr>
-                                            <td><?= lang('app.name') ?>:</td>
-                                            <td class="users-view-name"><input type="text" class="form-control" name="name" value="<?= $user['name'] ?>"></td>
+                                            <td><?= lang('app.nationality') ?>:</td>
+                                            <td><input type="text" class="form-control" name="nationality" value="<?= $user['country_arName'] ?>" readonly>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td><?= lang('app.jamia') ?>:</td>
@@ -48,7 +49,11 @@
                                         </tr>
                                         <tr>
                                             <td><?= lang('app.malaf') ?>:</td>
-                                            <td class="users-view-name"><input type="text" class="form-control" name="malaf" value="<?= sprintf('%04s', $user['malaf']) ?>" readonly></td>
+                                            <td class="users-view-name"><input type="text" class="form-control" name="malaf" value="<?= sprintf('%04s', ($user['malaf']??'----')) ?>" readonly></td>
+                                        </tr>
+                                        <tr>
+                                            <td><?= lang('app.name') ?>:</td>
+                                            <td class="users-view-name"><input type="text" class="form-control" name="name" value="<?= $user['name'] ?>"></td>
                                         </tr>
                                         <tr>
                                             <td><?= lang('app.bitaqa') ?>:</td>
@@ -61,11 +66,6 @@
                                         <tr>
                                             <td><?= lang('app.email') ?>:</td>
                                             <td class="users-view-name"><input type="email" class="form-control" name="email" value="<?= $user['email'] ?>" placeholder="<?= lang('app.notFound') ?>"></td>
-                                        </tr>
-                                        <tr>
-                                            <td><?= lang('app.nationality') ?>:</td>
-                                            <td><input type="text" class="form-control" name="nationality" value="<?= $user['country_arName'] ?>" placeholder="<?= lang('app.notFound') ?>" readonly>
-                                            </td>
                                         </tr>
                                         <tr>
                                             <td><?= lang('app.phone') ?>:</td>

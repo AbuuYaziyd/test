@@ -28,7 +28,7 @@ class AdminController extends BaseController
         $data['complt'] = $tanfidh->where(['tnfdhStatus' => 2])->countAllResults();
         $data['tanfidh'] = $tanfidh->where(['tnfdhStatus' => 1])->countAllResults();
         $data['judud'] = $user->where(['malaf' => null, 'status' => 0])->countAllResults();
-        $data['set'] = $set->where(['name' => 'tanfidhDate', 'value>=' => date('Y-m-d')])->findAll();
+        $data['set'] = $set->where(['info' => 'tasrihDate', 'extra>=' => date('Y-m-d')])->first();
         $data['full'] = count($user->where('role!=', 'admin')->findAll());
         $data['jamia'] = count($user->groupBy('jamia')->where('jamia!=', null)->findAll());
         $data['nationality'] = count($user->groupBy('nationality')->where('nationality!=', null)->findAll());
