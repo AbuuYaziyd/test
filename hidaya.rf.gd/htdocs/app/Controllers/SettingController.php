@@ -7,17 +7,15 @@ use App\Models\Setting;
 
 class SettingController extends BaseController
 {
-    /**
-     * Return an array of resource objects, themselves in array format
-     *
-     * @return mixed
-     */
     public function index()
     {
+        helper('form');
+        
         $set = new Setting();
 
         $data['title'] = lang('app.settings');
-        $data['set'] = $set->findAll();
+        $data['tasrih'] = $set->where('name', 'tanfidhDate')->findAll();
+        $data['count'] = $set->where('name', 'count')->first();
         // dd($data);
 
         return view('settings/index', $data);

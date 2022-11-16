@@ -97,6 +97,7 @@ return [
     'data' => 'ملفات',
     'arabic' => 'عربي',
     'students' => 'طلاب',
+    'studentCount' => 'عدد الطلاب',
     'new' => 'ضف',
     'student' => 'طالب',
     'user' => 'طالب',
