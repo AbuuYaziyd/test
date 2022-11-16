@@ -222,7 +222,7 @@ class AuthController extends BaseController
         // dd($this->request->getVar());
         $identity = $this->request->getVar('identity');
         $password = $this->request->getVar('password');
-        $wh = "email = '".$identity."' OR email='".$identity."'";
+        $wh = "email = '".$identity."' OR malaf='".$identity."'";
         $data = $user->where($wh)->first();
 
         // dd($data);
@@ -276,7 +276,7 @@ class AuthController extends BaseController
         $identity = $this->request->getVar('identity');
         $iqama = $this->request->getVar('iqama');
         $phone = $this->request->getVar('phone');
-        $wh = "email = '".$identity."' OR email='".$identity."'";
+        $wh = "email = '".$identity."' OR malaf='".$identity."'";
         $data = $user->where($wh)->first();
         // dd($data);
 
