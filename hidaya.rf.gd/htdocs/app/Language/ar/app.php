@@ -141,7 +141,7 @@ return [
     'umrahcount' => 'عمرة منذ تسجيل',
     'umrahmonth' => 'عمرة في هذا الشهر',
     'tanfidh' => 'تنفيذ',
-    'tanfidhEndDate' => 'آخر تاريخ التنفيذ',
+    'tanfidhDate' => 'تاريخ التنفيذ',
     'tasrihDate' => 'آخر تاريخ ارسال التصاريح',
     'tabaaraka' => 'الله يبارك فيك',
     'maashaallah' => 'ما شاء الله تبارك الله',

@@ -10,12 +10,14 @@ class SettingController extends BaseController
     public function index()
     {
         helper('form');
-        
+
         $set = new Setting();
 
         $data['title'] = lang('app.settings');
         $data['tasrih'] = $set->where('name', 'tanfidhDate')->findAll();
+        // $data['end'] = $set->where('name', 'tanfidhDate')->orderBy('value', 'desc')->first()['value'];
         $data['count'] = $set->where('name', 'count')->first();
+        $data['extra'] = $set->where('name', 'tanfidhDate')->orderBy('value', 'desc')->first()['extra'];
         // dd($data);
 
         return view('settings/index', $data);
@@ -116,6 +118,57 @@ class SettingController extends BaseController
         // dd($ok);
         $ok = $set->delete($id);
 
+        if ($ok) {
+            return redirect()->to('set')->with('type', 'success')->with('text', lang('app.doneSuccess'))->with('title', lang('app.ok'));
+        }
+    }
+
+    public function studentCount()
+    {
+        $set = new Setting();
+
+        $id = $this->request->getVar('id');
+        $data = [
+            'value' => $this->request->getVar('stuCount'),
+        ];
+        // dd($data);
+
+        $ok = $set->update($id, $data);
+        
+        if ($ok) {
+            return redirect()->to('set')->with('type', 'success')->with('text', lang('app.doneSuccess'))->with('title', lang('app.ok'));
+        }
+    }
+
+    public function tanfidh()
+    {
+        $set = new Setting();
+
+        $id = $this->request->getVar('id');
+        $tanfidhDate = $this->request->getVar('tanfidhDate');
+        for ($i=0; $i < count($id); $i++) { 
+            $data = ['value' => $tanfidhDate[$i]];
+            $ok = $set->update($id[$i], $data);
+        }
+        // dd($id);
+        
+        if ($ok) {
+            return redirect()->to('set')->with('type', 'success')->with('text', lang('app.doneSuccess'))->with('title', lang('app.ok'));
+        }
+    }
+
+    public function tasrih()
+    {
+        $set = new Setting();
+
+        $date = $this->request->getVar('tasrihDate');
+        $tasrih = $set->where('info', 'tasrihDate')->findAll();
+        foreach ($tasrih as $dt) {
+            $data = ['extra' => $date];
+            $ok = $set->update($dt['id'], $data);
+        }
+        // dd($data);
+        
         if ($ok) {
             return redirect()->to('set')->with('type', 'success')->with('text', lang('app.doneSuccess'))->with('title', lang('app.ok'));
         }

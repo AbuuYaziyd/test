@@ -109,7 +109,6 @@ $routes->group('admin', function ($routes) {
     // $routes->get('add', 'AdminController::add', ['filter' => 'auth']);
     $routes->get('show/(:num)', 'AdminController::show/$1', ['filter' => 'auth']);
     $routes->get('delete/(:num)', 'AdminController::delete/$1', ['filter' => 'auth']);
-    // $routes->post('upload/(:num)', 'AdminController::update/$1', ['filter' => 'auth']);
     // $routes->get('zip/(:any)', 'AdminController::zip/$1', ['filter' => 'auth']);
 });
 
@@ -161,6 +160,9 @@ $routes->group('set', function ($routes) {
     $routes->get('show/(:num)', 'SettingController::show/$1', ['filter' => 'auth']);
     $routes->post('edit/(:num)', 'SettingController::edit/$1', ['filter' => 'auth']);
     $routes->get('delete/(:num)', 'SettingController::delete/$1', ['filter' => 'auth']);
+    $routes->post('student-count', 'SettingController::studentCount', ['filter' => 'auth']);
+    $routes->post('tanfidh', 'SettingController::tanfidh', ['filter' => 'auth']);
+    $routes->post('tasrih', 'SettingController::tasrih', ['filter' => 'auth']);
 });
 
 /*
