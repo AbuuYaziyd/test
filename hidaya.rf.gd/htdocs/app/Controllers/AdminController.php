@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\Country;
+use App\Models\Image;
 use App\Models\Setting;
 use App\Models\Tanfidh;
 use App\Models\Umrah;
@@ -250,22 +251,32 @@ class AdminController extends BaseController
 
     public function judud()
     {
-        // dd('ok');
         $user = new User();
+        // $set = new Setting();
 
+        // $cnt = $set->where('name', 'count')->first()['value'];
         $data['users'] = $user->where(['malaf' => null, 'status' => 0])->findAll();
         $data['title'] = lang('app.judud');
         
-        $ok = $user->select('malaf')->findAll();
-        foreach ($ok as $value) {
-            $ok1[] = sprintf('%04s', ($value['malaf']));
-        }
-        for ($i=0; $i < 9999; $i++) { 
-            if (!in_array( $i, $ok1 )) {
-                $dt[] = sprintf('%04s', $i);
-            }
-        }
-        // dd(($dt));
+        // $ok = $user->select('malaf')->findAll();
+        // foreach ($ok as $value) {
+            // $ok1[] = sprintf('%04s', ($value['malaf']));
+        // }
+        // for ($i=0; $i < 9999; $i++) { 
+            // if (!in_array( $i, $ok1 )) {
+        //         $dt[] = sprintf('%04s', $i);
+        //     }
+        // }
+        // $ok = $user->select('malaf')->orderBy('id', 'desc')->findAll();
+        //     foreach ($ok as $value) {
+        //         $arr1[] = $value['malaf'];
+        //     }
+        //     for ($i=1000; $i < intval($cnt); $i++) { 
+        //         if (!(in_array($i, $arr1))) {
+        //         $dt[] = sprintf('%04s', $i);
+        //         }
+        //     }
+        // dd(($data));
 
         if (session('role') == 'admin') {
             return view('admin/judud', $data);
@@ -276,30 +287,72 @@ class AdminController extends BaseController
 
     public function activate($id)
     {
-        // dd('ok');
         $user = new User();
+        $set = new Setting();
+        $image = new Image();
 
+        $cnt = $set->where('name', 'count')->first()['value'];
+        $img = $image->where('userId', $id)->first();
         $data['users'] = $user->find($id);
         $data['title'] = lang('app.judud');
+        $malaf = $user->find($id)['malaf'];
         
-        $ok = $user->select('malaf')->findAll();
-        foreach ($ok as $value) {
-            $arr1[] = sprintf('%04s', ($value['malaf']));
-        }
-        for ($i=100; $i < 9999; $i++) { 
-            if (!in_array( $i, $arr1)) {
-                $arr2[] = sprintf('%04s', $i);
+        $ok = $user->select('malaf')->orderBy('id', 'desc')->findAll();
+            foreach ($ok as $data) {
+                $arr1[] = $data['malaf'];
             }
-        }
-        $d = [
-            'malaf' => array_diff($arr1, $arr2)[1],
-            'status' => 1
-        ];
-        
-        // dd($d);
-        $updt = $user->update($id, $d);
-
+            for ($i=1000; $i < intval($cnt); $i++) { 
+                if (!(in_array($i, $arr1))) {
+                    $dt = [
+                        'malaf' => $i,
+                        'status' => 1,
+                    ];
+                }
+            }
+        $updt = $user->update($id, $dt);
         if ($updt) {
+            
+            if (file_exists('app-assets/images/malaf/new/'.$img['imgIqama'])) {
+                $path = 'app-assets/images/malaf/new/'.$img['imgIqama'];
+                $newPath = 'app-assets/images/malaf/'.$malaf.'/';
+
+                $file = new \CodeIgniter\Files\File($path);
+                if (!file_exists($newPath)) {
+                    mkdir($newPath, 0777, true);
+                }
+                $file->move($newPath);
+            }
+            if (file_exists('app-assets/images/malaf/new/'.$img['imgPass'])) {
+                $path = 'app-assets/images/malaf/new/'.$img['imgPass'];
+                $newPath = 'app-assets/images/malaf/'.$malaf.'/';
+
+                $file = new \CodeIgniter\Files\File($path);
+                if (!file_exists($newPath)) {
+                    mkdir($newPath, 0777, true);
+                }
+                $file->move($newPath);
+            }
+            if (file_exists('app-assets/images/malaf/new/'.$img['imgStu'])) {
+                $path = 'app-assets/images/malaf/new/'.$img['imgStu'];
+                $newPath = 'app-assets/images/malaf/'.$malaf.'/';
+
+                $file = new \CodeIgniter\Files\File($path);
+                if (!file_exists($newPath)) {
+                    mkdir($newPath, 0777, true);
+                }
+                $file->move($newPath);
+            }
+            if (file_exists('app-assets/images/malaf/new/'.$img['imgIban'])) {
+                $path = 'app-assets/images/malaf/new/'.$img['imgIban'];
+                $newPath = 'app-assets/images/malaf/'.$malaf.'/';
+
+                $file = new \CodeIgniter\Files\File($path);
+                if (!file_exists($newPath)) {
+                    mkdir($newPath, 0777, true);
+                }
+                $file->move($newPath);
+            }
+
             return redirect()->to('admin')->with('type', 'success')->with('title', lang('app.done'))->with('text', lang('app.register') . ' ' . lang('app.student') . ' ' . lang('app.success'));
         }
     }
@@ -307,35 +360,80 @@ class AdminController extends BaseController
     public function activateAll()
     {
         $user = new User();
-        
-            $ok = $user->select('malaf')->findAll();
+        $set = new Setting();
+        $image = new Image();
+
+        $cnt = $set->where('name', 'count')->first()['value'];
+        $ok = $user->select('malaf')->orderBy('id', 'desc')->findAll();
             foreach ($ok as $data) {
-                $arr1[] = sprintf('%04s', ($data['malaf']));
+                $arr1[] = $data['malaf'];
             }
-            // for ($i=0; $i < 9999; $i++) { 
-            //     $arr2[] = sprintf('%04s', $i);
-            // }
-            for ($i=1000; $i < 9999; $i++) { 
-                if (in_array($i, $arr1)) {
-                    $no[] = $i;
+            for ($i=1000; $i < intval($cnt); $i++) { 
+                if (!(in_array($i, $arr1))) {
+                    $dt[] = $i;
                 }
             }
-        foreach ($this->request->getVar('id') as $key => $value) {
-            $id = $value;
-            $d = [
-                'malaf' => sprintf('%04s', $no[$key]),
-                'status' => 1,
-                'id' => $id
-            ];
-            // dd($d);
-            // dd(array_rand(array_diff($arr2, $arr1)));
-            $updt = $user->update($id, $d);
-        }
+            foreach ($this->request->getVar('id') as $key => $value) {
+                $id = $value;
+                $d = [
+                    'malaf' => $dt[$key],
+                    'status' => 1,
+                    'id' => $id
+                ];
+                $updt = $user->update($id, $d);
+                
+                $malaf = $user->find($id)['malaf'];
+                $img = $image->where('userId', $id)->first();
+                
+                if ($updt) {
+                    
+                    if (file_exists('app-assets/images/malaf/new/'.$img['imgIqama'])) {
+                        $path = 'app-assets/images/malaf/new/'.$img['imgIqama'];
+                        $newPath = 'app-assets/images/malaf/'.$malaf.'/';
 
-        //     dd($d);
-        if ($updt) {
-            return redirect()->to('admin')->with('type', 'success')->with('title', lang('app.done'))->with('text', lang('app.register') . ' ' . lang('app.student') . ' ' . lang('app.success'));
-        }
+                        $file = new \CodeIgniter\Files\File($path);
+                        if (!file_exists($newPath)) {
+                            mkdir($newPath, 0777, true);
+                        }
+                        $file->move($newPath);
+                    }
+                    if (file_exists('app-assets/images/malaf/new/'.$img['imgPass'])) {
+                        $path = 'app-assets/images/malaf/new/'.$img['imgPass'];
+                        $newPath = 'app-assets/images/malaf/'.$malaf.'/';
+
+                        $file = new \CodeIgniter\Files\File($path);
+                        if (!file_exists($newPath)) {
+                            mkdir($newPath, 0777, true);
+                        }
+                        $file->move($newPath);
+                    }
+                    if (file_exists('app-assets/images/malaf/new/'.$img['imgStu'])) {
+                        $path = 'app-assets/images/malaf/new/'.$img['imgStu'];
+                        $newPath = 'app-assets/images/malaf/'.$malaf.'/';
+
+                        $file = new \CodeIgniter\Files\File($path);
+                        if (!file_exists($newPath)) {
+                            mkdir($newPath, 0777, true);
+                        }
+                        $file->move($newPath);
+                    }
+                    if (file_exists('app-assets/images/malaf/new/'.$img['imgIban'])) {
+                        $path = 'app-assets/images/malaf/new/'.$img['imgIban'];
+                        $newPath = 'app-assets/images/malaf/'.$malaf.'/';
+
+                        $file = new \CodeIgniter\Files\File($path);
+                        if (!file_exists($newPath)) {
+                            mkdir($newPath, 0777, true);
+                        }
+                        $file->move($newPath);
+                    }
+                }
+            }
+            
+            // dd($d);
+            if ($updt) {
+                return redirect()->to('admin')->with('type', 'success')->with('title', lang('app.done'))->with('text', lang('app.register') . ' ' . lang('app.student') . ' ' . lang('app.success'));
+            }
     }
 
     public function tasrih()
