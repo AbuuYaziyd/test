@@ -67,46 +67,27 @@
                                 </div>
                             </a>
                         </div>
+                        <div class="col-md-3">
+                            <a id="count" data-toggle="modal" data-target="#settings">
+                                <div class="card pull-up">
+                                    <div class="card-content">
+                                        <div class="card-body">
+                                            <div class="media d-flex">
+                                                <div class="media-body text-left">
+                                                    <h6 class="text-muted"><b><?= lang('app.tanfidhSettings') ?></b></h6>
+                                                    <h3><?= lang('app.settings') ?></h3>
+                                                </div>
+                                                <div class="align-self-center">
+                                                    <i class="la la-cog dark spinner font-large-2 float-right"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <!-- <div class="col-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3><b><?= $title ?></b>
-                            <?php if (session('role') == 'superuser' || session('role') == 'admin') : ?>
-                            <a class="btn btn-outline-success box-shadow-2 round pull-right" href="<?= base_url('set/add') ?>"><?= lang('app.add') ?></a>
-                            <?php endif ?>
-                            </h3>
-                        </div>
-                        <div class="card-content">
-                            <div class="table-responsive">
-                                <table id="recent-orders" class="table table-hover table-xl mb-0">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th><?= lang('app.setting') ?></th>
-                                            <th><?= lang('app.value') ?></th>
-                                            <th><?= lang('app.info') ?></th>
-                                            <th><?= lang('app.choose') ?></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php foreach ($tasrih as $key => $data) : ?>
-                                            <tr>
-                                                <td><?= $key+1 ?></td>
-                                                <td><span class="badge badge-info"><?= $data['name'] ?></span></td>
-                                                <td><span><?= $data['value'] ?></span></td>
-                                                <td><span><?= $data['info'] ?></span></td>
-                                                <td><a href="<?= base_url('set/show/'. $data['id']) ?>" class="btn btn-sm btn-outline-warning round"><?= lang('app.show') ?></a></td>
-
-                                            </tr>
-                                        <?php endforeach ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
             </div>
         </div>
     </div>
@@ -179,6 +160,31 @@
                     </div>
                     <div class="modal-body m-1">
                         <?= form_open('set/tasrih') ?>
+                            <fieldset>
+                                <label><b><?= lang('app.tasrihDate') ?></b></label>
+                                <input type="date" class="form-control" name="tasrihDate" value="<?= $extra ?>">
+                            </fieldset>
+                            <button type="submit" class="btn btn-block btn-lg btn-primary my-1"><?= lang('app.send') ?></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card-body">
+    <div class="row my-2">
+        <div class="modal fade text-left" id="settings" tabindex="-1" role="dialog" aria-labelledby="myModalLabel3" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel3">
+                            <?= lang('app.tanfidhSettings') ?>
+                        </h4>
+                    </div>
+                    <div class="modal-body m-1">
+                        <?= form_open('set/tanfidh-settings') ?>
                             <fieldset>
                                 <label><b><?= lang('app.tasrihDate') ?></b></label>
                                 <input type="date" class="form-control" name="tasrihDate" value="<?= $extra ?>">

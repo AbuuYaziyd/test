@@ -62,7 +62,9 @@
                                     <h2>
                                         <b><?= $title ?></b> 
                                         <span class="badge badge badge-info badge-pill mr-2"><?= $tanfidh ?></span>
+                                        <?php if ($tanfidh>0) : ?>
                                         <a class="btn btn-outline-success box-shadow-2 round pull-right" href="<?= base_url('mashruu/connect') ?>"><?= lang('app.add') ?></a>
+                                        <?php endif  ?>
                                     </h2>
                                 </div>
                                 <div class="card-content collapse show">

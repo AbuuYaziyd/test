@@ -142,6 +142,7 @@ return [
     'umrahmonth' => 'عمرة في هذا الشهر',
     'tanfidh' => 'تنفيذ',
     'tanfidhDate' => 'تاريخ التنفيذ',
+    'tanfidhSettings' => 'إعدادات التنفيذ',
     'tasrihDate' => 'آخر تاريخ ارسال التصاريح',
     'tabaaraka' => 'الله يبارك فيك',
     'maashaallah' => 'ما شاء الله تبارك الله',

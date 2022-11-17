@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\Country;
 use App\Models\Image;
+use App\Models\Mashruu;
 use App\Models\Setting;
 use App\Models\Tanfidh;
 use App\Models\Umrah;
@@ -205,10 +206,14 @@ class AdminController extends BaseController
     public function show($id = null)
     {
         $user = new User();
+        $image = new Image();
+        $mash = new Mashruu();
 
         $data['user'] = $user->join('countries c', 'c.country_code=users.nationality')
                         ->join('universities u', 'u.uni_id=users.jamia')
                         ->find($id);
+        $data['img'] = $image->where('userId', $id)->first();
+        $data['mashruu'] = $mash->where('userId', $id)->findAll();
         $data['title'] = lang('app.user');
         // dd($data);
 

@@ -82,8 +82,8 @@ $routes->group('image', function ($routes) {
  * Routes Groups Mashruu Routings
  * --------------------------------------------------------------------
  */
-$routes->group('mashruu', function ($routes) {
-    $routes->get('add', 'MashruuController::index', ['filter' => 'auth']);
+$routes->group('tanfidh', function ($routes) {
+    $routes->get('/', 'MashruuController::index', ['filter' => 'auth']);
     $routes->post('create', 'MashruuController::create', ['filter' => 'auth']);
     $routes->get('connect', 'MashruuController::connect', ['filter' => 'auth']);
 });
@@ -163,20 +163,6 @@ $routes->group('set', function ($routes) {
     $routes->post('student-count', 'SettingController::studentCount', ['filter' => 'auth']);
     $routes->post('tanfidh', 'SettingController::tanfidh', ['filter' => 'auth']);
     $routes->post('tasrih', 'SettingController::tasrih', ['filter' => 'auth']);
-});
-
-/*
- * --------------------------------------------------------------------
- * Routes Groups Tanfidh Routings
- * --------------------------------------------------------------------
- */
-$routes->group('tanfidh', function ($routes) {
-    $routes->get('/', 'TanfidhController::index', ['filter' => 'auth']);
-    $routes->get('add', 'TanfidhController::add', ['filter' => 'auth']);
-    $routes->post('create', 'TanfidhController::create', ['filter' => 'auth']);
-    $routes->get('show', 'TanfidhController::show', ['filter' => 'auth']);
-    $routes->post('edit', 'TanfidhController::edit', ['filter' => 'auth']);
-    // $routes->get('delete/(:num)', 'TanfidhController::delete/$1', ['filter' => 'auth']);
 });
 
 /*

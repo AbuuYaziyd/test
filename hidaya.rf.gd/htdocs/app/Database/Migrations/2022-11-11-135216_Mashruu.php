@@ -78,6 +78,36 @@ class Mashruu extends Migration
                 'constraint' => 255,
                 'null' => true,
             ],
+            // 'miqatLat' => [
+            //     'type'       => 'VARCHAR',
+            //     'constraint' => 255,
+            //     'null' => true,
+            // ],
+            // 'miqatLong' => [
+            //     'type'       => 'VARCHAR',
+            //     'constraint' => 255,
+            //     'null' => true,
+            // ],
+            // 'tawafLat' => [
+            //     'type'       => 'VARCHAR',
+            //     'constraint' => 255,
+            //     'null' => true,
+            // ],
+            // 'tawafLong' => [
+            //     'type'       => 'VARCHAR',
+            //     'constraint' => 255,
+            //     'null' => true,
+            // ],
+            // 'saiLat' => [
+            //     'type'       => 'VARCHAR',
+            //     'constraint' => 255,
+            //     'null' => true,
+            // ],
+            // 'saiLong' => [
+            //     'type'       => 'VARCHAR',
+            //     'constraint' => 255,
+            //     'null' => true,
+            // ],
             'updated_at' => [
                 'type' => 'datetime',
                 'null' => true,
