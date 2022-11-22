@@ -17,10 +17,24 @@ class Home extends BaseController
     {
         $uni = new University();
         $u = $uni->findAll();
+        // $u = $uni->where('')->first();
         echo '$data = [<br>';
         foreach ($u as $dt) {
-            echo '[\'uni_name\' => \''.$dt['COL 1'].'\', ';
-            echo '\'uni_reg\' => \''.$dt['COL 2'].'\'],<br>';
+            echo '[\'malaf\' => \''.$dt['COL 1'].'\', ';
+            echo '\'name\' => \''.$dt['COL 2'].'\', ';
+            echo '\'bitaqa\' => \''.$dt['COL 1'].'\', ';
+            echo '\'city\' => \''.$dt['COL 5'].'\', ';
+            echo '\'level\' => \''.$dt['COL 8'].'\', ';
+            echo '\'nationality\' => \''.$dt['COL 3'].'\', ';
+            echo '\'jamia\' => \''.$dt['COL 9'].'\', ';
+            echo '\'bank\' => \''.$dt['COL 10'].'\', ';
+            echo '\'iban\' => \''.strtoupper($dt['COL 11']).'\', ';
+            echo '\'passport\' => \''.$dt['COL 1'].'\', ';
+            echo '\'email\' => \''.$dt['COL 1'].'@gmail.com\', ';
+            echo '\'iqama\' => \''.$dt['COL 4'].'\', ';
+            echo '\'role\' => \'user\', ';
+            echo '\'password\' => \'password_hash('.$dt['COL 4'].', PASSWORD_DEFAULT)\', ';
+            echo '\'status\' => \'1\'],<br>';
         }
         echo '];';
         // dd($u);

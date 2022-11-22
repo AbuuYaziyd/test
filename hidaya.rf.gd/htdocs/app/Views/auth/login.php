@@ -20,12 +20,12 @@
                     <div class="card-content">
                         <div class="card-body">
                             <?= form_open('login') ?>
-                            <label class="text-bold-600"><?= lang('app.username') ?></label>
-                            <?php if ((session()->getFlashdata('identity'))) : ?>
-                                <span class="badge badge-danger"><?= (session()->getFlashdata('identity')) ?></span>
+                            <label class="text-bold-600"><?= lang('app.iqama') ?></label>
+                            <?php if ((session()->getFlashdata('iqama'))) : ?>
+                                <span class="badge badge-danger"><?= (session()->getFlashdata('iqama')) ?></span>
                             <?php endif ?>
                             <fieldset class="form-group position-relative has-icon-left mb-1">
-                                <input type="text" class="form-control" name="identity" placeholder="<?= lang('app.username') ?>">
+                                <input type="text" class="form-control" name="iqama" placeholder="<?= lang('app.iqama') ?>">
                                 <div class="form-control-position">
                                     <i class="la la-user"></i>
                                 </div>

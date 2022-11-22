@@ -220,12 +220,11 @@ class AuthController extends BaseController
         $user = new User();
 
         // dd($this->request->getVar());
-        $identity = $this->request->getVar('identity');
+        $iqama = $this->request->getVar('iqama');
         $password = $this->request->getVar('password');
-        $wh = "email = '".$identity."' OR malaf='".$identity."'";
-        $data = $user->where($wh)->first();
+        $data = $user->where('iqama =', $iqama)->first();
 
-        // dd($data);
+        dd($data);
         if ($data) {
             $pass = $data['password'];
             $auth = password_verify($password, $pass);
@@ -273,11 +272,10 @@ class AuthController extends BaseController
         $user = new User();
 
         // dd($this->request->getVar());
-        $identity = $this->request->getVar('identity');
+        $malaf = $this->request->getVar('malaf');
         $iqama = $this->request->getVar('iqama');
         $phone = $this->request->getVar('phone');
-        $wh = "email = '".$identity."' OR malaf='".$identity."'";
-        $data = $user->where($wh)->first();
+        $data = $user->where('malaf', $malaf)->first();
         // dd($data);
 
         if ($data > 0) {

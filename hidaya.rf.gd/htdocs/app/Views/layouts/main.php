@@ -31,7 +31,7 @@
 
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/css-rtl/core/menu/menu-types/vertical-menu.css') ?> ">
-    <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/css-rtl/core/colors/palette-gradient.css') ?> ">
+    <link rel="stylesheet" type="text/css"strtotime href="<?= base_url('app-assets/css-rtl/core/colors/palette-gradient.css') ?> ">
     <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/vendors/css/cryptocoins/cryptocoins.css') ?> ">
     <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/vendors/css/charts/apexcharts.css') ?> ">
     <!-- END: Page CSS-->
