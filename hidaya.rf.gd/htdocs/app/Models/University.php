@@ -7,8 +7,7 @@ use CodeIgniter\Model;
 class University extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'book1';
-    // protected $table            = 'universities';
+    protected $table            = 'universities';
     protected $primaryKey       = 'uni_id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;

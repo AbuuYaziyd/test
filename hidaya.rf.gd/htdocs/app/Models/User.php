@@ -18,13 +18,14 @@ class User extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'email',
+        'mushrif',
+        'umrah',
         'malaf',
         'iqama',
         'password',
         'role',
         'name',
-        'passport',
+        'city',
         'bitaqa',
         'level',
         'nationality',

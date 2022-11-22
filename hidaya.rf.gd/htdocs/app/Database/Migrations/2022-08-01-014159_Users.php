@@ -15,25 +15,16 @@ class Users extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'email' => [
-                'type'       => 'VARCHAR',
-                'constraint' => 255,
-                'unique' => true,
-            ],
             'malaf' => [
-                'type'       => 'INTEGER',
+                'type'       => 'INT',
                 'constraint' => 255,
                 'default' => 1111,
+                'comment' => '1111=newUser'
             ],
             'iqama' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
                 'unique' => true,
-            ],
-            'passport' => [
-                'type'       => 'VARCHAR',
-                'constraint' => 255,
-                'null' => true,
             ],
             'bitaqa' => [
                 'type'       => 'VARCHAR',
@@ -83,6 +74,7 @@ class Users extends Migration
             'phone' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
+                'null' => true,
             ],
             'bank' => [
                 'type'       => 'VARCHAR',
@@ -94,11 +86,11 @@ class Users extends Migration
                 'unique' => true,
             ],
             'mushrif' => [
-                'type'       => 'INT',
+                'type'       => 'VARCHAR',
                 'constraint' => 255,
                 'null' => true,
             ],
-            'updated_at' => [
+            'umrah' => [
                 'type' => 'datetime',
                 'null' => true,
             ],
