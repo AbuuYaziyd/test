@@ -82,17 +82,11 @@
 	<!-- BEGIN: Vendor JS-->
 	<script src="<?= base_url('app-assets/vendors/js/vendors.min.js') ?>"></script>
 	<!-- BEGIN Vendor JS-->
-
-	<!-- BEGIN: Page Vendor JS-->
-	<!-- END: Page Vendor JS-->
-
+	
 	<!-- BEGIN: Theme JS-->
 	<script src="<?= base_url('app-assets/js/core/app-menu.js') ?>"></script>
 	<sript src="<?= base_url('app-assets/js/core/app.js') ?>"></script>
 	<!-- END: Theme JS-->
-	
-	<!-- BEGIN: Page JS-->
-	<!-- END: Page JS-->
 
 </body>
 <!-- END: Body-->

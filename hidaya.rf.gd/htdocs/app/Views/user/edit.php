@@ -31,7 +31,6 @@
                         <div class="card-body">
                             <div class="row bg-primary bg-lighten-5 rounded mb-2 mx-25 text-center text-lg-left">
                                 <div class="col-12 col-sm-4 p-2">
-                                    <!-- <h2 class="text-primary mb-0"><?= lang('app.umraCount') ?>: <span class="font-large-1 align-middle"> <?= 'idadi' ?></span></h2> -->
                                 </div>
                             </div>
                             <div class="col-12">
@@ -95,35 +94,11 @@
                                 </table>
                                 <button type="submit" class="btn btn-lg btn-block btn-secondary mt-2"><?= lang('app.edit') ?></button>
                                 </form>
-                                <!-- <h5 class="mb-1"><i class="bx bx-info-circle"></i> Personal Info</h5>
-                                <table class="table table-borderless mb-0">
-                                    <tbody>
-                                        <tr>
-                                            <td>Birthday:</td>
-                                            <td>03/04/1990</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Country:</td>
-                                            <td>USA</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Languages:</td>
-                                            <td>English</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Contact:</td>
-                                            <td>+(305) 254 24668</td>
-                                        </tr>
-                                    </tbody>
-                                </table> -->
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- users view card details ends -->
-
             </section>
-            <!-- users view ends -->
         </div>
     </div>
 </div>

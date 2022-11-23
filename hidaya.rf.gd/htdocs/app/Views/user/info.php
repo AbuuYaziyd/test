@@ -1,4 +1,3 @@
-<!-- DASH -->
 <div id="crypto-stats-3" class="row">
     <div class="col-xl-4 col-12">
         <div class="card crypto-card-3 pull-up">
@@ -138,4 +137,3 @@
             </div>
     <?php endif ?>
 </div>
-<!-- !DASH -->
