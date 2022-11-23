@@ -17,7 +17,7 @@
                                 <img src="https://ui-avatars.com/api/?name=<?= session('malaf') ?>&background=random&length=4" alt="users view avatar" class="users-avatar-shadow rounded-circle" height="64" width="64">
                             </a>
                             <div class="media-body pt-25">
-                                <h4 class="media-heading"><span class="users-view-name"><?= session('name') ?> </span><span class="text-muted font-medium-1"> @</span><span class="users-view-username text-muted font-medium-1 "><?= $user['jamia'] ?></span></h4>
+                                <h4 class="media-heading"><span class="users-view-name"><?= session('name') ?> </span><span class="text-muted font-medium-1"> @</span><span class="users-view-username text-muted font-medium-1 "><?= lang('app.admin') ?></span></h4>
                                 <span><?= lang('app.malaf') ?>:</span>
                                 <span class="users-view-id"><?= session('malaf') ?></span>
                             </div>
@@ -44,20 +44,12 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><?= lang('app.jamia') ?>:</td>
-                                            <td class="users-view-name"><input type="text" class="form-control" name="jamia" value="<?= $user['uni_name'] ?>" readonly></td>
-                                        </tr>
-                                        <tr>
                                             <td><?= lang('app.malaf') ?>:</td>
                                             <td class="users-view-name"><input type="text" class="form-control" name="malaf" value="<?= sprintf('%04s', ($user['malaf']??'----')) ?>" readonly></td>
                                         </tr>
                                         <tr>
                                             <td><?= lang('app.name') ?>:</td>
                                             <td class="users-view-name"><input type="text" class="form-control" name="name" value="<?= $user['name'] ?>"></td>
-                                        </tr>
-                                        <tr>
-                                            <td><?= lang('app.bitaqa') ?>:</td>
-                                            <td class="users-view-name"><input type="text" class="form-control" name="bitaqa" value="<?= $user['bitaqa']??'' ?>" placeholder="<?= lang('app.notFound') ?>"></td>
                                         </tr>
                                         <tr>
                                             <td><?= lang('app.phone') ?>:</td>

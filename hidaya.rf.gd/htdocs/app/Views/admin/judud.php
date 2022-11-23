@@ -24,13 +24,14 @@
                                 <div class="card-header">
                                     <h2>
                                         <?= $title ?> <span class="badge badge badge-info badge-pill mr-2"><?= count($users) ?></span>
-                                        <form action="<?= base_url('admin/activate-all') ?>" method="post">
-                                            <?php foreach ($users as $key => $value) : ?>
-                                                <input type="hidden" name="id[]" value="<?= $value['id'] ?>">
-                                            <?php endforeach ?>
-                                            <button type="submit" class="btn btn-outline-success box-shadow-2 round pull-right"><?= lang('app.activate') ?></button>
-                                        </form>
-                                    <!-- <a class="btn btn-outline-success box-shadow-2 round pull-right" href="<?= base_url('admin/activate-all') ?>"><?= lang('app.activate') ?></a> -->
+                                        <?php if (count($users)>0) : ?>
+                                            <form action="<?= base_url('admin/activate-all') ?>" method="post">
+                                                <?php foreach ($users as $key => $value) : ?>
+                                                    <input type="hidden" name="id[]" value="<?= $value['id'] ?>">
+                                                <?php endforeach ?>
+                                                <button type="submit" class="btn btn-outline-success box-shadow-2 round pull-right"><?= lang('app.activate') ?></button>
+                                            </form>
+                                        <?php endif ?>
                                     </h2>
                                 </div>
                                 <div class="card-content collapse show">

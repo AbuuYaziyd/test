@@ -67,13 +67,23 @@ class UserController extends BaseController
         $user = new User();
 
         $data['title'] = lang('app.profile');
-        $data['user'] = $user->join('banks', 'banks.bankId=users.bank')
-                            ->join('universities u', 'u.uni_id=users.jamia')
-                            ->join('countries n', 'n.country_code=users.nationality')
-                            ->find($id);
+        if (session('role') != 'admin') {
+            $data['user'] = $user->join('banks', 'banks.bankId=users.bank')
+                                ->join('universities u', 'u.uni_id=users.jamia')
+                                ->join('countries n', 'n.country_code=users.nationality')
+                                ->find($id);
+        } else {
+            $data['user'] = $user->join('banks', 'banks.bankId=users.bank')
+                                ->join('countries n', 'n.country_code=users.nationality')
+                                ->find($id);
+        }
+        
         // dd($data);
-
-        return view('user/profile', $data);
+        if (session('role') != 'admin') {
+            return view('user/profile', $data);
+        } else {
+            return view('admin/profile', $data);
+        } 
     }
 
     public function edit($id)
@@ -85,15 +95,25 @@ class UserController extends BaseController
         $nat = new Country();
 
         $data['title'] = lang('app.profile');
-        $data['user'] = $user->join('banks', 'banks.bankId=users.bank')
-                            ->join('universities u', 'u.uni_id=users.jamia')
-                            ->join('countries n', 'n.country_code=users.nationality')
-                            ->find($id);
+        if (session('role') != 'admin') {
+            $data['user'] = $user->join('banks', 'banks.bankId=users.bank')
+                                ->join('universities u', 'u.uni_id=users.jamia')
+                                ->join('countries n', 'n.country_code=users.nationality')
+                                ->find($id);
+        } else {
+            $data['user'] = $user->join('banks', 'banks.bankId=users.bank')
+                                ->join('countries n', 'n.country_code=users.nationality')
+                                ->find($id);
+        }
         $data['bank'] = $bank->findAll();
         $data['nat'] = $nat->findAll();
         // dd($data);
 
-        return view('user/edit', $data);
+        if (session('role') != 'admin') {
+            return view('user/edit', $data);
+        } else {
+            return view('admin/edit', $data);
+        } 
     }
 
     public function update($id)

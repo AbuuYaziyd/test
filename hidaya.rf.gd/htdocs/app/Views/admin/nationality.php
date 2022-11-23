@@ -18,7 +18,7 @@
                                 <div class="card-content collapse show">
                                     <div class="card-body card-dashboard">
                                         <?php foreach ($nationality as $key => $data) : ?>
-                                            <a href="<?= base_url('admin/nat/' . $data['nat']) ?>" class="btn btn-warning round m-1"><?= $data['nationality'] ?> (<?= $data['jm'] ?>)</a>
+                                            <a href="<?= base_url('admin/nat/' . $data['nat']) ?>" class="btn btn-outline-secondary round m-1"><?= $data['nationality'] ?> (<?= $data['jm'] ?>)</a>
                                         <?php endforeach ?>
                                     </div>
                                 </div>

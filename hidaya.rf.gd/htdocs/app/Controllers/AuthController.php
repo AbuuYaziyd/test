@@ -224,7 +224,7 @@ class AuthController extends BaseController
         $password = $this->request->getVar('password');
         $data = $user->where('iqama =', $iqama)->first();
 
-        dd($data);
+        // dd($data);
         if ($data) {
             $pass = $data['password'];
             $auth = password_verify($password, $pass);
@@ -234,10 +234,8 @@ class AuthController extends BaseController
                 $sessData = [
                     'id' => $data['id'],
                     'name' => $data['name'],
-                    'email' => $data['email'],
-                    'malaf' =>sprintf('%04s', ($data['malaf']??'----')),
+                    'malaf' =>sprintf('%04s', ($data['malaf']!=1111?$data['malaf']:'----')),
                     'bitaqa' => $data['bitaqa'],
-                    'passport' => $data['passport'],
                     'role' => $data['role'],
                     'isLoggedIn' => TRUE
                 ];

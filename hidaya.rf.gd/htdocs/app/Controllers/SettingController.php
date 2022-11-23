@@ -15,7 +15,6 @@ class SettingController extends BaseController
 
         $data['title'] = lang('app.settings');
         $data['tasrih'] = $set->where('name', 'tanfidhDate')->findAll();
-        // $data['end'] = $set->where('name', 'tanfidhDate')->orderBy('value', 'desc')->first()['value'];
         $data['count'] = $set->where('name', 'count')->first();
         $data['extra'] = $set->where('name', 'tanfidhDate')->orderBy('value', 'desc')->first()['extra'];
         // dd($data);

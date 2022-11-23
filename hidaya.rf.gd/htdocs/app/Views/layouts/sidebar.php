@@ -9,7 +9,7 @@
                 </a>
             </li>
             <?php if (session('role') === 'admin')  : ?>
-            <li class="<?= (isset($check) && $check == lang('app.settings') ? 'active' : '') ?> nav-item">
+            <li class="<?= ($title == lang('app.settings') ? 'active' : '') ?> nav-item">
                 <a href="<?= base_url('set') ?>">
                     <i class="la la-cog spinner"></i>
                     <span class="menu-title"><?= lang('app.settings') ?></span>
