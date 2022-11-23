@@ -9,8 +9,6 @@
                 <div class="card col-md-4 col-sm-12">
                     <div class="text-center">
                         <div class="card-body">
-                            <!-- <img src="<?= base_url('app-assets/images/portrait/small/avatar-s-4.png') ?>" class="rounded-circle  height-150" alt="Card image"> -->
-
                             <img src="https://ui-avatars.com/api/?name=<?= $user['name'] ?>&background=random&length=1&font-size=0.7" class="rounded-circle  height-150" alt=" avatar">
                         </div>
                         <div class="card-body">
@@ -26,7 +24,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Recent Transactions -->
                 <div id="recent-transactions" class="col-md-8 col-sm-12">
                     <div class="card">
                         <div class="card-header">
@@ -94,7 +91,6 @@
                     </div>
                 </div>
             </div>
-            <!--/ Recent Transactions -->
         </div>
     </div>
 </div>
@@ -105,7 +101,6 @@
         e.preventDefault();
         url = $(this).attr('href');
         Swal.fire({
-            // title: <?= lang('app.graduated?') ?>,
             title: 'أمتخرج هو؟',
             text: "بعد الحذف خلاص فهو محذوف!",
             type: 'warning',
