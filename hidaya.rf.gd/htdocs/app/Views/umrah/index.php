@@ -59,7 +59,9 @@
                                                 <select name="tanfidh" class="custom-select mb-1">
                                                     <option disabled selected><?= lang('app.choose') ?> <?= lang('app.date') ?></option>
                                                     <?php foreach ($next as $dt) : ?>
+                                                        <?php if ($dt['value'] > date('Y-m-d')) : ?>
                                                         <option value="<?= $dt['value'] ?>"><?= date('d/m/Y', strtotime($dt['value'])) ?></option>
+                                                        <?php endif ?>
                                                     <?php endforeach ?>
                                                 </select>
                                                 <button type="submit" class="btn btn-icon btn-info round my-2 btn-block btn-lg"><?= lang('app.register') ?></button>
