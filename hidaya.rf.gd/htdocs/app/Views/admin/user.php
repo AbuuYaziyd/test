@@ -12,7 +12,6 @@
                             <img src="https://ui-avatars.com/api/?name=<?= sprintf('%04s', $user['malaf']) ?>&background=random&length=4" class="rounded-circle  height-150" alt=" avatar">
                         </div>
                         <div class="card-body">
-                            <!-- <h1><?= sprintf('%04s', $user['malaf']) ?></h1> -->
                             <h4><b><?= $user['name'] ?></b></h4>
                             <p><?= $user['iqama'] ?></p>
                             <p><?= $user['country_arName'] ?></p>

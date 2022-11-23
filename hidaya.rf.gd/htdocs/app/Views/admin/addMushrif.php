@@ -19,7 +19,6 @@
     <div class="content-wrapper">
         <div class="content-body">
             <div class="content-body">
-                <!-- Configuration option table -->
                 <section id="configuration">
                     <div class="row">
                         <div class="col-12">
@@ -45,7 +44,6 @@
                         </div>
                     </div>
                 </section>
-                <!--/ Configuration option table -->
             </div>
         </div>
     </div>
