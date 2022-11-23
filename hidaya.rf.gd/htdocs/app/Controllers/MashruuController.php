@@ -87,12 +87,9 @@ class MashruuController extends BaseController
                 $count = 0;
                 foreach($csvArr as $userdata){
                     $usr = new Mashruu();
-                    // $findRecord = $usr->where('ism', $userdata['ism'])->countAllResults();
-                    // if($findRecord == 0){
                         if($usr->insert($userdata)){
                             $count++;
                         }
-                    // }
                 }
                 // dd(file_exists('public/files/'. $newName));
                 unlink('public/files/'. $newName);
