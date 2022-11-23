@@ -36,7 +36,7 @@
                 </a>
             </li>
             <li class="<?= ($title == lang('app.tasrihs') ? 'active' : '') ?> nav-item">
-                <a href="<?= base_url('tasrih') ?>">
+                <a href="<?= base_url('admin/tasrih') ?>">
                     <i class="la la-file-image-o"></i>
                     <span class="menu-title"><?= lang('app.tasrihs') ?></span>
                 </a>
