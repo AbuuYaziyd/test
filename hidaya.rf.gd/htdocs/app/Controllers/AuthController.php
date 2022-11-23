@@ -139,6 +139,7 @@ class AuthController extends BaseController
         } else {
 
             $user = new User();
+            $mushrif = $user->where(['nationality' => $this->request->getVar('nationality'), 'jamia' => $this->request->getVar('jamia'), 'role' => 'mushrif'])->first()['id'];
 
             $data = [
                 'name'     => $this->request->getVar('name'),
@@ -150,6 +151,7 @@ class AuthController extends BaseController
                 'nationality' => $this->request->getVar('nationality'),
                 'jamia' => $this->request->getVar('jamia'),
                 'level' => $this->request->getVar('level'),
+                'mushrif' => $mushrif??null,
                 'status' => 0,
                 'bank' => $this->request->getVar('bank'),
             ];
