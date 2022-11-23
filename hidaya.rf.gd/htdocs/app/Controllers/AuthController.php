@@ -245,7 +245,7 @@ class AuthController extends BaseController
                 return redirect()->to('login')->with('password', lang('app.wrongPassword'));
             }
         }else {
-            return redirect()->to('login')->with('identity', lang('app.notSigned'));
+            return redirect()->to('login')->with('iqama', lang('app.notSigned'));
         }
     }
 
