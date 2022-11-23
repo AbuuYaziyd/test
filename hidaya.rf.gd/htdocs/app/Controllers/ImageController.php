@@ -47,9 +47,6 @@ class ImageController extends BaseController
             case 'iqama':
         $data['type'] = 'imgIqama';
                 break;
-            case 'passport':
-        $data['type'] = 'imgPass';
-                break;
             case 'bitaqa':
         $data['type'] = 'imgStu';
                 break;

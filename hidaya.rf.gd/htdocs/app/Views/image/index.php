@@ -18,7 +18,7 @@
                     </div>
                 </div>
                     <div class="row">
-                        <div class="col-md-3 col-sm-12">
+                        <div class="col-md-4">
                             <div class="card">
                                 <div class="card-content">
                                     <div class="card-body">
@@ -33,22 +33,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3 col-sm-12">
-                            <div class="card">
-                                <div class="card-content">
-                                    <div class="card-body">
-                                        <h4 class="card-title"><?= lang('app.imgPass') ?>
-                                        <a class="btn btn-outline-secondary box-shadow-2 round pull-right" href="<?= base_url('image/edit/' . session('id')).'/passport' ?>"><?= lang('app.edit') ?></a>
-                                    </h4>
-                                    </div>
-                                    <img class="img-fluid" src="<?= base_url('app-assets/images/' . ($img['imgPass'] == null ? 'demo/passp.jpg' : 'malaf/'.(session('malaf')=='----'?'new':session('malaf')).'/') . $img['imgPass']) ?>" alt="img">
-                                </div>
-                                <div style="text-align: center;" class="my-1">
-                                    <span><b><?= $user['passport'] ?></b></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-12">
+                        <div class="col-md-4">
                             <div class="card">
                                 <div class="card-content">
                                     <div class="card-body">
@@ -63,7 +48,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3 col-sm-12">
+                        <div class="col-md-4">
                             <div class="card">
                                 <div class="card-content">
                                     <div class="card-body">

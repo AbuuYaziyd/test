@@ -21,27 +21,20 @@
                     <div class="card-content">
                         <div class="card-body">
                             <div class="row">
-                                <!-- <div class="col-sm-6 mb-1">
-                                    <fieldset class="form-group">
-                                        <div class="input-group mt-2">
-                                            <div class="input-group-prepend">
-                                                <label class="input-group-text" for="inputGroupSelect01"><?= lang('app.edit') . ' ' . lang('app.data') ?></label>
-                                            </div>
-                                            <select class="form-control" name="select">
-                                                <option selected disabled><?= lang('app.choose') ?></option>
-                                                <option value="imgIqama" <?= $type == 'iqama' ? 'selected':'' ?>><?= lang('app.imgIqama') ?></option>
-                                                <option value="imgPass" <?= $type == 'passport' ? 'selected':'' ?>><?= lang('app.imgPass') ?></option>
-                                                <option value="imgStu"<?= $type == 'bitaqa' ? 'selected':'' ?>><?= lang('app.imgStu') ?></option>
-                                                <option value="imgIban"<?= $type == 'iban' ? 'selected':'' ?>><?= lang('app.imgIban') ?></option>
-                                            </select>
-                                        </div>
-                                        <?php if ($validation->getError('select')) : ?>
-                                            <span class="badge badge-danger"> <?= $errors = $validation->getError('select') ?></span>
-                                        <?php endif ?>
-                                    </fieldset>
-                                </div> -->
                                 <div class="col mb-1">
-                                    
+                                    <?php if ($type == 'imgIqama') : ?>
+                                        <fieldset class="mb-1 text-center">
+                                            <h5><b><?= lang('app.iqama') ?>: <?= $user['iqama'] ?></b></h5>
+                                        </fieldset>
+                                    <?php elseif ($type == 'imgStu') : ?>
+                                        <fieldset class="mb-1 text-center">
+                                            <h5><b><?= lang('app.bitaqa') ?>: <?= $user['bitaqa'] ?></b></h5>
+                                        </fieldset>
+                                    <?php elseif ($type == 'imgIban') : ?>
+                                        <fieldset class="mb-1 text-center">
+                                            <h5><b><?= lang('app.iban') ?>: <?= $user['iban'] ?></b></h5>
+                                        </fieldset>
+                                    <?php endif ?>
                                 <img class="img-fluid mb-2" id="show_image" src="<?= base_url('app-assets/images/' . ($img[$type] == null ? 'demo/no-image.png' : 'malaf/'.(session('malaf')=='----'?'new':session('malaf')).'/') . $img[$type]) ?>" alt="img">
                                         <p><code style="font-family: Cairo;"><?= lang('app.imgErr') ?></code></p>
                                         <?php if ($validation->getError('img')) : ?>
