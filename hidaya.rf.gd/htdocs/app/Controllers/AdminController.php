@@ -14,11 +14,6 @@ use App\Models\User;
 
 class AdminController extends BaseController
 {
-    /**
-     * Return an array of resource objects, themselves in array format
-     *
-     * @return mixed
-     */
     public function index()
     {
         helper('form');
@@ -257,31 +252,8 @@ class AdminController extends BaseController
     public function judud()
     {
         $user = new User();
-        // $set = new Setting();
-
-        // $cnt = $set->where('name', 'count')->first()['value'];
         $data['users'] = $user->where(['malaf' => null, 'status' => 0])->findAll();
         $data['title'] = lang('app.judud');
-        
-        // $ok = $user->select('malaf')->findAll();
-        // foreach ($ok as $value) {
-            // $ok1[] = sprintf('%04s', ($value['malaf']));
-        // }
-        // for ($i=0; $i < 9999; $i++) { 
-            // if (!in_array( $i, $ok1 )) {
-        //         $dt[] = sprintf('%04s', $i);
-        //     }
-        // }
-        // $ok = $user->select('malaf')->orderBy('id', 'desc')->findAll();
-        //     foreach ($ok as $value) {
-        //         $arr1[] = $value['malaf'];
-        //     }
-        //     for ($i=1000; $i < intval($cnt); $i++) { 
-        //         if (!(in_array($i, $arr1))) {
-        //         $dt[] = sprintf('%04s', $i);
-        //         }
-        //     }
-        // dd(($data));
 
         if (session('role') == 'admin') {
             return view('admin/judud', $data);
@@ -448,9 +420,6 @@ class AdminController extends BaseController
 
         $umrah = $tanfidh->where(['tnfdhStatus' => 1])
                         ->join('users us', 'us.id=tanfidh.userid')
-                        // ->join('countries c', 'c.country_code=users.nationality')
-                        // ->join('universities u', 'u.uni_id=users.jamia')
-                        // ->join('banks', 'banks.bankId=users.bank')
                         ->findAll();
         $umrah = $tanfidh->where(['tnfdhStatus' => 1])->findAll();
         if (count($umrah) > 0) {
