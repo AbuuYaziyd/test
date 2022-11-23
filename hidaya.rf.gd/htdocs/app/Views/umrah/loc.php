@@ -58,9 +58,7 @@
         <div class="content-overlay"></div>
         <div class="content-wrapper">
             <div class="content-body">
-                <!-- maps-leaflet start -->
                 <section class="maps-leaflet">
-                    <!-- User Location map start -->
                     <div class="card">
                         <div class="card-header">
                             <h3><b id="ip"></b></h3>
@@ -68,10 +66,8 @@
                             <div class="heading-elements">
                                 <?php if ($title == lang('app.makkah')) : ?>
                                     <?= form_open('umrah/makkah/'.$umrah['tnfdhId'], ['id'=>'form']) ?>
-                                <!-- <form action="<?= base_url('umrah/makkah/'.$umrah['tnfdhId']) ?>" method="post"> -->
                                 <?php elseif ($title == lang('app.miqat')) : ?>
                                     <?= form_open('umrah/miqat/'.$umrah['tnfdhId'], ['id'=>'form']) ?>
-                                <!-- <form action="<?= base_url('umrah/miqat/'.$umrah['tnfdhId']) ?>" method="post"> -->
                                 <?php endif ?>
                                     <input type="hidden" name="<?= $title == lang('app.makkah')?'makkah':'miqat' ?>" id="loc">
                                     <button type="submit" id="send" class="btn btn-icon btn-secondary">
@@ -86,9 +82,7 @@
                             <div id="maps-leaflet-user-location" class="maps-leaflet-container"></div>
                         </div>
                     </div>
-                    <!-- User Location map end -->
                 </section>
-                <!-- maps-leaflet ends -->
             </div>
         </div>
     </div>
