@@ -9,11 +9,9 @@
         <div class="content-header row">
         </div>
         <div class="content-body">
-            <!-- users view start -->
             <section class="users-view">
                 <?php $validation = \Config\Services::validation(); ?>
                 <?= form_open_multipart('image/upload/' . session('id')) ?>
-                <!-- users view card details start -->
                 <div class="card col-md-6">
                     <div class="card-header">
                         <h4 class="media-heading"><span class="users-view-name"><?= lang('app.edit') . ' ' . lang('app.'.$type) ?> </span><span class="text-muted font-medium-1"> @</span><span class="users-view-username text-muted font-medium-1 "><?= session('malaf') ?></span></h4>
@@ -53,37 +51,11 @@
                         </div>
                     </div>
                 </div>
-                <!-- users view card details ends -->
                 </form>
             </section>
-            <!-- users view ends -->
         </div>
     </div>
 </div>
-
-<!-- <div class="card row">
-    <div class="card-body">
-        
-    <div class="col-md-6">
-        <div class="row">
-           <div class="col-2">
-                <div class="avatar mr-1 avatar-lg">
-                    <img id="show_image" src="<?='https://ui-avatars.com/api/?name='.session('name').'&background=random' ?>" height="150px" width="150px" alt="avtar">
-                </div>
-            </div>
-            <div class="col-10 mt-1">
-                <fieldset class="form-group">
-                     <div class="custom-file">
-                         <input type="file" class="custom-file-input" id="image" name="image">
-                         <label class="custom-file-label" for="image" aria-describedby="image">{{__('app.selectImage')}}</label>
-                    </div>
-                </fieldset>
-            </div> 
-        </div>
-    </div>
-    </div>
-</div> -->
-
 <script>
     $(document).ready(function () {
         $('#image').change(function (e) {
