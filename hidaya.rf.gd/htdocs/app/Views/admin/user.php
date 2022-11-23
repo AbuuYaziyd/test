@@ -15,13 +15,9 @@
                             <h4><b><?= $user['name'] ?></b></h4>
                             <p><?= $user['iqama'] ?></p>
                             <p><?= $user['country_arName'] ?></p>
-                            <p><?= $user['uni_name'] ?> </p>
-                            <p><a href="mailto:<?= $user['email'] ?>" class="badge badge-info badge-pill"><?= $user['email'] ?></a></p>
-                            <p>
-                                <div class="btn-group">
+                            <p><div class="btn-group">
                                     <a href="tel:+966<?= $user['phone'] ?>" class="btn btn-sm round btn-secondary"><i class="la la-mobile"></i> 966<?= $user['phone'] ?></a><a href="https://wa.me/966<?= $user['phone'] ?>" target="_blank" class="btn btn-success btn-sm round"> 966<?= $user['phone'] ?> <i class="la la-whatsapp"></i></a>
-                                </div>
-                            </p>
+                            </div></p>
                         </div>
                         <a href="<?= base_url('admin/delete/' . $user['id']) ?>" id="delete" class="btn round btn-danger btn-block p-1 mb-1"> <i class="la la-trash"></i> <?= lang('app.delete') ?></a>
                     </div>
@@ -30,11 +26,7 @@
                 <div id="recent-transactions" class="col-md-8">
                     <div class="card">
                         <div class="card-header">
-                            <h3><b><?= lang('app.tanfidh') ?> - <?= $user['name'] ?></b>
-                                <?php if (session('role') == 'admin' && $user['role'] == 'user') : ?>
-                                    <!-- <a class="btn btn-outline-success box-shadow-2 round pull-right" href="<?= base_url('admin/add-mushrif/'.$user['id']) ?>"><?= lang('app.addMushrif') ?></a> -->
-                                <?php endif ?>
-                            </h3>
+                            <h3><b><?= lang('app.tanfidh') ?> - <?= $user['name'] ?></b></h3>
                         </div>
                         <div class="card-content">
                             <div class="table-responsive">
@@ -70,7 +62,7 @@
             
             <?php if ($img > 0) :?>
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <div class="card">
                                 <div class="card-content">
                                     <div class="card-body">
@@ -83,20 +75,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3">
-                            <div class="card">
-                                <div class="card-content">
-                                    <div class="card-body">
-                                        <h4 class="card-title"><?= lang('app.imgPass') ?>
-                                    </div>
-                                    <img class="img-fluid" src="<?= base_url('app-assets/images/' . ($img['imgPass'] == null ? 'demo/passp.jpg' : 'malaf/'.($user['malaf']=='----'?'new':$user['malaf']).'/') . $img['imgPass']) ?>" alt="img">
-                                </div>
-                                <div style="text-align: center;" class="my-1">
-                                    <span><b><?= $user['passport'] ?></b></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <div class="card">
                                 <div class="card-content">
                                     <div class="card-body">
@@ -109,7 +88,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <div class="card">
                                 <div class="card-content">
                                     <div class="card-body"><h4 class="card-title">

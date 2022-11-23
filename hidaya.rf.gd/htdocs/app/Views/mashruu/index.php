@@ -27,7 +27,7 @@
                         </div>
                         <div class="card-content">
                             <?php $validation = \Config\Services::validation(); ?>
-                            <?= form_open_multipart('mashruu/create') ?>
+                            <?= form_open_multipart('tanfidh/create') ?>
                                 <div class="row p-1 m-1">
                                     <div class="col-md-4">
                                         <a href="<?= base_url('app-assets/tanfidh.csv') ?>" download="tanfidh.csv" class="btn btn-outline-success btn-block round m-2">tanfdh.csv</a>
@@ -63,7 +63,12 @@
                                         <b><?= $title ?></b> 
                                         <span class="badge badge badge-info badge-pill mr-2"><?= $tanfidh ?></span>
                                         <?php if ($tanfidh>0) : ?>
-                                        <a class="btn btn-outline-success box-shadow-2 round pull-right" href="<?= base_url('mashruu/connect') ?>"><?= lang('app.add') ?></a>
+                                            <div class="btn-group pull-right" role="group" aria-label="Basic example">
+                                                <a href="<?= base_url() ?>" class="btn round btn-danger"><?= lang('app.delete') ?></a>
+                                                <a href="<?= base_url('tanfidh/connect') ?>" class="btn round btn-outline-success"><?= lang('app.add') ?></a>
+                                            </div>
+                                        <?php else : ?>
+                                            <a href="<?= base_url() ?>" class="btn pull-right round btn-danger"><?= lang('app.delete') ?></a>
                                         <?php endif  ?>
                                     </h2>
                                 </div>
@@ -72,7 +77,6 @@
                                         <table class="table table-striped table-bordered dataex-res-constructor">
                                             <thead>
                                                 <tr>
-                                                    <th>#</th>
                                                     <th><?= lang('app.ism') ?></th>
                                                     <th><?= lang('app.sabab') ?></th>
                                                 </tr>
@@ -80,7 +84,6 @@
                                             <tbody>
                                                 <?php foreach ($new1 as $key => $dt) : ?>
                                                     <tr>
-                                                        <td><?= $key+1 ?></td>
                                                         <td><?= $dt['ism'] ?></td>
                                                         <td><?= $dt['sabab'] ?></td>
                                                     </tr>
@@ -107,7 +110,6 @@
                                         <table class="table table-striped table-bordered table2">
                                             <thead>
                                                 <tr>
-                                                    <th>#</th>
                                                     <th><?= lang('app.malaf') ?></th>
                                                     <th><?= lang('app.name') ?></th>
                                                     <th><?= lang('app.iqama') ?></th>
@@ -125,7 +127,6 @@
                                             <tbody>
                                                 <?php foreach ($new0 as $key => $dt) : ?>
                                                     <tr>
-                                                        <td><?= $key+1 ?></td>
                                                         <td><span class="badge badge-<?= ( $dt['role']=='mushrif'?'success':'') ?>"><?= sprintf('%04s', $dt['malaf']) ?></span></td>
                                                         <td><?= $dt['name'] ?></td>
                                                         <td><?= $dt['iqama'] ?></td>
@@ -161,7 +162,6 @@
                                         <table class="table table-striped table-bordered table2">
                                             <thead>
                                                 <tr>
-                                                    <th>#</th>
                                                     <th><?= lang('app.malaf') ?></th>
                                                     <th><?= lang('app.name') ?></th>
                                                     <th><?= lang('app.iqama') ?></th>
@@ -179,7 +179,6 @@
                                             <tbody>
                                                 <?php foreach ($all as $key => $dt) : ?>
                                                     <tr>
-                                                        <td><?= $key+1 ?></td>
                                                         <td><span class="badge badge-<?= ( $dt['role']=='mushrif'?'success':'') ?>"><?= sprintf('%04s', $dt['malaf']) ?></span></td>
                                                         <td><?= $dt['name'] ?></td>
                                                         <td><?= $dt['iqama'] ?></td>
@@ -232,7 +231,7 @@
 <script>
     var tableConstructor = $('.dataex-res-constructor').DataTable({
         "language": {
-        "url": "//cdn.datatables.net/plug-ins/1.12.1/i18n/ar.json"
+        "url": "//cdn.datatables.net/plug-ins/1.13.1/i18n/ar.json"
         },
         dom: 'Bfrtip',
         buttons: [{
@@ -256,7 +255,7 @@
 <script>
     var tableConstructor = $('.table2').DataTable({
         "language": {
-        "url": "//cdn.datatables.net/plug-ins/1.12.1/i18n/ar.json"
+        "url": "//cdn.datatables.net/plug-ins/1.13.1/i18n/ar.json"
         },
         dom: 'Bfrtip',
         buttons: [{

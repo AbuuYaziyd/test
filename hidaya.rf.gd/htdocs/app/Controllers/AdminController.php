@@ -417,13 +417,14 @@ class AdminController extends BaseController
     {
         $tanfidh = new Umrah();
         $user = new User();
+        $tsrh = new Tanfidh();
 
         $umrah = $tanfidh->where(['tnfdhStatus' => 1])
                         ->join('users us', 'us.id=tanfidh.userid')
                         ->findAll();
         $umrah = $tanfidh->where(['tnfdhStatus' => 1])->findAll();
         if (count($umrah) > 0) {
-            foreach ($umrah as $key => $dt) {
+            foreach ($umrah as $dt) {
                 $ok[] = [
                     'tanfidh' => $tanfidh->find($dt['tnfdhId']),
                     'user' => $user->join('countries c', 'c.country_code=users.nationality')
@@ -438,7 +439,11 @@ class AdminController extends BaseController
 
         $data['title'] = lang('app.tanfidh');
         $data['umrah'] = $ok;
-        // dd($ok);
+        $data['tasrih'] = $tsrh->join('users s', 's.id=tanfidh.userId')
+                            ->join('countries c', 'c.country_code=s.nationality')
+                            ->join('universities u', 'u.uni_id=s.jamia')
+                            ->findAll();
+        // dd($data);
 
         if (session('role') == 'admin') {
             return view('admin/tanfidh', $data);

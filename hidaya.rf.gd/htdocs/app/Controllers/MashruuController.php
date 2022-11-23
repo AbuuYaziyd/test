@@ -94,7 +94,7 @@ class MashruuController extends BaseController
                 // dd(file_exists('public/files/'. $newName));
                 unlink('public/files/'. $newName);
                 // dd($count);
-                return redirect()->to('mashruu/add')->with('type', 'success')->with('text',  $count.' - تنفيذ مستورد ')->with('title', lang('app.success'));
+                return redirect()->to('tanfidh/add')->with('type', 'success')->with('text',  $count.' - تنفيذ مستورد ')->with('title', lang('app.success'));
             }
             else{
                 session()->setFlashdata('message', 'CSV file coud not be imported.');
@@ -134,8 +134,9 @@ class MashruuController extends BaseController
                 $data2 = [
                     'tnfdhStatus' => 'sent',
                     'tnfdhName' => $dt['ism'],
+                    'tnfdhSabab' => $dt['sabab'],
                     'tnfdhId' => $tanfidh[$key]['tnfdhId'],
-                    'tanfdhAmount' => ($tanfidh[$key]['role']=='mushrif'?350:250),
+                    'tanfdhAmount' => 250//($tanfidh[$key]['role']=='mushrif'?350:250),
                 ];
                 $umr->update($tanfidh[$key]['tnfdhId'], $data2);
             }
