@@ -29,7 +29,6 @@ class ImageController extends BaseController
         }
 
         // dd($data);
-        // return view('welcome', $data);
         return view('image/index', $data);
     }
 
@@ -103,13 +102,9 @@ class ImageController extends BaseController
 
         $pic = $image->where('userId', $id)->first();
 
-        // dd($pic[$upl]);
         // dd(file_exists('app-assets/images/malaf/'.($nm??'new').'/' . ($pic[$upl]??'img.img')));
-        // if ($pic[$upl] != null) {
             if (file_exists('app-assets/images/malaf/'.($nm??'new').'/' . ($pic[$upl]??'img.img'))) {
                 $path = 'app-assets/images/malaf/'.($nm??'new').'/' . $pic[$upl];
-
-                // $name = $this->request->getVar('select');
                 // dd($path);
 
                 unlink($path);
@@ -139,18 +134,5 @@ class ImageController extends BaseController
 
                 return redirect()->to('image')->with('type', 'success')->with('text', lang('app.imageUploaded'))->with('title', lang('app.success'));
             }
-        // } else {
-        //     $img = $this->request->getFile('img');
-        //     $ext = $img->getClientExtension();
-        //     $name = date('ymdHis') . $id . '.' . $ext;
-
-        //     $ppn = [$upl => $name,];
-        //     // dd($ppn);
-
-        //     $img->move('app-assets/images/malaf/', $name);
-        //     $image->update($pic['imgId'], $ppn);
-
-        //     return redirect()->to('image')->with('type', 'success')->with('text', lang('app.imageUploaded'))->with('title', lang('app.success'));
-        // }
     }
 }
