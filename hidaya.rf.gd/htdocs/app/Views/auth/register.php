@@ -21,16 +21,6 @@
                         <div class="card-body">
                             <?php $validation = \Config\Services::validation(); ?>
                             <?= form_open('register') ?>
-                            <label class="text-bold-600"><?= lang('app.email') ?></label>
-                            <?php if ($validation->getError('email')) : ?>
-                                <span class="badge badge-danger"> <?= $errors = $validation->getError('email') ?></span>
-                            <?php endif ?>
-                            <fieldset class="form-group position-relative has-icon-left mb-1">
-                                <input type="email" class="form-control" name="email" placeholder="<?= lang('app.email') ?>">
-                                <div class="form-control-position">
-                                    <i class="la la-envelope"></i>
-                                </div>
-                            </fieldset>
                             <label class="text-bold-600"><?= lang('app.iqama') ?></label>
                             <?php if ($validation->getError('iqama')) : ?>
                                 <span class="badge badge-danger"> <?= $errors = $validation->getError('iqama') ?></span>
@@ -57,16 +47,6 @@
                             <?php endif ?>
                             <fieldset class="form-group position-relative has-icon-left mb-1">
                                 <input type="text" class="form-control" name="bitaqa" placeholder="<?= lang('app.bitaqa') ?>">
-                                <div class="form-control-position">
-                                    <i class="la la-credit-card"></i>
-                                </div>
-                            </fieldset>
-                            <label class="text-bold-600"><?= lang('app.passport') ?></label>
-                            <?php if ($validation->getError('passport')) : ?>
-                                <span class="badge badge-danger"> <?= $errors = $validation->getError('passport') ?></span>
-                            <?php endif ?>
-                            <fieldset class="form-group position-relative has-icon-left mb-1">
-                                <input type="text" class="form-control" name="passport" placeholder="<?= lang('app.passport') ?>">
                                 <div class="form-control-position">
                                     <i class="la la-credit-card"></i>
                                 </div>
