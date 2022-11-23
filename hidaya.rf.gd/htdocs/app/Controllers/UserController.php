@@ -72,6 +72,7 @@ class UserController extends BaseController
                                 ->join('universities u', 'u.uni_id=users.jamia')
                                 ->join('countries n', 'n.country_code=users.nationality')
                                 ->find($id);
+            $data['mushrif'] = $user->find($data['user']['mushrif']);
         } else {
             $data['user'] = $user->join('banks', 'banks.bankId=users.bank')
                                 ->join('countries n', 'n.country_code=users.nationality')
