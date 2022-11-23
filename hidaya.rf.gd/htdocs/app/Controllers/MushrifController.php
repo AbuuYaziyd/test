@@ -160,8 +160,6 @@ class MushrifController extends BaseController
         $data['tasrih'] = $tanfidh->where(['tanfidh.mushrif' => $mushrif, 'tnfdhStatus' => 0])
                             ->join('users u', 'u.id=tanfidh.userId')
                             ->findAll();
-        // $data['usr'] = $user->where(['mushrif' => $mushrif])->findAll();
-        // $data['all'] = $data['tasrih'] ->union($data['usr']);
         $data['title'] = lang('app.tasrih');
         $data['loc'] = $mr['country_arName'].' - '.$mr['uni_name'];
         // dd($data);
