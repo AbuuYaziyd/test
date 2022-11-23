@@ -19,7 +19,6 @@
     <div class="content-wrapper">
         <div class="content-body">
             <div class="content-body">
-                <!-- Configuration option table -->
                 <section id="configuration">
                     <div class="row">
                         <div class="col-12">
@@ -27,7 +26,6 @@
                                 <div class="card-header">
                                     <h2>
                                         <?= $title ?>
-                                        <!-- <a class="btn btn-outline-success box-shadow-1 round pull-right" href="<?= base_url('admin/add') ?>"><?= lang('app.new') ?></a> -->
                                     </h2>
                                 </div>
                                 <div class="card-content collapse show">
@@ -66,7 +64,6 @@
                         </div>
                     </div>
                 </section>
-                <!--/ Configuration option table -->
             </div>
         </div>
     </div>

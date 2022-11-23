@@ -81,10 +81,8 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Multi Radial Chart Starts -->
                 </div>
             </section>
-            <!-- Dashboard Ecommerce ends -->
         </div>
     </div>
 </div>

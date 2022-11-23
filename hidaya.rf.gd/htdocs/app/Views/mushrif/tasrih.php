@@ -46,7 +46,6 @@
         e.preventDefault();
         url = $(this).attr('href');
         Swal.fire({
-            // title: <?= lang('app.graduated?') ?>,
             title: 'فيه ملاحضة؟',
             text: "يحذف التصريح من الموقع تماما لا تنسى أن تنبه الطالب أن يجدد التصريح!",
             type: 'warning',

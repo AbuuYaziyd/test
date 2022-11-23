@@ -24,7 +24,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Recent Transactions -->
                 <div id="recent-transactions" class="col-md-8 col-sm-12">
                     <div class="card">
                         <div class="card-header">
@@ -60,7 +59,6 @@
                     </div>
                 </div>
             </div>
-            <!--/ Recent Transactions -->
         </div>
     </div>
 </div>
