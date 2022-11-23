@@ -60,11 +60,9 @@ class AuthController extends BaseController
         $input = $this->validate(
             [   //Rules
                 'name' => 'required|min_length[3]|max_length[50]|is_unique[users.name]',
-                'email' => 'valid_email|is_unique[users.email]',
                 'iban' => 'required|exact_length[24]',
                 'iqama' => 'required|exact_length[10]|integer|is_unique[users.iqama]',
                 'bitaqa' => 'required',
-                'passport' => 'required',
                 'phone' => 'required|exact_length[9]|integer',
                 'nationality' => 'required',
                 'jamia' => 'required|integer',
@@ -80,10 +78,6 @@ class AuthController extends BaseController
                     'max_length' => lang('error.max_length'),
                     'is_unique' => lang('error.is_unique'),
                 ],
-                'email' => [
-                    'valid_email' => lang('error.valid_email'),
-                    'is_unique' => lang('error.is_unique'),
-                ],
                 'iqama' => [
                     'required' => lang('error.required'),
                     'integer' => lang('error.integer'),
@@ -91,9 +85,6 @@ class AuthController extends BaseController
                     'is_unique' => lang('error.is_unique'),
                 ],
                 'bitaqa' => [
-                    'required' => lang('error.required'),
-                ],
-                'passport' => [
                     'required' => lang('error.required'),
                 ],
                 'iban' => [
@@ -151,12 +142,10 @@ class AuthController extends BaseController
 
             $data = [
                 'name'     => $this->request->getVar('name'),
-                'email'    => $this->request->getVar('email'),
                 'password' => password_hash(intval($this->request->getVar('iqama')), PASSWORD_DEFAULT),
                 'iban' => strtoupper($this->request->getVar('iban')),
                 'iqama' => $this->request->getVar('iqama'),
                 'bitaqa' => $this->request->getVar('bitaqa'),
-                'passport' => strtoupper($this->request->getVar('passport')),
                 'phone' => $this->request->getVar('phone'),
                 'nationality' => $this->request->getVar('nationality'),
                 'jamia' => $this->request->getVar('jamia'),
