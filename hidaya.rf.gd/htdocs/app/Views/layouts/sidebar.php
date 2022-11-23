@@ -35,6 +35,12 @@
                     <span class="menu-title"><?= lang('app.tanfidh') ?></span>
                 </a>
             </li>
+            <li class="<?= ($title == lang('app.tasrihs') ? 'active' : '') ?> nav-item">
+                <a href="<?= base_url('tasrih') ?>">
+                    <i class="la la-file-image-o"></i>
+                    <span class="menu-title"><?= lang('app.tasrihs') ?></span>
+                </a>
+            </li>
             <?php endif ?>
         </ul>
     </div>

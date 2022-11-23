@@ -437,7 +437,7 @@ class AdminController extends BaseController
             $ok = [];
         }
 
-        $data['title'] = lang('app.tanfidh');
+        $data['title'] = lang('app.tasrihs');
         $data['umrah'] = $ok;
         $data['tasrih'] = $tsrh->join('users s', 's.id=tanfidh.userId')
                             ->join('countries c', 'c.country_code=s.nationality')

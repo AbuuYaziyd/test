@@ -136,6 +136,7 @@ return [
     //Umra
     'umrah' => 'العمرة',
     'tasrih' => ' التصريح',
+    'tasrihs' => ' التصاريح',
     'miqat' => ' ميقات',
     'makkah' => ' مكة المكرمة',
     'umrahcount' => 'عمرة منذ تسجيل',

@@ -105,11 +105,7 @@
     <?php else : ?>
             <div class="col-xl-4 col-12">
                 <div class="card crypto-card-3 pull-up">
-                    <?php if (session('role') != 'admin') : ?>
-                        <?= form_open('umrah') ?>
-                    <?php else : ?>
-                        <?= form_open('admin/tasrih') ?>
-                    <?php endif ?>
+                    <?= form_open('umrah') ?>
                         <div class="card-content">
                             <div class="card-body pb-0">
                                 <div class="row">

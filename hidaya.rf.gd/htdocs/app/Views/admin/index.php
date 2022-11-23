@@ -5,7 +5,6 @@
     <div class="content-wrapper">
         <div class="content-body">
             <?= $this->include('admin/info') ?>
-            <?= $this->include('user/info') ?>
         </div>
     </div>
 </div>
