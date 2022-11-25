@@ -98,21 +98,20 @@ $routes->group('tanfidh', function ($routes) {
  * --------------------------------------------------------------------
  */
 $routes->group('admin', function ($routes) {
-    $routes->get('/', 'AdminController::index', ['filter' => 'auth']);
-    $routes->get('jamiat', 'AdminController::jamiat', ['filter' => 'auth']);
-    $routes->get('jamia/(:num)', 'AdminController::jamia/$1', ['filter' => 'auth']);
-    $routes->get('nationality', 'AdminController::nationality', ['filter' => 'auth']);
-    $routes->get('nat/(:any)', 'AdminController::nat/$1', ['filter' => 'auth']);
-    $routes->get('all', 'AdminController::all', ['filter' => 'auth']);
-    $routes->get('users/(:any)/(:num)', 'AdminController::users/$1/$2', ['filter' => 'auth']);
-    $routes->get('mushrifuna', 'AdminController::mushrifuna', ['filter' => 'auth']);
-    $routes->get('judud', 'AdminController::judud', ['filter' => 'auth']);
-    $routes->get('activate/(:num)', 'AdminController::activate/$1', ['filter' => 'auth']);
-    $routes->post('activate-all', 'AdminController::activateAll', ['filter' => 'auth']);
-    $routes->get('show/(:num)', 'AdminController::show/$1', ['filter' => 'auth']);
-    $routes->get('delete/(:num)', 'AdminController::delete/$1', ['filter' => 'auth']);
-    $routes->get('tanfidh', 'AdminController::tanfidh', ['filter' => 'auth']);
-    // $routes->get('zip/(:any)', 'AdminController::zip/$1', ['filter' => 'auth']);
+    $routes->get('/', 'AdminController::index', ['filter' => 'admin']);
+    $routes->get('jamiat', 'AdminController::jamiat', ['filter' => 'admin']);
+    $routes->get('jamia/(:num)', 'AdminController::jamia/$1', ['filter' => 'admin']);
+    $routes->get('nationality', 'AdminController::nationality', ['filter' => 'admin']);
+    $routes->get('nat/(:any)', 'AdminController::nat/$1', ['filter' => 'admin']);
+    $routes->get('all', 'AdminController::all', ['filter' => 'admin']);
+    $routes->get('users/(:any)/(:num)', 'AdminController::users/$1/$2', ['filter' => 'admin']);
+    $routes->get('mushrifuna', 'AdminController::mushrifuna', ['filter' => 'admin']);
+    $routes->get('judud', 'AdminController::judud', ['filter' => 'admin']);
+    $routes->get('activate/(:num)', 'AdminController::activate/$1', ['filter' => 'admin']);
+    $routes->post('activate-all', 'AdminController::activateAll', ['filter' => 'admin']);
+    $routes->get('show/(:num)', 'AdminController::show/$1', ['filter' => 'admin']);
+    $routes->get('delete/(:num)', 'AdminController::delete/$1', ['filter' => 'admin']);
+    $routes->get('tanfidh', 'AdminController::tanfidh', ['filter' => 'admin']);
 });
 
 /*
@@ -121,17 +120,17 @@ $routes->group('admin', function ($routes) {
  * --------------------------------------------------------------------
  */
 $routes->group('mushrif', function ($routes) {
-    $routes->get('/', 'MushrifController::index', ['filter' => 'auth']);
-    $routes->get('users', 'MushrifController::users', ['filter' => 'auth']);
-    $routes->get('judud', 'MushrifController::judud', ['filter' => 'auth']);
-    $routes->get('user/(:num)', 'MushrifController::user/$1', ['filter' => 'auth']);
-    $routes->get('activate/(:num)', 'MushrifController::activate/$1', ['filter' => 'auth']);
-    $routes->get('active/(:num)', 'MushrifController::active/$1', ['filter' => 'auth']);
-    $routes->get('tasrih', 'MushrifController::tasrih', ['filter' => 'auth']);
-    $routes->get('send-tasrih/(:num)', 'MushrifController::sendTasrih/$1', ['filter' => 'auth']);
-    $routes->get('tasrih-delete/(:num)', 'MushrifController::tasrihDelete/$1', ['filter' => 'auth']);
-    // $routes->post('upload/(:num)', 'MushrifController::update/$1', ['filter' => 'auth']);
-    // $routes->get('zip/(:any)', 'MushrifController::zip/$1', ['filter' => 'auth']);
+    $routes->get('/', 'MushrifController::index', ['filter' => 'mushrif']);
+    $routes->get('users', 'MushrifController::users', ['filter' => 'mushrif']);
+    $routes->get('judud', 'MushrifController::judud', ['filter' => 'mushrif']);
+    $routes->get('user/(:num)', 'MushrifController::user/$1', ['filter' => 'mushrif']);
+    $routes->get('activate/(:num)', 'MushrifController::activate/$1', ['filter' => 'mushrif']);
+    $routes->get('active/(:num)', 'MushrifController::active/$1', ['filter' => 'mushrif']);
+    $routes->get('tasrih', 'MushrifController::tasrih', ['filter' => 'mushrif']);
+    $routes->get('send-tasrih/(:num)', 'MushrifController::sendTasrih/$1', ['filter' => 'mushrif']);
+    $routes->get('tasrih-delete/(:num)', 'MushrifController::tasrihDelete/$1', ['filter' => 'mushrif']);
+    // $routes->post('upload/(:num)', 'MushrifController::update/$1', ['filter' => 'mushrif']);
+    // $routes->get('zip/(:any)', 'MushrifController::zip/$1', ['filter' => 'mushrif']);
 });
 
 /*
