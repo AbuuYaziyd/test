@@ -413,45 +413,6 @@ class AdminController extends BaseController
             }
     }
 
-    public function tasrih()
-    {
-        $tanfidh = new Umrah();
-        $user = new User();
-        $tsrh = new Tanfidh();
-
-        $umrah = $tanfidh->where(['tnfdhStatus' => 1])
-                        ->join('users us', 'us.id=tanfidh.userid')
-                        ->findAll();
-        $umrah = $tanfidh->where(['tnfdhStatus' => 1])->findAll();
-        if (count($umrah) > 0) {
-            foreach ($umrah as $dt) {
-                $ok[] = [
-                    'tanfidh' => $tanfidh->find($dt['tnfdhId']),
-                    'user' => $user->join('countries c', 'c.country_code=users.nationality')
-                            ->join('universities u', 'u.uni_id=users.jamia')
-                            ->join('banks', 'banks.bankId=users.bank')
-                            ->find($dt['userId']),
-                ];
-            }
-        } else {
-            $ok = [];
-        }
-
-        $data['title'] = lang('app.tasrihs');
-        $data['umrah'] = $ok;
-        $data['tasrih'] = $tsrh->join('users s', 's.id=tanfidh.userId')
-                            ->join('countries c', 'c.country_code=s.nationality')
-                            ->join('universities u', 'u.uni_id=s.jamia')
-                            ->findAll();
-        // dd($data);
-
-        if (session('role') == 'admin') {
-            return view('admin/tanfidh', $data);
-        } else {
-            return redirect()->to('user');
-        } 
-    }
-
     public function tanfidh()
     {
         helper('form');

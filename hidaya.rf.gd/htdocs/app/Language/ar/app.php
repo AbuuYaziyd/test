@@ -136,6 +136,7 @@ return [
     //Umra
     'umrah' => 'العمرة',
     'tasrih' => 'التصريح',
+    'download' => 'تنزيل',
     'hadiya' => 'هدية العمرة',
     'allHadiya' => 'جميع الهدية',
     'tasrihs' => 'التصاريح',

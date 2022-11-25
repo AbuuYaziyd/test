@@ -110,7 +110,7 @@
         </a>
     </div>
     <div class="col-xl-3 col-lg-6 col-12">
-        <a href="<?= base_url('admin/tasrih') ?>">
+        <a href="<?= base_url('tanfidh/tasrih') ?>">
             <div class="card pull-up">
                 <div class="card-content">
                     <div class="card-body">

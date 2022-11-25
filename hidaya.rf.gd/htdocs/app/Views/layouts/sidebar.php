@@ -15,6 +15,12 @@
                     <span class="menu-title"><?= lang('app.settings') ?></span>
                 </a>
             </li>
+            <li class="<?= ($title == lang('app.tanfidh') ? 'active' : '') ?> nav-item">
+                <a href="<?= base_url('tanfidh') ?>">
+                    <i class="la la-balance-scale"></i>
+                    <span class="menu-title"><?= lang('app.tanfidh') ?></span>
+                </a>
+            </li>
             <?php endif ?>
             <li class="<?= ($title == lang('app.profile') ? 'active' : '') ?> nav-item">
                 <a href="<?= base_url('user/profile/' . session('id')) ?>">
@@ -28,15 +34,9 @@
                     <span class="menu-title"><?= lang('app.data') ?></span>
                 </a>
             </li>
-            <?php if (session('role') === 'admin')  : ?>
-            <li class="<?= ($title == lang('app.tanfidh') ? 'active' : '') ?> nav-item">
-                <a href="<?= base_url('tanfidh') ?>">
-                    <i class="la la-balance-scale"></i>
-                    <span class="menu-title"><?= lang('app.tanfidh') ?></span>
-                </a>
-            </li>
+            <?php if (session('role') != 'user')  : ?>
             <li class="<?= ($title == lang('app.tasrihs') ? 'active' : '') ?> nav-item">
-                <a href="<?= base_url('admin/tasrih') ?>">
+                <a href="<?= base_url('tanfidh/tasrih') ?>">
                     <i class="la la-file-image-o"></i>
                     <span class="menu-title"><?= lang('app.tasrihs') ?></span>
                 </a>
