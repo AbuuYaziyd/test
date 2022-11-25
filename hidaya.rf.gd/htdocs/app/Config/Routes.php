@@ -106,9 +106,9 @@ $routes->group('admin', function ($routes) {
     $routes->get('judud', 'AdminController::judud', ['filter' => 'auth']);
     $routes->get('activate/(:num)', 'AdminController::activate/$1', ['filter' => 'auth']);
     $routes->post('activate-all', 'AdminController::activateAll', ['filter' => 'auth']);
-    // $routes->get('add', 'AdminController::add', ['filter' => 'auth']);
     $routes->get('show/(:num)', 'AdminController::show/$1', ['filter' => 'auth']);
     $routes->get('delete/(:num)', 'AdminController::delete/$1', ['filter' => 'auth']);
+    $routes->get('tanfidh', 'AdminController::tanfidh', ['filter' => 'auth']);
     // $routes->get('zip/(:any)', 'AdminController::zip/$1', ['filter' => 'auth']);
 });
 

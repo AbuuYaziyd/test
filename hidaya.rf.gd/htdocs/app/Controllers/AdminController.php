@@ -451,4 +451,39 @@ class AdminController extends BaseController
             return redirect()->to('user');
         } 
     }
+
+    public function tanfidh()
+    {
+        helper('form');
+
+        $tan = new Mashruu();
+        $umr = new Umrah();
+
+        $data['title'] = lang('app.tanfidh');
+        $data['all'] = $tan
+                        ->join('banks b', 'b.bankId=mashruu.bank')
+                        ->join('universities v', 'v.uni_id=mashruu.jamia')
+                        ->join('countries c', 'c.country_code=mashruu.nation')
+                        ->join('users u', 'u.id=mashruu.userId')
+                        ->findAll();
+        $data['new0'] = $tan
+                        ->join('banks b', 'b.bankId=mashruu.bank')
+                        ->join('countries c', 'c.country_code=mashruu.nation')
+                        ->join('universities v', 'v.uni_id=mashruu.jamia')
+                        ->join('users u', 'u.id=mashruu.userId')
+                        ->where('mashruu.status', 1)
+                        ->findAll();
+        $data['new1'] = $tan
+                        ->where('mashruu.status', 0)
+                        ->findAll();
+        $data['tanfidh'] = $umr->where('tnfdhStatus', 1)->countAllResults();
+        $data['tan'] = $tan
+                        ->join('users u', 'u.id=mashruu.userId')
+                        ->join('universities v', 'v.uni_id=mashruu.jamia')
+                        ->join('countries c', 'c.country_code=mashruu.nation')
+                        ->findAll();
+        // dd($data);
+
+        return view('mashruu/tanfidh', $data);
+    }
 }
