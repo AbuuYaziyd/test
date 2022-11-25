@@ -44,18 +44,16 @@
                                                     <th><?= lang('app.iqama') ?></th>
                                                     <th><?= lang('app.phone') ?></th>
                                                     <th><?= lang('app.level') ?></th>
-                                                    <th><?= lang('app.edit') ?></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php foreach ($users as $key => $data) : ?>
                                                     <tr>
-                                                        <td><span class="badge badge-<?= ( $data['status']==1?'danger':'success') ?>"><?= ( $data['malaf']??lang('app.underAction')) ?></span></td>
+                                                        <td><a href="<?= base_url('admin/activate/' . $data['id']) ?>" class="badge badge-<?= ( $data['status']==1?'danger':'success') ?>"><?= ( $data['malaf']??lang('app.underAction')) ?></a></td>
                                                         <td><?= $data['name'] ?></td>
                                                         <td><?= $data['iqama'] ?></td>
                                                         <td><a href="tel:+966<?= $data['phone'] ?>" class="badge badge-secondary">966<?= $data['phone'] ?></a></td>
                                                         <td><?= $data['level'] ?></td>
-                                                        <td><a href="<?= base_url('admin/activate/' . $data['id']) ?>" class="btn btn-sm round btn-outline-warning"><?= lang('app.activate') ?></a></td>
                                                     </tr>
                                                 <?php endforeach ?>
                                             </tbody>

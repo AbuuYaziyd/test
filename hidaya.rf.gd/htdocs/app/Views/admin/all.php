@@ -41,14 +41,13 @@
                                                     <th><?= lang('app.nationality') ?></th>
                                                     <th><?= lang('app.bank') ?></th>
                                                     <th><?= lang('app.iban') ?></th>
-                                                    <th><?= lang('app.edit') ?></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php foreach ($users as $key => $data) : ?>
                                                     <tr>
                                                         <td><?= $key + 1 ?></td>
-                                                        <td><?= sprintf('%04s', $data['malaf']) ?></td>
+                                                        <td><a href="<?= base_url('admin/show/' . $data['id']) ?>" class="badge badge-pill badge-<?= ($data['role']=='mushrif'?'warning':'info') ?>"><?= sprintf('%04s', $data['malaf']) ?></a></td>
                                                         <td><?= $data['name'] ?></td>
                                                         <td><?= $data['iqama'] ?></td>
                                                         <td><a href="tel:+966<?= $data['phone'] ?>" class="badge badge-secondary">966<?= $data['phone'] ?></a></td>
@@ -57,7 +56,6 @@
                                                         <td><?= $data['country_arNationality'] ?></td>
                                                         <td><?= $data['bankName'] ?></td>
                                                         <td><?= $data['iban'] ?></td>
-                                                        <td><a href="<?= base_url('admin/show/' . $data['id']) ?>" class="btn btn-sm btn-outline-warning round"><?= lang('app.edit') ?></a></td>
                                                     </tr>
                                                 <?php endforeach ?>
                                             </tbody>
@@ -100,15 +98,9 @@
             dom: 'Bfrtip',
             buttons: [{
                     extend: 'print',
-                    exportOptions: {
-                        columns: ':visible'
-                    }
                 },
                 {
                     extend: 'excelHtml5',
-                    exportOptions: {
-                        columns: ':visible'
-                    }
                 },
                 'colvis'
             ],

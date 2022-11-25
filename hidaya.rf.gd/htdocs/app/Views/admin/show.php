@@ -46,7 +46,7 @@
                                                 <?php foreach ($users as $key => $data) : ?>
                                                     <tr>
                                                         <td><?= $key + 1 ?></td>
-                                                        <td><?= sprintf('%04s', $data['malaf']) ?></td>
+                                                        <td><a href="<?= base_url('admin/show/' . $data['id']) ?>" class="badge badge-pill badge-<?= ($data['role']=='mushrif'?'warning':'info') ?>"><?= sprintf('%04s', $data['malaf']) ?></a></td>
                                                         <td><?= $data['name'] ?></td>
                                                         <td><?= $data['iqama'] ?></td>
                                                         <td><a href="tel:+966<?= $data['phone'] ?>" class="badge badge-secondary">966<?= $data['phone'] ?></a></td>

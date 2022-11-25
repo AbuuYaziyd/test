@@ -39,21 +39,19 @@
                                                     <?php if ($type == 'mushrif') : ?>
                                                         <th><?= lang('app.jamia') ?> - <?= lang('app.nationality') ?></th>
                                                     <?php endif ?>
-                                                    <th><?= lang('app.show') ?></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php foreach ($users as $key => $data) : ?>
                                                     <tr>
                                                         <td><?= $key+1 ?></td>
-                                                        <td><?= sprintf('%04s', $data['malaf']) ?></td>
+                                                        <td><a href="<?= base_url('admin/show/' . $data['id']) ?>" class="badge badge-pill badge-<?= ($data['role']=='mushrif'?'warning':'info') ?>"><?= sprintf('%04s', $data['malaf']) ?></a></td>
                                                         <td><span <?= ( $data['role']=='mushrif'?'class="badge badge-success"':'') ?>><?= $data['name'] ?></span></td>
                                                         <td><?= $data['iqama'] ?></td>
                                                         <td><a href="tel:+966<?= $data['phone'] ?>" class="badge badge-secondary">966<?= $data['phone'] ?></a></td>
                                                         <?php if ($type == 'mushrif') : ?>
                                                             <td><a href="<?= base_url('admin/users/'. $data['nationality'].'/'. $data['jamia']) ?>" class="btn btn-sm round btn-outline-info"><?= $data['uni_name'] ?> - <?= $data['country_arName'] ?></a></td>
                                                         <?php endif ?>
-                                                        <td><a href="<?= base_url('admin/show/' . $data['id']) ?>" class="btn btn-sm round btn-outline-warning"><?= lang('app.show') ?></a></td>
                                                     </tr>
                                                 <?php endforeach ?>
                                             </tbody>
