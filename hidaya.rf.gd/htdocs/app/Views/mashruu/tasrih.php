@@ -74,6 +74,7 @@
                         </div>
                     <?php endif ?>
                 </section>
+            <?php if (count($tasrih) > 0) :?>
                 <div class="card">
                     <div class="card-content">
                         <div class="row p-1 m-1">
@@ -86,7 +87,6 @@
                         </div>
                     </div>
                 </div>
-            <?php if (count($tasrih) > 0) :?>
                     <div class="row">
                         <?php foreach ($tasrih as $key => $dt) : ?>
                             <div class="col-md-4">

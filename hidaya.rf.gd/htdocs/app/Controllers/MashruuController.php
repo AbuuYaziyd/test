@@ -206,21 +206,34 @@ class MashruuController extends BaseController
     public function download()
     {
         $set = new Setting();
+        $user = new User();
          
         $date = date('d-m-Y', strtotime($set->where('info', 'tasrihDate')->first()['extra']));
-         
-        $user = new User();
         $source = 'app-assets/images/tasrih';
         $destination = FCPATH.$date;
-        $user->zip_creation($source, $destination);
+        $ok = $user->zip_creation($source, $destination);
         // dd(FCPATH . $date.'.zip');
-        return $this->response->download(FCPATH . $date.'.zip', null);
+        if (!$ok) {
+            return redirect()->to('tanfidh/tasrih')->with('type', 'error')->with('text', lang('app.errorOccured'))->with('title', lang('app.sorry'));
+        } else {
+            return $this->response->download(FCPATH . $date.'.zip', null);
+        }
     }
 
     public function tasrihDelete()
     {
-        dd('tasrihDelete');
-        // delete all tasrih
-        // empty umrah teble
+        helper('filesystem');
+
+        $set = new Setting();
+        $tanfidh = new Tanfidh();
+
+        $tanfidh->emptyTable();
+        $date = date('d-m-Y', strtotime($set->where('info', 'tasrihDate')->first()['extra']));
+        $tasrih = $date.'.zip';
+        unlink($tasrih);
+        // dd(directory_map('app-assets/images/tasrih/'));
+        delete_files('app-assets/images/tasrih', true);
+
+        return redirect()->to('tanfidh/tasrih')->with('type', 'success')->with('text', lang('app.doneSuccess'))->with('title', lang('app.ok'));
     }
 }

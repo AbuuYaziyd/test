@@ -81,7 +81,7 @@ return [
     'notFoundIdentity' => 'معلومات البريد/الملف غير موجودة',
     'errpg' => 'الصفحة غير موجودة',
     'incorrect' => 'المعلومات غير صحيح',
-    'errorOccured' => 'حدث خطأ',
+    'errorOccured' => 'حدثت خطأ',
 
     // Admin Pages
     'admin' => 'مدير',
@@ -144,6 +144,7 @@ return [
     'makkah' => 'مكة المكرمة',
     'umrahcount' => 'عمرة منذ تسجيل',
     'umrahmonth' => 'عمرة في هذا الشهر',
+    'noDataFound' => 'لا يوجد أي معلوات هنا',
     'tanfidh' => 'تنفيذ',
     'tanfidhDate' => 'تاريخ التنفيذ',
     'tanfidhSettings' => 'إعدادات التنفيذ',
