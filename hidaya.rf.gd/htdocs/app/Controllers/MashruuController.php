@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\Mashruu;
+use App\Models\Tanfidh;
 use App\Models\Umrah;
 
 class MashruuController extends BaseController
@@ -94,7 +95,7 @@ class MashruuController extends BaseController
                 // dd(file_exists('public/files/'. $newName));
                 unlink('public/files/'. $newName);
                 // dd($count);
-                return redirect()->to('tanfidh/add')->with('type', 'success')->with('text',  $count.' - تنفيذ مستورد ')->with('title', lang('app.success'));
+                return redirect()->to('tanfidh')->with('type', 'success')->with('text',  $count.' - تنفيذ مستورد ')->with('title', lang('app.success'));
             }
             else{
                 session()->setFlashdata('message', 'CSV file coud not be imported.');
@@ -144,5 +145,20 @@ class MashruuController extends BaseController
         // dd($data2);
         
         return redirect()->to('mashruu/add')->with('type', 'success')->with('text', lang('app.doneSuccess'))->with('title', lang('app.success'));
+    }
+
+    public function delete()
+    {
+        $mash = new Mashruu();
+
+        $umra = $mash->where('status', 0)->findAll();
+
+        foreach ($umra as $dt) {
+            $ok = $mash->delete($dt['id']);
+        }
+        
+        if ($ok) {
+            return redirect()->to('tanfidh')->with('type', 'success')->with('text', lang('app.doneSuccess'))->with('title', lang('app.ok'));
+        }
     }
 }

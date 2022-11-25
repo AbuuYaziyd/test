@@ -86,6 +86,7 @@ $routes->group('tanfidh', function ($routes) {
     $routes->get('/', 'MashruuController::index', ['filter' => 'auth']);
     $routes->post('create', 'MashruuController::create', ['filter' => 'auth']);
     $routes->get('connect', 'MashruuController::connect', ['filter' => 'auth']);
+    $routes->get('delete', 'MashruuController::delete', ['filter' => 'auth']);
 });
 
 /*

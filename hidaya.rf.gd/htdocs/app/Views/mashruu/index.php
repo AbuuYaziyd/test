@@ -47,7 +47,7 @@
                             </div>
                             <div class="row p-1">
                                 <div class="col-12">
-                                    <button type="submit" class="btn btn-primary btn-block round"><?= lang('app.send') ?></button>
+                                    <button type="submit" class="btn btn-primary btn-block round"><?= lang('app.add') ?></button>
                                 </div>
                             </div>
                         </form>
@@ -56,97 +56,97 @@
             </div>
             <?php if ($new1) : ?>
                 <div class="row">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h2>
-                                            <b><?= $title ?></b> 
-                                            <span class="badge badge badge-info badge-pill mr-2"><?= $tanfidh ?></span>
-                                            <?php if ($tanfidh>0) : ?>
-                                                <div class="btn-group pull-right" role="group" aria-label="Basic example">
-                                                    <a href="<?= base_url() ?>" class="btn round btn-danger"><?= lang('app.delete') ?></a>
-                                                    <a href="<?= base_url('tanfidh/connect') ?>" class="btn round btn-outline-success"><?= lang('app.add') ?></a>
-                                                </div>
-                                            <?php else : ?>
-                                                <a href="<?= base_url() ?>" class="btn pull-right round btn-danger"><?= lang('app.delete') ?></a>
-                                            <?php endif  ?>
-                                        </h2>
-                                    </div>
-                                    <div class="card-content collapse show">
-                                        <div class="card-body card-dashboard">
-                                            <table class="table table-striped table-bordered dataex-res-constructor">
-                                                <thead>
-                                                    <tr>
-                                                        <th><?= lang('app.ism') ?></th>
-                                                        <th><?= lang('app.sabab') ?></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php foreach ($new1 as $key => $dt) : ?>
-                                                        <tr>
-                                                            <td><?= $dt['ism'] ?></td>
-                                                            <td><?= $dt['sabab'] ?></td>
-                                                        </tr>
-                                                    <?php endforeach ?>
-                                                </tbody>
-                                            </table>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>
+                                    <b><?= $title ?></b> 
+                                    <span class="badge badge badge-info badge-pill mr-2"><?= $tanfidh ?></span>
+                                    <?php if ($tanfidh>0) : ?>
+                                        <div class="btn-group pull-right" role="group" aria-label="Basic example">
+                                            <a href="<?= base_url('tanfidh/delete') ?>" class="btn round btn-danger delete"><?= lang('app.delete') ?></a>
+                                            <a href="<?= base_url('tanfidh/connect') ?>" class="btn round btn-outline-success"><?= lang('app.add') ?></a>
                                         </div>
-                                    </div>
+                                    <?php else : ?>
+                                        <a href="<?= base_url('tanfidh/delete') ?>" class="btn pull-right round btn-danger delete"><?= lang('app.delete') ?></a>
+                                    <?php endif  ?>
+                                </h2>
+                            </div>
+                            <div class="card-content collapse show">
+                                <div class="card-body card-dashboard">
+                                    <table class="table table-striped table-bordered dataex-res-constructor">
+                                        <thead>
+                                            <tr>
+                                                <th><?= lang('app.ism') ?></th>
+                                                <th><?= lang('app.sabab') ?></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php foreach ($new1 as $key => $dt) : ?>
+                                                <tr>
+                                                    <td><?= $dt['ism'] ?></td>
+                                                    <td><?= $dt['sabab'] ?></td>
+                                                </tr>
+                                            <?php endforeach ?>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
+                        </div>
+                    </div>
                 </div>
             <?php endif ?>
             <?php if ($new0) : ?>
                 <div class="row">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h2>
-                                            <b><?= $title ?> <?= lang('app.now') ?></b>
-                                        </h2>
-                                    </div>
-                                    <div class="card-content collapse show">
-                                        <div class="card-body card-dashboard">
-                                            <table class="table table-striped table-bordered table2">
-                                                <thead>
-                                                    <tr>
-                                                        <th><?= lang('app.malaf') ?></th>
-                                                        <th><?= lang('app.name') ?></th>
-                                                        <th><?= lang('app.iqama') ?></th>
-                                                        <th><?= lang('app.phone') ?></th>
-                                                        <th><?= lang('app.nationality') ?></th>
-                                                        <th><?= lang('app.jamia') ?></th>
-                                                        <th><?= lang('app.ism') ?></th>
-                                                        <th><?= lang('app.sabab') ?></th>
-                                                        <th><?= lang('app.date') ?></th>
-                                                        <th><?= lang('app.amount') ?></th>
-                                                        <th><?= lang('app.iban') ?></th>
-                                                        <th><?= lang('app.bank') ?></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php foreach ($new0 as $key => $dt) : ?>
-                                                        <tr>
-                                                            <td><span class="badge badge-<?= ( $dt['role']=='mushrif'?'success':'') ?>"><?= sprintf('%04s', $dt['malaf']) ?></span></td>
-                                                            <td><?= $dt['name'] ?></td>
-                                                            <td><?= $dt['iqama'] ?></td>
-                                                            <td><a href="tel:+966<?= $dt['phone'] ?>" class="badge badge-secondary">966<?= $dt['phone'] ?></a></td>
-                                                            <td><?= $dt['country_arName'] ?></td>
-                                                            <td><?= $dt['uni_name'] ?></td>
-                                                            <td><?= $dt['ism'] ?></td>
-                                                            <td><?= $dt['sabab'] ?></td>
-                                                            <td><?= $dt['date'] ?></td>
-                                                            <td><?= $dt['amount'] ?></td>
-                                                            <td><?= $dt['iban'] ?></td>
-                                                            <td><?= $dt['bankName'] ?> - <?= $dt['bankShort'] ?></td>
-                                                        </tr>
-                                                    <?php endforeach ?>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>
+                                    <b><?= $title ?> <?= lang('app.now') ?></b>
+                                </h2>
+                            </div>
+                            <div class="card-content collapse show">
+                                <div class="card-body card-dashboard">
+                                    <table class="table table-striped table-bordered table2">
+                                        <thead>
+                                            <tr>
+                                                <th><?= lang('app.malaf') ?></th>
+                                                <th><?= lang('app.name') ?></th>
+                                                <th><?= lang('app.iqama') ?></th>
+                                                <th><?= lang('app.phone') ?></th>
+                                                <th><?= lang('app.nationality') ?></th>
+                                                <th><?= lang('app.jamia') ?></th>
+                                                <th><?= lang('app.ism') ?></th>
+                                                <th><?= lang('app.sabab') ?></th>
+                                                <th><?= lang('app.date') ?></th>
+                                                <th><?= lang('app.amount') ?></th>
+                                                <th><?= lang('app.iban') ?></th>
+                                                <th><?= lang('app.bank') ?></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php foreach ($new0 as $key => $dt) : ?>
+                                                <tr>
+                                                    <td><span class="badge badge-<?= ( $dt['role']=='mushrif'?'success':'') ?>"><?= sprintf('%04s', $dt['malaf']) ?></span></td>
+                                                    <td><?= $dt['name'] ?></td>
+                                                    <td><?= $dt['iqama'] ?></td>
+                                                    <td><a href="tel:+966<?= $dt['phone'] ?>" class="badge badge-secondary">966<?= $dt['phone'] ?></a></td>
+                                                    <td><?= $dt['country_arName'] ?></td>
+                                                    <td><?= $dt['uni_name'] ?></td>
+                                                    <td><?= $dt['ism'] ?></td>
+                                                    <td><?= $dt['sabab'] ?></td>
+                                                    <td><?= $dt['date'] ?></td>
+                                                    <td><?= $dt['amount'] ?></td>
+                                                    <td><?= $dt['iban'] ?></td>
+                                                    <td><?= $dt['bankName'] ?> - <?= $dt['bankShort'] ?></td>
+                                                </tr>
+                                            <?php endforeach ?>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
+                        </div>
+                    </div>
                 </div>
             <?php endif ?>
         </div>
@@ -202,26 +202,33 @@
 </script>
 
 <script>
-    var tableConstructor = $('.table2').DataTable({
-        "language": {
-        "url": "//cdn.datatables.net/plug-ins/1.13.1/i18n/ar.json"
-        },
-        dom: 'Bfrtip',
-        buttons: [{
-                extend: 'print',
-                    exportOptions: {
-                        columns: ':visible'
-                    }
-            },
-            {
-                extend: 'excelHtml5',
-                    exportOptions: {
-                        columns: ':visible'
-                    }
-                },
-                'colvis'
-            ],
-            responsive: true
+    $('.delete').on('click', function(e) {
+        e.preventDefault();
+        url = $(this).attr('href');
+        Swal.fire({
+            title: 'هل ترييد أن تحذف؟',
+            text: "جميع ما أضفته هنا!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'نعم!',
+            cancelButtonText: 'لا!',
+            confirmButtonClass: 'btn btn-warning',
+            cancelButtonClass: 'btn btn-danger ml-1',
+            buttonsStyling: false,
+        }).then(function(result) {
+            if (result.value) {
+                window.location.href = url;
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                Swal.fire({
+                    title: 'تمام',
+                    text: 'ما حذفت شيء :)',
+                    type: 'error',
+                    showConfirmButton: false,
+                })
+            }
+        })
     });
 </script>
 
