@@ -230,10 +230,14 @@ class MashruuController extends BaseController
         $tanfidh->emptyTable();
         $date = date('d-m-Y', strtotime($set->where('info', 'tasrihDate')->first()['extra']));
         $tasrih = $date.'.zip';
-        unlink($tasrih);
-        // dd(directory_map('app-assets/images/tasrih/'));
-        delete_files('app-assets/images/tasrih', true);
-
+        // dd(file_exists($tasrih));
+        // dd(count(directory_map('app-assets/images/tasrih')));
+        if (file_exists($tasrih)) {
+            unlink($tasrih);
+        } elseif (count(directory_map('app-assets/images/tasrih'))>0) {
+            delete_files('app-assets/images/tasrih', true);
+        }
+        
         return redirect()->to('tanfidh/tasrih')->with('type', 'success')->with('text', lang('app.doneSuccess'))->with('title', lang('app.ok'));
     }
 }

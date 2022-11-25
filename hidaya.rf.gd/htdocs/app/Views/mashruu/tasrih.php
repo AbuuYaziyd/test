@@ -74,38 +74,38 @@
                         </div>
                     <?php endif ?>
                 </section>
-            <?php if (count($tasrih) > 0) :?>
-                <div class="card">
-                    <div class="card-content">
-                        <div class="row p-1 m-1">
-                            <div class="col">
-                                <div class="btn-group btn-block pull-right" role="group" aria-label="Basic example">
-                                    <a href="<?= base_url('tanfidh/tasrih/delete') ?>" class="btn round btn-danger delete"><?= lang('app.delete') ?> <?= lang('app.tasrihs') ?></a>
-                                    <a href="<?= base_url('tanfidh/download') ?>" class="btn round btn-primary"><?= lang('app.download') ?> <?= lang('app.tasrihs') ?></a>
+                <?php if (count($tasrih) > 0) :?>
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="row p-1 m-1">
+                                <div class="col">
+                                    <div class="btn-group btn-block pull-right" role="group" aria-label="Basic example">
+                                        <a href="<?= base_url('tanfidh/tasrih/delete') ?>" class="btn round btn-danger delete"><?= lang('app.delete') ?> <?= lang('app.tasrihs') ?></a>
+                                        <a href="<?= base_url('tanfidh/download') ?>" class="btn round btn-primary"><?= lang('app.download') ?> <?= lang('app.tasrihs') ?></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                    <div class="row">
-                        <?php foreach ($tasrih as $key => $dt) : ?>
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <div class="card-content">
-                                        <div class="card-body">
-                                            <h4 class="card-title"><?= $dt['name'] ?> @ <b><?= $dt['malaf'] ?></b></h4>
-                                            <?php $loc = $dt['country_arName'].' - '.$dt['uni_name'] ?>
-                                            <div class="text-center">
-                                                <b><?=  date('d/m/Y', strtotime($dt['tnfdhDate'])) ?></b>
+                        <div class="row">
+                            <?php foreach ($tasrih as $key => $dt) : ?>
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="card-content">
+                                            <div class="card-body">
+                                                <h4 class="card-title"><?= $dt['name'] ?> @ <b><?= $dt['malaf'] ?></b></h4>
+                                                <?php $loc = $dt['country_arName'].' - '.$dt['uni_name'] ?>
+                                                <div class="text-center">
+                                                    <b><?=  date('d/m/Y', strtotime($dt['tnfdhDate'])) ?></b>
+                                                </div>
                                             </div>
+                                            <img class="img-fluid" src="<?= base_url('app-assets/images/'.($dt['tasrih']==null?'demo/no-image.png':'tasrih/'.$loc.'/'.$dt['tasrih'])) ?>" alt="img">
                                         </div>
-                                        <img class="img-fluid" src="<?= base_url('app-assets/images/'.($dt['tasrih']==null?'demo/no-image.png':'tasrih/'.$loc.'/'.$dt['tasrih'])) ?>" alt="img">
                                     </div>
                                 </div>
-                            </div>
-                        <?php endforeach ?>
-                    </div>
-            <?php endif ?>
+                            <?php endforeach ?>
+                        </div>
+                <?php endif ?>
             </div>
         </div>
     </div>
