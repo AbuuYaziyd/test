@@ -197,7 +197,7 @@
                 },
                 'colvis'
             ],
-            responsive: false
+            responsive: true
     });
 </script>
 

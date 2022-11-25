@@ -92,9 +92,6 @@
             },
             {
                 extend: 'excelHtml5',
-                    exportOptions: {
-                        columns: ':visible'
-                    }
                 },
                 'colvis'
             ],

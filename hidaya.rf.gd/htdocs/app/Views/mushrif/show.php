@@ -94,15 +94,9 @@
             dom: 'Bfrtip',
             buttons: [{
                     extend: 'print',
-                    exportOptions: {
-                        columns: ':visible'
-                    }
                 },
                 {
                     extend: 'excelHtml5',
-                    exportOptions: {
-                        columns: ':visible'
-                    }
                 },
                 'colvis'
             ],
