@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\Mashruu;
+use App\Models\Setting;
 use App\Models\Tanfidh;
 use App\Models\Umrah;
 use App\Models\User;
@@ -204,7 +205,29 @@ class MashruuController extends BaseController
 
     public function download()
     {
-        dd('Download');
+        $set = new Setting();
+        $date = $set->where('info', 'tasrihDate')->first()['extra'];
+         
+        // $loc is the location of files to be downloaded!
+        $user = new User();
+        // $source = 'app-assets/images/tasrih';
+        // $destination = FCPATH.'compressed';
+        // $zipcreation = $user->zip_creation($source, $destination);
+        dd($date);
+        return $this->response->download(FCPATH . 'compressed.zip', null);
+        // $tasrih = $tsrh->findAll();
+        // // dd($tasrih);
+        // // foreach ($tasrih as $file) {
+        //     $paths = base_url('app-assets/images/tasrih');
+        //     // add data own data into the folder created
+        //     $this->zip->add_data('tas'.file_get_contents($paths));    
+        // // }
+        // $this->zip->download('26-12-2022.zip');
+        // foreach ($query->result() as $row){
+        //     $this->zip->read_file($row->filename);
+        // }
+
+        // $this->zip->download('files_backup.zip');
     }
 
     public function tasrihDelete()
