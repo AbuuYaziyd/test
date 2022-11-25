@@ -201,4 +201,16 @@ class MashruuController extends BaseController
             return redirect()->to('user');
         } 
     }
+
+    public function download()
+    {
+        dd('Download');
+    }
+
+    public function tasrihDelete()
+    {
+        dd('tasrihDelete');
+        // delete all tasrih
+        // empty umrah teble
+    }
 }

@@ -79,8 +79,8 @@
                         <div class="row p-1 m-1">
                             <div class="col">
                                 <div class="btn-group btn-block pull-right" role="group" aria-label="Basic example">
-                                    <a href="<?= base_url('tanfidh/delete') ?>" class="btn round btn-danger delete"><?= lang('app.delete') ?> <?= lang('app.tasrihs') ?></a>
-                                    <a href="<?= base_url('tanfidh/connect') ?>" class="btn round btn-primary"><?= lang('app.download') ?> <?= lang('app.tasrihs') ?></a>
+                                    <a href="<?= base_url('tanfidh/tasrih/delete') ?>" class="btn round btn-danger delete"><?= lang('app.delete') ?> <?= lang('app.tasrihs') ?></a>
+                                    <a href="<?= base_url('tanfidh/download') ?>" class="btn round btn-primary"><?= lang('app.download') ?> <?= lang('app.tasrihs') ?></a>
                                 </div>
                             </div>
                         </div>
