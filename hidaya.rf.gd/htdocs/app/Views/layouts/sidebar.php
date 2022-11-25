@@ -28,12 +28,14 @@
                     <span class="menu-title"><?= lang('app.profile') ?></span>
                 </a>
             </li>
+            <?php if (session('role') != 'admin')  : ?>
             <li class="<?= ($title == lang('app.data') ? 'active' : '') ?> nav-item">
                 <a href="<?= base_url('image') ?>">
                     <i class="la la-newspaper-o"></i>
                     <span class="menu-title"><?= lang('app.data') ?></span>
                 </a>
             </li>
+            <?php endif ?>
             <?php if (session('role') != 'user')  : ?>
             <li class="<?= ($title == lang('app.tasrihs') ? 'active' : '') ?> nav-item">
                 <a href="<?= base_url('tanfidh/tasrih') ?>">
