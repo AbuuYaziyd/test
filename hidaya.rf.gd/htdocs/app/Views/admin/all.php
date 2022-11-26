@@ -28,7 +28,7 @@
                                 </div>
                                 <div class="card-content collapse show">
                                     <div class="card-body card-dashboard">
-                                        <table class="table table-striped table-bordered dataex-res-configuration">
+                                        <table class="table table-striped table-bordered dataex-res-constructor">
                                             <thead>
                                                 <tr>
                                                     <th style="width: 5px;">#</th>
@@ -89,24 +89,7 @@
 <script src="<?= base_url('app-assets/vendors/js/tables/buttons.print.min.js') ?>"></script>
 
 <!-- END: Page Vendor JS-->
-<script>
-    $(document).ready(function() {
-        $('.dataex-res-configuration').DataTable({
-            "language": {
-            "url": "//cdn.datatables.net/plug-ins/1.12.1/i18n/ar.json"
-            },
-            dom: 'Bfrtip',
-            buttons: [{
-                    extend: 'print',
-                },
-                {
-                    extend: 'excelHtml5',
-                },
-                'colvis'
-            ],
-            responsive: true
-        });
-    });
-</script>
+
+<?= $this->include('layouts/table') ?>
 
 <?= $this->endSection() ?>

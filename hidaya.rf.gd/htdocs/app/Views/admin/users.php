@@ -83,21 +83,6 @@
 <script src="<?= base_url('app-assets/vendors/js/tables/buttons.html5.min.js') ?>"></script>
 <script src="<?= base_url('app-assets/vendors/js/tables/buttons.print.min.js') ?>"></script>
 
-<script>
-    var tableConstructor = $('.dataex-res-constructor').DataTable({
-        "language": {
-        "url": "//cdn.datatables.net/plug-ins/1.12.1/i18n/ar.json"
-        },
-        dom: 'Bfrtip',
-        buttons: [{
-                extend: 'print',
-            },
-            {
-                extend: 'excelHtml5',
-            },
-        ],
-        responsive: true
-    });
-</script>
+<?= $this->include('layouts/table') ?>
 
 <?= $this->endSection() ?>
