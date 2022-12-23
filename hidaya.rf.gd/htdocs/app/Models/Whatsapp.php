@@ -7,14 +7,19 @@ use CodeIgniter\Model;
 class Whatsapp extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'whatsapps';
+    protected $table            = 'whatsapp';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = [
+        'link',
+        'mushrif_id',
+        'jamia_id',
+        'country_code',
+    ];
 
     // Dates
     protected $useTimestamps = false;

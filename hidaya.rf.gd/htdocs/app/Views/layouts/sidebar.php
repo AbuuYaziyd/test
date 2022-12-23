@@ -44,6 +44,12 @@
                 </a>
             </li>
             <?php endif ?>
+            <li class="<?= ($title == lang('app.whatsapp') ? 'active' : '') ?> nav-item">
+                <a href="<?= base_url('whatsapp') ?>">
+                    <i class="la la-whatsapp"></i>
+                    <span class="menu-title"><?= lang('app.whatsapp') ?></span>
+                </a>
+            </li>
         </ul>
     </div>
 </div>

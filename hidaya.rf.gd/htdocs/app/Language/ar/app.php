@@ -16,6 +16,7 @@ return [
     'doorOpen' => 'الباب مفتوح',
     'value' => 'تقدير',
     'extra' => 'إضافي',
+    'whatsapp' => 'واتسآب',
     'dates' => 'تواريخ',
     'peopletobedonefor' => 'أصحاب التنفيذ',
     'info' => 'معلومات زيادة',

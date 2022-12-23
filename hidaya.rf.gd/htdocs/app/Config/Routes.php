@@ -74,7 +74,7 @@ $routes->group('user', function ($routes) {
 $routes->group('image', function ($routes) {
     $routes->get('/', 'ImageController::index', ['filter' => 'auth']);
     $routes->get('edit/(:num)/(:any)', 'ImageController::imgShow/$1/$2', ['filter' => 'auth']);
-    $routes->post('upload/(:num)', 'ImageController::update/$1', ['filter' => 'auth']);
+    $routes->post('edit/(:num)', 'ImageController::update/$1', ['filter' => 'auth']);
 });
 
 /*
@@ -165,6 +165,17 @@ $routes->group('set', function ($routes) {
     $routes->post('student-count', 'SettingController::studentCount', ['filter' => 'auth']);
     $routes->post('tanfidh', 'SettingController::tanfidh', ['filter' => 'auth']);
     $routes->post('tasrih', 'SettingController::tasrih', ['filter' => 'auth']);
+});
+
+/*
+ * --------------------------------------------------------------------
+ * Routes Groups WhatsApp Routings
+ * --------------------------------------------------------------------
+ */
+$routes->group('whatsapp', function ($routes) {
+    $routes->get('/', 'WhatsappController::index', ['filter' => 'auth']);
+    $routes->get('show/(:num)', 'WhatsappController::show/$1', ['filter' => 'auth']);
+    $routes->post('edit/(:num)', 'WhatsappController::edit/$1', ['filter' => 'auth']);
 });
 
 /*
