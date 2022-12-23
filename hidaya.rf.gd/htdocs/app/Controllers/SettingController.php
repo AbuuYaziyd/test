@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\Setting;
+use App\Models\Whatsapp;
 
 class SettingController extends BaseController
 {
@@ -12,10 +13,12 @@ class SettingController extends BaseController
         helper('form');
 
         $set = new Setting();
+        $whats = new Whatsapp();
 
         $data['title'] = lang('app.settings');
         $data['tasrih'] = $set->where('name', 'tanfidhDate')->findAll();
         $data['count'] = $set->where('name', 'count')->first();
+        $data['whats'] = $whats->where('country_code', 'mushrifuna')->first();
         $data['extra'] = $set->where('name', 'tanfidhDate')->orderBy('value', 'desc')->first()['extra'];
         // dd($data);
 

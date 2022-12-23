@@ -9,6 +9,25 @@
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-3">
+                            <a id="count" data-toggle="modal" data-target="#whatsapp">
+                                <div class="card pull-up">
+                                    <div class="card-content">
+                                        <div class="card-body">
+                                            <div class="media d-flex">
+                                                <div class="media-body text-left">
+                                                    <h6 class="text-muted"><b><?= lang('app.whatsapp') ?></b></h6>
+                                                    <h3><?= lang('app.mushrifuna') ?></h3>
+                                                </div>
+                                                <div class="align-self-center">
+                                                    <i class="la la-whatsapp success font-large-3 float-right"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-3">
                             <a id="count" data-toggle="modal" data-target="#default">
                                 <div class="card pull-up">
                                     <div class="card-content">
@@ -19,7 +38,7 @@
                                                     <h3><?= $count['value'] ?></h3>
                                                 </div>
                                                 <div class="align-self-center">
-                                                    <i class="la la-users success font-large-3 float-right"></i>
+                                                    <i class="la la-users info font-large-3 float-right"></i>
                                                 </div>
                                             </div>
                                         </div>
@@ -93,6 +112,33 @@
                                 <label><b><?= lang('app.studentCount') ?></b></label>
                                 <input type="hidden" name="id" value="<?= $count['id'] ?>">
                                 <input type="text" class="form-control" name="stuCount" value="<?= $count['value'] ?>">
+                            </fieldset>
+                            <button type="submit" class="btn btn-block btn-lg btn-primary my-1"><?= lang('app.send') ?></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card-body">
+    <div class="row my-2">
+        <div class="modal fade text-left" id="whatsapp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel1">
+                            <?= lang('app.link') ?> <?= lang('app.whatsapp') ?>
+                        </h4>
+                            <a href="<?= $whats['link'] ?>" class="btn btn-success round pull-right mr-2" target="_blank"><i class="la la-whatsapp"></i> <?= lang('app.whatsapp') ?> - <?= lang('app.mushrifuna') ?></a>
+                    </div>
+                    <div class="modal-body m-1">
+                        <?= form_open('whatsapp/edit/'.$whats['id']) ?>
+                            <fieldset>
+                                <label><b><?= lang('app.edit') ?> <?= lang('app.link') ?> <?= lang('app.whatsapp') ?> </b></label>
+                                <input type="hidden" name="id" value="<?= $count['id'] ?>">
+                                <input type="text" class="form-control" name="link" value="<?= $whats['link'] ?>">
                             </fieldset>
                             <button type="submit" class="btn btn-block btn-lg btn-primary my-1"><?= lang('app.send') ?></button>
                         </form>

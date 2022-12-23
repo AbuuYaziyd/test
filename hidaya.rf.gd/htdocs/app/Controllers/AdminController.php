@@ -70,6 +70,7 @@ class AdminController extends BaseController
     {
         $user = new User();
         $uni = new University();
+        $whats = new Whatsapp();
 
         $data['title'] = lang('app.mushrifuna').' - '.$uni->find($jm)['uni_name'];
         $data['title2'] = lang('app.students').' - '.$uni->find($jm)['uni_name'];
@@ -134,7 +135,6 @@ class AdminController extends BaseController
                             ->join('countries n', 'n.country_code=users.nationality')
                             ->join('universities u', 'u.uni_id=users.jamia')
                             ->findAll();
-        $data['whats'] = $what->where('country_code', $nt)->first();
         // dd($data);
 
         if (session('role') == 'admin') {
@@ -149,6 +149,7 @@ class AdminController extends BaseController
         $user = new User();
         $nationality = new Country();
         $jamia = new University();
+        $whats = new Whatsapp();
         
         $nt = $nationality->where('country_code', $nat)->first();
         $jm = $jamia->where('uni_id', $jam)->first();
@@ -156,9 +157,14 @@ class AdminController extends BaseController
         $data['users'] = $user->where(['jamia' => $jam, 'nationality' => $nat])
                             ->join('countries n', 'n.country_code=users.nationality')
                             ->join('universities u', 'u.uni_id=users.jamia')
-                            ->orderBy('role', 'asc')
+                            ->orderBy('role', 'desc')
                             ->findAll();
+        $data['mushrif'] = $user->where(['jamia' => $jam, 'nationality' => $nat, 'role' => 'mushrif'])
+                            ->join('countries n', 'n.country_code=users.nationality')
+                            ->join('universities u', 'u.uni_id=users.jamia')
+                            ->first();
         $data['type'] = 'all';
+        $data['whats'] = $whats->where(['country_code' => $nat, 'jamia_id' => $jam])->first();
         // dd($data);
         
         if (session('role') == 'admin') {
