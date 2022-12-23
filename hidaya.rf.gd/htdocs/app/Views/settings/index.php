@@ -27,6 +27,27 @@
                                 </div>
                             </a>
                         </div>
+                        <div class="col-md-3">
+                            <a id="count" data-toggle="modal" data-target="#tasrih">
+                                <div class="card pull-up">
+                                    <div class="card-content">
+                                        <div class="card-body">
+                                            <div class="media d-flex">
+                                                <div class="media-body text-left">
+                                                    <h6 class="text-muted"><b><?= lang('app.tasrihDate') ?></b></h6>
+                                                    <h3 class="<?= $extra<date('Y-m-d')?'danger':'success' ?>"><?= date('d/m/Y', strtotime($extra)) ?></h3>
+                                                </div>
+                                                <div class="align-self-center">
+                                                    <i class="la la-calendar-times-o danger font-large-3 float-right"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row">
                         <?php foreach ($tasrih as $key => $dt) : ?>
                         <div class="col-md-3">
                             <a id="count" data-toggle="modal" data-target="#tanfidh">
@@ -48,44 +69,6 @@
                             </a>
                         </div>
                         <?php endforeach ?>
-                        <div class="col-md-3">
-                            <a id="count" data-toggle="modal" data-target="#tasrih">
-                                <div class="card pull-up">
-                                    <div class="card-content">
-                                        <div class="card-body">
-                                            <div class="media d-flex">
-                                                <div class="media-body text-left">
-                                                    <h6 class="text-muted"><b><?= lang('app.tasrihDate') ?></b></h6>
-                                                    <h3 class="<?= $extra<date('Y-m-d')?'danger':'success' ?>"><?= date('d/m/Y', strtotime($extra)) ?></h3>
-                                                </div>
-                                                <div class="align-self-center">
-                                                    <i class="la la-calendar-times-o danger font-large-3 float-right"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-3">
-                            <a id="count" data-toggle="modal" data-target="#settings">
-                                <div class="card pull-up">
-                                    <div class="card-content">
-                                        <div class="card-body">
-                                            <div class="media d-flex">
-                                                <div class="media-body text-left">
-                                                    <h6 class="text-muted"><b><?= lang('app.tanfidhSettings') ?></b></h6>
-                                                    <h3><?= lang('app.settings') ?></h3>
-                                                </div>
-                                                <div class="align-self-center">
-                                                    <i class="la la-cog dark spinner font-large-2 float-right"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
                     </div>
                 </div>
             </div>
