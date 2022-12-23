@@ -1,15 +1,4 @@
 <?= $this->extend('layouts/main') ?>
-<?= $this->section('styles') ?>
-
-<link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/vendors/css/vendors-rtl.min.css') ?>">
-<link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/vendors/css/tables/datatable/datatables.min.css') ?>">
-<link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/vendors/css/tables/extensions/responsive.dataTables.min.css') ?>">
-<link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/vendors/css/tables/extensions/colReorder.dataTables.min.css') ?>">
-<link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/vendors/css/tables/extensions/buttons.dataTables.min.css') ?>">
-<link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/vendors/css/tables/datatable/buttons.bootstrap4.min.css') ?>">
-<link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/vendors/css/tables/extensions/fixedHeader.dataTables.min.css') ?>">
-
-<?= $this->endsection() ?>
 
 <?= $this->section('content') ?>
 <div class="app-content content">
@@ -24,6 +13,11 @@
                                 <div class="card-header">
                                     <h2>
                                         <?= $title ?>
+                                        <?php if (isset($whats)) : ?>
+                                            <button class="btn btn-outline-success box-shadow-1 round pull-right"  data-toggle="modal" data-target="#default"><?= lang('app.whatsapp') ?> - <?= lang('app.group') ?></button>
+                                        <?php else : ?>
+                                            <a class="btn btn-danger box-shadow-1 round pull-right" href="<?= base_url('whatsapp') ?>"><?= lang('app.whatsapp') ?> - <?= lang('app.group') ?></a>
+                                        <?php endif ?>
                                     </h2>
                                 </div>
                                 <div class="card-content collapse show">
@@ -31,7 +25,6 @@
                                         <table class="table table-striped table-bordered dataex-res-constructor">
                                             <thead>
                                                 <tr>
-                                                    <th>#</th>
                                                     <th><?= lang('app.malaf') ?></th>
                                                     <th><?= lang('app.name') ?></th>
                                                     <th><?= lang('app.iqama') ?></th>
@@ -43,7 +36,6 @@
                                             <tbody>
                                                 <?php foreach ($users as $key => $data) : ?>
                                                     <tr>
-                                                        <td><?= $key+1 ?></td>
                                                         <td><span class="badge badge-<?= ( $data['role']=='mushrif'?'success':'') ?>"><?= $data['malaf'] ?></span></td>
                                                         <td><?= $data['name'] ?></td>
                                                         <td><?= $data['iqama'] ?></td>
@@ -65,38 +57,35 @@
     </div>
 </div>
 
+<?php if (isset($whats)) : ?>
+<div class="card-body">
+    <div class="row my-2">
+        <div class="modal fade text-left" id="default" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel1">
+                            <?= lang('app.edit') ?> <?= lang('app.whatsapp') ?> <?= lang('app.group') ?>
+                        </h4>
+                        <?php if ($whats['link'] != null) : ?>
+                        <a href="<?= $whats['link'] ?>" class="btn btn-info round float-right mr-2" target="_blank"><?= lang('app.whatsapp') ?></a>
+                        <?php endif ?>
+                    </div>
+                    <div class="modal-body m-1">
+                        <?= form_open('whatsapp/edit/'.$whats['id']) ?>
+                            <fieldset>
+                                <label><b><?= lang('app.link') ?></b></label>
+                                <input type="text" class="form-control" name="link" value="<?= $whats['link'] ?>">
+                            </fieldset>
+                            <button type="submit" class="btn btn-block btn-lg btn-primary my-1"><?= lang('app.send') ?></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php endif ?>
+
 <?= $this->endsection() ?>
-<?= $this->section('scripts') ?>
-
-<script src="<?= base_url('app-assets/vendors/js/tables/datatable/datatables.min.js') ?>"></script>
-<script src="<?= base_url('app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js') ?>"></script>
-<script src="<?= base_url('app-assets/vendors/js/tables/buttons.colVis.min.js') ?>"></script>
-<script src="<?= base_url('app-assets/vendors/js/tables/pdfmake.min.js') ?>"></script>
-<script src="<?= base_url('app-assets/vendors/js/tables/buttons.print.min.js') ?>"></script>
-<script src="<?= base_url('app-assets/vendors/js/tables/datatable/dataTables.colReorder.min.js') ?>"></script>
-<script src="<?= base_url('app-assets/vendors/js/tables/datatable/dataTables.buttons.min.js') ?>"></script>
-<script src="<?= base_url('app-assets/vendors/js/tables/datatable/buttons.bootstrap4.min.js') ?>"></script>
-<script src="<?= base_url('app-assets/vendors/js/tables/datatable/dataTables.fixedHeader.min.js') ?>"></script>
-<script src="<?= base_url('app-assets/vendors/js/tables/jszip.min.js') ?>"></script>
-<script src="<?= base_url('app-assets/vendors/js/tables/buttons.html5.min.js') ?>"></script>
-<script src="<?= base_url('app-assets/vendors/js/tables/buttons.print.min.js') ?>"></script>
-
-<script>
-    var tableConstructor = $('.dataex-res-constructor').DataTable({
-        "language": {
-        "url": "//cdn.datatables.net/plug-ins/1.12.1/i18n/ar.json"
-        },
-        dom: 'Bfrtip',
-        buttons: [{
-                extend: 'print',
-            },
-            {
-                extend: 'excelHtml5',
-                },
-                'colvis'
-            ],
-            responsive: true
-    });
-</script>
-
-<?= $this->endSection() ?>
+<?= $this->include('layouts/table') ?>

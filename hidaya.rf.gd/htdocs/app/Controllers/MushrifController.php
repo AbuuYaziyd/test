@@ -10,6 +10,7 @@ use App\Models\Tanfidh;
 use App\Models\Umrah;
 use App\Models\University;
 use App\Models\User;
+use App\Models\Whatsapp;
 
 class MushrifController extends BaseController
 {
@@ -41,18 +42,22 @@ class MushrifController extends BaseController
     
     public function users()
     {
+        helper('form');
+        
         $user = new User();
         $nat = new Country();
         $jam = new University();
+        $whats = new Whatsapp();
 
         $dt = $user->find(session('id'));
-        $jm = $jam->find($dt['jamia'])['uni_name'];
-        $nt = $nat->where('country_code', $dt['nationality'])->first()['country_arName'];
+        $jm = $jam->find($dt['jamia']);
+        $nt = $nat->where('country_code', $dt['nationality'])->first();
         $data['users'] = $user->where(['nationality' => $dt['nationality'], 'jamia' => $dt['jamia']])
                             ->orderBy('role', 'asc')
                             ->findAll();
         $data['check'] = lang('app.students');
-        $data['title'] = lang('app.students').' - '.$jm.' - '.$nt;
+        $data['title'] = lang('app.students').' - '.$jm['uni_name'].' - '.$nt['country_arName'];
+        $data['whats'] = $whats->where(['country_code' => $nt['country_code'], 'jamia_id' => $jm['uni_id']])->first();
         // dd($data);
 
         if (session('role') == 'mushrif') {

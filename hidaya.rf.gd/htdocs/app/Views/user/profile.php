@@ -31,6 +31,7 @@
                     <div class="col-5 px-0 d-flex justify-content-end align-items-center px-1 mb-2">
                         <div class="btn-group" role="group" aria-label="Basic example">
                             <a href="tel:+966<?= $mushrif['phone'] ?>" class="btn btn-secondary round"><i class="la la-mobile"></i> <?=  lang('app.mushrif') ?></a>
+                            <a href="<?= $whats['link'] ?>" target="_blank" class="btn btn-warning round"><i class="la la-users"></i> <?=  lang('app.group') ?></a>
                             <a href="https://wa.me/966<?= $mushrif['phone'] ?>" target="_blank" rel="noopener noreferrer" class="btn btn-success round"><?=  lang('app.mushrif') ?> <i class="la la-whatsapp"></i></a>
                         </div>
                     </div>

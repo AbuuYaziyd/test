@@ -15,7 +15,7 @@ return [
     'registerNow' => 'سجل الحين',
     'doorOpen' => 'الباب مفتوح',
     'value' => 'تقدير',
-    'link' => 'رتبط',
+    'link' => 'رابط',
     'extra' => 'إضافي',
     'group' => 'مجموعة',
     'groups' => 'مجموعات',
@@ -86,6 +86,7 @@ return [
     'errpg' => 'الصفحة غير موجودة',
     'incorrect' => 'المعلومات غير صحيح',
     'errorOccured' => 'حدثت خطأ',
+    'groupDone' => 'تم إضافة المجموعة في الموقع بنجاح',
 
     // Admin Pages
     'admin' => 'مدير',

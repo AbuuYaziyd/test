@@ -8,6 +8,7 @@ use App\Models\Country;
 use App\Models\Hits;
 use App\Models\Setting;
 use App\Models\User;
+use App\Models\Whatsapp;
 
 class UserController extends BaseController
 {
@@ -65,6 +66,7 @@ class UserController extends BaseController
     public function show($id)
     {
         $user = new User();
+        $whats = new Whatsapp();
 
         $data['title'] = lang('app.profile');
         if (session('role') != 'admin') {
@@ -78,8 +80,9 @@ class UserController extends BaseController
                                 ->join('countries n', 'n.country_code=users.nationality')
                                 ->find($id);
         }
-        
+        $data['whats'] = $whats->where(['country_code' => $data['user']['nationality'], 'jamia_id' => $data['user']['jamia']])->first();
         // dd($data);
+
         if (session('role') != 'admin') {
             return view('user/profile', $data);
         } else {
