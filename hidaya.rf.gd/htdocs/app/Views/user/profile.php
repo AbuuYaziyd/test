@@ -59,6 +59,10 @@
                                             <td><b><?= sprintf('%04s', ($user['malaf']??'----')) ?></b></td>
                                         </tr>
                                         <tr>
+                                            <td><?= lang('app.iqama') ?>:</td>
+                                            <td><b class="<?= $user['iqama']?? 'danger' ?>"><?= $user['iqama']??lang('app.notFound') ?></b></td>
+                                        </tr>
+                                        <tr>
                                             <td><?= lang('app.bitaqa') ?>:</td>
                                             <td><b class="<?= $user['bitaqa']?? 'danger' ?>"><?= $user['bitaqa']??lang('app.notFound') ?></b></td>
                                         </tr>

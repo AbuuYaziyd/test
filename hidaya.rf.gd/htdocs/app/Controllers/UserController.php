@@ -130,6 +130,7 @@ class UserController extends BaseController
             'email' => $email!=null?$email: null,
             'phone' => $this->request->getVar('phone'),
             'bitaqa' => $this->request->getVar('bitaqa'),
+            'iqama' => $this->request->getVar('iqama'),
             'passport' => strtoupper($this->request->getVar('passport')),
             'bank' => strtoupper($this->request->getVar('bank')),
             'iban' => strtoupper($this->request->getVar('iban')),
