@@ -23,18 +23,13 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h2><?= $title ?>
-                                        <a class="btn btn-success box-shadow-1 round pull-right" href="<?= $whats['link'] ?>" target="_blank"><?= lang('app.whatsapp') ?></a></h2>
+                                    <h2><?= $title ?></h2>
                                 </div>
                                 <div class="card-content collapse show">
                                     <div class="card-body card-dashboard" style="text-align: center;">
-                                        <?php if ($type != 'mushrif') : ?>
-                                            <?php foreach ($users as $key => $data) : ?>
-                                                <?php if ($type == 'nat') : ?>
-                                                    <a href="<?= base_url('admin/users/'. $data['nationality'].'/'. $data['jamia']) ?>" class="btn btn-outline-primary round m-1"><?= $data['uni_name'] ?> - <?= $data['name'] ?></a>
-                                                <?php elseif ($type == 'jamia') : ?>
-                                                    <a href="<?= base_url('admin/users/'. $data['nationality'].'/'. $data['jamia']) ?>" class="btn btn-outline-primary round m-1"><i class="flag-icon flag-icon-<?= strtolower($data['nationality']) ?>"></i> - <?= $data['name'] ?></a>
-                                                <?php endif ?>
+                                        <?php if ($whats != null) : ?>
+                                            <?php foreach ($whats as $key => $data) : ?>
+                                                <a href="<?= base_url('whatsapp/show/'. $data['id']) ?>" class="btn btn-outline-primary round m-1"><?= $data['jamia_id'] ?> - <?= $data['country_code'] ?></a>
                                             <?php endforeach ?>
                                         <?php endif ?>
                                     </div>
@@ -43,7 +38,7 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h2>
-                                        <?= $title2 ?>
+                                        <?= $title ?>
                                     </h2>
                                 </div>
                                 <div class="card-content collapse show">
@@ -52,36 +47,20 @@
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
-                                                    <th><?= lang('app.malaf') ?></th>
-                                                    <th><?= lang('app.name') ?></th>
-                                                    <th><?= lang('app.iqama') ?></th>
+                                                    <th><?= lang('app.nationality') ?></th>
+                                                    <th><?= lang('app.jamia') ?></th>
+                                                    <th><?= lang('app.link') ?></th>
                                                     <th><?= lang('app.phone') ?></th>
-                                                    <?php if ($type == 'mushrif') : ?>
-                                                        <th><?= lang('app.jamia') ?> - <?= lang('app.nationality') ?></th>
-                                                    <?php elseif ($type == 'nat') : ?>
-                                                        <th><?= lang('app.jamia') ?></th>
-                                                    <?php elseif ($type == 'jamia') : ?>
-                                                        <th><?= lang('app.nationality') ?></th>
-                                                    <?php endif ?>
-                                                    <th><?= lang('app.level') ?></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php foreach ($all as $key => $data) : ?>
+                                                <?php foreach ($whats as $key => $data) : ?>
                                                     <tr>
                                                         <td><?= $key+1 ?></td>
-                                                        <td><a href="<?= base_url('admin/show/' . $data['id']) ?>" class="badge badge-pill badge-<?= ($data['role']=='mushrif'?'warning':'info') ?>"><?= sprintf('%04s', $data['malaf']) ?></a></td>
-                                                        <td><span <?= ( $data['role']=='mushrif'?'class="badge badge-success"':'') ?>><?= $data['name'] ?></span></td>
-                                                        <td><?= $data['iqama'] ?></td>
-                                                        <td><a href="tel:+966<?= $data['phone'] ?>" class="badge badge-secondary">966<?= $data['phone'] ?></a></td>
-                                                        <?php if ($type == 'mushrif') : ?>
-                                                            <td><a href="<?= base_url('admin/users/'. $data['nationality'].'/'. $data['jamia']) ?>" class="btn btn-sm round btn-outline-info"><?= $data['uni_name'] ?> - <?= $data['country_arName'] ?></a></td>
-                                                        <?php elseif ($type == 'nat') : ?>
-                                                            <td><?= $data['uni_name'] ?></td>
-                                                        <?php elseif ($type == 'jamia') : ?>
-                                                            <td><?= $data['country_arName'] ?></td>
-                                                        <?php endif ?>
-                                                        <td><?= $data['level'] ?></td>
+                                                        <td><span><?= $data['country_code'] ?></span></td>
+                                                        <td><?= $data['jamia_id'] ?></td>
+                                                        <td><a href="<?= $data['link'] ?>" class="badge badge-secondary"><?= lang('app.whatsapp') ?></a></td>
+                                                        <td><?= $data['id'] ?></td>
                                                     </tr>
                                                 <?php endforeach ?>
                                             </tbody>
@@ -143,7 +122,7 @@
                 },
                 'colvis'
         ],
-        responsive: true
+        responsive: false
     });
 </script>
 

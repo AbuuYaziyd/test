@@ -11,6 +11,7 @@ use App\Models\Tanfidh;
 use App\Models\Umrah;
 use App\Models\University;
 use App\Models\User;
+use App\Models\Whatsapp;
 
 class AdminController extends BaseController
 {
@@ -120,6 +121,7 @@ class AdminController extends BaseController
     {
         $user = new User();
         $nat = new Country();
+        $what = new Whatsapp();
 
         $data['title'] = lang('app.mushrifuna').' - '.$nat->where('country_code' , $nt)->first()['country_arName'];
         $data['type'] = 'nat';
@@ -132,6 +134,7 @@ class AdminController extends BaseController
                             ->join('countries n', 'n.country_code=users.nationality')
                             ->join('universities u', 'u.uni_id=users.jamia')
                             ->findAll();
+        $data['whats'] = $what->where('country_code', $nt)->first();
         // dd($data);
 
         if (session('role') == 'admin') {
