@@ -12,7 +12,7 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h2>
-                                        <?= $title ?>
+                                        <?= $title ?> <span class="badge badge-info badge-pill"><?= count($jamia) ?></span>
                                     </h2>
                                 </div>
                                 <div class="card-content collapse show">

@@ -57,6 +57,7 @@ class AdminController extends BaseController
             }
         }
         $data['jamia'] = $m;
+        $data['uni'] = $uni->findAll();
         // dd($data);
 
         if (session('role') == 'admin') {

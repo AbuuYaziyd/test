@@ -15,7 +15,7 @@
                                     <h2>
                                         <?= $mushrif['name'] ?> <a href="tel:/+966<?= $mushrif['phone'] ?>" class="badge badge-warning badge-pill">966<?= $mushrif['phone'] ?></a>
                                         <?php if (isset($whats)) : ?>
-                                            <a class="btn btn-outline-success box-shadow-1 round pull-right" href="https://wa.me/966<?= $mushrif['phone'] ?>" target="_blank"><?= lang('app.whatsapp') ?> - <?= lang('app.mushrif') ?></a>
+                                            <a class="btn btn-outline-success box-shadow-1 round pull-left" href="https://wa.me/966<?= $mushrif['phone'] ?>" target="_blank"><?= lang('app.whatsapp') ?> - <?= lang('app.mushrif') ?></a>
                                         <?php endif ?>
                                     </h2>
                                 </div>
@@ -32,7 +32,7 @@
                                     <h2>
                                         <?= $title ?> <span class="badge badge-info badge-pill"><?= count($users) ?></span>
                                         <?php if (isset($whats)) : ?>
-                                            <a class="btn btn-success box-shadow-1 round pull-right" href="<?= $whats['link'] ?>" target="_blank"><?= lang('app.whatsapp') ?> - <?= lang('app.group') ?></a>
+                                            <a class="btn btn-success box-shadow-1 round pull-left" href="<?= $whats['link'] ?>" target="_blank"><?= lang('app.whatsapp') ?> - <?= lang('app.group') ?></a>
                                         <?php endif ?>
                                     </h2>
                                 </div>
@@ -46,7 +46,7 @@
                                                     <th><?= lang('app.iqama') ?></th>
                                                     <th><?= lang('app.phone') ?></th>
                                                     <?php if ($type == 'mushrif') : ?>
-                                                        <th><?= lang('app.jamia') ?> - <?= lang('app.nationality') ?></th>
+                                                        <th><?= lang('app.jamia') ?> - <?= lang('app.nationality') ?>  (<?= lang('app.link') ?>)</th>
                                                     <?php endif ?>
                                                 </tr>
                                             </thead>

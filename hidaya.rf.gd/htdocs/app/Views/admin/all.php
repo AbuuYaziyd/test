@@ -15,7 +15,7 @@
                                 </div>
                                 <div class="card-content collapse show">
                                     <div class="card-body card-dashboard">
-                                        <table class="table table-striped table-bordered dataex-res-constructor">
+                                        <table class="table table-striped table-bordered responsive">
                                             <thead>
                                                 <tr>
                                                     <th style="width: 5px;">#</th>

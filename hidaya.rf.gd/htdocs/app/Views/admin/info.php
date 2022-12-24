@@ -120,7 +120,7 @@
                                 <h6><?= lang('app.tasrihs') ?></h6>
                             </div>
                             <div>
-                                <i class="icon-doc info font-large-3 float-right"></i>
+                                <i class="icon-docs info font-large-3 float-right"></i>
                             </div>
                         </div>
                         <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
