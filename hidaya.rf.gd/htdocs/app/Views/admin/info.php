@@ -176,27 +176,3 @@
         </a>
     </div>
 </div>
-<div class="row">
-    <div class="col-md-3">
-        <a href="https://abuuyaziyd.github.io/test/admin/index.html">
-            <div class="card pull-up">
-                <div class="card-content">
-                    <div class="card-body">
-                        <div class="media d-flex">
-                            <div class="media-body text-left">
-                                <h3 class="info"><?= $full ?></h3>
-                                <h6><?= lang('app.howTo') ?></h6>
-                            </div>
-                            <div>
-                                <i class="icon-info info font-large-2 float-right"></i>
-                            </div>
-                        </div>
-                        <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
-                            <div class="progress-bar bg-gradient-x-info" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </div>
-</div>
