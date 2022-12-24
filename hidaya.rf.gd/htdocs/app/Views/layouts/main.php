@@ -34,6 +34,8 @@
     <link rel="stylesheet" type="text/css"strtotime href="<?= base_url('app-assets/css-rtl/core/colors/palette-gradient.css') ?> ">
     <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/vendors/css/cryptocoins/cryptocoins.css') ?> ">
     <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/vendors/css/charts/apexcharts.css') ?> ">
+    <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/fonts/line-awesome/css/line-awesome.min.css') ?> ">
+    <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/fonts/simple-line-icons/style.css') ?> ">
     <!-- END: Page CSS-->
 
     <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/vendors/css/extensions/sweetalert2.min.css') ?>">

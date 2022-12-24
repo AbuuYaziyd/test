@@ -46,7 +46,23 @@
     data-menu="vertical-menu-modern" data-col="2-columns">
 
     <!-- BEGIN: Header-->
-    <div data-include="inc/sidebar.html"></div>
+    <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
+        <div class="main-menu-content">
+            <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+                <li class=" nav-item">
+                    <a href="index.html">
+                        <i class="icon-home"></i> <span class="menu-title">بـــــدايـــــة </span>
+                    </a>
+                </li>
+                <li class="active nav-item">
+                    <a href="dashboard.html">
+                        <i class="icon-settings spinner"></i> <span class="menu-title"
+                            data-i18n="الــــــرئيسي">الــــــرئيسي </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
     <!-- END: Header-->
 
     <!-- BEGIN: Main Menu-->
@@ -58,8 +74,8 @@
                     <li class="nav-item mobile-menu d-lg-none mr-auto"><a
                             class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i
                                 class="ft-menu font-large-1"></i></a></li>
-                    <li class="nav-item mr-auto"><a class="navbar-brand" href="https://hidaya.rf.gd"
-                            target="_blank"><img class="brand-logo" alt="logo" src="../app-assets/images/logo/logo.png">
+                    <li class="nav-item mr-auto"><a class="navbar-brand" href="https://hidaya.rf.gd" target="_blank"><img
+                                class="brand-logo" alt="logo" src="../app-assets/images/logo/logo.png">
                             <h3 class="brand-text">هدية الحج والعمرة</h3>
                         </a></li>
                 </ul>
@@ -74,8 +90,7 @@
                         </li>
                     </ul>
                     <ul class="nav navbar-nav float-right">
-                        <a href="https://hidaya.rf.gd" class="btn btn-outline-success round mt-1" target="_blank">برمج
-                            هدية
+                        <a href="https://hidaya.rf.gd" class="btn btn-outline-success round mt-1" target="_blank">برمج هدية
                             الحج
                             والعمرة</a>
                     </ul>
@@ -101,13 +116,12 @@
                 <div class="row m-1">
                     <div class="col-12 card">
                         <div class="card-header">
-                            <h4 id="basic-forms">ما هي<b> برمج هدية الحج والعمرة للطلاب؟</b></h4>
+                            <h4 id="basic-forms"><b> صفحة الــــــــــرئيسي</b></h4>
                         </div>
                         <div class="card-content collapse show" aria-expanded="true">
                             <div class="card-body">
-                                <p class="card-text"> هدية الحج والعمرة للطلاب : هي البرمج وضع ليسهل أمر التنفيذ العمرة
-                                    البدل للطلاب
-                                    والمشرفين والمدراء <br><br>
+                                <p class="card-text"> في هذه الصفحة تجد فيها روابط التي ستستعملها في هذا الموقع مثل :<br><br>
+                                    - طلاب: هنا تجد كشف لعدد الطلاب ومعلوماته<br>
                                     <hr>
                                     في وقت الحالي الموقع موجود في:
                                     <a href="https://hidaya.rf.gd" class="btn btn-sm btn-outline-info round"
@@ -115,16 +129,13 @@
                                 </p>
                                 <p><strong>يوم التنشيط:</strong> 25/11/2022 <br>
                                     <strong>مصمم:</strong>
-                                    <a href="http://t.me/abouyaziyd" class="btn btn-sm round btn-outline-info"
-                                        target="_blank">أبو
+                                    <a href="http://t.me/abouyaziyd" class="btn btn-sm round btn-outline-info" target="_blank">أبو
                                         يزيد</a>
                                 </p>
                                 <hr>
-                                <p style="text-align: center;"><strong>للمساعدة:</strong> تواصل مع مشرفك - الله يبارك
-                                    فيكم -</p>
+                                <p style="text-align: center;"><strong>للمساعدة:</strong> تواصل مع مشرفك - الله يبارك فيكم -</p>
                                 <hr>
-                                <p class="card-text" style="text-align: center;"><b>للتفاصيل الأخرى أنظر في جهة اليمنى
-                                        أو اضغط على ثلاثة أصطر في فوقية جنب اليمنى</b></p>
+                                <p class="card-text" style="text-align: center;"><b>للتفاصيل الأخرى أنظر في جهة اليمنى أو اضغط على ثلاثة أصطر في فوقية جنب اليمنى</b></p>
                                 </p>
                             </div>
                         </div>
@@ -139,7 +150,15 @@
     <div class="drag-target"></div>
 
     <!-- BEGIN: Footer-->
-    <div data-include="inc/footer.html"></div>
+    <footer class="footer footer-static footer-light navbar-border navbar-shadow">
+        <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2">
+            <span class="float-md-left d-block d-md-inline-block">جميع الحقوق محفوظة &copy; 2022
+                <a class="text-bold-800 grey darken-2" href="https://t.me/abouyaziyd" target="_blank">أبو يزيد</a>
+            </span><span class="float-md-right d-none d-lg-block"><a href="https://hidaya.rf.gd" target="_blank"
+                    rel="noopener noreferrer">برمج هدية الحج والعمرة</a><i class="ft-heart pink"></i><span
+                    id="scroll-top"></span></span>
+        </p>
+    </footer>
     <!-- END: Footer-->
 
 

@@ -10,7 +10,7 @@
                                 <h6><?= lang('app.students') ?></h6>
                             </div>
                             <div>
-                                <i class="icon-users info font-large-2 float-right"></i>
+                                <i class="icon-users info font-large-3 float-right"></i>
                             </div>
                         </div>
                         <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
@@ -32,7 +32,7 @@
                                 <h6><?= lang('app.jamiat') ?></h6>
                             </div>
                             <div>
-                                <i class="icon-users purple font-large-2 float-right"></i>
+                                <i class="icon-graduation purple font-large-3 float-right"></i>
                             </div>
                         </div>
                         <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
@@ -54,7 +54,7 @@
                                 <h6><?= lang('app.nationalities') ?></h6>
                             </div>
                             <div>
-                                <i class="icon-users amber font-large-2 float-right"></i>
+                                <i class="icon-flag amber font-large-3 float-right"></i>
                             </div>
                         </div>
                         <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
@@ -76,7 +76,7 @@
                                 <h6><?= lang('app.mushrifuna') ?></h6>
                             </div>
                             <div>
-                                <i class="icon-pie-chart warning font-large-2 float-right"></i>
+                                <i class="icon-trophy warning font-large-3 float-right"></i>
                             </div>
                         </div>
                         <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
@@ -98,7 +98,7 @@
                                 <h6><?= lang('app.judud') ?></h6>
                             </div>
                             <div>
-                                <i class="icon-user-follow success font-large-2 float-right"></i>
+                                <i class="icon-user-follow success font-large-3 float-right"></i>
                             </div>
                         </div>
                         <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
@@ -120,7 +120,7 @@
                                 <h6><?= lang('app.tasrihs') ?></h6>
                             </div>
                             <div>
-                                <i class="icon-heart info font-large-2 float-right"></i>
+                                <i class="icon-doc info font-large-3 float-right"></i>
                             </div>
                         </div>
                         <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
@@ -142,7 +142,7 @@
                                 <h6><?= lang('app.tanfidh') ?></h6>
                             </div>
                             <div>
-                                <i class="icon-heart primary font-large-2 float-right"></i>
+                                <i class="icon-pointer primary font-large-3 float-right"></i>
                             </div>
                         </div>
                         <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
@@ -164,7 +164,7 @@
                                 <h6><?= lang('app.allHadiya') ?></h6>
                             </div>
                             <div>
-                                <i class="icon-user-follow secondary font-large-2 float-right"></i>
+                                <i class="icon-directions secondary font-large-3 float-right"></i>
                             </div>
                         </div>
                         <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
