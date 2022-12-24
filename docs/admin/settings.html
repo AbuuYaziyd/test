@@ -34,7 +34,6 @@
     <link rel="stylesheet" type="text/css" href="../app-assets/vendors/css/charts/jquery-jvectormap-2.0.3.css">
     <link rel="stylesheet" type="text/css" href="../app-assets/vendors/css/charts/morris.css">
     <link rel="stylesheet" type="text/css" href="../app-assets/fonts/simple-line-icons/style.css">
-    <link rel="stylesheet" type="text/css" href="../app-assets/fonts/line-awesome/css/line-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="../app-assets/css-rtl/core/colors/palette-gradient.css">
     <!-- END: Page CSS-->
 
@@ -50,9 +49,9 @@
     <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-                <li class="active nav-item">
+                <li class=" nav-item">
                     <a href="index.html">
-                        <i class="icon-bulb"></i> <span class="menu-title">بـــــدايـــــة </span>
+                        <i class="icon-bulb"></i> <span class="menu-title" data-i18n="بـــــدايـــــة">بـــــدايـــــة </span>
                     </a>
                 </li>
                 <li class=" nav-item">
@@ -61,7 +60,7 @@
                             data-i18n="الــــــرئيسي">الــــــرئيسي </span>
                     </a>
                 </li>
-                <li class=" nav-item">
+                <li class="active nav-item">
                     <a href="settings.html">
                         <i class="icon-settings spinner"></i> <span class="menu-title" data-i18n="إعدادات">إعدادات </span>
                     </a>
@@ -80,8 +79,8 @@
                     <li class="nav-item mobile-menu d-lg-none mr-auto"><a
                             class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i
                                 class="ft-menu font-large-1"></i></a></li>
-                    <li class="nav-item mr-auto"><a class="navbar-brand" href="https://hidaya.rf.gd" target="_blank"><img
-                                class="brand-logo" alt="logo" src="../app-assets/images/logo/logo.png">
+                    <li class="nav-item mr-auto"><a class="navbar-brand" href="https://hidaya.rf.gd"
+                            target="_blank"><img class="brand-logo" alt="logo" src="../app-assets/images/logo/logo.png">
                             <h3 class="brand-text">هدية الحج والعمرة</h3>
                         </a></li>
                 </ul>
@@ -96,7 +95,8 @@
                         </li>
                     </ul>
                     <ul class="nav navbar-nav float-right">
-                        <a href="https://hidaya.rf.gd" class="btn btn-outline-success round mt-1" target="_blank">برمج هدية
+                        <a href="https://hidaya.rf.gd" class="btn btn-outline-success round mt-1" target="_blank">برمج
+                            هدية
                             الحج
                             والعمرة</a>
                     </ul>
@@ -122,26 +122,50 @@
                 <div class="row m-1">
                     <div class="col-12 card">
                         <div class="card-header">
-                            <h4 id="basic-forms">ما هي<b> برمج هدية الحج والعمرة للطلاب؟</b></h4>
+                            <h4 id="basic-forms"><b> صفحة الــــــــــإعدادات</b></h4>
                         </div>
                         <div class="card-content collapse show" aria-expanded="true">
                             <div class="card-body">
-                                <p class="card-text"> هدية الحج والعمرة للطلاب : هي البرمج وضع ليسهل أمر التنفيذ العمرة البدل للطلاب
-                                    والمشرفين والمدراء <br><br>
-                                    <hr>
+                                <p class="card-text"> في هذه الصفحة تجد فيها روابط التي ستستعملها في هذا الموقع مثل </p>
+                                    :<br><br><hr>
+                                    <p>- <b>طلاب:</b> هنا تجد كشف لعدد الطلاب ومعلوماته أيضا تستطيع طبع معلومات الطالب علي صغتي بي دي أف وأكسيل، أيضا يوجد مجل للبحث. <br><br></p><hr>
+
+                                    <p>- <b>جامعات:</b> هنا تجد كشف الجامعات الموجودة في الموقع حاليا <br> بعد الضغط عن أي اسم من أسماء الجامعة يفتح لك عدد المشرفين والطلاب الموجودين في تلك الجامعة وتستطيع أن تطبع الطلاب على صغتي المذكورة سابقا <br> وإذا ضغطت في الاسم المشرف يأتيك نفس الشيء إلا هذا يكون خاصة لتلك المشرف في تلك الجامعة! و تجد أيضا رابط إلى صفحة المشرف الواتساب ومجموعة الخاصة بهم<br> ثم في هذا الصفحة والصفحة التي فيها نفس القائمة  تستطيع أن تطلع علي بيانات خاصة للطابلب الفلاني بضعط على رقمهم الملف! <br><br></p><hr>
+                                    
+                                    <p>- <b>الجنسيات:</b> هي نفس المعلومات كمن في <b>الجامعات</b> بل هذا تختص عن الجنسيات الموجودة في الموقع الحالي <br><br></p><hr>
+
+                                    <p>- <b>مشرفون: </b>فيها نفس العلومة السابقة لكن هنا تتميز بكشف قائمة المشرفين الحالي وفيه روابط إلى قائمة خاصة بهم <br><br></p><hr>
+
+                                    <p>- <b>طلاب الجدد:</b> كل طالب جديد لازم تنشطهم ويوجد عدة ختطوات <br>
+                                    - يسجل الطالب في الموقع بنفسه 
+                                    - ثم يجدد معلومته من الإقامة ورقم الأيبان 
+                                    - ثم يرفع الملفات كصورة الإقامة 
+                                    - ثم يأتي دور المشرف فيحقق المعلومات ويرسل إالى المدير
+                                    - ثم دور المدير إن شاء يحقق مرة الثانية أم يوثق ما حققه المشرف ونشط الطالب واحد بعد الأخر أو جميعهم في وقت ما <br><br></p><hr>
+
+                                    <p>- <b>التصاريح:</b> في هذا المكان يوجد كل تصاريح للتنفيذ الحالي ويستطيع المدير تحميل كل التصاريح <b>قبل أن تحذف التنفيذ  الذي انتهى أولا يحمل التصاريح في الجهاز كي لا تغالط تصاريح لتنفيذ الجديد من تنفيذ السابق! ويحذف التصاريح السابق </b> في نفس هذا المكان <br></p><hr>
+                                    <div style="text-align: center;"><b>كيفية التنفيذ: انظر في مكانه</b></div><hr>
+
+                                    <p>- <b>هدية العمرة:</b> هنا تحد كشف لكل تنفيذ الذي قد سبق وتم تكميله من بداية استعمال هذا الموقع</p><hr>
+
+                                    <p>- <b>كيفية استعمال الموقع :</b>  كما تجد اسم الرابط لا تحتاج إلى الشرح لكل من مدير ومشرف وطالب له كيفية خاص به!</p><hr>
+
                                     في وقت الحالي الموقع موجود في:
                                     <a href="https://hidaya.rf.gd" class="btn btn-sm btn-outline-info round"
                                         target="_blank">hidaya.rf.gd</a>
                                 </p>
                                 <p><strong>يوم التنشيط:</strong> 25/11/2022 <br>
                                     <strong>مصمم:</strong>
-                                    <a href="http://t.me/abouyaziyd" class="btn btn-sm round btn-outline-info" target="_blank">أبو
+                                    <a href="http://t.me/abouyaziyd" class="btn btn-sm round btn-outline-info"
+                                        target="_blank">أبو
                                         يزيد</a>
                                 </p>
                                 <hr>
-                                <p style="text-align: center;"><strong>للمساعدة:</strong> تواصل مع مشرفك - الله يبارك فيكم -</p>
+                                <p style="text-align: center;"><strong>للمساعدة:</strong> تواصل مع مشرفك - الله يبارك
+                                    فيكم -</p>
                                 <hr>
-                                <p class="card-text" style="text-align: center;"><b>للتفاصيل الأخرى أنظر في جهة اليمنى أو اضغط على ثلاثة أصطر في فوقية جنب اليمنى</b></p>
+                                <p class="card-text" style="text-align: center;"><b>للتفاصيل الأخرى أنظر في جهة اليمنى
+                                        أو اضغط على ثلاثة أصطر في فوقية جنب اليمنى</b></p>
                                 </p>
                             </div>
                         </div>
