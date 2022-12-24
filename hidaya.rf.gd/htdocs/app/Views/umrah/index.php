@@ -42,7 +42,7 @@
                             <?php endif ?>
                         </b>
                         <?php if (session('role') != 'user' && $umrah != null) : ?>
-                        <a class="btn btn-outline-success box-shadow-2 round pull-right" href="<?= base_url('mushrif/tasrih') ?>">
+                        <a class="btn btn-outline-success box-shadow-2 round pull-left" href="<?= base_url('mushrif/tasrih') ?>">
                             <?= lang('app.tasrih') ?></a>
                         <?php endif ?>
                     </h3>

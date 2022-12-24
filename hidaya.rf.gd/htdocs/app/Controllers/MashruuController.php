@@ -122,7 +122,7 @@ class MashruuController extends BaseController
                 $data = [
                     'status' => 1,
                     'userId' => $tanfidh[$key]['id'],
-                    'amount' => ($tanfidh[$key]['role']=='mushrif'?350:250),
+                    'amount' => 250,//($tanfidh[$key]['role']=='mushrif'?350:250),
                     'date' => date("Y-m-d", strtotime($tanfidh[$key]['tnfdhDate'])),
                     'bank' => $tanfidh[$key]['bank'],
                     'mushrif' => $tanfidh[$key]['mushrif'],
@@ -146,7 +146,7 @@ class MashruuController extends BaseController
         }
         // dd($data2);
         
-        return redirect()->to('mashruu/add')->with('type', 'success')->with('text', lang('app.doneSuccess'))->with('title', lang('app.success'));
+        return redirect()->back()->with('type', 'success')->with('text', lang('app.doneSuccess'))->with('title', lang('app.success'));
     }
 
     public function delete()

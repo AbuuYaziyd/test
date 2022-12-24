@@ -47,7 +47,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <h2>
-                                    <b><?= $title ?></b> 
+                                    <b><?= $title ?> fghj</b> 
                                     <span class="badge badge badge-info badge-pill mr-2"><?= $tanfidh ?></span>
                                     <?php if ($tanfidh>0) : ?>
                                         <div class="btn-group pull-left" role="group" aria-label="Basic example">
@@ -140,9 +140,6 @@
     </div>
 </div>
 
-<?= $this->endSection() ?>
-<?= $this->include('layouts/table') ?>
-<?= $this->section('scripts') ?>
 <script>
     (function (window, document, $) {
         'use strict';
@@ -182,3 +179,4 @@
     });
 </script>
 <?= $this->endSection() ?>
+<?= $this->include('layouts/table') ?>
