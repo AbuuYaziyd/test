@@ -8,7 +8,7 @@ class Bank extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'banks';
-    protected $primaryKey       = 'id';
+    protected $primaryKey       = 'bankId';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';

@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\Country;
+use App\Models\Data;
 use App\Models\Image;
 use App\Models\Mashruu;
 use App\Models\Setting;
@@ -425,35 +426,12 @@ class AdminController extends BaseController
 
     public function tanfidh()
     {
-        helper('form');
-
-        $tan = new Mashruu();
-        $umr = new Umrah();
+        $dt = new Data();
 
         $data['title'] = lang('app.tanfidh');
-        $data['all'] = $tan
-                        ->join('banks b', 'b.bankId=mashruu.bank')
-                        ->join('universities v', 'v.uni_id=mashruu.jamia')
-                        ->join('countries c', 'c.country_code=mashruu.nation')
-                        ->join('users u', 'u.id=mashruu.userId')
-                        ->findAll();
-        $data['new0'] = $tan
-                        ->join('banks b', 'b.bankId=mashruu.bank')
-                        ->join('countries c', 'c.country_code=mashruu.nation')
-                        ->join('universities v', 'v.uni_id=mashruu.jamia')
-                        ->join('users u', 'u.id=mashruu.userId')
-                        ->where('mashruu.status', 1)
-                        ->findAll();
-        $data['new1'] = $tan
-                        ->where('mashruu.status', 0)
-                        ->findAll();
-        $data['tanfidh'] = $umr->where('tnfdhStatus', 1)->countAllResults();
-        $data['tan'] = $tan
-                        ->join('users u', 'u.id=mashruu.userId')
-                        ->join('universities v', 'v.uni_id=mashruu.jamia')
-                        ->join('countries c', 'c.country_code=mashruu.nation')
-                        ->findAll();
-        dd($data);
+        $data['all'] = $dt->where('month(created_at) >', date('m'))->findAll();
+        $data['month'] = $dt->where('month(created_at)', date('m'))->findAll();
+        // dd($data);
 
         return view('mashruu/tanfidh', $data);
     }

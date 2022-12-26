@@ -36,13 +36,8 @@ class MashruuController extends BaseController
                         ->where('mashruu.status', null)
                         ->findAll();
         $data['tanfidh'] = $umr->where('tnfdhStatus', '0')->countAllResults();
-        $data['tan'] = $tan
-                        ->join('users u', 'u.id=mashruu.userId')
-                        ->join('mashruu m', 'm.userId=tanfidh.userId')
-                        ->join('universities v', 'v.uni_id=mashruu.jamia')
-                        ->join('countries c', 'c.country_code=mashruu.nation')
-                        ->findAll();
-        dd($data);
+        $data['delete'] = $umr->where('tnfdhStatus', 'done')->countAllResults() == $umr->countAllResults();
+        // dd($data);
 
         return view('mashruu/index', $data);
     }
@@ -153,12 +148,11 @@ class MashruuController extends BaseController
     public function delete()
     {
         $mash = new Mashruu();
+        $tan = new Umrah();
+        
+        
+        $ok = [$tan->emptyTable(),$mash->emptyTable()];
 
-        $umra = $mash->where('status', 0)->findAll();
-
-        foreach ($umra as $dt) {
-            $ok = $mash->delete($dt['id']);
-        }
         
         if ($ok) {
             return redirect()->to('tanfidh')->with('type', 'success')->with('text', lang('app.doneSuccess'))->with('title', lang('app.ok'));
@@ -233,6 +227,7 @@ class MashruuController extends BaseController
         // dd(count(directory_map('app-assets/images/tasrih')));
         if (file_exists($tasrih)) {
             unlink($tasrih);
+            delete_files('app-assets/images/tasrih', true);
         } elseif (count(directory_map('app-assets/images/tasrih'))>0) {
             delete_files('app-assets/images/tasrih', true);
         }

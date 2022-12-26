@@ -91,7 +91,7 @@
                                 <h2>
                                     <b><?= $title ?> <?= lang('app.now') ?> 
                                     <span class="badge badge badge-info badge-pill mr-2"><i class="icon-settings spinner"></i></span></b>
-                                        <a href="<?= base_url('tanfidh/delete') ?>" class="btn pull-left round btn-danger delete"><?= lang('app.delete') ?></a>
+                                        <a href="<?= base_url('tanfidh/delete') ?>" class="btn pull-left round btn-danger delete <?= $delete!=true?'disabled':'' ?>"><?= lang('app.delete') ?></a>
                                 </h2>
                             </div>
                             <div class="card-content collapse show">
@@ -156,7 +156,7 @@
         url = $(this).attr('href');
         Swal.fire({
             title: 'هل ترييد أن تحذف؟',
-            text: "جميع ما أضفته هنا!",
+            text: "جميع البينات! \n 1) أنزلت ملف اكسيل؟ \n 2) أنزلت جميع التصاريح في صفحة التصارح وحذفته بعد التنزيل؟",
             type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',

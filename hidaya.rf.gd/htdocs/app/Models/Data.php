@@ -7,14 +7,30 @@ use CodeIgniter\Model;
 class Data extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'datas';
+    protected $table            = 'data';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = [
+        'name',
+        'iqama',
+        'phone',
+        'jamia',
+        'nation',
+        'iban',
+        'bank',
+        'mushrif',
+        'amount',
+        'ism',
+        'sabab',
+        'miqat',
+        'makkah',
+        'malaf',
+        'date',
+    ];
 
     // Dates
     protected $useTimestamps = false;

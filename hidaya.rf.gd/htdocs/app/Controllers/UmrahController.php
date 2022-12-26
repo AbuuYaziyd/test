@@ -3,8 +3,9 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\Bank;
 use App\Models\Country;
-use App\Models\Mashruu;
+use App\Models\Data;
 use App\Models\Setting;
 use App\Models\Umrah;
 use App\Models\University;
@@ -184,7 +185,7 @@ class UmrahController extends BaseController
         $ok = $umrah->update($id, $data);
 
         if ($ok) {
-            return redirect()->to('umrah')->with('type', 'success')->with('text', lang('app.locSentMakka'))->with('title', lang('app.success'));
+            return redirect()->to('umrah')->with('type', 'success')->with('text', lang('app.locSentMiqat'))->with('title', lang('app.success'));
         } else {
             return redirect()->to('umrah')->with('type', 'error')->with('text', lang('app.error'))->with('title', lang('app.sorry'));
         }
@@ -193,36 +194,45 @@ class UmrahController extends BaseController
     public function makkah($id)
     {
         $umrah = new Umrah();
+        $usr = new User();
+        $jamia = new University();
+        $ntn = new Country();
+        $bnk = new Bank();
+        $dt = new Data();
 
         $data = [
             'makkah' => $this->request->getVar('makkah'),
             'tnfdhStatus' => 'done',
         ];
+        $umrah->update($id, $data);
+
+        $u = $umrah->find($id);
+        $user = $usr->find($u['userId']);
         $data1 = [
-            'name',
-            'phone',
-            'jamia',
-            'country',
-            'iban',
-            'bank',
-            'mushrif',
-            'amount',
-            'ism',
-            'sabab',
-            'amount',
-            'malaf',
+            'name' => $user['name'],
+            'iqama' => $user['iqama'],
+            'phone' => $user['phone'],
+            'jamia' => $jamia->find($user['jamia'])['uni_name'],
+            'nation' => $ntn->where('country_code', $user['nationality'])->first()['country_arName'] ,
+            'iban' => $user['iban'],
+            'bank' => $bnk->find($user['bank'])['bankName']. ' - '.$bnk->find($user['bank'])['bankShort'],
+            'mushrif' => $usr->find($user['mushrif'])['name'],
+            'ism' => $u['tnfdhName'],
+            'sabab' => $u['tnfdhSabab'],
+            'amount' => $u['tanfdhAmount'],
+            'miqat' => $u['miqat'],
+            'makkah' => $u['makkah'],
+            'date' => $u['tnfdhDate'],
+            'malaf' => $user['malaf'],
         ];
-        $data = $umrah->find($id);
-        dd($data1);
+        // dd($data1);
 
-        // $ok = [
-        //     $umrah->update($id, $data),
-        // ];
+        $ok = $dt->insert($data1);
 
-        // if ($ok) {
-        //     return redirect()->to('umrah')->with('type', 'success')->with('text', lang('app.locSentMiqat'))->with('title', lang('app.success'));
-        // } else {
-        //     return redirect()->to('umrah')->with('type', 'error')->with('text', lang('app.error'))->with('title', lang('app.sorry'));
-        // }
+        if ($ok) {
+            return redirect()->to('umrah')->with('type', 'success')->with('text', lang('app.locSentMakkah'))->with('title', lang('app.success'));
+        } else {
+            return redirect()->to('umrah')->with('type', 'error')->with('text', lang('app.error'))->with('title', lang('app.sorry'));
+        }
     }
 }
