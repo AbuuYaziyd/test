@@ -453,7 +453,7 @@ class AdminController extends BaseController
                         ->join('universities v', 'v.uni_id=mashruu.jamia')
                         ->join('countries c', 'c.country_code=mashruu.nation')
                         ->findAll();
-        // dd($data);
+        dd($data);
 
         return view('mashruu/tanfidh', $data);
     }

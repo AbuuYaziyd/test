@@ -33,15 +33,16 @@ class MashruuController extends BaseController
                         ->where('mashruu.status', 1)
                         ->findAll();
         $data['new1'] = $tan
-                        ->where('mashruu.status', 0)
+                        ->where('mashruu.status', null)
                         ->findAll();
-        $data['tanfidh'] = $umr->where('tnfdhStatus', 1)->countAllResults();
+        $data['tanfidh'] = $umr->where('tnfdhStatus', '0')->countAllResults();
         $data['tan'] = $tan
                         ->join('users u', 'u.id=mashruu.userId')
+                        ->join('mashruu m', 'm.userId=tanfidh.userId')
                         ->join('universities v', 'v.uni_id=mashruu.jamia')
                         ->join('countries c', 'c.country_code=mashruu.nation')
                         ->findAll();
-        // dd($data);
+        dd($data);
 
         return view('mashruu/index', $data);
     }
@@ -115,8 +116,8 @@ class MashruuController extends BaseController
         $umr = new Umrah();
         $mash = new Mashruu();
 
-        $tanfidh = $umr->where('tnfdhStatus', 1)->join('users u', 'u.id=tanfidh.userId')->findAll();
-        $swah = $mash->where('status', 0)->findAll();
+        $tanfidh = $umr->where('tnfdhStatus', '0')->join('users u', 'u.id=tanfidh.userId')->findAll();
+        $swah = $mash->where('status', null)->findAll();
         foreach ($swah as $key => $dt) {
             if (count($tanfidh)>$key) {
                 $data = [
@@ -144,7 +145,7 @@ class MashruuController extends BaseController
                 $umr->update($tanfidh[$key]['tnfdhId'], $data2);
             }
         }
-        // dd($data2);
+        // dd($tanfidh);
         
         return redirect()->back()->with('type', 'success')->with('text', lang('app.doneSuccess'))->with('title', lang('app.success'));
     }
@@ -168,7 +169,6 @@ class MashruuController extends BaseController
     {
         $tanfidh = new Umrah();
         $user = new User();
-        $tsrh = new Tanfidh();
 
         $umrah = $tanfidh->where(['tnfdhStatus' => 1])
                         ->join('users us', 'us.id=tanfidh.userid')
@@ -190,7 +190,7 @@ class MashruuController extends BaseController
 
         $data['title'] = lang('app.tasrihs');
         $data['umrah'] = $ok;
-        $data['tasrih'] = $tsrh->join('users s', 's.id=tanfidh.userId')
+        $data['tasrih'] = $tanfidh->join('users s', 's.id=tanfidh.userId')
                             ->join('countries c', 'c.country_code=s.nationality')
                             ->join('universities u', 'u.uni_id=s.jamia')
                             ->findAll();
@@ -211,13 +211,12 @@ class MashruuController extends BaseController
         $date = date('d-m-Y', strtotime($set->where('info', 'tasrihDate')->first()['extra']));
         $source = 'app-assets/images/tasrih';
         $destination = FCPATH.$date;
-        $ok = $user->zip_creation($source, $destination);
-        // dd(FCPATH . $date.'.zip');
-        if (!$ok) {
-            return redirect()->to('tanfidh/tasrih')->with('type', 'error')->with('text', lang('app.errorOccured'))->with('title', lang('app.sorry'));
-        } else {
-            return $this->response->download(FCPATH . $date.'.zip', null);
-        }
+        $user->zip_creation($source, $destination);
+        // dd($user->zip_creation($source, $destination));
+        //     return redirect()->to('tanfidh/tasrih')->with('type', 'error')->with('text', lang('app.errorOccured'))->with('title', lang('app.sorry'));
+        // } else {
+        return $this->response->download(FCPATH . $date.'.zip', null);
+        // }
     }
 
     public function tasrihDelete()

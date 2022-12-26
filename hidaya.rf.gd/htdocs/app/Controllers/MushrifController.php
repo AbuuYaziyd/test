@@ -162,7 +162,7 @@ class MushrifController extends BaseController
                 ->join('universities u', 'u.uni_id=users.jamia')
                 ->find(session('id'));
         $mushrif = $mr['id'];
-        $data['tasrih'] = $tanfidh->where(['tanfidh.mushrif' => $mushrif, 'tnfdhStatus' => 0])
+        $data['tasrih'] = $tanfidh->where(['tanfidh.mushrif' => $mushrif, 'tnfdhStatus' => null])
                             ->join('users u', 'u.id=tanfidh.userId')
                             ->findAll();
         $data['title'] = lang('app.tasrih');
@@ -181,7 +181,7 @@ class MushrifController extends BaseController
         $tanfidh = new Umrah();
 
         $data = [
-            'tnfdhStatus' => 1,
+            'tnfdhStatus' => 0,
         ];
         // dd($data);
 
@@ -215,7 +215,7 @@ class MushrifController extends BaseController
 
         $data = [
             'tasrih' => null,
-            'tnfdhStatus' => 0,
+            'tnfdhStatus' => null,
         ];
         // dd($data);
         

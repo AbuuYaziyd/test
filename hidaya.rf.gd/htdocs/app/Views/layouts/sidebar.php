@@ -8,7 +8,7 @@
                     <span class="badge badge badge-info badge-pill float-right mr-2"><?= lang('app.'.session('role')) ?></span>
                 </a>
             </li>
-            <?php if (session('role') === 'admin')  : ?>
+            <?php if (session('role') == 'admin')  : ?>
             <li class="<?= ($title == lang('app.settings') ? 'active' : '') ?> nav-item">
                 <a href="<?= base_url('set') ?>">
                     <i class="la la-cog spinner"></i>
@@ -36,7 +36,7 @@
                 </a>
             </li>
             <?php endif ?>
-            <?php if (session('role') != 'user')  : ?>
+            <?php if (session('role') == 'admin')  : ?>
             <li class="<?= ($title == lang('app.tasrihs') ? 'active' : '') ?> nav-item">
                 <a href="<?= base_url('tanfidh/tasrih') ?>">
                     <i class="la la-file-image-o"></i>

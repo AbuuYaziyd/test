@@ -13,10 +13,8 @@
             <div class="card">
                 <div class="card-header">
                     <h3>
-                        <b>
-                            <?= lang('app.name') ?> <?= lang('app.ism') ?>: <?= $umrah['tnfdhName'] ?>
-                            <span class="btn btn-success box-shadow-2 round pull-right"><?= lang('app.sabab') ?>: <?= $umrah['tnfdhSabab'] ?></span>
-                        </b>
+                        <?= lang('app.name') ?> <?= lang('app.ism') ?>: <b><?= $umrah['tnfdhName'] ?></b>
+                        <span class="btn btn-success box-shadow-2 round pull-left"><?= lang('app.sabab') ?>: <?= $umrah['tnfdhSabab'] ?></span>
                     </h3>
                 </div>
             </div>
@@ -30,9 +28,9 @@
                             <?php if ($umrah) : ?>
                                 <?php if ($umrah['tasrih'] == null) : ?>
                                     <span class="badge badge-danger badge-pill mr-2"><?= lang('app.tasrih') ?></span>
-                                <?php elseif ($umrah['tnfdhStatus'] == 0) : ?>
+                                <?php elseif ($umrah['tnfdhStatus'] == null) : ?>
                                     <span class="badge badge-warning badge-pill mr-2"><?= lang('app.mushrif') ?></span>
-                                <?php elseif ($umrah['tnfdhName'] == null) : ?>
+                                <?php elseif ($umrah['tnfdhStatus'] == 0) : ?>
                                     <span class="badge badge-secondary badge-pill mr-2"><?= lang('app.admin') ?></span>
                                 <?php elseif ($umrah['tnfdhName'] != null && $umrah['makkah'] == null) : ?>
                                     <span type="button" class="btn btn-success round mr-2"><?= lang('app.active') ?></span>

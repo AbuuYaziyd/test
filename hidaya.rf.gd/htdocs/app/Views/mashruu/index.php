@@ -47,7 +47,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <h2>
-                                    <b><?= $title ?> fghj</b> 
+                                    <b><?= $title ?></b> 
                                     <span class="badge badge badge-info badge-pill mr-2"><?= $tanfidh ?></span>
                                     <?php if ($tanfidh>0) : ?>
                                         <div class="btn-group pull-left" role="group" aria-label="Basic example">
@@ -89,7 +89,9 @@
                         <div class="card">
                             <div class="card-header">
                                 <h2>
-                                    <b><?= $title ?> <?= lang('app.now') ?></b>
+                                    <b><?= $title ?> <?= lang('app.now') ?> 
+                                    <span class="badge badge badge-info badge-pill mr-2"><i class="icon-settings spinner"></i></span></b>
+                                        <a href="<?= base_url('tanfidh/delete') ?>" class="btn pull-left round btn-danger delete"><?= lang('app.delete') ?></a>
                                 </h2>
                             </div>
                             <div class="card-content collapse show">

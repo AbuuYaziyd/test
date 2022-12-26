@@ -63,7 +63,7 @@
                         </div>
                     <?php endif ?>
                 </section>
-                <?php if (count($tasrih) > 0) :?>
+                <?php if (count($tasrih) > 0 && session('role') == 'admin') :?>
                     <div class="card">
                         <div class="card-content">
                             <div class="row p-1 m-1">

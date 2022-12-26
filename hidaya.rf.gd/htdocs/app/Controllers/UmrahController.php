@@ -172,31 +172,6 @@ class UmrahController extends BaseController
         return view('umrah/loc',$data);
     }
 
-    public function makkah($id)
-    {
-        $umrah = new Umrah();
-        $mash = new Mashruu();
-
-        $data = [
-            'makkah' => $this->request->getVar('makkah'),
-        ];
-        $data1 = [
-            'status' => 'done',
-        ];
-        // dd($data1);
-
-        $ok = [
-            $umrah->update($id, $data),
-            $mash->update($id, $data1),
-        ];
-
-        if ($ok) {
-            return redirect()->to('umrah')->with('type', 'success')->with('text', lang('app.locSentMiqat'))->with('title', lang('app.success'));
-        } else {
-            return redirect()->to('umrah')->with('type', 'error')->with('text', lang('app.error'))->with('title', lang('app.sorry'));
-        }
-    }
-
     public function miqat($id)
     {
         $umrah = new Umrah();
@@ -209,9 +184,45 @@ class UmrahController extends BaseController
         $ok = $umrah->update($id, $data);
 
         if ($ok) {
-            return redirect()->to('umrah')->with('type', 'success')->with('text', lang('app.locSentMiqat'))->with('title', lang('app.success'));
+            return redirect()->to('umrah')->with('type', 'success')->with('text', lang('app.locSentMakka'))->with('title', lang('app.success'));
         } else {
             return redirect()->to('umrah')->with('type', 'error')->with('text', lang('app.error'))->with('title', lang('app.sorry'));
         }
+    }
+
+    public function makkah($id)
+    {
+        $umrah = new Umrah();
+
+        $data = [
+            'makkah' => $this->request->getVar('makkah'),
+            'tnfdhStatus' => 'done',
+        ];
+        $data1 = [
+            'name',
+            'phone',
+            'jamia',
+            'country',
+            'iban',
+            'bank',
+            'mushrif',
+            'amount',
+            'ism',
+            'sabab',
+            'amount',
+            'malaf',
+        ];
+        $data = $umrah->find($id);
+        dd($data1);
+
+        // $ok = [
+        //     $umrah->update($id, $data),
+        // ];
+
+        // if ($ok) {
+        //     return redirect()->to('umrah')->with('type', 'success')->with('text', lang('app.locSentMiqat'))->with('title', lang('app.success'));
+        // } else {
+        //     return redirect()->to('umrah')->with('type', 'error')->with('text', lang('app.error'))->with('title', lang('app.sorry'));
+        // }
     }
 }
