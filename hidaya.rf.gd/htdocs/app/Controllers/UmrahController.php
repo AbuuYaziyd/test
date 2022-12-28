@@ -210,6 +210,7 @@ class UmrahController extends BaseController
         $user = $usr->find($u['userId']);
         $data1 = [
             'name' => $user['name'],
+            'userId' => $u['userId'],
             'iqama' => $user['iqama'],
             'phone' => $user['phone'],
             'jamia' => $jamia->find($user['jamia'])['uni_name'],

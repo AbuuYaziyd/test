@@ -16,6 +16,7 @@ class Data extends Model
     protected $protectFields    = true;
     protected $allowedFields    = [
         'name',
+        'userId',
         'iqama',
         'phone',
         'jamia',

@@ -13,7 +13,7 @@
                                 <h6 class="text-muted"><?= lang('app.maashaallah') ?></h6>
                             </div>
                             <div class="col-3 text-right">
-                                <h4><?= 0 ?></h4>
+                                <h2><span class="badge badge-warning badge-pill"><?= count($all) ?></span></h2>
                             </div>
                         </div>
                     </div>
@@ -47,7 +47,7 @@
                                 <h6 class="text-muted"><?= lang('app.tabaaraka') ?></h6>
                             </div>
                             <div class="col-2 text-right">
-                                <h4><?= 0 ?></h4>
+                                <h2><span class="badge badge-secondary badge-pill"><?= count($month) ?></span></h2>
                             </div>
                         </div>
                     </div>

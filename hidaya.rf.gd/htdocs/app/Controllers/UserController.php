@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\Bank;
 use App\Models\Country;
+use App\Models\Data;
 use App\Models\Hits;
 use App\Models\Setting;
 use App\Models\User;
@@ -33,6 +34,7 @@ class UserController extends BaseController
 
         $user = new User();
         $set = new Setting();
+        $dt = new Data();
 
         $data['user'] = $user->where('status', 'active')->countAllResults();
         $data['mandub'] = $user->where('role', 'mandub')->countAllResults();
@@ -41,6 +43,8 @@ class UserController extends BaseController
         $data['bank'] = $user->groupBy('bank')->countAllResults();
         $data['set'] = $set->where(['info' => 'tasrihDate', 'extra>=' => date('Y-m-d')])->first();
         $data['title'] = lang('app.dashboard');
+        $data['all'] = $dt->where(['userId' => session('id')])->findAll();
+        $data['month'] = $dt->where(['month(created_at)' => date('m'), 'userId' => session('id')])->findAll();
 
         $role = $user->find(session('id'));
         $auth = password_verify('1234567890', $role['password']);

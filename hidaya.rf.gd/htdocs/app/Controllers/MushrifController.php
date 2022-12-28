@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\Country;
+use App\Models\Data;
 use App\Models\Image;
 use App\Models\Setting;
 use App\Models\Tanfidh;
@@ -21,6 +22,7 @@ class MushrifController extends BaseController
         $user = new User();
         $tanfidh = new Tanfidh();
         $set = new Setting();
+        $dt = new Data();
 
         $role = $user->find(session('id'));
         $data['lead'] = $tanfidh->where('mushrif', session('id'))->countAllResults();
@@ -28,9 +30,11 @@ class MushrifController extends BaseController
         $data['judud0'] = $user->where(['malaf' => null, 'status' => null, 'jamia' => $role['jamia'], 'nationality' => $role['nationality']])->countAllResults();
         $data['judud1'] = $user->where(['malaf' => null, 'status' => 0, 'jamia' => $role['jamia'], 'nationality' => $role['nationality']])->countAllResults();
         $data['set'] = $set->where(['info' => 'tasrihDate', 'extra>=' => date('Y-m-d')])->first();
-        $data['all'] = $user->where(['nationality' => $role['nationality'], 'jamia' => $role['jamia'],'role!=' => 'admin'])->countAllResults();
+        $data['total'] = $user->where(['nationality' => $role['nationality'], 'jamia' => $role['jamia'],'role!=' => 'admin'])->countAllResults();
         $data['full'] = $user->where('role!=', 'admin')->countAllResults();
         $data['title'] = lang('app.dashboard');
+        $data['all'] = $dt->where(['userId' => session('id')])->findAll();
+        $data['month'] = $dt->where(['month(created_at)' => date('m'), 'userId' => session('id')])->findAll();
         // dd($data);
 
         if (session('role') == 'mushrif') {

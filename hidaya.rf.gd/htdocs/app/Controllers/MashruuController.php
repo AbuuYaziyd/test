@@ -220,7 +220,6 @@ class MashruuController extends BaseController
         $set = new Setting();
         $tanfidh = new Tanfidh();
 
-        $tanfidh->emptyTable();
         $date = date('d-m-Y', strtotime($set->where('info', 'tasrihDate')->first()['extra']));
         $tasrih = $date.'.zip';
         // dd(file_exists($tasrih));

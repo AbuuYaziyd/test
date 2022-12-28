@@ -6,7 +6,7 @@
                     <div class="card-body">
                         <div class="media d-flex">
                             <div class="media-body text-left">
-                                <h3 class="info"><?= $all . '/' . $full ?></h3>
+                                <h3 class="info"><?= $total . '/' . $full ?></h3>
                                 <h6><?= lang('app.students') ?></h6>
                             </div>
                             <div>
@@ -14,7 +14,7 @@
                             </div>
                         </div>
                         <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
-                            <div class="progress-bar bg-gradient-x-info" role="progressbar" style="width: <?= ($all / $full) * 100 ?>%" aria-valuenow="<?= ($all / $full) * 100 ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-gradient-x-info" role="progressbar" style="width: <?= ($total / $full) * 100 ?>%" aria-valuenow="<?= ($total / $full) * 100 ?>" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                 </div>
@@ -51,7 +51,7 @@
                         <div class="media d-flex">
                             <div class="media-body text-left">
                                 
-                                    <h3 class="success"><?= $judud0 ?>/<?= $all ?></h3>
+                                    <h3 class="success"><?= $judud0 ?>/<?= $total ?></h3>
                                 <h6><?= lang('app.judud') ?></h6>
                             </div><?php if ($judud1) : ?><span class="danger">(<?= $judud1 ?>)</span><?php endif ?>
                             <div>
@@ -59,7 +59,7 @@
                             </div>
                         </div>
                         <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
-                            <div class="progress-bar bg-gradient-x-success" role="progressbar" style="width: <?= ($judud0 / $all) * 100 ?>%" aria-valuenow="<?= ($judud0 / $all) * 100 ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-gradient-x-success" role="progressbar" style="width: <?= ($judud0 / $total) * 100 ?>%" aria-valuenow="<?= ($judud0 / $total) * 100 ?>" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                 </div>
