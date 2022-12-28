@@ -57,7 +57,7 @@
                                                     <h3 class="<?= $extra<date('Y-m-d')?'danger':'success' ?>"><?= date('d/m/Y', strtotime($extra)) ?></h3>
                                                 </div>
                                                 <div class="align-self-center">
-                                                    <i class="la la-calendar-times-o font-large-3 float-right <?= $extra<date('Y-m-d')?'danger':'success' ?>"></i>
+                                                    <i class="la la-calendar<?= $extra<date('Y-m-d')?'-times-o danger':' success' ?> font-large-3 float-right <?= $extra<date('Y-m-d')?'danger':'success' ?>"></i>
                                                 </div>
                                             </div>
                                         </div>
@@ -79,7 +79,7 @@
                                                     <h3 class="<?= $dt['value']<date('Y-m-d')?'danger':'success' ?>"><?= date('d/m/Y', strtotime($dt['value'])) ?></h3>
                                                 </div>
                                                 <div class="align-self-center">
-                                                    <i class="la la-calendar <?= $dt['value']<date('Y-m-d')?'danger':'success' ?> font-large-3 float-right"></i>
+                                                    <i class="la la-calendar<?= $dt['value']<date('Y-m-d')?'-times-o danger':' success' ?> font-large-3 float-right"></i>
                                                 </div>
                                             </div>
                                         </div>
