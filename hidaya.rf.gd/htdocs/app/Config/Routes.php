@@ -129,8 +129,8 @@ $routes->group('mushrif', function ($routes) {
     $routes->get('tasrih', 'MushrifController::tasrih', ['filter' => 'mushrif']);
     $routes->get('send-tasrih/(:num)', 'MushrifController::sendTasrih/$1', ['filter' => 'mushrif']);
     $routes->get('tasrih-delete/(:num)', 'MushrifController::tasrihDelete/$1', ['filter' => 'mushrif']);
-    // $routes->post('upload/(:num)', 'MushrifController::update/$1', ['filter' => 'mushrif']);
-    // $routes->get('zip/(:any)', 'MushrifController::zip/$1', ['filter' => 'mushrif']);
+    $routes->get('tanfidh', 'MushrifController::tanfidh', ['filter' => 'mushrif']);
+    $routes->get('tanfidh-shahr', 'MushrifController::thisMonthTanfidh', ['filter' => 'mushrif']);
 });
 
 /*

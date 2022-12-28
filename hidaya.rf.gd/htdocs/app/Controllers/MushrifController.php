@@ -228,4 +228,46 @@ class MushrifController extends BaseController
             return redirect()->to('mushrif/tasrih')->with('type', 'success')->with('title', lang('app.done'))->with('text', lang('app.activate') . ' ' . lang('app.tanfidh') . ' ' . lang('app.success'));
         }
     }
+
+    public function tanfidh()
+    {
+        $dt = new Data();
+        $nat = new Country();
+        $usr = new User();
+        $uni = new University();
+        
+        $user = $usr->find(session('id'));
+        $cntry_code = $user['nationality'];
+        $uni_id = $user['jamia'];
+        $nat = $nat->where('country_code', $cntry_code)->first();
+        $uni = $uni->find($uni_id);
+
+        $data['title'] = lang('app.tanfidh');
+        $data['tanfidh'] = $dt->where(['month(created_at)' => date('m'), 'nation' => $nat['country_arName'], 'jamia' => $uni['uni_name']])->findAll();
+        // dd($data);
+        
+        return view('mushrif/full', $data);
+    }
+
+    public function thisMonthTanfidh()
+    {
+        $usr = new User();
+        $dt = new Data();
+        $nat = new Country();
+        $uni = new University();
+        $umra = new Umrah();
+
+        $user = $usr->find(session('id'));
+        $cntry_code = $user['nationality'];
+        $uni_id = $user['jamia'];
+        $nat = $nat->where('country_code', $cntry_code)->first();
+        $uni = $uni->find($uni_id);
+
+        $data['title'] = lang('app.tanfidh').' - '. lang('app.thisMonth');
+        $data['not'] = $umra->where('mushrif', session('id'))->findAll();
+        $data['month'] = $dt->where(['month(created_at)' => date('m'), 'nation' => $nat['country_arName'], 'jamia' => $uni['uni_name']])->findAll();
+        dd($data);
+
+        return view('mushrif/tanfidh', $data);
+    }
 }

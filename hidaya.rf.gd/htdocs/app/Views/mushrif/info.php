@@ -22,14 +22,14 @@
         </a>
     </div>
     <div class="col-xl-3 col-lg-6 col-12">
-        <a href="#">
+        <a href="<?= base_url('mushrif/tanfidh-shahr') ?>">
             <div class="card pull-up">
                 <div class="card-content">
                     <div class="card-body">
                         <div class="media d-flex">
                             <div class="media-body text-left">
                                 <h3 class="warning"><?= $status.'/'.$lead ?></h3>
-                                <h6><?= lang('app.tanfidh') ?></h6>
+                                <h6><?= lang('app.tanfidh') ?> <?= lang('app.thisMonth') ?></h6>
                             </div>
                             <div>
                                 <i class="icon-docs warning font-large-2 float-right"></i>
@@ -67,7 +67,7 @@
         </a>
     </div>
     <div class="col-xl-3 col-lg-6 col-12">
-        <a href="#">
+        <a href="<?= base_url('mushrif/tanfidh') ?>">
             <div class="card pull-up">
                 <div class="card-content">
                     <div class="card-body">
