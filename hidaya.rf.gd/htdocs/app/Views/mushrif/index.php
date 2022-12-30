@@ -5,7 +5,7 @@
     <div class="content-wrapper">
         <div class="content-body">
             <?= $this->include('mushrif/info') ?>
-            <div class="row">
+            <!-- <div class="row"> -->
                 <div class="col-md-3">
                     <a href="https://abuuyaziyd.github.io/test/mushrif/index.html" target="_blank">
                         <div class="card pull-up">

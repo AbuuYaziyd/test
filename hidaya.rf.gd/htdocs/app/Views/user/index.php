@@ -9,7 +9,7 @@
         <div class="content-header row">
         </div>
         <?= $this->include('user/info') ?>
-        <div class="row">
+        <!-- <div class="row"> -->
             <div class="col-md-3">
                 <a href="https://abuuyaziyd.github.io/test/student/index.html" target="_blank">
                     <div class="card pull-up">
