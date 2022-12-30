@@ -26,7 +26,7 @@ class MushrifController extends BaseController
 
         $role = $user->find(session('id'));
         $data['lead'] = $tanfidh->where('mushrif', session('id'))->countAllResults();
-        $data['status'] = $tanfidh->where(['tnfdhStatus' => 'incomplete','mushrif', session('id')])->countAllResults();
+        $data['status'] = $tanfidh->where(['tnfdhStatus' => 'done','mushrif', session('id')])->countAllResults();
         $data['judud0'] = $user->where(['malaf' => null, 'status' => null, 'jamia' => $role['jamia'], 'nationality' => $role['nationality']])->countAllResults();
         $data['judud1'] = $user->where(['malaf' => null, 'status' => 0, 'jamia' => $role['jamia'], 'nationality' => $role['nationality']])->countAllResults();
         $data['set'] = $set->where(['info' => 'tasrihDate', 'extra>=' => date('Y-m-d')])->first();
@@ -266,7 +266,7 @@ class MushrifController extends BaseController
         $data['title'] = lang('app.tanfidh').' - '. lang('app.thisMonth');
         $data['not'] = $umra->where('mushrif', session('id'))->findAll();
         $data['month'] = $dt->where(['month(created_at)' => date('m'), 'nation' => $nat['country_arName'], 'jamia' => $uni['uni_name']])->findAll();
-        dd($data);
+        // dd($data);
 
         return view('mushrif/tanfidh', $data);
     }
