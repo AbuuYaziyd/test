@@ -31,6 +31,8 @@
                                             <th><?= lang('app.amount') ?></th>
                                             <th><?= lang('app.iban') ?></th>
                                             <th><?= lang('app.bank') ?></th>
+                                            <th><?= lang('app.miqat') ?></th>
+                                            <th><?= lang('app.makkah') ?></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -48,6 +50,8 @@
                                                 <td><?= $dt['amount'] ?></td>
                                                 <td><?= $dt['iban'] ?></td>
                                                 <td><?= $dt['bank'] ?></td>
+                                                <td><a href="https://www.latlong.net/c/?lat=<?= $dt['miqatLat'] ?>&long=<?= $dt['miqatLong'] ?>" target="_blank" class="btn btn-sm round btn-primary"><?= lang('app.miqat') ?></a></td>
+                                                <td><a href="https://www.latlong.net/c/?lat=<?= $dt['makkahLat'] ?>&long=<?= $dt['makkahLong'] ?>" target="_blank" class="btn btn-sm round btn-warning"><?= lang('app.makkah') ?></a></td>
                                             </tr>
                                         <?php endforeach ?>
                                     </tbody>
@@ -84,6 +88,8 @@
                                             <th><?= lang('app.amount') ?></th>
                                             <th><?= lang('app.iban') ?></th>
                                             <th><?= lang('app.bank') ?></th>
+                                            <th><?= lang('app.miqat') ?></th>
+                                            <th><?= lang('app.makkah') ?></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -101,6 +107,8 @@
                                                 <td><?= $dt['amount'] ?></td>
                                                 <td><?= $dt['iban'] ?></td>
                                                 <td><?= $dt['bank'] ?></td>
+                                                <td><a href="https://www.latlong.net/c/?lat=<?= $dt['miqatLat'] ?>&long=<?= $dt['miqatLong'] ?>" target="_blank" class="btn btn-sm round btn-primary"><?= lang('app.miqat') ?></a></td>
+                                                <td><a href="https://www.latlong.net/c/?lat=<?= $dt['makkahLat'] ?>&long=<?= $dt['makkahLong'] ?>" target="_blank" class="btn btn-sm round btn-warning"><?= lang('app.makkah') ?></a></td>
                                             </tr>
                                         <?php endforeach ?>
                                     </tbody>

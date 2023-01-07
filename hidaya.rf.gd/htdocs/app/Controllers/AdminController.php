@@ -429,7 +429,7 @@ class AdminController extends BaseController
         $dt = new Data();
 
         $data['title'] = lang('app.tanfidh');
-        $data['all'] = $dt->where('month(created_at) >', date('m'))->findAll();
+        $data['all'] = $dt->findAll();
         $data['month'] = $dt->where('month(created_at)', date('m'))->findAll();
         // dd($data);
 

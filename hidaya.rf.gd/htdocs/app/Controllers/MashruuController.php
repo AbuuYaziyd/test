@@ -25,12 +25,19 @@ class MashruuController extends BaseController
                         ->join('countries c', 'c.country_code=mashruu.nation')
                         ->join('users u', 'u.id=mashruu.userId')
                         ->findAll();
+        $data['new'] = $tan
+                        ->join('banks b', 'b.bankId=mashruu.bank')
+                        ->join('countries c', 'c.country_code=mashruu.nation')
+                        ->join('universities v', 'v.uni_id=mashruu.jamia')
+                        ->join('users u', 'u.id=mashruu.userId')
+                        ->where(['mashruu.status' => 1,'miqatLat!=' => null])
+                        ->findAll();
         $data['new0'] = $tan
                         ->join('banks b', 'b.bankId=mashruu.bank')
                         ->join('countries c', 'c.country_code=mashruu.nation')
                         ->join('universities v', 'v.uni_id=mashruu.jamia')
                         ->join('users u', 'u.id=mashruu.userId')
-                        ->where('mashruu.status', 1)
+                        ->where(['mashruu.status' => 1, 'makkahLat' => null, 'miqatLat' => null])
                         ->findAll();
         $data['new1'] = $tan
                         ->where('mashruu.status', null)
@@ -128,6 +135,7 @@ class MashruuController extends BaseController
                     'phone' => $tanfidh[$key]['phone'],
                     'jamia' => $tanfidh[$key]['jamia'],
                     'iban' => $tanfidh[$key]['iban'],
+                    'mashruuId' => $swah['id'],
                 ];
                 $mash->update($dt['id'], $data);
                 $data2 = [

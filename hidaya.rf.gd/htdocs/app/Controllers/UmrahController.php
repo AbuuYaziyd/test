@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\Bank;
 use App\Models\Country;
 use App\Models\Data;
+use App\Models\Mashruu;
 use App\Models\Setting;
 use App\Models\Umrah;
 use App\Models\University;
@@ -175,14 +176,24 @@ class UmrahController extends BaseController
 
     public function miqat($id)
     {
+        // dd($this->request->getVar());
         $umrah = new Umrah();
+        $mash =  new Mashruu();
 
+        $umr = $umrah->find($id);
         $data = [
-            'miqat' => $this->request->getVar('miqat')
+            'miqatLat' => $this->request->getVar('miqatLat'),
+            'miqatLong' => $this->request->getVar('miqatLong')
         ];
         // dd($data);
-
-        $ok = $umrah->update($id, $data);
+        $umrah->update($id, $data);
+        
+        $data2 = [
+            'miqatLat' => $this->request->getVar('miqatLat'),
+            'miqatLong' => $this->request->getVar('miqatLong')
+        ];
+        // dd($data);
+        $ok = $mash->update($umr['mashruuId'], $data2);
 
         if ($ok) {
             return redirect()->to('umrah')->with('type', 'success')->with('text', lang('app.locSentMiqat'))->with('title', lang('app.success'));
@@ -193,18 +204,30 @@ class UmrahController extends BaseController
 
     public function makkah($id)
     {
+        // dd($this->request->getVar());
         $umrah = new Umrah();
+        $mash = new Mashruu();
         $usr = new User();
         $jamia = new University();
         $ntn = new Country();
         $bnk = new Bank();
         $dt = new Data();
 
+        $umr = $umrah->find($id);
         $data = [
-            'makkah' => $this->request->getVar('makkah'),
+            'makkahLat' => $this->request->getVar('makkahLat'),
+            'makkahLong' => $this->request->getVar('makkahLong'),
             'tnfdhStatus' => 'done',
         ];
+        // dd($data);
         $umrah->update($id, $data);
+        
+        $data2 = [
+            'makkahLat' => $this->request->getVar('makkahLat'),
+            'makkahLong' => $this->request->getVar('makkahLong'),
+        ];
+        // dd($data);
+        $mash->update($umr['mashruuId'], $data2);
 
         $u = $umrah->find($id);
         $user = $usr->find($u['userId']);
@@ -221,8 +244,10 @@ class UmrahController extends BaseController
             'ism' => $u['tnfdhName'],
             'sabab' => $u['tnfdhSabab'],
             'amount' => $u['tanfdhAmount'],
-            'miqat' => $u['miqat'],
-            'makkah' => $u['makkah'],
+            'miqatLat' => $u['miqatLat'],
+            'miqatLong' => $u['miqatLong'],
+            'makkahLat' => $u['makkahLat'],
+            'makkahLong' => $u['makkahLong'],
             'date' => $u['tnfdhDate'],
             'malaf' => $user['malaf'],
         ];

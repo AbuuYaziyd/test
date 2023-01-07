@@ -155,6 +155,7 @@ return [
     'umrahmonth' => 'عمرة في هذا الشهر',
     'noDataFound' => 'لا يوجد أي معلوات هنا',
     'tanfidh' => 'تنفيذ',
+    'start' => 'بدأ',
     'tanfidhDate' => 'تاريخ التنفيذ',
     'tanfidhSettings' => 'إعدادات التنفيذ',
     'tasrihDate' => 'آخر تاريخ ارسال التصاريح',

@@ -69,7 +69,8 @@
                                 <?php elseif ($title == lang('app.miqat')) : ?>
                                     <?= form_open('umrah/miqat/'.$umrah['tnfdhId'], ['id'=>'form']) ?>
                                 <?php endif ?>
-                                    <input type="hidden" name="<?= $title == lang('app.makkah')?'makkah':'miqat' ?>" id="loc">
+                                    <input type="hidden" name="<?= $title == lang('app.makkah')?'makkahLat':'miqatLat' ?>" id="lat">
+                                    <input type="hidden" name="<?= $title == lang('app.makkah')?'makkahLong':'miqatLong' ?>" id="lng">
                                     <button type="submit" id="send" class="btn btn-icon btn-secondary">
                                         <i class="ft ft-check-circle white"></i>
                                         <?= lang('app.send') ?>
@@ -129,9 +130,9 @@
                     .bindPopup("أنت موجود " + radius + " مترات من هنا").openPopup();
                 L.circle(e.latlng, radius).addTo(mapsLeafletUserLocation);
                 document.getElementById("ip").innerHTML = ip.lat + ',' + ip.lng;
-                document.getElementById("loc").value = ip.lat + ',' + ip.lng;
-                // document.getElementById("lat").value = ip.lat;
-                // document.getElementById("lng").value = ip.lng;
+                // document.getElementById("loc").value = ip.lat + ',' + ip.lng;
+                document.getElementById("lat").value = ip.lat;
+                document.getElementById("lng").value = ip.lng;
             }
             mapsLeafletUserLocation.on('locationfound', onLocationFound);
             L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {

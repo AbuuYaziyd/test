@@ -32,9 +32,9 @@
                                     <span class="badge badge-warning badge-pill mr-2"><?= lang('app.mushrif') ?></span>
                                 <?php elseif ($umrah['tnfdhStatus'] == 0) : ?>
                                     <span class="badge badge-secondary badge-pill mr-2"><?= lang('app.admin') ?></span>
-                                <?php elseif ($umrah['tnfdhName'] != null && $umrah['makkah'] == null) : ?>
+                                <?php elseif ($umrah['tnfdhName'] != null && $umrah['makkahLat'] == null) : ?>
                                     <span type="button" class="btn btn-success round mr-2"><?= lang('app.active') ?></span>
-                                <?php elseif ($umrah['makkah'] != null) : ?>
+                                <?php elseif ($umrah['makkahLat'] != null) : ?>
                                     <span type="button" class="btn btn-amber round mr-2"><?= lang('app.ok') ?></span>
                                 <?php endif ?>
                             <?php endif ?>
@@ -65,7 +65,7 @@
                                                 <button type="submit" class="btn btn-icon btn-info round my-2 btn-block btn-lg"><?= lang('app.register') ?></button>
                                             </form>
                                         </div>
-                                    <?php elseif ($umrah['makkah'] == null) : ?>
+                                    <?php elseif ($umrah['makkahLat'] == null) : ?>
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div class="heading-elements">
@@ -76,7 +76,7 @@
                                                 <div class="heading-elements">
                                                     <form action="<?= base_url('umrah/loc/'. $umrah['tnfdhId']) ?>" method="post">
                                                         <input type="hidden" name="locType" value="miqat">
-                                                        <button type="submit" class="btn btn-icon btn-warning round mb-2 btn-block btn-lg" <?= (($umrah['tasrih'] == null || $umrah['tnfdhStatus'] == 0 || $umrah['miqat'] != null|| $umrah['tnfdhName'] == null)?'disabled':'') ?>>
+                                                        <button type="submit" class="btn btn-icon btn-warning round mb-2 btn-block btn-lg" <?= (($umrah['tasrih'] == null || $umrah['tnfdhStatus'] == 0 || $umrah['miqatLat'] != null|| $umrah['tnfdhName'] == null)?'disabled':'') ?>>
                                                             <?= lang('app.miqat') ?>
                                                         </button>
                                                     </form>
@@ -86,7 +86,7 @@
                                                 <div class="heading-elements">
                                                     <form action="<?= base_url('umrah/loc/'. $umrah['tnfdhId']) ?>" method="post">
                                                         <input type="hidden" name="locType" value="makkah">
-                                                        <button type="submit" class="btn btn-icon btn-secondary round mb-2 btn-block btn-lg"  <?= ($umrah['miqat'] == null ? 'disabled' : '') ?>>
+                                                        <button type="submit" class="btn btn-icon btn-secondary round mb-2 btn-block btn-lg"  <?= ($umrah['miqatLat'] == null ? 'disabled' : '') ?>>
                                                             <i class="ft ft-check-circle white"></i> 
                                                             <?= lang('app.makkah') ?>
                                                         </button>
