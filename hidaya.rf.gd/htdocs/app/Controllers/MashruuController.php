@@ -238,6 +238,7 @@ class MashruuController extends BaseController
         } elseif (count(directory_map('app-assets/images/tasrih'))>0) {
             delete_files('app-assets/images/tasrih', true);
         }
+        // dd(count(directory_map('app-assets/images/tasrih')));
         
         return redirect()->to('tanfidh/tasrih')->with('type', 'success')->with('text', lang('app.doneSuccess'))->with('title', lang('app.ok'));
     }

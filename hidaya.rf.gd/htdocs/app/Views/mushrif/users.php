@@ -14,9 +14,9 @@
                                     <h2>
                                         <?= $title ?>
                                         <?php if (isset($whats)) : ?>
-                                            <button class="btn btn-outline-success box-shadow-1 round pull-right"  data-toggle="modal" data-target="#default"><?= lang('app.whatsapp') ?> - <?= lang('app.group') ?></button>
+                                            <button class="btn btn-success box-shadow-1 round pull-left"  data-toggle="modal" data-target="#default"><?= lang('app.whatsapp') ?> - <?= lang('app.group') ?></button>
                                         <?php else : ?>
-                                            <a class="btn btn-danger box-shadow-1 round pull-right" href="<?= base_url('whatsapp') ?>"><?= lang('app.whatsapp') ?> - <?= lang('app.group') ?></a>
+                                            <a class="btn btn-danger box-shadow-1 round pull-left" href="<?= base_url('whatsapp') ?>"><?= lang('app.whatsapp') ?> - <?= lang('app.group') ?></a>
                                         <?php endif ?>
                                     </h2>
                                 </div>
@@ -30,18 +30,16 @@
                                                     <th><?= lang('app.iqama') ?></th>
                                                     <th><?= lang('app.phone') ?></th>
                                                     <th><?= lang('app.level') ?></th>
-                                                    <th><?= lang('app.edit') ?></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php foreach ($users as $key => $data) : ?>
                                                     <tr>
-                                                        <td><span class="badge badge-<?= ( $data['role']=='mushrif'?'success':'') ?>"><?= $data['malaf'] ?></span></td>
+                                                        <td><a href="<?= base_url('mushrif/user/' . $data['id']) ?>" class="badge badge-pill badge-<?= ( $data['role']=='mushrif'?'success':'') ?>"><?= $data['malaf'] ?></a></td>
                                                         <td><?= $data['name'] ?></td>
                                                         <td><?= $data['iqama'] ?></td>
                                                         <td><a href="tel:+966<?= $data['phone'] ?>" class="badge badge-secondary">966<?= $data['phone'] ?></a></td>
                                                         <td><?= $data['level'] ?></td>
-                                                        <td><a href="<?= base_url('mushrif/user/' . $data['id']) ?>" class="btn btn-sm round btn-outline-warning"><?= lang('app.edit') ?></a></td>
                                                     </tr>
                                                 <?php endforeach ?>
                                             </tbody>

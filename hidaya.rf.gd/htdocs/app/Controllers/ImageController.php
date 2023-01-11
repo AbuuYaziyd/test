@@ -16,7 +16,7 @@ class ImageController extends BaseController
         $user = new User();
 
         $data['img'] = $img->where('userId', $_SESSION['id'])->first();
-        $data['user'] = $user->find(session('id'));
+        $data['user'] = $user->join('universities u', 'u.uni_id=users.jamia')->find(session('id'));
         $data['title'] = lang('app.data');
         // dd($data);
 
@@ -67,6 +67,7 @@ class ImageController extends BaseController
 
     public function update($id)
     {    
+        // dd($this->request->getFile('img'));
         $image = new Image();
         $settingz = new User();
         $nm = $settingz->find($id)['malaf'];
@@ -96,7 +97,10 @@ class ImageController extends BaseController
             helper('form');
             $data['title'] = lang('app.data');
             $data['type'] = $upl;
+            $data['user'] = $settingz->find(session('id'));
             $data['img'] = $image->where('userId', $id)->first();
+            // dd($data);
+
             return view('image/edit', $data);
         }
 

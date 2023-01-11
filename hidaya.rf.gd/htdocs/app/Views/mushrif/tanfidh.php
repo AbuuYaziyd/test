@@ -27,7 +27,6 @@
                                                     <th><?= lang('app.level') ?></th>
                                                     <th><?= lang('app.bank') ?></th>
                                                     <th><?= lang('app.iban') ?></th>
-                                                    <th><?= lang('app.edit') ?></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -41,7 +40,6 @@
                                                         <td><?= $data['jamia'] ?></td>
                                                         <td><?= $data['bank'] ?></td>
                                                         <td><?= $data['iban'] ?></td>
-                                                        <td><a href="<?= base_url('admin/edit/' . $data['id']) ?>" class="btn btn-sm btn-danger"><?= lang('app.edit') ?></a></td>
                                                     </tr>
                                                 <?php endforeach ?>
                                             </tbody>
@@ -69,10 +67,9 @@
                                                     <th><?= lang('app.name') ?></th>
                                                     <th><?= lang('app.iqama') ?></th>
                                                     <th><?= lang('app.phone') ?></th>
-                                                    <th><?= lang('app.level') ?></th>
+                                                    <th><?= lang('app.jamia') ?></th>
                                                     <th><?= lang('app.bank') ?></th>
                                                     <th><?= lang('app.iban') ?></th>
-                                                    <th><?= lang('app.edit') ?></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -86,7 +83,6 @@
                                                         <td><?= $data['jamia'] ?></td>
                                                         <td><?= $data['bank'] ?></td>
                                                         <td><?= $data['iban'] ?></td>
-                                                        <td><a href="<?= base_url('admin/edit/' . $data['id']) ?>" class="btn btn-sm btn-danger"><?= lang('app.edit') ?></a></td>
                                                     </tr>
                                                 <?php endforeach ?>
                                             </tbody>

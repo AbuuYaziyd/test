@@ -12,12 +12,12 @@
                             <img src="https://ui-avatars.com/api/?name=<?= sprintf('%04s', $user['malaf']) ?>&background=random&length=4" class="rounded-circle  height-150" alt=" avatar">
                         </div>
                         <div class="card-body">
-                            <h4><b><?= $user['name'] ?></b></h4>
-                            <p><?= $user['iqama'] ?></p>
-                            <p><?= $user['country_arName'] ?></p>
-                            <p><div class="btn-group">
-                                    <a href="tel:+966<?= $user['phone'] ?>" class="btn btn-sm round btn-secondary"><i class="la la-mobile"></i> 966<?= $user['phone'] ?></a><a href="https://wa.me/966<?= $user['phone'] ?>" target="_blank" class="btn btn-success btn-sm round"> 966<?= $user['phone'] ?> <i class="la la-whatsapp"></i></a>
-                            </div></p>
+                            <h2><b><?= $user['name'] ?></b></h2>
+                            <h4><b><?= $user['iqama'] ?></b></h4>
+                            <h4><b><?= $user['country_arName'] ?></b></h4><br>
+                            <div class="btn-group">
+                                    <a href="tel:+966<?= $user['phone'] ?>" class="btn btn-sm round btn-secondary"><i class="la la-mobile"></i> تواصل</a><a href="https://wa.me/966<?= $user['phone'] ?>" target="_blank" class="btn btn-success btn-sm round"> واتساب <i class="la la-whatsapp"></i></a>
+                            </div>
                         </div>
                         <a href="<?= base_url('admin/delete/' . $user['id']) ?>" id="delete" class="btn round btn-danger btn-block p-1 mb-1"> <i class="la la-trash"></i> <?= lang('app.delete') ?></a>
                     </div>
@@ -33,22 +33,32 @@
                                 <table id="recent-orders" class="table table-hover table-xl mb-0">
                                     <thead>
                                         <tr>
-                                            <th class="border-top-0"><?= lang('app.umrano') ?></th>
-                                            <th class="border-top-0"><?= lang('app.donefor') ?></th>
-                                            <th class="border-top-0"><?= lang('app.status') ?></th>
+                                            <th><?= lang('app.date') ?></th>
+                                            <th><?= lang('app.donefor') ?></th>
+                                            <th><?= lang('app.status') ?></th>
+                                            <th><?= lang('app.miqat') ?></th>
+                                            <th><?= lang('app.makkah') ?></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php foreach ($mashruu as $key => $dt) : ?>
                                         <tr>
-                                            <td><a href="#"><?= $key+1 ?></a></td>
-                                            <td><span><?= $dt['ism'] ?> - <span class="badge badge-info badge-pill"><?= $dt['sabab'] ?></span></span></td>
+                                            <td><b><?= $dt['date'] ?></b></td>
+                                            <td>
+                                                <?= $dt['ism'] ?> - <span class="badge badge-info badge-pill"><?= $dt['sabab'] ?></span>
+                                            </td>
                                             <td>
                                                 <?php if ($dt['status'] == 0) : ?>
-                                                <button type="button" class="btn btn-sm btn-outline-danger round"><?= lang('app.notdone') ?></button>
+                                                <button type="button" class="btn btn-sm btn-danger round"><?= lang('app.notdone') ?></button>
                                                 <?php elseif ($dt['status'] == 1) : ?>
-                                                <button type="button" class="btn btn-sm btn-outline-success round"><?= lang('app.done') ?></button>
+                                                <button type="button" class="btn btn-sm btn-success round"><?= lang('app.done') ?></button>
                                                 <?php endif ?>
+                                            </td>                                       
+                                            <td>
+                                                <a href="https://www.latlong.net/c/?lat=<?= $dt['miqatLat'] ?>&long=<?= $dt['miqatLong'] ?>" target="_blank" class="btn btn-sm round btn-primary"><?= lang('app.miqat') ?></a>
+                                            </td>
+                                            <td>
+                                                <a href="https://www.latlong.net/c/?lat=<?= $dt['makkahLat'] ?>&long=<?= $dt['makkahLong'] ?>" target="_blank" class="btn btn-sm round btn-warning"><?= lang('app.makkah') ?></a>
                                             </td>
                                         </tr>
                                         <?php endforeach ?>

@@ -35,67 +35,70 @@
                             </div>
                             <div class="col-12">
                                 <?= form_open('user/edit/' . $user['id']) ?>
-                                <table class="table table-borderless">
-                                    <tbody>
-                                        <tr>
-                                            <td><?= lang('app.nationality') ?>:</td>
-                                            <td><input type="text" class="form-control" name="nationality" value="<?= $user['country_arName'] ?>" readonly>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><?= lang('app.jamia') ?>:</td>
-                                            <td class="users-view-name"><input type="text" class="form-control" name="jamia" value="<?= $user['uni_name'] ?>" readonly></td>
-                                        </tr>
-                                        <tr>
-                                            <td><?= lang('app.malaf') ?>:</td>
-                                            <td class="users-view-name"><input type="text" class="form-control" name="malaf" value="<?= sprintf('%04s', ($user['malaf']??'----')) ?>" readonly></td>
-                                        </tr>
-                                        <tr>
-                                            <td><?= lang('app.iqama') ?>:</td>
-                                            <td class="users-view-name"><input type="text" class="form-control" name="iqama" value="<?= $user['iqama'] ?>"></td>
-                                        </tr>
-                                        <tr>
-                                            <td><?= lang('app.name') ?>:</td>
-                                            <td class="users-view-name"><input type="text" class="form-control" name="name" value="<?= $user['name'] ?>"></td>
-                                        </tr>
-                                        <tr>
-                                            <td><?= lang('app.bitaqa') ?>:</td>
-                                            <td class="users-view-name"><input type="text" class="form-control" name="bitaqa" value="<?= $user['bitaqa']??'' ?>" placeholder="<?= lang('app.notFound') ?>"></td>
-                                        </tr>
-                                        <tr>
-                                            <td><?= lang('app.phone') ?>:</td>
-                                            <td class="users-view-name">
-                                                <div class="input-group">
-                                                    <input type="text" pattern="[0-9]{9}" title="اترك 0 وادخل 9 أرقام فقط!" class="form-control" name="phone" value="<?= $user['phone'] ?>">
-                                                    <div class="input-group-append">
-                                                        <span class="input-group-text" id="basic-addon1">966+</span>
-                                                    </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-1">
+                                        <label><b><?= lang('app.nationality') ?>:</b></label>
+                                        <fieldset>
+                                            <input type="text" class="form-control" name="nationality" value="<?= $user['country_arName'] ?>" readonly>
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-md-6 mb-1">
+                                        <label><b><?= lang('app.jamia') ?>:</b></label>
+                                        <fieldset>
+                                            <input type="text" class="form-control" name="jamia" value="<?= $user['uni_name'] ?>" readonly>
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-md-6 mb-1">
+                                        <label><b><?= lang('app.iqama') ?>:</b></label>
+                                        <fieldset>
+                                            <input type="text" class="form-control" name="iqama" value="<?= $user['iqama'] ?>">
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-md-6 mb-1">
+                                        <label><b><?= lang('app.name') ?>:</b></label>
+                                        <fieldset>
+                                            <input type="text" class="form-control" name="name" value="<?= $user['name'] ?>">
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-md-6 mb-1">
+                                        <label><b><?= lang('app.bitaqa') ?>:</b></label>
+                                        <fieldset>
+                                            <input type="text" class="form-control" name="bitaqa" value="<?= $user['bitaqa']??'' ?>" placeholder="<?= lang('app.notFound') ?>">
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-md-6 mb-1">
+                                        <label><b><?= lang('app.phone') ?>:</b></label>
+                                        <fieldset>
+                                            <div class="input-group">
+                                                <input type="text" pattern="[0-9]{9}" title="اترك 0 وادخل 9 أرقام فقط!" class="form-control" name="phone" value="<?= $user['phone'] ?>">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text" id="basic-addon1">966+</span>
                                                 </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><?= lang('app.bank') ?>:</td>
-                                            <td class="users-view-name">
-                                                <select class="custom-select" name="bank">
-                                                    <?php foreach ($bank as $key => $data) : ?>
-                                                        <option value="<?= $data['bankId'] ?>" <?= $data['bankId']==$user['bank']?'selected':'' ?>><?= $data['bankName'] . '-' . $data['bankShort'] ?></option>
-                                                    <?php endforeach ?>
-                                                </select>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><?= lang('app.iban') ?>:</td>
-                                            <td class="users-view-name">
-                                                <div class="input-group">
-                                                    <input type="text"  class="form-control" name="iban" value="<?= $user['iban'] ?>">
-                                                    <div class="input-group-append">
-                                                        <span class="input-group-text" id="basic-addon1"><i class="la la-cc-visa"></i></span>
-                                                    </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-md-6 mb-1">
+                                        <label><b><?= lang('app.bank') ?>:</b></label>
+                                        <fieldset>
+                                            <select class="custom-select" name="bank">
+                                                <?php foreach ($bank as $key => $data) : ?>
+                                                    <option value="<?= $data['bankId'] ?>" <?= $data['bankId']==$user['bank']?'selected':'' ?>><?= $data['bankName'] . '-' . $data['bankShort'] ?></option>
+                                                <?php endforeach ?>
+                                            </select>
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-md-6 mb-1">
+                                        <label><b><?= lang('app.iban') ?>:</b></label>
+                                        <fieldset>
+                                            <div class="input-group">
+                                                <input type="text"  class="form-control" name="iban" value="<?= $user['iban'] ?>">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text" id="basic-addon1"><i class="la la-cc-visa"></i></span>
                                                 </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
                                 <button type="submit" class="btn btn-lg btn-block btn-secondary mt-2"><?= lang('app.edit') ?></button>
                                 </form>
                             </div>

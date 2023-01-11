@@ -11,7 +11,7 @@
         <div class="content-body">
             <section class="users-view">
                 <?php $validation = \Config\Services::validation(); ?>
-                <?= form_open_multipart('image/upload/' . session('id')) ?>
+                <?= form_open_multipart('image/edit/' . session('id')) ?>
                 <div class="card col-md-6">
                     <div class="card-header">
                         <h4 class="media-heading"><span class="users-view-name"><?= lang('app.edit') . ' ' . lang('app.'.$type) ?> </span><span class="text-muted font-medium-1"> @</span><span class="users-view-username text-muted font-medium-1 "><?= session('malaf') ?></span></h4>
@@ -36,7 +36,7 @@
                                 <img class="img-fluid mb-2" id="show_image" src="<?= base_url('app-assets/images/' . ($img[$type] == null ? 'demo/no-image.png' : 'malaf/'.(session('malaf')=='----'?'new':session('malaf')).'/') . $img[$type]) ?>" alt="img">
                                         <p><code style="font-family: Cairo;"><?= lang('app.imgErr') ?></code></p>
                                         <?php if ($validation->getError('img')) : ?>
-                                            <span class="badge badge-danger"> <?= $errors = $validation->getError('img') ?></span>
+                                            <span class="badge badge-danger mb-1"> <?= $errors = $validation->getError('img') ?></span>
                                         <?php endif ?>
                                     <div class="input-group mt-0">
                                         <div class="custom-file">

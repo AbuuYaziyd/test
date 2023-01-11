@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\Country;
 use App\Models\Data;
 use App\Models\Image;
+use App\Models\Mashruu;
 use App\Models\Setting;
 use App\Models\Tanfidh;
 use App\Models\Umrah;
@@ -95,9 +96,14 @@ class MushrifController extends BaseController
     public function user($id)
     {
         $user = new User();
-        // $dt = $user->find($id);
+        $image = new Image();
+        $mash = new Mashruu();
         
-        $data['user'] = $user->find($id);
+        $data['user'] = $user->join('countries c', 'c.country_code=users.nationality')
+                            ->join('universities u', 'u.uni_id=users.jamia')
+                            ->find($id);
+        $data['mashruu'] = $mash->where('userId', $id)->findAll();
+        $data['img'] = $image->where('userId', $id)->first();
         $data['title'] = lang('app.jadid');
         // dd($data);
 
